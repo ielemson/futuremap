@@ -5,7 +5,7 @@
                 <div class="footer-widget">
                     <div class="footer-logo">
                         <a href="index.html">
-                            <img src="assets/images/logos/logo-2.png" alt="Images">
+                            <img src="assets/images/logos/logo.png" alt="future map logo" width="100">
                         </a>
                     </div>
                     <p>

@@ -18,7 +18,7 @@
 
     <link rel="stylesheet" href="assets/css/theme-dark.css">
 
-    {{-- <link rel="icon" type="image/png" href="assets/images/favicon.png"> --}}
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
 </head>
 
 <body>
