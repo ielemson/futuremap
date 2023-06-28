@@ -27,7 +27,7 @@
                         </button>
                     </form>
                 </div> --}}
-                <div class="navbar-category">
+                {{-- <div class="navbar-category">
                     <div class="dropdown category-list-dropdown">
                         <button class="btn dropdown-toggle" type="button" id="dropdownMenuButtoncategory" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class='flaticon-list'></i>
@@ -44,7 +44,7 @@
                             
                           </div>
                     </div>
-                </div>
+                </div> --}}
                 <div class="collapse navbar-collapse mean-menu" id="navbarSupportedContent">
                     <ul class="navbar-nav">
                         <li class="nav-item">
@@ -70,6 +70,24 @@
                                 Projects
                             </a>
                           
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link dropdown-toggle">
+                                Our Services
+                            </a>
+                            <ul class="dropdown-menu">
+                               
+                                @if (count($services) > 0)
+                                @foreach ($services as $service)
+                               
+                                <li class="nav-item">
+                                    <a href="{{route('company.service',$service->id)}}" class="nav-link {{ (request()->is('our-service*')) ? 'active' : '' }}">
+                                        {{$service->header}}
+                                    </a>
+                                </li>
+                                @endforeach
+                            @endif
+                            </ul>
                         </li>
                         <li class="nav-item">
                             <a href="{{route('contact.us')}}" class="nav-link {{ (request()->is('contact-us')) ? 'active' : '' }}">
