@@ -10,6 +10,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\ServiceController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,10 +32,14 @@ Route::get('profile/{id}', [HomeController::class,'companyProfile'])->name('comp
 Route::get('our-service/{id}', [HomeController::class,'companyService'])->name('company.service');
 Route::get('our-projects', [HomeController::class,'companyProjects'])->name('company.projects');
 
-
+Auth::routes([
+	'register' => false, // Registration Routes...
+	'reset' => false, // Password Reset Routes...
+	'verify' => false, // Email Verification Routes...
+  ]);
 Route::get('login', [LoginController::class,'showLoginForm'])->name('login');
 Route::post('login', [LoginController::class,'login']);
-Route::post('register', [RegisterController::class,'register']);
+// Route::post('register', [RegisterController::class,'register']);
 
 Route::get('password/forget',  function () { 
 	return view('pages.forgot-password'); 

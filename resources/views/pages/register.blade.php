@@ -68,9 +68,9 @@
                                         </label>
                                     </div>
                                 </div>
-                                <div class="sign-btn text-center">
+                                {{-- <div class="sign-btn text-center">
                                     <button class="btn btn-theme">{{ __('Create Account')}}</button>
-                                </div>
+                                </div> --}}
                             </form>
                             <div class="register">
                                 <p>{{ __('Already have an account?')}} <a href="{{url('login')}}">{{ __('Sign In')}}</a></p>

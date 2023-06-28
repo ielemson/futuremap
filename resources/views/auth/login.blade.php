@@ -10,7 +10,7 @@
         <div class="row align-items-center justify-content-center">
             <div class="col-lg-6">
                 <div class="user-img">
-                    <img src="assets/images/faq-img.jpg" alt="faq"/>
+                    <img src="assets/images/register.jpg" alt="faq"/>
                 </div>
             </div>
             <div class="col-lg-6">
