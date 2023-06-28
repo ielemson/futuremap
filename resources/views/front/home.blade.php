@@ -2,549 +2,187 @@
 
 @section('content')
 
-@section('title', 'Home')  
+@section('title', 'Home')
 
 @include('front.include.banner')
 
-<div class="counter-area pt-100 pb-70">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-3 col-6 col-md-3">
-                <div class="counter-content">
-                    <i class="flaticon-online-course"></i>
-                    <h3>
-                        <span class="odometer" data-count="15000">00000</span>+</h3>
-                    <p>Courses & videos</p>
+
+{{-- Who we are --}}
+<div class="enrolled-area-two pt-100 pb-70">
+    <div class="container-fluid">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="enrolled-img-three mb-30 pr-20">
+                    <img src="assets/images/who-we-are.jpg" alt="Who-we-are">
+                    {{-- <div class="enrolled-img-content">
+                        <i class="flaticon-discount"></i>
+                        <div class="content">
+                            <h3>Get 40% off</h3>
+                            <p>Every course</p>
+                        </div>
+                    </div> --}}
                 </div>
             </div>
-            <div class="col-lg-3 col-6 col-md-3">
-                <div class="counter-content">
-                    <i class="flaticon-student"></i>
-                    <h3>
-                        <span class="odometer" data-count="145000">000000</span>+</h3>
-                    <p>Students enrolled</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-6 col-md-3">
-                <div class="counter-content">
-                    <i class="flaticon-online-course-1"></i>
-                    <h3>
-                        <span class="odometer" data-count="10000">00000</span>+</h3>
-                    <p>Courses instructors</p>
-                </div>
-            </div>
-            <div class="col-lg-3 col-6 col-md-3">
-                <div class="counter-content">
-                    <i class="flaticon-customer-satisfaction"></i>
-                    <h3>
-                        <span class="odometer" data-count="100">000</span>%</h3>
-                    <p>Satisfaction rate</p>
+            <div class="col-lg-6">
+                <div class="enrolled-content mb-30">
+                    <div class="section-title">
+                        <span>WHO WE ARE</span>
+                        <h2>Building human capitals and creating market fields</h2>
+                        <p>
+                            The Future Map Media Concepts Limited is a world-class media
+                            organization based in Nigeria. It was registered in October 2021 by
+                            Corporate Affairs Commission, Nigeria.
+                            We are a unique and credible media organization led by professionally
+                            courteous, upwardly mobile founder- Desmond Nnadozie and his highly
+                            innovative team. We are deeply committed to provide unparalleled
+                            services to all our clients. Our combined years of experience spiced with
+                            epic delivery speak volumes.
+
+                        </p>
+                        <p>
+                            The Future Map Media Concepts Limited is modeling an excellent
+                            leadership capacity in three thematic areas of focus:
+                            Media
+                            E-Commerce and
+                            Education Services
+                            Our strength lies in our quality commitment, integrity and reliability to
+                            customer service underpinned with providing our clients with
+                            breathtaking services.
+                        </p>
+                    </div>
+                  
+                    <a href="{{ route('about.us') }}" class="default-btn border-radius-5">Read More</a>
                 </div>
             </div>
         </div>
     </div>
 </div>
 
-
-<div class="featured-area pt-100 pb-70">
-    <div class="container">
-        <div class="row align-items-center mb-45">
+{{-- our core values --}}
+<div class="featured-area section-bg pt-100 pb-70">
+    <div class="container-fluid">
+        <div class="row mb-45">
             <div class="col-lg-8 col-md-9">
                 <div class="section-title mt-rs-20">
-                    <h2>Explore top featured categories</h2>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.</p>
+                    <h2>Our Core Values</h2>
+                    <p>Our system is built on the values of proficiency, fidelity, humanity, vision and
+                        service.</p>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-3 text-end">
-                <a href="courses.html" class="default-btn">Explore more</a>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-lg-3 col-6 col-md-4">
-                <div class="featured-card">
-                    <a href="courses.html">
-                        <i class="flaticon-web-development"></i>
-                        <h3>Development</h3>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-6 col-md-4">
-                <div class="featured-card">
-                    <a href="courses.html">
-                        <i class="flaticon-design"></i>
-                        <h3>Web designing</h3>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-6 col-md-4">
-                <div class="featured-card">
-                    <a href="courses.html">
-                        <i class="flaticon-wellness"></i>
-                        <h3>Lifestyle</h3>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-6 col-md-4">
-                <div class="featured-card">
-                    <a href="courses.html">
-                        <i class="flaticon-heart-beat"></i>
-                        <h3>Health & fitness</h3>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-6 col-md-4">
-                <div class="featured-card">
-                    <a href="courses.html">
-                        <i class="flaticon-corporate"></i>
-                        <h3>Gov. exams</h3>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-6 col-md-4">
-                <div class="featured-card">
-                    <a href="courses.html">
-                        <i class="flaticon-camera"></i>
-                        <h3>Photography</h3>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-6 col-md-4">
-                <div class="featured-card">
-                    <a href="courses.html">
-                        <i class="flaticon-user"></i>
-                        <h3>Accounting</h3>
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-3 col-6 col-md-4">
-                <div class="featured-card">
-                    <a href="courses.html">
-                        <i class="flaticon-folder"></i>
-                        <h3>Data science</h3>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
 
-
-<div class="courses-area pb-70">
-    <div class="container">
-        <div class="section-title text-center mb-45">
-            <h2>Find popular courses</h2>
-            <p>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                labore et dolore magna aliqua. Ut enim ad minim veniam.
-            </p>
         </div>
+
         <div class="row">
-            <div class="col-lg-4 col-md-6">
-                <div class="courses-item">
-                    <a href="courses-details.html">
-                        <img src="assets/images/courses/courses-img1.jpg" alt="Courses"/>
-                    </a>
-                    <div class="content">
-                        <a href="courses.html" class="tag-btn">Design</a>
-                        <div class="price-text">$120</div>
-                        <h3>
-                            <a href="courses-details.html">UI/UX design pattern for succesfull software applications</a>
-                        </h3>
-                        <ul class="course-list">
-                            <li>
-                                <i class="ri-time-fill"></i>
-                                10 hr 07 min</li>
-                            <li>
-                                <i class="ri-vidicon-fill"></i>
-                                67 lectures</li>
-                        </ul>
-                        <div class="bottom-content">
-                            <a href="instructors-details.html" class="user-area">
-                                <img src="assets/images/courses/courses-instructors1.jpg" alt="Instructors">
-                                <h3>David warner</h3>
-                            </a>
-                            <div class="rating">
-                                <i class="ri-star-fill"></i>4k+ rating
-                            </div>
-                        </div>
-                    </div>
+            <div class="col-lg-4 col-6">
+                <div class="featured-item">
+                    <i class="flaticon-effective"></i>
+                    <h3>Proficiency </h3>
+                    <p>We bring expertise to work.</p>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="courses-item">
-                    <a href="courses-details.html">
-                        <img src="assets/images/courses/courses-img2.jpg" alt="Courses"/>
-                    </a>
-                    <div class="content">
-                        <a href="courses.html" class="tag-btn">Accounting</a>
-                        <div class="price-text">$129</div>
-                        <h3>
-                            <a href="courses-details.html">Basic knowledge about hodiernal bharat in history</a>
-                        </h3>
-                        <ul class="course-list">
-                            <li>
-                                <i class="ri-time-fill"></i>
-                                04 hr 07 min</li>
-                            <li>
-                                <i class="ri-vidicon-fill"></i>
-                                27 lectures</li>
-                        </ul>
-                        <div class="bottom-content">
-                            <a href="instructors-details.html" class="user-area">
-                                <img src="assets/images/courses/courses-instructors2.jpg" alt="Instructors">
-                                <h3>David malan</h3>
-                            </a>
-                            <div class="rating">
-                                <i class="ri-star-fill"></i>2k+ rating
-                            </div>
-                        </div>
-                    </div>
+            <div class="col-lg-4 col-6">
+                <div class="featured-item">
+                    <i class="flaticon-effective"></i>
+                    <h3>Fidelity</h3>
+                    <p>We keep to our agreements</p>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="courses-item">
-                    <a href="courses-details.html">
-                        <img src="assets/images/courses/courses-img3.jpg" alt="Courses"/>
-                    </a>
-                    <div class="content">
-                        <a href="courses.html" class="tag-btn">Physics</a>
-                        <div class="price-text">$100</div>
-                        <h3>
-                            <a href="courses-details.html">Visual effects for games in unity beginner to intermediate</a>
-                        </h3>
-                        <ul class="course-list">
-                            <li>
-                                <i class="ri-time-fill"></i>
-                                02 hr 00 min</li>
-                            <li>
-                                <i class="ri-vidicon-fill"></i>
-                                17 lectures</li>
-                        </ul>
-                        <div class="bottom-content">
-                            <a href="instructors-details.html" class="user-area">
-                                <img src="assets/images/courses/courses-instructors3.jpg" alt="Instructors">
-                                <h3>Emma jhonson</h3>
-                            </a>
-                            <div class="rating">
-                                <i class="ri-star-fill"></i>1k+ rating
-                            </div>
-                        </div>
-                    </div>
+            <div class="col-lg-4 col-6">
+                <div class="featured-item">
+                    <i class="flaticon-effective"></i>
+                    <h3>Humanity</h3>
+                    <p>We are considerate in our dealings and negotiations.</p>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="courses-item">
-                    <a href="courses-details.html">
-                        <img src="assets/images/courses/courses-img4.jpg" alt="Courses"/>
-                    </a>
-                    <div class="content">
-                        <a href="courses.html" class="tag-btn">Business</a>
-                        <div class="price-text">$140</div>
-                        <h3>
-                            <a href="courses-details.html">The complete accounting & bank financial course 2021</a>
-                        </h3>
-                        <ul class="course-list">
-                            <li>
-                                <i class="ri-time-fill"></i>
-                                04 hr 00 min</li>
-                            <li>
-                                <i class="ri-vidicon-fill"></i>
-                                07 lectures</li>
-                        </ul>
-                        <div class="bottom-content">
-                            <a href="instructors-details.html" class="user-area">
-                                <img src="assets/images/courses/courses-instructors4.jpg" alt="Instructors">
-                                <h3>Jesse joslin</h3>
-                            </a>
-                            <div class="rating">
-                                <i class="ri-star-fill"></i>7k+ rating
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="courses-item">
-                    <a href="courses-details.html">
-                        <img src="assets/images/courses/courses-img5.jpg" alt="Courses"/>
-                    </a>
-                    <div class="content">
-                        <a href="courses.html" class="tag-btn">Finance</a>
-                        <div class="price-text">$159</div>
-                        <h3>
-                            <a href="courses-details.html">The complete business plan course includes 50 templates</a>
-                        </h3>
-                        <ul class="course-list">
-                            <li>
-                                <i class="ri-time-fill"></i>
-                                03 hr 00 min</li>
-                            <li>
-                                <i class="ri-vidicon-fill"></i>
-                                17 lectures</li>
-                        </ul>
-                        <div class="bottom-content">
-                            <a href="instructors-details.html" class="user-area">
-                                <img src="assets/images/courses/courses-instructors5.jpg" alt="Instructors">
-                                <h3>Lance altman</h3>
-                            </a>
-                            <div class="rating">
-                                <i class="ri-star-fill"></i>5k+ rating
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="courses-item">
-                    <a href="courses-details.html">
-                        <img src="assets/images/courses/courses-img6.jpg" alt="Courses"/>
-                    </a>
-                    <div class="content">
-                        <a href="courses.html" class="tag-btn">Banking</a>
-                        <div class="price-text">$200</div>
-                        <h3>
-                            <a href="courses-details.html">Full web designing course with 20 web template designing</a>
-                        </h3>
-                        <ul class="course-list">
-                            <li>
-                                <i class="ri-time-fill"></i>
-                                06 hr 00 min</li>
-                            <li>
-                                <i class="ri-vidicon-fill"></i>
-                                10 lectures</li>
-                        </ul>
-                        <div class="bottom-content">
-                            <a href="instructors-details.html" class="user-area">
-                                <img src="assets/images/courses/courses-instructors6.jpg" alt="Instructors">
-                                <h3>Altman lucas
-                                </h3>
-                            </a>
-                            <div class="rating">
-                                <i class="ri-star-fill"></i>3k+ rating
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-
-<div class="play-area ptb-100">
-    <div class="container">
-        <div class="title text-center mb-45">
-            <h2>
-                We worked with
-                <span>250+
-                </span>
-                leading universities and companies</h2>
-        </div>
-        <div class="brand-slider owl-carousel owl-theme pb-100">
-            <div class="brand-item">
-                <img src="assets/images/brand-logo/1.png" class="brand-item-logo1" alt="Images">
-                <img src="assets/images/brand-logo/brand-logo1.png" class="brand-item-logo2" alt="Images">
-            </div>
-            <div class="brand-item">
-                <img src="assets/images/brand-logo/2.png" class="brand-item-logo1" alt="Images">
-                <img src="assets/images/brand-logo/brand-logo2.png" class="brand-item-logo2" alt="Images">
-            </div>
-            <div class="brand-item">
-                <img src="assets/images/brand-logo/3.png" class="brand-item-logo1" alt="Images">
-                <img src="assets/images/brand-logo/brand-logo3.png" class="brand-item-logo2" alt="Images">
-            </div>
-            <div class="brand-item">
-                <img src="assets/images/brand-logo/4.png" class="brand-item-logo1" alt="Images">
-                <img src="assets/images/brand-logo/brand-logo4.png" class="brand-item-logo2" alt="Images">
-            </div>
-            <div class="brand-item">
-                <img src="assets/images/brand-logo/5.png" class="brand-item-logo1" alt="Images">
-                <img src="assets/images/brand-logo/brand-logo5.png" class="brand-item-logo2" alt="Images">
-            </div>
-            <div class="brand-item">
-                <img src="assets/images/brand-logo/6.png" class="brand-item-logo1" alt="Images">
-                <img src="assets/images/brand-logo/brand-logo6.png" class="brand-item-logo2" alt="Images">
-            </div>
-        </div>
-        <div class="play-btn-area">
-            <a href="https://www.youtube.com/watch?v=Zd00oIDAt60" class="play-btn">
-                <i class='flaticon-play-button-arrowhead'></i>
-            </a>
-        </div>
-    </div>
-</div>
-
-
-<div class="instructors-area pb-70">
-    <div class="container">
-        <div class="row align-items-center mb-45">
-            <div class="col-lg-8 col-md-9">
-                <div class="section-title mt-rs-20">
-                    <h2>Meet our top instructor</h2>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.
+            <div class="col-lg-4 col-6">
+                <div class="featured-item">
+                    <i class="flaticon-effective"></i>
+                    <h3>Vision</h3>
+                    <p>We help our clients see clearly and live their expectations
                     </p>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-3 text-end">
-                <a href="instructors.html" class="default-btn">View all instructor</a>
-            </div>
-        </div>
-        <div class="row justify-content-center">
-            <div class="col-lg-3 col-md-6">
-                <div class="instructors-item">
-                    <div class="instructors-img">
-                        <a href="instructors-details.html">
-                            <img src="assets/images/instructors/instructors-img1.jpg" alt="Team Images">
-                        </a>
-                        <ul class="instructors-social">
-                            <li>
-                                <a href="https://www.facebook.com/" target="_blank">
-                                    <i class="ri-facebook-fill"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.instagram.com/" target="_blank">
-                                    <i class="ri-instagram-line"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://twitter.com/" target="_blank">
-                                    <i class="ri-twitter-fill"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.linkedin.com/" target="_blank">
-                                    <i class="ri-linkedin-box-line"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="content">
-                        <h3>
-                            <a href="instructors-details.html">Sally welch</a>
-                        </h3>
-                        <span>Web designer</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="instructors-item">
-                    <div class="instructors-img">
-                        <a href="instructors-details.html">
-                            <img src="assets/images/instructors/instructors-img2.jpg" alt="Team Images">
-                        </a>
-                        <ul class="instructors-social">
-                            <li>
-                                <a href="https://www.facebook.com/" target="_blank">
-                                    <i class="ri-facebook-fill"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.instagram.com/" target="_blank">
-                                    <i class="ri-instagram-line"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://twitter.com/" target="_blank">
-                                    <i class="ri-twitter-fill"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.linkedin.com/" target="_blank">
-                                    <i class="ri-linkedin-box-line"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="content">
-                        <h3>
-                            <a href="instructors-details.html">Jesse joslin</a>
-                        </h3>
-                        <span>Content strategist</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="instructors-item">
-                    <div class="instructors-img">
-                        <a href="instructors-details.html">
-                            <img src="assets/images/instructors/instructors-img3.jpg" alt="Team Images">
-                        </a>
-                        <ul class="instructors-social">
-                            <li>
-                                <a href="https://www.facebook.com/" target="_blank">
-                                    <i class="ri-facebook-fill"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.instagram.com/" target="_blank">
-                                    <i class="ri-instagram-line"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://twitter.com/" target="_blank">
-                                    <i class="ri-twitter-fill"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.linkedin.com/" target="_blank">
-                                    <i class="ri-linkedin-box-line"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="content">
-                        <h3>
-                            <a href="instructors-details.html">Lance altman</a>
-                        </h3>
-                        <span>Photographer</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-3 col-md-6">
-                <div class="instructors-item">
-                    <div class="instructors-img">
-                        <a href="instructors-details.html">
-                            <img src="assets/images/instructors/instructors-img4.jpg" alt="Team Images">
-                        </a>
-                        <ul class="instructors-social">
-                            <li>
-                                <a href="https://www.facebook.com/" target="_blank">
-                                    <i class="ri-facebook-fill"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.instagram.com/" target="_blank">
-                                    <i class="ri-instagram-line"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://twitter.com/" target="_blank">
-                                    <i class="ri-twitter-fill"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="https://www.linkedin.com/" target="_blank">
-                                    <i class="ri-linkedin-box-line"></i>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="content">
-                        <h3>
-                            <a href="instructors-details.html">Jonquil von</a>
-                        </h3>
-                        <span>Art director</span>
-                    </div>
+            <div class="col-lg-4 col-6">
+                <div class="featured-item">
+                    <i class="flaticon-effective"></i>
+                    <h3>Service</h3>
+                    <p>We give our best to the satisfaction of our clients
+                    </p>
                 </div>
             </div>
         </div>
+
     </div>
 </div>
 
+@if (count($members) > 0)
+    <div class="instructors-area pb-70 pt-100">
+        <div class="container">
+            <div class="row mb-45">
+                <div class="col-lg-8 col-md-9">
+                    <div class="section-title mt-rs-20">
+                        <h2>Meet our members</h2>
+                        <p>
+                            Headed by a skilled and passionate media and educationist entrepreneur,
+                            our staff is made up of men and women of veteran capacities in the fields
+                            of Education, media and Information and communication Technology,
+                            with excellent records in business and corporate management. The
+                            company has a numerical fourteen member permanent Staff and six
+                            contract staff
+                        </p>
+                    </div>
+                </div>
 
-<div class="testimonials-area pb-100">
+            </div>
+            <div class="row justify-content-center">
+                @foreach ($members as $member)
+                    <div class="col-lg-3 col-md-6">
+                        <div class="instructors-item">
+                            <div class="instructors-img">
+                                <a href="{{ route('company.profile', $member->id) }}">
+                                    <img src="{{ asset('assets/images/members') }}/{{ $member->image }}"
+                                        alt="{{ $member->name }}">
+                                </a>
+                                {{-- <ul class="instructors-social">
+                            <li>
+                                <a href="https://www.facebook.com/" target="_blank">
+                                    <i class="ri-facebook-fill"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.instagram.com/" target="_blank">
+                                    <i class="ri-instagram-line"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://twitter.com/" target="_blank">
+                                    <i class="ri-twitter-fill"></i>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://www.linkedin.com/" target="_blank">
+                                    <i class="ri-linkedin-box-line"></i>
+                                </a>
+                            </li>
+                        </ul> --}}
+                            </div>
+                            <div class="content">
+                                <h3>
+                                    <a href="{{ route('company.profile', $member->id) }}">{{ $member->name }}</a>
+                                </h3>
+                                <span>{{ $member->portfolio }}</span>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+
+            </div>
+        </div>
+    </div>
+
+@endif
+
+{{-- <div class="testimonials-area pb-100">
     <div class="container">
         <div class="section-title mb-45 text-center">
             <h2>What our happy student say</h2>
@@ -555,7 +193,7 @@
         </div>
         <div class="testimonials-slider owl-carousel owl-theme">
             <div class="testimonials-item">
-                <img src="assets/images/testimonials/testimonials-img1.jpg" alt="testimonials"/>
+                <img src="assets/images/testimonials/testimonials-img1.jpg" alt="testimonials" />
                 <div class="rating">
                     <i class="ri-star-fill"></i>
                     <i class="ri-star-fill"></i>
@@ -563,7 +201,9 @@
                     <i class="ri-star-fill"></i>
                     <i class="ri-star-fill"></i>
                 </div>
-                <p>“Morbi porttitor ligula id varius consectetur. Integer ipsum justo, congue sit amet massa vel, porttitor semper magna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus.”</p>
+                <p>“Morbi porttitor ligula id varius consectetur. Integer ipsum justo, congue sit amet massa vel,
+                    porttitor semper magna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur
+                    ridiculus.”</p>
                 <h3>Nikolas brooten</h3>
                 <span>Student</span>
                 <div class="quote">
@@ -571,7 +211,7 @@
                 </div>
             </div>
             <div class="testimonials-item">
-                <img src="assets/images/testimonials/testimonials-img2.jpg" alt="testimonials"/>
+                <img src="assets/images/testimonials/testimonials-img2.jpg" alt="testimonials" />
                 <div class="rating">
                     <i class="ri-star-fill"></i>
                     <i class="ri-star-fill"></i>
@@ -579,7 +219,9 @@
                     <i class="ri-star-fill"></i>
                     <i class="ri-star-fill"></i>
                 </div>
-                <p>“Morbi porttitor ligula id varius consectetur. Integer ipsum justo, congue sit amet massa vel, porttitor semper magna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus.”</p>
+                <p>“Morbi porttitor ligula id varius consectetur. Integer ipsum justo, congue sit amet massa vel,
+                    porttitor semper magna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur
+                    ridiculus.”</p>
                 <h3>Terry ambady</h3>
                 <span>Content strategist</span>
                 <div class="quote">
@@ -587,7 +229,7 @@
                 </div>
             </div>
             <div class="testimonials-item">
-                <img src="assets/images/testimonials/testimonials-img3.jpg" alt="testimonials"/>
+                <img src="assets/images/testimonials/testimonials-img3.jpg" alt="testimonials" />
                 <div class="rating">
                     <i class="ri-star-fill"></i>
                     <i class="ri-star-fill"></i>
@@ -595,7 +237,9 @@
                     <i class="ri-star-fill"></i>
                     <i class="ri-star-fill"></i>
                 </div>
-                <p>“Morbi porttitor ligula id varius consectetur. Integer ipsum justo, congue sit amet massa vel, porttitor semper magna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus.”</p>
+                <p>“Morbi porttitor ligula id varius consectetur. Integer ipsum justo, congue sit amet massa vel,
+                    porttitor semper magna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur
+                    ridiculus.”</p>
                 <h3>Cory zamora</h3>
                 <span>Photographer</span>
                 <div class="quote">
@@ -603,7 +247,7 @@
                 </div>
             </div>
             <div class="testimonials-item">
-                <img src="assets/images/testimonials/testimonials-img4.jpg" alt="testimonials"/>
+                <img src="assets/images/testimonials/testimonials-img4.jpg" alt="testimonials" />
                 <div class="rating">
                     <i class="ri-star-fill"></i>
                     <i class="ri-star-fill"></i>
@@ -611,7 +255,9 @@
                     <i class="ri-star-fill"></i>
                     <i class="ri-star-fill"></i>
                 </div>
-                <p>“Morbi porttitor ligula id varius consectetur. Integer ipsum justo, congue sit amet massa vel, porttitor semper magna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus.”</p>
+                <p>“Morbi porttitor ligula id varius consectetur. Integer ipsum justo, congue sit amet massa vel,
+                    porttitor semper magna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur
+                    ridiculus.”</p>
                 <h3>Jonquil von</h3>
                 <span>Photographer</span>
                 <div class="quote">
@@ -620,83 +266,69 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 
 
-<div class="enrolled-area">
+<div class="enrolled-area pb-70">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6">
                 <div class="enrolled-content">
                     <div class="section-title">
-                        <h2>We have the most qualified instructors in your hometown.</h2>
+                        <h2>Our Partners</h2>
                         <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus vel facilisis.
+                            We are currently connecting, networking, and partnering with
+                            both small, medium and multinational corporations. Such
+                            corporations like, Think Counseling Network and Human
+                            Development Initiative Abuja, Gregory University Abia State,
+                            Cavendish University Uganda, Godfather Productions Abuja
+                            and Reallog Media International Limited Abuja.
+
+                        </p>
+                        <p>
+                            As a company with great focus on human capital investment,
+                            we understand the forte in alliance, and therefore, are open to
+                            strategic synergies to actualize our corporate vision and mission,
+                            and providing satisfactory services and products to our clients.
                         </p>
                     </div>
-                    <div class="row">
+                    {{-- <div class="row">
                         <div class="col-lg-6 col-6">
                             <ul class="enrolled-list">
                                 <li>
                                     <i class="flaticon-check"></i>
-                                    Full lifetime access</li>
+                                    Full lifetime access
+                                </li>
                                 <li>
                                     <i class="flaticon-check"></i>
-                                    Certificate of completion</li>
+                                    Certificate of completion
+                                </li>
                             </ul>
                         </div>
                         <div class="col-lg-6 col-6">
                             <ul class="enrolled-list">
                                 <li>
                                     <i class="flaticon-check"></i>
-                                    20+ downloadable resources</li>
+                                    20+ downloadable resources
+                                </li>
                                 <li>
                                     <i class="flaticon-check"></i>
-                                    Free trial 7 days</li>
+                                    Free trial 7 days
+                                </li>
                             </ul>
                         </div>
                     </div>
-                    <a href="courses.html" class="default-btn">Enrolled today</a>
+                    <a href="courses.html" class="default-btn">Enrolled today</a> --}}
                 </div>
             </div>
             <div class="col-lg-6">
                 <div class="enrolled-img" data-speed="0.05" data-revert="true">
-                    <img src="assets/images/enrolled/enrolled-img.png" alt="Enrolled"/>
+                    <img src="assets/images/partner.jpg" alt="partner" />
                     <div class="bg-shape">
-                        <img src="assets/images/enrolled/enrolled-shape.png" alt="Shape"/>
+                        <img src="assets/images/enrolled/enrolled-shape.png" alt="Shape" />
                     </div>
-                    <div class="top-content">
-                        <div class="enrolled-img-content">
-                            <i class="flaticon-mail-inbox-app"></i>
-                            <div class="content">
-                                <h3>Inbox</h3>
-                                <p>Work with us!</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="right-content">
-                        <div class="enrolled-img-content">
-                            <i class="flaticon-discount"></i>
-                            <div class="content">
-                                <h3>Get 40% off</h3>
-                                <p>Every course</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="left-content">
-                        <div class="enrolled-img-content">
-                            <i class="flaticon-reading-book active"></i>
-                            <div class="content">
-                                <h3>110k+ students</h3>
-                                <p>Learn daily</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="enrolled-img-shape">
-                        <div class="shape1">
-                            <img src="assets/images/enrolled/enrolled-shape2.png" alt="Shape"/>
-                        </div>
-                    </div>
+
+
                 </div>
             </div>
         </div>
@@ -704,6 +336,55 @@
 </div>
 
 
+<div class="enrolled-area pt-100 pb-70" style="background-color: #fff">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-6">
+                <div class="enrolled-img-two mb-30" data-speed="0.05" data-revert="true">
+                    <img src="assets/images/our-clients.jpg" alt="our client">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="enrolled-content mb-30">
+                    <div class="section-title">
+                        <h2>Our Clients</h2>
+                        <p>
+                            Our vast clientele includes educational institutions, business corporations,
+                            government agencies, political organizations, community development
+                            organizations, Non Profit organizations and the general public. Few among those
+                            that have experienced our services at different times include;
+                        </p>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-6 col-6">
+                            <ul class="enrolled-list">
+                                <li><i class="flaticon-check"></i>Philomath University Abuja</li>
+                                <li><i class="flaticon-check"></i>Colgate Toothpaste NIGERIA</li>
+                                <li><i class="flaticon-check"></i> Regina Caeli Girls Secondary school Umunachi , Imo State</li>
+                                <li><i class="flaticon-check"></i> Virgin Bras and Logistics Abuja
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-6 col-6">
+                            <ul class="enrolled-list">
+                               
+                               
+                                <li><i class="flaticon-check"></i> KC Water Pool Nigeria Limited, Abuja
+                                </li>
+                                <li><i class="flaticon-check"></i> Pinnacle Health and Environmental Services Limited Abuja
+                                </li>
+                                <li><i class="flaticon-check"></i>Abas Rapid Link Owerri
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    {{-- <a href="courses.html" class="default-btn">Enrolled today</a> --}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{{-- 
 <div class="blog-area pt-100 pb-70">
     <div class="container">
         <div class="row align-items-center mb-45">
@@ -711,7 +392,8 @@
                 <div class="section-title mt-rs-20">
                     <h2>Latest from our blogs</h2>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                        labore et dolore.
                     </p>
                 </div>
             </div>
@@ -785,7 +467,8 @@
                             </li>
                         </ul>
                         <h3>
-                            <a href="single-blog-1.html">Here are the things to look for when selecting an online course</a>
+                            <a href="single-blog-1.html">Here are the things to look for when selecting an online
+                                course</a>
                         </h3>
                         <p>Lorem ipsum dolor sit amet, constetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
                         <a href="single-blog-1.html" class="read-btn">Read More</a>
@@ -794,5 +477,5 @@
             </div>
         </div>
     </div>
-</div>
+</div> --}}
 @endsection

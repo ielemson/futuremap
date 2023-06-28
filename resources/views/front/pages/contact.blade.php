@@ -15,8 +15,8 @@
                     <i class="ri-map-pin-fill"></i>
                     <h3>Our location
                     </h3>
-                    <p>Ca 560 Bush St & 20th Ave, Apt 5</p>
-                    <p>San Francisco,230909, Canada</p>
+                    <p>60 Lome Crescent, Wuse Zone 7, FCT Abuja</p>
+                    {{-- <p>San Francisco,230909, Canada</p> --}}
                 </div>
             </div>
             <div class="col-lg-4 col-6">
@@ -24,13 +24,13 @@
                     <i class="ri-mail-fill"></i>
                     <h3>Email us</h3>
                     <p>
-                        <a href="https://templates.hibootstrap.com/cdn-cgi/l/email-protection#ef878a838380af838a8b9ac18c8082">
-                            <span class="__cf_email__" data-cfemail="036b666f6f6c436f6667762d606c6e">[email&#160;protected]</span>
+                        <a href="mailto:fmap-abuja@fmapmedia.com">
+                            <span class="__cf_email__">fmap-abuja@fmapmedia.com</span>
                         </a>
                     </p>
                     <p>
-                        <a href="https://templates.hibootstrap.com/cdn-cgi/l/email-protection#b8d1d6ded7f8d4dddccd96dbd7d5">
-                            <span class="__cf_email__" data-cfemail="ddb4b3bbb29db1b8b9a8f3beb2b0">[email&#160;protected]</span>
+                        <a href="mailto:info@fmapmedia.com">
+                            <span class="__cf_email__">info@fmapmedia.com</span>
                         </a>
                     </p>
                 </div>
@@ -40,10 +40,10 @@
                     <i class="ri-phone-fill"></i>
                     <h3>Phone</h3>
                     <p>
-                        <a href="tel:+44587154756">+44 587 154756</a>
+                        <a href="tel:+2347062990717">07062990717</a>
                     </p>
                     <p>
-                        <a href="tel:+44555514574">+44 5555 14574</a>
+                        <a href="tel:+2349122136204">09122136204</a>
                     </p>
                 </div>
             </div>
@@ -119,7 +119,8 @@
 <div class="contact-map-area pb-100">
     <div class="container">
         <div class="contact-map">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3152.972641599872!2d-122.40869708532713!3d37.790680919018435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085808bfb7cb35b%3A0x9b649f6a7d9c50e8!2s560%20Bush%20St%20%235%2C%20San%20Francisco%2C%20CA%2094108%2C%20USA!5e0!3m2!1sen!2sbd!4v1641381557316!5m2!1sen!2sbd"></iframe>
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3940.1650774673894!2d7.4563310751687455!3d9.048702488679933!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104e0b3fe921e773%3A0x24aae5d3f2e56fa9!2s60%20Lome%20Cres%2C%20Wuse%20900211%2C%20Abuja%2C%20Federal%20Capital%20Territory!5e0!3m2!1sen!2sng!4v1687967772150!5m2!1sen!2sng" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            {{-- <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3152.972641599872!2d-122.40869708532713!3d37.790680919018435!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8085808bfb7cb35b%3A0x9b649f6a7d9c50e8!2s560%20Bush%20St%20%235%2C%20San%20Francisco%2C%20CA%2094108%2C%20USA!5e0!3m2!1sen!2sbd!4v1641381557316!5m2!1sen!2sbd"></iframe> --}}
         </div>
     </div>
 </div>

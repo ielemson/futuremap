@@ -10,6 +10,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\View\View;
+use Illuminate\Support\Facades\Storage;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
@@ -97,15 +98,25 @@ class UserController extends Controller
      */
     public function store(UserRequest $request): RedirectResponse
     {
+        // dd($request->all());
+
         try {
             // store user information
+
+            $imageName = time().'.'.$request->image->extension();  
+     
+            $request->image->move(public_path('assets/images/members'), $imageName);
+
             $user = User::create([
                 'name' => $request->name,
                 'email' => $request->email,
+                'portfolio' => $request->portfolio,
+                'details' => $request->details,
+                'image' => $imageName,
                 'password' => $request->password,
             ]);
 
-
+            
             if ($user) {
                 // assign new role to the user
                 $user->syncRoles($request->role);
@@ -161,6 +172,9 @@ class UserController extends Controller
             'name' => 'required | string ',
             'email' => 'required | email',
             'role' => 'required',
+            'portfolio' => 'required',
+            'details' => 'nullable',
+            // 'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
 
         // check validation for password match
@@ -175,11 +189,34 @@ class UserController extends Controller
         }
 
         try {
+
+
             if ($user = User::find($request->id)) {
-                $payload = [
-                    'name' => $request->name,
-                    'email' => $request->email,
-                ];
+
+                if($request->hasFile('image')) {
+                    $imageName = time().'.'.$request->image->extension();  
+                    $request->image->move(public_path('assets/images/members'), $imageName);
+                    Storage::delete("assets/images/members/$user->image");
+                    
+                    $payload = [
+                        'name' => $request->name,
+                        'email' => $request->email,
+                        'portfolio' =>$request->portfolio,
+                        'details' =>$request->details,
+                        'image' => $imageName,
+                    ];
+
+                    }else{
+                        $payload = [
+                            'name' => $request->name,
+                            'email' => $request->email,
+                            'portfolio' =>$request->portfolio,
+                            'details' =>$request->details,
+                            
+                        ];
+                    }
+
+               
                 // update password if user input a new password
                 if (isset($request->password) && $request->password) {
                     $payload['password'] = $request->password;

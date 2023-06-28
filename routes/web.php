@@ -9,6 +9,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\ServiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,10 +22,15 @@ use App\Http\Controllers\PermissionController;
 |
 */ 
 // FRONT PAGE CONTROLLERS ::::::::::::::::::::::::::::::::
-Route::get('/', function () { return view('front.home'); });
+// Route::get('/', function () { return view('front.home'); });
+Route::get('/', [HomeController::class,'index']);
 Route::get('about-us', [HomeController::class,'aboutUs'])->name('about.us');
 Route::get('contact-us', [HomeController::class,'contactUs'])->name('contact.us');
-Route::get('company-profile', [HomeController::class,'companyProfile'])->name('company.profile');
+Route::get('company-profile', [HomeController::class,'companyProfiles'])->name('company.profiles');
+Route::get('profile/{id}', [HomeController::class,'companyProfile'])->name('company.profile');
+Route::get('our-service/{id}', [HomeController::class,'companyService'])->name('company.service');
+Route::get('our-projects', [HomeController::class,'companyProjects'])->name('company.projects');
+
 
 Route::get('login', [LoginController::class,'showLoginForm'])->name('login');
 Route::post('login', [LoginController::class,'login']);
@@ -47,6 +53,10 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/dashboard', function () { 
 		return view('pages.dashboard'); 
 	})->name('dashboard');
+
+	// Service Route
+	    Route::get('/service/create', [ServiceController::class,'create']);
+		Route::post('/service/create', [ServiceController::class,'store'])->name('create-service');
 
 	//only those have manage_user permission will get access
 	Route::group(['middleware' => 'can:manage_user'], function(){

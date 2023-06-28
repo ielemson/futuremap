@@ -30,6 +30,10 @@ class UserRequest extends FormRequest
             'email' => 'required | email | unique:users',
             'password' => 'required | confirmed',
             'role' => 'required',
+            'portfolio' => 'required',
+            'details' => 'nullable',
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+           
         ];
     }
 

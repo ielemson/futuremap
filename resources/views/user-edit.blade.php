@@ -45,7 +45,7 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <form class="forms-sample" method="POST" action="{{ url('user/update') }}" >
+                        <form class="forms-sample" method="POST" action="{{ url('user/update') }}" enctype="multipart/form-data">
                         @csrf
                             <input type="hidden" name="id" value="{{$user->id}}">
                             <div class="row">
@@ -92,7 +92,16 @@
                                         <div class="help-block with-errors"></div>
                                     </div>
                                     
-                                    
+                                    <div class="form-group">
+                                        <label>{{ __('Profile Picture')}}</label>
+                                        <input type="file" name="image" class="file-upload-default">
+                                        <div class="input-group col-xs-12">
+                                            <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                                            <span class="input-group-append">
+                                            <button class="file-upload-browse btn btn-primary" type="button">{{ __('Upload')}}</button>
+                                            </span>
+                                        </div>
+                                    </div>
                                     
                                     
                                 
@@ -115,6 +124,17 @@
                                         </div>
                                         <input type="hidden" id="token" name="token" value="{{ csrf_token() }}">
                                     </div>
+
+                                    <div class="form-group">
+                                        <label for="portfolio">{{ __('Portfolio')}}<span class="text-red">*</span></label>
+                                        <input id="portfolio" type="text" class="form-control" name="portfolio" placeholder="User portfolio" value="{{ clean($user->portfolio, 'titles')}}" required>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="details">{{ __('Details')}}<span class="text-red">*</span></label>
+                                        <textarea class="form-control html-editor" rows="10" name="details" required>{{$user->details}}</textarea>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="form-group">
@@ -132,7 +152,8 @@
     <!-- push external js -->
     @push('script') 
         <script src="{{ asset('plugins/select2/dist/js/select2.min.js') }}"></script>
-        <!--get role wise permissiom ajax script-->
+         <!--get role wise permissiom ajax script-->
         <script src="{{ asset('js/get-role.js') }}"></script>
+        <script src="{{ asset('js/form-components.js') }}"></script>
     @endpush
 @endsection

@@ -4,8 +4,8 @@
             <div class="col-lg-3 col-sm-6">
                 <div class="footer-widget">
                     <div class="footer-logo">
-                        <a href="index.html">
-                            <img src="assets/images/logos/logo.png" alt="future map logo" width="100">
+                        <a href="{{url('/')}}">
+                            <img src="{{asset('assets/images/logos/logo.png')}}" alt="future map logo" width="100">
                         </a>
                     </div>
                     <p>
@@ -136,8 +136,8 @@
                     Copyright @
                         <script>
                         document.write(new Date().getFullYear())
-                    </script> <b>Ledu</b> All Rights Reserved
-                    <a href="" target="_blank">Future Map</a>
+                    </script> All Rights Reserved
+                    <a href="#">Future Map</a>
                 </p>
             </div>
         </div>

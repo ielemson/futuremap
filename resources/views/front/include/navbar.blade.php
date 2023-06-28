@@ -4,8 +4,8 @@
             <div class="mobile-responsive-menu">
                 <div class="logo">
                     <a href="{{url('/')}}">
-                        <img src="assets/images/logos/logo-small.png" class="logo-one" alt="logo" width="50">
-                        <img src="assets/images/logos/logo-small-white.png" class="logo-two" alt="logo" width="50">
+                        <img src="{{asset('assets/images/logos/logo-small.png')}}" class="logo-one" alt="logo" width="50">
+                        <img src="{{asset('assets/images/logos/logo-small.png')}}" class="logo-two" alt="logo" width="50">
                     </a>
                 </div>
             </div>
@@ -16,8 +16,8 @@
         <div class="container-fluid">
             <nav class="navbar navbar-expand-md navbar-light ">
                 <a class="navbar-brand" href="{{url('/')}}">
-                    <img src="assets/images/logos/logo.png" class="logo-one" alt="Logo" width="75">
-                    <img src="assets/images/logos/logo-2.png" class="logo-two" alt="Logo" width="75">
+                    <img src="{{asset('assets/images/logos/logo.png')}}" class="logo-one" alt="Logo" width="75">
+                    <img src="{{asset('assets/images/logos/logo-small.png')}}" class="logo-two" alt="Logo" width="75">
                 </a>
                 {{-- <div class="nav-widget-form">
                     <form class="search-form">
@@ -31,21 +31,17 @@
                     <div class="dropdown category-list-dropdown">
                         <button class="btn dropdown-toggle" type="button" id="dropdownMenuButtoncategory" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <i class='flaticon-list'></i>
-                            Categories
+                            Our Services
                         </button>
                         <div class="dropdown-menu" aria-labelledby="dropdownMenuButtoncategory">
-                            <a href="courses-details.html" class="nav-link-item">
-                                <i class="flaticon-web-development"></i>
-                                Development
-                            </a>
-                            <a href="">
-                                <i class="flaticon-design"></i>
-                                Web designing
-                            </a>
-                            <a href="">
-                                <i class="flaticon-wellness"></i>
-                                Lifestyle
-                            </a>
+                           @if (count($services) > 0)
+                               @foreach ($services as $service)
+                               <a href="{{route('company.service',$service->id)}}" class="nav-link-item">
+                              {{$service->header}}
+                               </a>
+                               @endforeach
+                           @endif
+                            
                           </div>
                     </div>
                 </div>
@@ -64,8 +60,14 @@
                           
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('company.profile')}}" class="nav-link {{ (request()->is('company-profile')) ? 'active' : '' }}">
-                                Company Profile
+                            <a href="{{route('company.profiles')}}" class="nav-link {{ (request()->is('company-profile*')) ? 'active' : '' }}">
+                             Members
+                            </a>
+                          
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{route('company.projects')}}" class="nav-link {{ (request()->is('our-projects')) ? 'active' : '' }}">
+                                Projects
                             </a>
                           
                         </li>
@@ -79,7 +81,7 @@
                     </ul>
                     <div class="others-options d-flex align-items-center">
                         <div class="optional-item">
-                            <a href="" class="default-btn two">Sign Up</a>
+                            <a href="{{route('login')}}" class="default-btn one border-radius-5">Login</a>
                         </div>
                     </div>
                 </div>
@@ -107,7 +109,7 @@
                             </form>
                         </div>
                         <div class="side-item">
-                            <a href="signup.html" class="default-btn two">Sign Up</a>
+                            <a href="{{route('login')}}" class="default-btn one border-radius-5">Login</a>
                         </div>
                     </div>
                 </div>

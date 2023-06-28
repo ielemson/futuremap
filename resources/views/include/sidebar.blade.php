@@ -45,7 +45,17 @@
                         @endcan
                     </div>
                 </div>
-
+{{-- CUSTOM SIDEBAR  :::::::::::::::::::::::::::::: STARTS--}}
+<div class="nav-item {{ ($segment1 == 'users' || $segment1 == 'roles'||$segment1 == 'permission' ||$segment1 == 'user') ? 'active open' : '' }} has-sub">
+    <a href="#"><i class="ik ik-user"></i><span>{{ __('Services')}}</span></a>
+    <div class="submenu-content">
+        <!-- only those have manage_user permission will get access -->
+        <a href="{{url('service/create')}}" class="menu-item {{ ($segment1 == 'user' && $segment2 == 'create') ? 'active' : '' }}">{{ __('Add Service')}}</a>
+        
+         
+    </div>
+</div>
+{{-- CUSTOM SIDEBAR  :::::::::::::::::::::::::::::: ENDS--}}
                 <div class="nav-lavel">{{ __('Documentation')}} </div>
                 <div class="nav-item {{ ($segment1 == 'rest-api') ? 'active' : '' }}">
                     <a href="{{url('rest-api')}}"><i class="ik ik-cloud"></i><span>{{ __('REST API')}}</span> </a>
