@@ -12,7 +12,7 @@
                 <div class="single-content">
                     <h3>{{$service->header}}</h3>
                    <p>
-                    {{$service->content}}
+                    {!!$service->content!!}
                    </p>
                 </div>
             </div>
