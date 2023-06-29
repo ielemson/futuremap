@@ -55,6 +55,17 @@
          
     </div>
 </div>
+{{-- Features --}}
+<div class="nav-item {{ ($segment1 == 'features' || $segment1 == 'roles'||$segment1 == 'permission' ||$segment1 == 'user') ? 'active open' : '' }} has-sub">
+    <a href="#"><i class="ik ik-user"></i><span>{{ __('Features')}}</span></a>
+    <div class="submenu-content">
+        <!-- only those have manage_user permission will get access -->
+        <a href="{{url('feature/list')}}" class="menu-item {{ ($segment1 == 'user' && $segment2 == 'create') ? 'active' : '' }}">{{ __('Features')}}</a>
+        <a href="{{url('feature/create')}}" class="menu-item {{ ($segment1 == 'user' && $segment2 == 'create') ? 'active' : '' }}">{{ __('Add Features')}}</a>
+        
+         
+    </div>
+</div>
 {{-- CUSTOM SIDEBAR  :::::::::::::::::::::::::::::: ENDS--}}
                 <div class="nav-lavel">{{ __('Documentation')}} </div>
                 <div class="nav-item {{ ($segment1 == 'rest-api') ? 'active' : '' }}">

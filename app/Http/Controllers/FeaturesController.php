@@ -2,18 +2,22 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Features;
+use DataTables;
+use Illuminate\View\View;
 use Illuminate\Http\Request;
-use App\Models\Service;
-class ServiceController extends Controller
+
+class FeaturesController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): View
     {
-        //
+        $features = Features::all();
+        return view('features.list',compact('features'));
     }
 
     /**
@@ -23,7 +27,7 @@ class ServiceController extends Controller
      */
     public function create()
     {
-        return view('services.create');
+        return view('features.create');
     }
 
     /**
@@ -34,25 +38,29 @@ class ServiceController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         try {
+            // store user information
+
             $imageName = time().'.'.$request->image->extension();  
      
-            $request->image->move(public_path('assets/images/services'), $imageName);
+            $request->image->move(public_path('assets/images/features'), $imageName);
 
-            $service = Service::create([
-                'header' => $request->header,
+            $feature = Features::create([
+                'title' => $request->title,
                 'content' => $request->content,
                 'image' => $imageName,
-               ]);
+            ]);
 
             
-            if ($service) {
+            if ($feature) {
                 // assign new role to the user
                 // $user->syncRoles($request->role);
-                return redirect('service/create')->with('success', 'New service created!');
+
+                return redirect('feature/create')->with('success', 'New feature created!');
             }
 
-            return redirect('service/create')->with('error', 'Failed to create new service! Try again.');
+            return redirect('feature/create')->with('error', 'Failed to create new feature! Try again.');
         } catch (\Exception $e) {
             $bug = $e->getMessage();
 

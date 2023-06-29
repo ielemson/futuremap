@@ -2,8 +2,8 @@
 
 
 @section('content')
-@section('title', 'Company Profile')  
-@include('front.include.innerBanner',['banner_title'=>'About member'])
+@section('title', 'Our Top Management Team')  
+@include('front.include.innerBanner',['banner_title'=>'Our Top Management Team'])
 
 
 <div class="instructors-details-area pt-100 pb-70">

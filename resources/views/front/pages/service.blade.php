@@ -4,7 +4,7 @@
 @section('title', $service->header)
 @include('front.include.innerBanner', ['banner_title' => $service->header])
 
-<div class="privacy-policy-area pt-100 pb-70">
+{{-- <div class="privacy-policy-area pt-100 pb-70">
     <div class="container">
         
         <div class="row pt-45">
@@ -16,6 +16,27 @@
                    </p>
                 </div>
             </div>
+        </div>
+    </div>
+</div> --}}
+
+<div class="blog-details-area pt-100 pb-70">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 mx-auto">
+                <div class="blog-details-content pr-20 justify-content-center align-items-center">
+                    <div class="blog-preview-img">
+                        <img src="{{asset('assets/images/services')}}/{{$service->image}}" alt="{{$service->header}}">
+                    </div>
+                   
+                    <h2>{{$service->header}}</h2>
+                    <p>
+                        {!!$service->content!!}
+                    </p>
+                    
+                   </div>
+            </div>
+          
         </div>
     </div>
 </div>

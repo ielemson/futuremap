@@ -61,7 +61,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{route('company.profiles')}}" class="nav-link {{ (request()->is('company-profile*')) ? 'active' : '' }}">
-                             Members
+                             Team
                             </a>
                           
                         </li>

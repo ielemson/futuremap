@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Features;
 use App\Models\Service;
 use App\Models\User;
 use Illuminate\Support\Facades\Artisan;
@@ -13,7 +14,8 @@ class HomeController extends Controller
     {
         $members =  User::whereHas("roles", function($q){ $q->where("name", "member_role"); })->get();
         $services = Service::all();
-        return view('front.home', compact('members','services'));
+        $features = Features::all();
+        return view('front.home', compact('members','services','features'));
     }
 
     public function aboutUs(){
@@ -26,10 +28,10 @@ class HomeController extends Controller
         return view('front.pages.contact',compact('services'));
     }
 
-    public function companyProfiles(){
+    public function companyTeam(){
         $services = Service::all();
        $members =  User::whereHas("roles", function($q){ $q->where("name", "member_role"); })->get();
-        return view('front.pages.profile',compact('members','services'));
+        return view('front.pages.team',compact('members','services'));
     }
 
     public function companyProfile($id){
@@ -48,6 +50,12 @@ class HomeController extends Controller
     public function companyProjects(){
         $services = Service::all();
         return view('front.pages.projects',compact('services'));
+    }
+
+    public function companyFeature($id){
+        $services = Service::all();
+        $feature = Features::where('id',$id)->first();
+        return view('front.pages.feature',compact('services','feature'));
     }
 
     public function clearCache(): View

@@ -9,6 +9,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\PermissionController;
+use App\Http\Controllers\FeaturesController;
 use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Auth;
 
@@ -27,10 +28,11 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', [HomeController::class,'index']);
 Route::get('about-us', [HomeController::class,'aboutUs'])->name('about.us');
 Route::get('contact-us', [HomeController::class,'contactUs'])->name('contact.us');
-Route::get('company-profile', [HomeController::class,'companyProfiles'])->name('company.profiles');
+Route::get('team', [HomeController::class,'companyTeam'])->name('company.profiles');
 Route::get('profile/{id}', [HomeController::class,'companyProfile'])->name('company.profile');
 Route::get('our-service/{id}', [HomeController::class,'companyService'])->name('company.service');
 Route::get('our-projects', [HomeController::class,'companyProjects'])->name('company.projects');
+Route::get('our-feature/{id}', [HomeController::class,'companyFeature'])->name('company.feature');
 
 Auth::routes([
 	'register' => false, // Registration Routes...
@@ -62,6 +64,11 @@ Route::group(['middleware' => 'auth'], function(){
 	// Service Route
 	    Route::get('/service/create', [ServiceController::class,'create']);
 		Route::post('/service/create', [ServiceController::class,'store'])->name('create-service');
+
+	// Features Route
+	Route::get('/feature/create', [FeaturesController::class,'create'])->name('create-feature');
+	Route::post('/feature/create', [FeaturesController::class,'store'])->name('create-feature');
+	Route::get('/feature/list', [FeaturesController::class,'index'])->name('features');
 
 	//only those have manage_user permission will get access
 	Route::group(['middleware' => 'can:manage_user'], function(){

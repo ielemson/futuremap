@@ -4,7 +4,7 @@
             <div class="col-lg-6">
                 <div class="banner-content">
                     <span data-aos="fade-up" data-aos-delay="900" data-aos-duration="1000" data-aos-once="true">Welcome to</span>
-                    <h1 data-aos="fade-down" data-aos-delay="900" data-aos-duration="1000" data-aos-once="true">FEATURE MAP MEDIA CONCEPTS</h1>
+                    <h1 data-aos="fade-down" data-aos-delay="900" data-aos-duration="1000" data-aos-once="true">The Futuremap Media Concepts Limited</h1>
                     <p data-aos="fade-up" data-aos-delay="900" data-aos-duration="1000" data-aos-once="true"> Building human capitals and creating market fields. <br>
                         Our system is built on the values of proficiency, fidelity, humanity, vision and service.</p>
                     {{-- <div class="banner-form-area" data-aos="fade-down" data-aos-delay="900" data-aos-duration="1000" data-aos-once="true">
@@ -39,7 +39,7 @@
                     <div class="bg-shape">
                         <img src="assets/images/home-one/home-one-shape.png" data-aos="fade-down" data-aos-delay="900" data-aos-duration="1000" data-aos-once="true" alt="Shape"/>
                     </div>
-                    <div class="top-content" data-aos="fade-up" data-aos-delay="900" data-aos-duration="1000" data-aos-once="true">
+                    {{-- <div class="top-content" data-aos="fade-up" data-aos-delay="900" data-aos-duration="1000" data-aos-once="true">
                         <i class="flaticon-checked"></i>
                         <div class="content">
                             <h3>Fidelity</h3>
@@ -52,14 +52,14 @@
                             <h3>Proficiency</h3>
                             <p>We bring expertise to work.</p>
                         </div>
-                    </div>
-                    <div class="left-content" data-aos="fade-up" data-aos-delay="900" data-aos-duration="1000" data-aos-once="true">
+                    </div> --}}
+                    {{-- <div class="left-content" data-aos="fade-up" data-aos-delay="900" data-aos-duration="1000" data-aos-once="true">
                         <div class="content">
                             <img src="assets/images/home-one/user-img.jpg" alt="User"/>
                             <h3>Service</h3>
                             <p>We give our best to the satisfaction of our clients</p>
                         </div>
-                        {{-- <a href="#" class="join-btn">Join now</a> --}}
+                        <a href="#" class="join-btn">Join now</a>
                     </div>
                     <div class="banner-img-shape">
                         <div class="shape1" data-aos="fade-up" data-aos-delay="900" data-aos-duration="1000" data-aos-once="true">
@@ -68,7 +68,7 @@
                         <div class="shape2" data-aos="fade-down" data-aos-delay="900" data-aos-duration="1000" data-aos-once="true">
                             <img src="assets/images/home-one/shape2.png" alt="Shape"/>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </div>
         </div>

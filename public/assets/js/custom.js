@@ -87,7 +87,7 @@
         navText: ["<i class='flaticon-left-arrow'></i>", "<i class='flaticon-chevron'></i>"],
     });
     $(".instructors-slider").owlCarousel({
-        loop: true,
+        loop: false,
         margin: 30,
         autoHeight: true,
         nav: true,

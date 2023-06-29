@@ -2,14 +2,14 @@
 
 
 @section('content')
-@section('title', 'Company Profile')  
-@include('front.include.innerBanner',['banner_title'=>'Company Profile'])
+@section('title', 'Our Top Management Team')  
+@include('front.include.innerBanner',['banner_title'=>'Our Top Management Team'])
 
 
 <div class="instructors-area instructors-area-rs pt-100 pb-70">
     <div class="container">
         <div class="section-title text-center mb-45">
-            <h2>Meet our top members</h2>
+            <h2>MEET OUR TOP MANAGEMENT TEAM</h2>
         </div>
         <div class="row justify-content-center">
       @foreach ($members as $member)
