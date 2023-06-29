@@ -10,17 +10,19 @@
         <div class="row">
             <div class="col-lg-12">
                 <div class="blog-details-content pr-20">
-                    <div class="blog-preview-img">
-                        <img src="{{asset('assets/images/features')}}/{{$feature->image}}" alt="{{$feature->title}}">
-                    </div>
                     <ul class="tag-list">
                         
                         <li>
                             <i class="ri-price-tag-3-fill"></i>
-                            <a href="tags.html">{{$feature->title}}</a>
+                            <a href="#">{{$feature->title}}</a>
                         </li>
                     </ul>
                     <h2>{{$feature->title}}</h2>
+                    
+                    <div class="blog-preview-img">
+                        <img src="{{asset('assets/images/features')}}/{{$feature->image}}" alt="{{$feature->title}}">
+                    </div>
+                   
                     <p>
                         {!!$feature->content!!}
                     </p>
