@@ -21,14 +21,14 @@
 </div> --}}
 
 
-<div class="blog-area pt-100 pb-70">
+{{-- <div class="blog-area pt-100 pb-70">
     <div class="container">
         <div class="row align-items-center mb-45">
             <div class="col-lg-8 col-md-9">
                 <div class="section-title mt-rs-20">
                     <h2>Our PR Packages</h2>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore.
+                        comprehensive list of public relations packages along with their costs
                     </p>
                 </div>
             </div>
@@ -47,6 +47,31 @@
                 </div>
             </div>
          
+        </div>
+    </div>
+</div> --}}
+
+<div class="enrolled-area pb-70">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-8">
+                <div class="enrolled-img" data-speed="0.05" data-revert="true">
+                    <img src="{{asset('assets/images/advert.jpeg')}}" alt="advert" />
+                   
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="enrolled-content">
+                    <div class="section-title">
+                        <h2>Our PR Packages</h2>
+                    <p>
+                        comprehensive list of public relations packages along with their costs
+                    </p>
+                    </div>
+                  
+                </div>
+            </div>
+           
         </div>
     </div>
 </div>

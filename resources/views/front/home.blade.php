@@ -14,5 +14,6 @@
 @include('front.include.features')
 @endif
 
+@include('front.include.partner')
 @include('front.include.adevert')
 @endsection

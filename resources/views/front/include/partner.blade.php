@@ -1,4 +1,4 @@
-<div class="enrolled-area pb-70">
+<div class=" pb-70">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6">
@@ -52,7 +52,7 @@
             </div>
             <div class="col-lg-6">
                 <div class="enrolled-img" data-speed="0.05" data-revert="true">
-                    <img src="assets/images/partner.jpg" alt="partner" />
+                    <img src="assets/images/partner.jpeg" alt="partner" />
                     <div class="bg-shape">
                         <img src="assets/images/enrolled/enrolled-shape.png" alt="Shape" />
                     </div>
