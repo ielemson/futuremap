@@ -1,4 +1,4 @@
-<div class="testimonials-area section-bg ptb-100">
+<div class="testimonials-area ptb-100">
     <div class="container">
         <div class="section-title mb-45">
             <h2>

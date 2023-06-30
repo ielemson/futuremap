@@ -51,11 +51,11 @@
     </div>
 </div> --}}
 
-<div class="enrolled-area pb-70">
-    <div class="container-fluid">
+<div class="section-bg pb-70">
+    <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6">
-                <div class="enrolled-img" data-speed="0.05" data-revert="true">
+                <div class="enrolled-img-three pt-70" data-speed="0.05" data-revert="true">
                     <img src="{{asset('assets/images/advert.jpeg')}}" alt="advert" />
                    
                 </div>

@@ -15,7 +15,7 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="hero-img">
-                            <img src="{{asset('assets/images/home-one/hero-img1.jpg')}}" class="hero" alt="Hero"/>
+                            <img src="{{asset('assets/images/home-one/hero-img1.jpg')}}" class="hero" alt="fmap media" style="border-radius:10px;"/>
                         </div>
                     </div>
                 </div>
@@ -37,7 +37,7 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="hero-img">
-                            <img src="{{asset('assets/images/home-one/hero-img2.jpg')}}" class="hero" alt="Hero"/>
+                            <img src="{{asset('assets/images/home-one/hero-img2.jpg')}}" class="hero" alt="fmap media" style="border-radius:10px"/>
                             {{-- <div class="hero-bg-shape">
                                 <img src="assets/images/home-three/bg-shape1.png" class="bg-img-shape1" alt="Hero"/>
                                 <img src="assets/images/home-three/bg-shape2.png" class="bg-img-shape2" alt="Hero"/>
@@ -86,7 +86,7 @@
                     </div>
                     <div class="col-lg-6">
                         <div class="hero-img">
-                            <img src="{{asset('assets/images/home-one/hero-img3.jpg')}}" class="hero" alt="Hero"/>
+                            <img src="{{asset('assets/images/home-one/hero-img3.jpg')}}" class="hero" alt="fmap" style="border-radius:10px"/>
                             {{-- <div class="hero-bg-shape">
                                 <img src="assets/images/home-three/bg-shape1.png" class="bg-img-shape1" alt="Hero"/>
                                 <img src="assets/images/home-three/bg-shape2.png" class="bg-img-shape2" alt="Hero"/>

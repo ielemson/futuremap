@@ -115,7 +115,7 @@
                     <div class="circle circle-three"></div>
                 </div>
             </div>
-            <div class="container">
+            {{-- <div class="container">
                 <div class="side-nav-inner">
                     <div class="side-nav justify-content-center align-items-center">
                         <div class="side-item">
@@ -131,7 +131,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
     </div>
 </div>
