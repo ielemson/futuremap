@@ -8,12 +8,11 @@
 
 
 {{-- Who we are --}}
-@include('front.include.whoweare')
+{{-- @include('front.include.whoweare') --}}
 {{-- Features --}}
 @if (count($features)>0)
 @include('front.include.features')
 @endif
 
-@include('front.include.partner')
 @include('front.include.adevert')
 @endsection

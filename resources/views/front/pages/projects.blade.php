@@ -16,7 +16,7 @@
         <div class="row pt-45">
             <div class="col-lg-12">
                 <div class="single-content">
-                    <h3>1. The Future Map International Conference:</h3>
+                    <h3>1. The Future Map International Conference</h3>
                     <p>
                         We have breathtakingly,
                         worked with <b>The Rejuvenator Initiatives International</b> in launching <b>The Future Map
@@ -35,7 +35,14 @@
                     </p>
                 </div>
                 <div class="single-content">
-                    <h3>2. The Counsellors Corner.</h3>
+                    <h3>2. The Counsellors Corner</h3>
+                    {{-- <div class="contact-map-area">
+                        <div class="container">
+                            <div class="contact-map">
+                                <img src="{{asset('assets/images/project/counseling.png')}}" alt="">
+                            </div>
+                        </div>
+                    </div> --}}
                     <p>
                         In collaboration with the Secondary Education Board of the Federal Capital Territory
                         Abuja, we have designed an online platform that enables students easily access a
@@ -45,8 +52,15 @@
                   
                 </div>
                 <div class="single-content">
-                    <h3>3. Inter Secondary School Dialogue:</h3>
-                    <p>
+                    <h3>3. Inter Secondary School Dialogue</h3>
+                    {{-- <div class="contact-map-area">
+                        <div class="container">
+                            <div class="contact-map">
+                                <img src="{{asset('assets/images/project/career-development.jpg')}}" alt="">
+                            </div>
+                        </div>
+                    </div>
+                    <p> --}}
                         This initiative was
                         created to give secondary school students exposure with their counterparts in
                         other schools, while building their relational confidence as part of their selfdevelopment packages. The programme has had over five editions which
@@ -59,7 +73,7 @@
                     
                 </div>
                 <div class="single-content">
-                    <h3>4. Future Map Magazine:</h3>
+                    <h3>4. Future Map Magazine</h3>
                     <p>
                         This is a youth led, creatively innovative,
                         full colored, optimized magazine. Through this product, we are providing
@@ -70,8 +84,7 @@
                    
                 </div>
                 <div class="single-content">
-                    <h3>
-                        CONCLUSION</h3>
+               
                     <p>
                         
                         We are committed to sustaining our service values, transforming lives through
@@ -87,30 +100,6 @@
                     
                 </div>
              
-            </div>
-        </div>
-    </div>
-</div>
-
-<div class="newsletter-area section-bg ptb-100">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-5">
-                <div class="section-title mt-rs-20">
-                    <span>ARE YOU IMPRESSED FOR AMAZING SERVICES?</span>
-                    <h2>Subscribe our newsletter</h2>
-                </div>
-            </div>
-            <div class="col-lg-7">
-                <form class="newsletter-form" data-toggle="validator" method="POST">
-                    <input type="email" class="form-control" placeholder="Enter Your Email Address" name="EMAIL"
-                        required autocomplete="off">
-                    <button class="subscribe-btn" type="submit">
-                        Subscribe Now
-                        <i class="flaticon-paper-plane"></i>
-                    </button>
-                    <div id="validator-newsletter" class="form-result"></div>
-                </form>
             </div>
         </div>
     </div>

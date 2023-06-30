@@ -58,6 +58,10 @@ class HomeController extends Controller
         return view('front.pages.feature',compact('services','feature'));
     }
 
+    public function comingSoon(){
+        $services = Service::all();
+        return view('front.pages.coming_soon',compact('services'));
+    }
     public function clearCache(): View
     {
         Artisan::call('cache:clear');

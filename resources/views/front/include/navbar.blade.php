@@ -60,7 +60,7 @@
                           
                         </li>
                         <li class="nav-item">
-                            <a href="{{route('company.profiles')}}" class="nav-link {{ (request()->is('company-profile*')) ? 'active' : '' }}">
+                            <a href="{{route('company.profiles')}}" class="nav-link {{ (request()->is('team*')) ? 'active' : '' }}">
                              Team
                             </a>
                           
@@ -97,11 +97,11 @@
                         </li>
                      
                     </ul>
-                    <div class="others-options d-flex align-items-center">
+                    {{-- <div class="others-options d-flex align-items-center">
                         <div class="optional-item">
                             <a href="{{route('login')}}" class="default-btn one border-radius-5">Login</a>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
             </nav>
         </div>

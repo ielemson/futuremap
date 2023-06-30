@@ -33,6 +33,7 @@ Route::get('profile/{id}', [HomeController::class,'companyProfile'])->name('comp
 Route::get('our-service/{id}', [HomeController::class,'companyService'])->name('company.service');
 Route::get('our-projects', [HomeController::class,'companyProjects'])->name('company.projects');
 Route::get('our-feature/{id}', [HomeController::class,'companyFeature'])->name('company.feature');
+Route::get('coming-soon', [HomeController::class,'comingSoon'])->name('coming.soon');
 
 Auth::routes([
 	'register' => false, // Registration Routes...

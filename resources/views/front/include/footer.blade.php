@@ -36,30 +36,26 @@
                     <h3>About us</h3>
                     <ul class="footer-list">
                         <li>
-                            <a href="l">
+                            <a href="{{route('about.us')}}">
                                 About Us
                             </a>
                         </li>
                         <li>
-                            <a href="">
-                                Instructor registration
+                            <a href="{{route('company.profiles')}}">
+                               Team
                             </a>
                         </li>
                         <li>
-                            <a href="">
-                                Instructors
+                            <a href="{{route('company.projects')}}">
+                                Project
                             </a>
                         </li>
                         <li>
-                            <a href="">
-                                Our Event
+                            <a href="{{route('contact.us')}}">
+                                Contact Us
                             </a>
                         </li>
-                        <li>
-                            <a href="">
-                                Courses List
-                            </a>
-                        </li>
+                       
                     </ul>
                 </div>
             </div>
@@ -68,27 +64,23 @@
                     <h3>Resources</h3>
                     <ul class="footer-list">
                         <li>
-                            <a href="">
+                            <a href="{{url('/')}}">
                                 Home
                             </a>
                         </li>
                         <li>
-                            <a href="">
-                                Courses
+                            <a href="{{route('coming.soon')}}">
+                                Magazine
                             </a>
                         </li>
                         <li>
-                            <a href="">
-                                Our Blog
+                            <a href="{{route('coming.soon')}}">
+                                News
                             </a>
                         </li>
+                       
                         <li>
-                            <a href="">
-                                Terms & conditions
-                            </a>
-                        </li>
-                        <li>
-                            <a href="">
+                            <a href="{{route('coming.soon')}}">
                                 Privacy Policy
                             </a>
                         </li>
