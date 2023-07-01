@@ -1,4 +1,12 @@
 <footer class="footer-area">
+    <div class="whats-float">
+    <a href="https://api.whatsapp.com/send?phone=8035082149&text=FutureMap%20Media%20Concepts%20Limited"
+       target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-whatsapp">
+        </i><span>WhatsApp<br><small>08035082149</small>
+        </span>
+    </a>
+</div>
 </a>
     <div class="container pt-100 pb-70">
         <div class="row">
