@@ -1,4 +1,5 @@
 <footer class="footer-area">
+</a>
     <div class="container pt-100 pb-70">
         <div class="row">
             <div class="col-lg-3 col-sm-6">
