@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Features;
+use App\Models\Product;
 use App\Models\Service;
 use App\Models\User;
 use Illuminate\Support\Facades\Artisan;
@@ -61,6 +62,12 @@ class HomeController extends Controller
     public function comingSoon(){
         $services = Service::all();
         return view('front.pages.coming_soon',compact('services'));
+    }
+    
+    public function magazines(){
+        $services = Service::all();
+        $magazines = Product::where('status','publish')->paginate(10);
+        return view('front.pages.magazines',compact('services','magazines'));
     }
     public function clearCache(): View
     {

@@ -4450,7 +4450,7 @@ img {
 }
 .event-item .event-img {
     margin-right: 20px;
-    max-width: 180px;
+    width: 100%;
 }
 .event-item .event-img a {
     display: block;

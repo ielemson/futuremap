@@ -5,11 +5,14 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RolesController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\FeaturesController;
+use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServiceController;
 use Illuminate\Support\Facades\Auth;
 
@@ -23,7 +26,7 @@ use Illuminate\Support\Facades\Auth;
 | contains the "web" middleware group. Now create something great!
 |
 */ 
-// FRONT PAGE CONTROLLERS ::::::::::::::::::::::::::::::::
+// FRONT PAGE CONTROLLERS PUBLCI ROUTE ::::::::::::::::::::::::::::::::
 // Route::get('/', function () { return view('front.home'); });
 Route::get('/', [HomeController::class,'index']);
 Route::get('about-us', [HomeController::class,'aboutUs'])->name('about.us');
@@ -34,15 +37,26 @@ Route::get('our-service/{id}', [HomeController::class,'companyService'])->name('
 Route::get('our-projects', [HomeController::class,'companyProjects'])->name('company.projects');
 Route::get('our-feature/{id}', [HomeController::class,'companyFeature'])->name('company.feature');
 Route::get('coming-soon', [HomeController::class,'comingSoon'])->name('coming.soon');
+Route::get('magazines', [HomeController::class,'magazines'])->name('magazine.list');
 
-Auth::routes([
-	'register' => false, // Registration Routes...
-	'reset' => false, // Password Reset Routes...
-	'verify' => false, // Email Verification Routes...
-  ]);
+// Cart routes
+// Add to cart Product route
+Route::post('/cart/store/{id}', [CartController::class,'addToCart'])->name('productaddToCart');
+// mini cart product data get route
+// Route::get('/product/mini/cart', [CartController::class,'getMiniCart'])->name('getMiniCartProduct');
+// remove item from mini cart route
+// Route::get('/minicart/product-remove/{rowId}', [CartController::class,'removeMiniCart'])->name('removeMiniCartProduct');
+
+
+// Auth::routes([
+// 	'register' => false, // Registration Routes...
+// 	'reset' => false, // Password Reset Routes...
+// 	'verify' => false, // Email Verification Routes...
+//   ]);
 Route::get('login', [LoginController::class,'showLoginForm'])->name('login');
 Route::post('login', [LoginController::class,'login']);
-// Route::post('register', [RegisterController::class,'register']);
+Route::get('register', [RegisterController::class,'showRegisterForm'])->name('register');
+Route::post('register', [RegisterController::class,'register']);
 
 Route::get('password/forget',  function () { 
 	return view('pages.forgot-password'); 
@@ -83,6 +97,25 @@ Route::group(['middleware' => 'auth'], function(){
 	});
 
 	//only those have manage_role permission will get access
+	Route::group(['middleware' => 'can:manage_category'], function(){
+		Route::post('categories', [CategoryController::class,'store'])->name('categories.store');
+		Route::get('categories', [CategoryController::class,'index'])->name('inventory.category.index');
+		Route::post('category/update', [CategoryController::class,'update']);
+		// Route::get('/categories', function () { return view('inventory.category.index'); }); 
+	});
+
+	Route::group(['middleware' => 'can:manage_product'], function(){
+		Route::get('/products', [ProductController::class,'index'])->name('product.list');
+		Route::get('/products/create', [ProductController::class,'create'])->name('product.create');
+		Route::post('/products/store', [ProductController::class,'store'])->name('product.store');
+		Route::get('/products/edit/{id}', [ProductController::class,'edit'])->name('product.edit');
+		Route::get('/product/show/{id}', [ProductController::class,'show'])->name('product.show');
+		Route::post('/product/update/{id}', [ProductController::class,'update'])->name('product.update');
+		Route::get('/product/delete/{id}', [ProductController::class,'destroy'])->name('product.delete');
+		// Route::get('/products', function () { return view('inventory.product.list'); });
+	// Route::get('/', function () { return view('inventory.product.create'); }); 
+	});
+
 	Route::group(['middleware' => 'can:manage_role|manage_user'], function(){
 		Route::get('/roles', [RolesController::class,'index']);
 		Route::get('/role/get-list', [RolesController::class,'getRoleList']);
@@ -164,9 +197,8 @@ Route::group(['middleware' => 'auth'], function(){
 	// new inventory routes
 	Route::get('/inventory', function () { return view('inventory.dashboard'); });
 	Route::get('/pos', function () { return view('inventory.pos'); });
-	Route::get('/products', function () { return view('inventory.product.list'); });
-	Route::get('/products/create', function () { return view('inventory.product.create'); }); 
-	Route::get('/categories', function () { return view('inventory.category.index'); }); 
+	// Route::get('/products', function () { return view('inventory.product.list'); });
+	// Route::get('/products/create', function () { return view('inventory.product.create'); }); 
 	Route::get('/sales', function () { return view('inventory.sale.list'); });
 	Route::get('/sales/create', function () { return view('inventory.sale.create'); }); 
 	Route::get('/purchases', function () { return view('inventory.purchase.list'); });
@@ -177,5 +209,5 @@ Route::group(['middleware' => 'auth'], function(){
 });
 
 
-Route::get('/register', function () { return view('pages.register'); });
-Route::get('/login-1', function () { return view('pages.login'); });
+
+// Route::get('/login-1', function () { return view('pages.login'); });
