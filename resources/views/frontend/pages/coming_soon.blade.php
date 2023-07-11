@@ -3,7 +3,7 @@
 
 @section('content')
 @section('title', 'Coming Soon')
-@include('front.include.innerBanner', ['banner_title' => 'Coming Soon'])
+@include('frontend.include.innerBanner', ['banner_title' => 'Coming Soon'])
 
 
 <div class="coming-soon-area ptb-100">

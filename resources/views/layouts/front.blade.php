@@ -32,11 +32,12 @@
 
 <body>
 
-    @include('front.include.navbar')
+    @include('frontend.include.headerTop')
+    @include('frontend.include.navbar')
 
     @yield('content')
 
-    @include('front.include.footer')
+    @include('frontend.include.footer')
 
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
@@ -51,19 +52,34 @@
     <script src="{{ asset('assets/js/appear.min.js') }}"></script>
     <script src="{{ asset('assets/js/tweenMax.min.js') }}"></script>
     <script src="{{ asset('assets/js/custom.js') }}"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
-        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
-        crossorigin="anonymous"></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous"></script>
+    
     <script>
-        // Add to Cart Product
-        function addToCart(id) {
-            var pid = id;
-            var qty = 1
-            $.ajaxSetup({
+     $.ajaxSetup({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 }
             });
+// Mini Cart Fetch 
+function miniCart(){
+        $.ajax({
+            type: 'GET',
+            dataType: 'json',
+            url: '/product/cart',
+            success: function(data){
+            //    console.log(data)
+                $('.cartCount').html("₦"+ new Intl.NumberFormat().format(data.cart_total));
+            }
+        })
+    }
+    miniCart();
+        // Mini Cart Fetch 
+        // Add to Cart Product
+        function addToCart(id) {
+            var pid = id;
+            var qty = 1
+           
             $.ajax({
                 type: 'POST',
                 dataType: 'json',
@@ -73,10 +89,7 @@
                 },
                 url: '/cart/store/' + id,
                 success: function(data) {
-                    // miniCart()
-                    // $('#closeModal').click();
-                    // console.log(data)
-
+                   
                     const Toast = Swal.mixin({
                         toast: true,
                         position: 'top-end',
@@ -84,6 +97,7 @@
                         showConfirmButton: false,
                         timer: 3000
                     })
+                     miniCart();
                     if ($.isEmptyObject(data.error)) {
                         Toast.fire({
                             type: 'success',

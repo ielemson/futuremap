@@ -5,11 +5,10 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <div class="hero-content">
-                            <span class="top-title">Welcome To</span>
+                            {{-- <span class="top-title">Welcome To</span> --}}
                             <h1>The Futuremap Media Concepts Limited</h1>
                             <p>
-                                Building human capitals and creating market fields.
-                                Our system is built on the values of proficiency, fidelity, humanity, vision and service
+                                BUILDING HUMAN CAPITALS, CREATING MARKET FIELDS
                             </p>
                         </div>
                     </div>
@@ -26,7 +25,7 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <div class="hero-content">
-                            <span class="top-title">Welcome To</span>
+                            {{-- <span class="top-title">Welcome To</span> --}}
                             <h1>The Futuremap Media Concepts Limited</h1>
                             <p>
                                 Building human capitals and creating market fields.
@@ -70,10 +69,10 @@
                 <div class="row align-items-center">
                     <div class="col-lg-6">
                         <div class="hero-content">
-                            <span class="top-title">Welcome To</span>
+                            {{-- <span class="top-title">Welcome To</span> --}}
                             <h1>The Futuremap Media Concepts Limited</h1>
                             <p>
-                                Our staff with the PRO and some staff of Gregory University Uturu after a success programme hosted by <b>Future Map Media</b>
+                                FORGING ROBUST PARTNERSHIPS TO DRIVE SUSTAINABLE BUSINESS EXPANSION    
                             </p>
                             {{-- <div class="banner-btn">
                                 <a href="courses.html" class="default-btn border-radius-50">Find courses</a>

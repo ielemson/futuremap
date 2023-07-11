@@ -4,15 +4,15 @@
 
 @section('title', 'Home')
 
-@include('front.include.slider')
+@include('frontend.include.slider')
 
 
 {{-- Who we are --}}
-{{-- @include('front.include.whoweare') --}}
+{{-- @include('frontend.include.whoweare') --}}
 {{-- Features --}}
 @if (count($features)>0)
-@include('front.include.features')
+@include('frontend.include.features')
 @endif
 
-@include('front.include.adevert')
+@include('frontend.include.adevert')
 @endsection

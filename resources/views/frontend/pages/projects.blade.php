@@ -3,7 +3,7 @@
 
 @section('content')
 @section('title', 'Our Projects')
-@include('front.include.innerBanner', ['banner_title' => 'Our Projects'])
+@include('frontend.include.innerBanner', ['banner_title' => 'Our Projects'])
 <div class="privacy-policy-area pt-100 pb-70">
     <div class="container">
         <div class="section-title text-center">

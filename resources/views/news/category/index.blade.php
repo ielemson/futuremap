@@ -1,4 +1,4 @@
-@extends('inventory.layout') 
+@extends('layouts.main') 
 @section('title', 'Categories')
 @section('content')
     <!-- push external head elements to head --> 
@@ -105,12 +105,16 @@
                             <a class="d-flex card-img" href="#categoryView" data-toggle="modal" data-target="#categoryView">
                                 {{-- <img src=" ../img/portfolio-3.jpg " alt="Donec sit amet est at sem iaculis aliquam." class="list-thumbnail responsive border-0"> --}}
                                 
-                            <span class="badge badge-pill badge-success position-absolute badge-top-left">{{$category->cat_name}}</span>
+                            @if ($category->status == 1)
+                            <span class="badge badge-pill badge-success position-absolute badge-top-left">Published</span>
+                            @else
+                            <span class="badge badge-pill badge-warning position-absolute badge-top-left">Unpublished</span>
+                            @endif
                             </a>
                             <div class="d-flex flex-grow-1 min-width-zero card-content">
                                 <div class="card-body align-self-center d-flex flex-column flex-md-row justify-content-between min-width-zero align-items-md-center mb-0">
-                                    <a class="mb-1 list-item-heading  truncate w-40 w-xs-100 catTray" href="#categoryView" data-toggle="modal" data-target="#categoryView" data-id="{{$category->id}}" data-name="{{$category->cat_name}}">
-                                        <b>{{$category->cat_name}} 
+                                    <a class="mb-1 list-item-heading  truncate w-40 w-xs-100 catTray" href="#categoryView" data-toggle="modal" data-target="#categoryView" data-id="{{$category->id}}" data-name="{{$category->name}}" data-status="{{$category->status}}">
+                                        <b>{{$category->name}} 
                                         </b> 
                                         <span class="text-muted">
                                         </span>
@@ -140,7 +144,7 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
-                    <form action="{{route('categories.store')}}" method="POST">
+                    <form action="{{route('news.category.store')}}" method="POST">
                         @csrf
                         {{-- <div class="form-group">
                         <label class="d-block">Category Image</label>
@@ -150,6 +154,14 @@
                         <label class="d-block">Category Title</label>
                         <input type="text" name="cat_name" class="form-control" placeholder="Enter Category Name">
                     </div>
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="status"> Active
+                            </label>
+                        </div>
+                    </div>
+                    
                     {{-- <div class="form-group">
                         <label class="d-block">Category Code</label>
                         <input type="text" name="category_code" class="form-control" placeholder="Enter Category Code">
@@ -186,36 +198,26 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                 </div>
                 <div class="modal-body">
-                    {{-- <div class="form-group">
-                        <label class="d-block">Category Image</label>
-                        <input type="file" name="category_image" class="form-control">
-                    </div> --}}
+                    <form id="updateCategoryForm" method="post" action="javascript:void(0)">
+                        @csrf
                     <div class="form-group">
                         <label class="d-block">Category Title</label>
                         <input type="text" name="cat_name" class="form-control category_name" placeholder="Enter Category Title" required>
-                        <input type="hidden" class="categoryId">
+                        <input type="hidden" class="categoryId" name="id">
                     </div>
-                    {{-- <div class="form-group">
-                        <label class="d-block">Category Code</label>
-                        <input type="text" name="category_code" class="form-control" placeholder="Enter Category Code" value="CAT12">
-                    </div> --}}
-                    {{-- <div class="form-group">
-                        <label class="d-block">Parent Category</label>
-                        <label class="d-block">Parent Category</label>
-                        <select class="form-control select2 ">
-                            <option selected="selected" value="" data-select2-id="3">Select Category</option>
-                            <option value="1">Electronics</option>
-                            <option value="3">Smart Home</option>
-                            <option value="4">Arts &amp; Crafts</option>
-                            <option value="5">Fashion</option>
-                            <option value="6">Baby</option>
-                            <option value="7">Health &amp; Care</option>
-                            <option value="8">Others</option>
-                        </select>
-                    </div> --}}
+
                     <div class="form-group">
-                        <input class="btn btn-primary" id="Update" type="submit" name="Update" value="Update">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="status" class="category_status"  id="check_status"> Active
+                            </label>
+                        </div>
                     </div>
+                   
+                    <div class="form-group">
+                        <input class="btn btn-primary" id="Update" type="submit"  value="Update">
+                    </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -228,9 +230,15 @@
          
                 var dataId = $(this).attr("data-id");
                 var dataName = $(this).attr("data-name")
-                // $('.category_name').val(dataName)
-                // $('.categoryId').val(dataId)
-                
+                var status = $(this).attr("data-status")
+                $('.category_name').val(dataName)
+                $('.categoryId').val(dataId)
+
+              if (status == 1) {
+              $('#check_status')[0].checked = true;
+              }else{
+                $('#check_status')[0].checked = false;
+              }
             });
 
             // Update category
@@ -241,20 +249,21 @@
             }
         });
         e.preventDefault();
-        var formData = {
-            cat_name: jQuery('.category_name').val(),
-            id: jQuery('.categoryId').val()
-        };
+        
         var type = "POST";
-        var ajaxurl = '/category/update';
+        var ajaxurl = '/news/category/update';
         $.ajax({
             type: "POST",
             url: ajaxurl,
-            data: formData,
+            data: $('#updateCategoryForm').serialize(),
             dataType: 'json',
             success: function (data) {
-            //    + var todo = '<tr id="todo' + data.id + '"><td>' + data.id + '</td><td>' + data.title + '</td><td>' + data.description + '</td>';
-               location.reload()
+           if (data.status == 200) {
+                 console.log(data)
+                location.reload()
+           }else{
+            alert('Error Occured')
+           }
             },
             error: function (data) {
                 console.log(data);

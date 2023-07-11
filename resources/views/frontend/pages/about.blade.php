@@ -3,7 +3,7 @@
 
 @section('content')
 @section('title', 'About Us')
-@include('front.include.innerBanner', ['banner_title' => 'About Us'])
+@include('frontend.include.innerBanner', ['banner_title' => 'About Us'])
 
 
 <div class="enrolled-area-two pt-100 pb-70">
@@ -79,7 +79,7 @@
     </div>
 </div>
 
-
+@include('frontend.include.team')
 {{-- <div class="testimonials-area section-bg pt-100 pb-100">
     <div class="container">
         <div class="section-title text-center">
@@ -171,7 +171,7 @@
     </div>
 </div> --}}
 {{-- our core values --}}
-<div class="featured-area section-bg pt-100 pb-70">
+<div class="featured-area pt-100 pb-70">
     <div class="container-fluid">
         <div class="row mb-45">
             <div class="col-lg-8 col-md-9">
@@ -228,5 +228,5 @@
 </div>
 
 
-@include('front.include.partner')
+@include('frontend.include.partner')
 @endsection

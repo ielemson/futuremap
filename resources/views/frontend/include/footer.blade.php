@@ -78,19 +78,19 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{route('coming.soon')}}">
+                            <a href="{{route('magazine.list')}}">
                                 Magazine
                             </a>
                         </li>
                         <li>
-                            <a href="{{route('coming.soon')}}">
+                            <a href="{{route('front.news.list')}}">
                                 News
                             </a>
                         </li>
                        
                         <li>
-                            <a href="{{route('coming.soon')}}">
-                                Privacy Policy
+                            <a href="{{route('login')}}">
+                               Account
                             </a>
                         </li>
                     </ul>
@@ -121,7 +121,7 @@
                             <i class="ri-phone-fill"></i>
                             <div class="content">
                                 <h4>Phone:</h4>
-                                <span><a href="tel:07062990717">07062990717, 09122136204
+                                <span><a href="tel:07062990717">08035082149,07062990717
                                 </a></span>
                             </div>
                         </li>

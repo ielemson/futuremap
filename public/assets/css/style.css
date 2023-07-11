@@ -5102,11 +5102,11 @@ img {
     font-weight: 600;
 }
 .blog-details-content .blog-preview-img-bg {
-    background-image: url(../images/blog/blog-large-3.jpg);
+    /* background-image: url(../images/blog/blog-large-3.jpg); */
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;
-    padding: 170px 0;
+    /* padding: 170px 0; */
     text-align: center;
     border-radius: 5px;
     margin-bottom: 30px;

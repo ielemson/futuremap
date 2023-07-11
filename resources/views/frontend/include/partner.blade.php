@@ -1,4 +1,4 @@
-<div class="pb-70">
+<div class="pb-70 section-bg">
     <div class="container">
         <div class="row align-items-center">
             <div class="col-lg-6">

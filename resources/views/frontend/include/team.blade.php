@@ -1,6 +1,6 @@
 @if (count($members) > 0)
 
-    <div class="instructors-area instructors-area-rs pt-100 pb-70">
+    <div class="instructors-area instructors-area-rs pt-100 pb-70 section-bg">
         <div class="container">
             <div class="section-title mb-45">
                 <h2>Meet Our Top Management Team</h2>

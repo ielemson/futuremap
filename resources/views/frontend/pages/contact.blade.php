@@ -3,7 +3,7 @@
 
 @section('content')
 @section('title', 'Contact Us')  
-@include('front.include.innerBanner',['banner_title'=>'Contact Us'])
+@include('frontend.include.innerBanner',['banner_title'=>'Contact Us'])
 
 
 

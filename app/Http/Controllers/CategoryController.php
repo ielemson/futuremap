@@ -35,6 +35,7 @@ class CategoryController extends Controller
 
         $category = Category::where('id',$request->id)->first();
         $category->cat_name = $request->cat_name;
+        $category->status = $request->status;
         $category->save();
         return response()->json(['status'=>'Category update successfully']);
     }

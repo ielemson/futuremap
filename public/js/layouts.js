@@ -11,7 +11,10 @@
     });
     $(document).ready(function() {
         var listDelete = $('.list-delete');
-        listDelete.on('click', function() {
+        
+             listDelete.on('click', function() {
+             var dataId = $(this).attr("data-id");
+             
             swal({
                 title: "Are you sure?",
                 text: "Do you really want to delete this item?",
@@ -20,17 +23,34 @@
                 dangerMode: true,
             })
             .then((willDelete) => {
+                var type = "GET";
+                var ajaxurl = '/news/delete/' + dataId;
+                $.ajax({
+                    type: type,
+                    url: ajaxurl,
+                    dataType: 'json',
+                    success: function(data) {  
+                        console.log(data);
+                    },
+                    error: function(data) {
+                        console.log(data);
+                    }
+                });
                 if (willDelete) {
                     swal({
                         title: "Deleted",
                         text: "The list item has been deleted!",
                         icon: "success",
                     });
+                    setTimeout(function() { 
+                       location.reload();
+                    }, 2000);
                 } else {
                     swal("The item is not deleted!");
                 }
             });
         });
+
         $('.html-editor').summernote({
           height: 300,
           tabsize: 2

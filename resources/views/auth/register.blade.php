@@ -3,7 +3,7 @@
 
 @section('content')
 @section('title', 'Register Account')
-@include('front.include.innerBanner', ['banner_title' => 'Register Account'])
+@include('frontend.include.innerBanner', ['banner_title' => 'Register Account'])
 
 <div class="user-area pt-100 pb-70">
     <div class="container">

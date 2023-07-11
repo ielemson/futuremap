@@ -55,6 +55,21 @@
          
     </div>
 </div>
+
+{{-- News Route Starts Here::::::::::::::::::::::::::: --}}
+<div class="nav-item {{ ($segment1 == 'news' || $segment1 == 'roles'||$segment1 == 'permission' ||$segment1 == 'user') ? 'active open' : '' }} has-sub">
+    <a href="#"><i class="ik ik-user"></i><span>{{ __('News')}}</span></a>
+    <div class="submenu-content">
+        <!-- only those have manage_user permission will get access -->
+        <a href="{{route('news.create')}}" class="menu-item {{ ($segment1 == 'news' && $segment2 == 'create') ? 'active' : '' }}">{{ __('Create News')}}</a>
+        <a href="{{url('news/list')}}" class="menu-item {{ ($segment1 == 'news' && $segment2 == 'create') ? 'active' : '' }}">{{ __('News List')}}</a>
+        <a href="{{url('news/categories')}}" class="menu-item {{ ($segment1 == 'news' && $segment2 == 'create') ? 'active' : '' }}">{{ __('News Categories')}}</a>
+        
+         
+    </div>
+</div>
+
+{{-- News Route Ends Here::::::::::::::::::::::::::: --}}
 {{-- Features --}}
 <div class="nav-item {{ ($segment1 == 'features' || $segment1 == 'roles'||$segment1 == 'permission' ||$segment1 == 'user') ? 'active open' : '' }} has-sub">
     <a href="#"><i class="ik ik-user"></i><span>{{ __('Features')}}</span></a>

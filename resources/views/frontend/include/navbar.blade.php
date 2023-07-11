@@ -34,12 +34,7 @@
                             </a>
                           
                         </li>
-                        <li class="nav-item">
-                            <a href="{{route('company.profiles')}}" class="nav-link {{ (request()->is('team*')) ? 'active' : '' }}">
-                             Team
-                            </a>
-                          
-                        </li>
+                        
                         <li class="nav-item">
                             <a href="{{route('company.projects')}}" class="nav-link {{ (request()->is('our-projects')) ? 'active' : '' }}">
                                 Projects
@@ -64,9 +59,18 @@
                             </ul>
                         </li> 
                         
+                        {{-- @if (count($magazines) > 0) --}}
                         <li class="nav-item">
                             <a href="{{route('magazine.list')}}" class="nav-link {{ (request()->is('magazines')) ? 'active' : '' }}">
                                 Magazine
+                            </a>
+                          
+                        </li>
+  
+                        {{-- @endif --}}
+                        <li class="nav-item">
+                            <a href="{{route('front.news.list')}}" class="nav-link {{ (request()->is('news*')) ? 'active' : '' }}">
+                             News
                             </a>
                           
                         </li>

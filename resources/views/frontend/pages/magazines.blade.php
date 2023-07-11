@@ -1,7 +1,7 @@
 @extends('layouts.front')
 @section('content')
 @section('title', 'Future Map Magazine')
-@include('front.include.innerBanner', ['banner_title' => 'Future Map Magazine'])
+@include('frontend.include.innerBanner', ['banner_title' => 'Future Map Magazine'])
 
 <div class="event-area pt-100 pb-100">
     <div class="container">
@@ -16,13 +16,14 @@
                     </div>
                 </div>
                 <div class="col-lg-4 col-md-6">
-                    <div class="product-list">
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected>Default Price</option>
-                            <option value="1">Price High To Low</option>
-                            <option value="2">Price Low To High</option>
-                        </select>
-                        <i class="ri-arrow-down-s-line"></i>
+                    {{-- <div class="">
+                       <p>Your cart <i class="ri-shopping-cart-fill"></i> <sup>0</sup></p>
+                        
+                    </div> --}}
+                    <div class="product-title">
+                       <a href="{{route('checkout.page')}}"> <h3>Click here to checkout
+                        <span class="fas fa-shopping-cart"></span> <b class="cartCount">0</b>
+                    </h3></a>
                     </div>
                 </div>
             </div>

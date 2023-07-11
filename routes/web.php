@@ -12,9 +12,11 @@ use App\Http\Controllers\RolesController;
 use App\Http\Controllers\PermissionController;
 use App\Http\Controllers\FeaturesController;
 use App\Http\Controllers\Frontend\CartController;
+use App\Http\Controllers\Frontend\CheckoutController;
+use App\Http\Controllers\Backend\NewsController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServiceController;
-use Illuminate\Support\Facades\Auth;
+// use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,25 +31,29 @@ use Illuminate\Support\Facades\Auth;
 // FRONT PAGE CONTROLLERS PUBLCI ROUTE ::::::::::::::::::::::::::::::::
 // Route::get('/', function () { return view('front.home'); });
 Route::get('/', [HomeController::class,'index']);
-Route::get('about-us', [HomeController::class,'aboutUs'])->name('about.us');
-Route::get('contact-us', [HomeController::class,'contactUs'])->name('contact.us');
-Route::get('team', [HomeController::class,'companyTeam'])->name('company.profiles');
-Route::get('profile/{id}', [HomeController::class,'companyProfile'])->name('company.profile');
-Route::get('our-service/{id}', [HomeController::class,'companyService'])->name('company.service');
-Route::get('our-projects', [HomeController::class,'companyProjects'])->name('company.projects');
-Route::get('our-feature/{id}', [HomeController::class,'companyFeature'])->name('company.feature');
-Route::get('coming-soon', [HomeController::class,'comingSoon'])->name('coming.soon');
-Route::get('magazines', [HomeController::class,'magazines'])->name('magazine.list');
-
+Route::get('/about-us', [HomeController::class,'aboutUs'])->name('about.us');
+Route::get('/contact-us', [HomeController::class,'contactUs'])->name('contact.us');
+Route::get('/team', [HomeController::class,'companyTeam'])->name('company.profiles');
+Route::get('/profile/{id}', [HomeController::class,'companyProfile'])->name('company.profile');
+Route::get('/our-service/{id}', [HomeController::class,'companyService'])->name('company.service');
+Route::get('/our-projects', [HomeController::class,'companyProjects'])->name('company.projects');
+Route::get('/our-feature/{id}', [HomeController::class,'companyFeature'])->name('company.feature');
+Route::get('/coming-soon', [HomeController::class,'comingSoon'])->name('coming.soon');
+Route::get('/magazines', [HomeController::class,'magazines'])->name('magazine.list');
+Route::get('/news', [HomeController::class,'news'])->name('front.news.list');
+Route::get('/news-single/{id}', [HomeController::class,'single_news'])->name('front.single.news');
+Route::get('/news/category/{slug}', [HomeController::class,'newsCategory'])->name('front.news.category');
 // Cart routes
 // Add to cart Product route
 Route::post('/cart/store/{id}', [CartController::class,'addToCart'])->name('productaddToCart');
 // mini cart product data get route
-// Route::get('/product/mini/cart', [CartController::class,'getMiniCart'])->name('getMiniCartProduct');
+Route::get('/product/cart', [CartController::class,'getMiniCart'])->name('getMiniCartProduct');
 // remove item from mini cart route
 // Route::get('/minicart/product-remove/{rowId}', [CartController::class,'removeMiniCart'])->name('removeMiniCartProduct');
 
-
+// Check Out Page
+// Checkout Page routes
+Route::get('/checkout-page',[CheckoutController::class,'checkoutPage'])->name('checkout.page');
 // Auth::routes([
 // 	'register' => false, // Registration Routes...
 // 	'reset' => false, // Password Reset Routes...
@@ -84,6 +90,22 @@ Route::group(['middleware' => 'auth'], function(){
 	Route::get('/feature/create', [FeaturesController::class,'create'])->name('create-feature');
 	Route::post('/feature/create', [FeaturesController::class,'store'])->name('create-feature');
 	Route::get('/feature/list', [FeaturesController::class,'index'])->name('features');
+
+	//only those have manage news permission will get access
+	Route::group(['middleware' => 'can:manage_news'], function(){
+		Route::get('news/list', [NewsController::class,'index'])->name('news.list');
+		Route::get('news/create', [NewsController::class,'create'])->name('news.create');
+		Route::post('news/store', [NewsController::class,'store'])->name('news.store');
+		Route::get('news/show/{id}', [NewsController::class,'show'])->name('news.show');
+		Route::get('news/categories', [NewsController::class,'category'])->name('news.category');
+		Route::post('news/category/store', [NewsController::class,'storeCategory'])->name('news.category.store');
+		Route::post('news/category/update', [NewsController::class,'updateCategory'])->name('news.category.update');
+		Route::get('news/update/{id}', [NewsController::class,'editNews'])->name('news.edit');
+		Route::post('news/update/{id}', [NewsController::class,'updateNews'])->name('news.update');
+		Route::get('news/delete/{id}', [NewsController::class,'deleteNews']);
+		// Route::get('/categories', function () { return view('inventory.category.index'); }); 
+	});
+
 
 	//only those have manage_user permission will get access
 	Route::group(['middleware' => 'can:manage_user'], function(){
