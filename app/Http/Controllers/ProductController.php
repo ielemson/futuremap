@@ -47,7 +47,7 @@ class ProductController extends Controller
                 'description' => 'required',
                 'status' => 'required',
                 'image' => 'required|mimes:png,jpg,jpeg,webp|max:2048',
-                'file' => 'required|mimes:pdf|max:2048',
+                'file' => 'required|mimes:pdf',
             ]);
 
             //Upload product Image
