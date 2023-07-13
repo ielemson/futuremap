@@ -46,11 +46,14 @@ Route::get('/news/category/{slug}', [HomeController::class,'newsCategory'])->nam
 // Cart routes
 // Add to cart Product route
 Route::post('/cart/store/{id}', [CartController::class,'addToCart'])->name('productaddToCart');
+Route::get('/my-cart/list',[CartController::class,'showmyCartList'])->name('showmyCartList');
+Route::get('/carts', [CartController::class,'showToCart'])->name('cart.list');
 // mini cart product data get route
 Route::get('/product/cart', [CartController::class,'getMiniCart'])->name('getMiniCartProduct');
 // remove item from mini cart route
-// Route::get('/minicart/product-remove/{rowId}', [CartController::class,'removeMiniCart'])->name('removeMiniCartProduct');
-
+Route::get('/remove/from-cart/{rowId}',[CartController::class,'removeFromCart'])->name('removeFromCart');
+Route::get('/add/in-cart/{rowId}',[CartController::class,'addQtyToCart'])->name('addQtyToCart');
+Route::get('/reduce/from-cart/{rowId}',[CartController::class,'reduceQtyFromCart'])->name('reduceQtyFromCart');
 // Check Out Page
 // Checkout Page routes
 Route::get('/checkout-page',[CheckoutController::class,'checkoutPage'])->name('checkout.page');

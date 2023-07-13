@@ -6,6 +6,7 @@
 @include('frontend.include.innerBanner', ['banner_title' => 'Our News'])
 
 
+@if (count($news) > 0)
 <div class="blog-widget-area pt-100 pb-70">
     <div class="container-fluid">
         <div class="row">
@@ -81,8 +82,7 @@
                         </div>
                     </div> 
                     @endif
-                    @if (count($news)>0)
-                    
+                   
                     <div class="side-bar-widget">
                         <h3 class="title">Popular post</h3>
                         <div class="widget-popular-post">
@@ -104,7 +104,7 @@
                             @endforeach
                         </div>
                     </div> 
-                    @endif
+             
                      {{-- <div class="side-bar-widget">
                         <h3 class="title">Tags</h3>
                         <ul class="side-bar-widget-tag">
@@ -136,5 +136,20 @@
     </div>
 </div>
 
-
+@else
+<div class="coming-soon-area ptb-100">
+    <div class="d-table">
+        <div class="d-table-cell">
+            <div class="container-fluid">
+                <div class="coming-soon-content">
+                    <h1>Oops!</h1>
+                    <p>
+                       No news posted at the moment. Please check back at a later time
+                    </p>
+                  </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endif
 @endsection
