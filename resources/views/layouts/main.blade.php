@@ -2,7 +2,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <title>@yield('title', '')::FMAPMEDIA</title>
+    <title>@yield('title', '') :: FMAPMEDIA</title>
     <!-- initiate head with meta tags, css and script -->
     @include('include.head')
 </head>

@@ -46,7 +46,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>News Details</label>
-                                            <textarea class="textarea html-editor form-control" name="details" placeholder="Place some text here" style=""></textarea>
+                                            <textarea class="textarea html-editor form-control" name="details" placeholder="News content" style=""></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -71,7 +71,7 @@
                                         <hr>
                                         <div class="checkbox">
                                             <label>
-                                                <input type="checkbox" name="status"> Published
+                                                <input type="checkbox" name="status" checked> Published
                                             </label>
                                         </div>
                                         <div class="checkbox">

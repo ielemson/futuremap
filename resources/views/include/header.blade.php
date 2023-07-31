@@ -24,7 +24,7 @@
             <div class="top-menu d-flex align-items-center">
                 <div class="dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="notiDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ik ik-bell"></i><span class="badge bg-danger">3</span></a>
-                    <div class="dropdown-menu dropdown-menu-right notification-dropdown" aria-labelledby="notiDropdown">
+                    {{-- <div class="dropdown-menu dropdown-menu-right notification-dropdown" aria-labelledby="notiDropdown">
                         <h4 class="header">{{ __('Notifications')}}</h4>
                         <div class="notifications-wrap">
                             <a href="#" class="media">
@@ -36,15 +36,7 @@
                                     <span class="media-content">{{ __('Your have been Invited ...')}}</span>
                                 </span>
                             </a>
-                            <a href="#" class="media">
-                                <span class="d-flex">
-                                    <img src="{{ asset('img/users/1.jpg')}}" class="rounded-circle" alt="">
-                                </span>
-                                <span class="media-body">
-                                    <span class="heading-font-family media-heading">{{ __('Steve Smith')}}</span> 
-                                    <span class="media-content">{{ __('I slowly updated projects')}}</span>
-                                </span>
-                            </a>
+                          
                             <a href="#" class="media">
                                 <span class="d-flex">
                                     <i class="ik ik-calendar"></i> 
@@ -56,10 +48,10 @@
                             </a>
                         </div>
                         <div class="footer"><a href="javascript:void(0);">{{ __('See all activity')}}</a></div>
-                    </div>
+                    </div> --}}
                 </div>
-                <button type="button" class="nav-link ml-10 right-sidebar-toggle"><i class="ik ik-message-square"></i><span class="badge bg-success">3</span></button>
-                <div class="dropdown">
+                {{-- <button type="button" class="nav-link ml-10 right-sidebar-toggle"><i class="ik ik-message-square"></i><span class="badge bg-success">3</span></button> --}}
+                {{-- <div class="dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="menuDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="ik ik-plus"></i></a>
                     <div class="dropdown-menu dropdown-menu-right menu-grid" aria-labelledby="menuDropdown">
                         <a class="dropdown-item" href="#" data-toggle="tooltip" data-placement="top" title="Dashboard"><i class="ik ik-bar-chart-2"></i></a>
@@ -75,7 +67,7 @@
                         <a class="dropdown-item" href="#" data-toggle="tooltip" data-placement="top" title="Notifications"><i class="ik ik-bell"></i></a>
                         <a class="dropdown-item" href="#" data-toggle="tooltip" data-placement="top" title="More"><i class="ik ik-more-horizontal"></i></a>
                     </div>
-                </div>
+                </div> --}}
                 <button type="button" class="nav-link ml-10" id="apps_modal_btn" data-toggle="modal" data-target="#appsModal"><i class="ik ik-grid"></i></button>
                 <div class="dropdown">
                     <a class="dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img class="avatar" src="{{ asset('img/user.jpg')}}" alt=""></a>
