@@ -16,6 +16,9 @@ use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Backend\NewsController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\Frontend\FlutterwaveController;
+use App\Http\Controllers\Frontend\PaystackController;
+
 // use Illuminate\Support\Facades\Auth;
 
 /*
@@ -41,8 +44,11 @@ Route::get('/our-feature/{id}', [HomeController::class,'companyFeature'])->name(
 Route::get('/coming-soon', [HomeController::class,'comingSoon'])->name('coming.soon');
 Route::get('/magazines', [HomeController::class,'magazines'])->name('magazine.list');
 Route::get('/news', [HomeController::class,'news'])->name('front.news.list');
-Route::get('/news-single/{id}', [HomeController::class,'single_news'])->name('front.single.news');
+Route::get('/show/news/{id}', [HomeController::class,'single_news'])->name('front.single.news');
 Route::get('/news/category/{slug}', [HomeController::class,'newsCategory'])->name('front.news.category');
+Route::post('/user/pay/register', [HomeController::class,'StoreUser']);
+Route::post('/user/pay/login', [HomeController::class,'LoginUser']);
+Route::get('/user/order/cancel', function () { return view('frontend.pages.cancelpayment'); });
 // Cart routes
 // Add to cart Product route
 Route::post('/cart/store/{id}', [CartController::class,'addToCart'])->name('productaddToCart');
@@ -76,6 +82,16 @@ Route::post('password/reset', [ResetPasswordController::class,'reset'])->name('p
 
 
 Route::group(['middleware' => 'auth'], function(){
+
+			// PaystackController paystack/store
+			Route::post('/paystack/store', [PaystackController::class, 'store']);;
+
+	// FlutterWave Payment Controller 
+	// The route that the button calls to initialize payment
+Route::post('/pay', [FlutterwaveController::class, 'initialize'])->name('pay');
+// The callback url after a payment
+Route::get('/rave/callback', [FlutterwaveController::class, 'callback'])->name('callback');
+
 	// logout route
 	Route::get('/logout', [LoginController::class,'logout']);
 	Route::get('/clear-cache', [HomeController::class,'clearCache']);

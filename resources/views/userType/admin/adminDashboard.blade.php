@@ -18,7 +18,13 @@
                     <div class="card-block">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h4 class="mb-0">{{ __('2,563')}}</h4>
+                                <h4 class="mb-0">
+                            @php
+							$products = App\Models\Product::all();
+							// dd($orders);
+						    @endphp
+                            {{count($products)}}
+                                </h4>
                                 <p class="mb-0">{{ __('Products')}}</p>
                             </div>
                             <div class="col-4 text-right">
@@ -34,7 +40,13 @@
                     <div class="card-block">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h4 class="mb-0">{{ __('3,612')}}</h4>
+                                <h4 class="mb-0">
+                                    @php
+                                    $orders = App\Models\Orders::where('status','Successful')->count();
+                                    // dd($orders);
+                                    @endphp
+                                    {{$orders}}
+                                </h4>
                                 <p class="mb-0">{{ __('Orders')}}</p>
                             </div>
                             <div class="col-4 text-right">
@@ -50,7 +62,12 @@
                     <div class="card-block">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h4 class="mb-0">{{ __('865')}}</h4>
+                                <h4 class="mb-0">
+                                    @php
+                                       $customers =  App\Models\User::whereHas("roles", function($q){ $q->where("name", "User"); })->count();
+                                    @endphp
+                                    {{$customers}}
+                                </h4>
                                 <p class="mb-0">{{ __('Customers')}}</p>
                             </div>
                             <div class="col-4 text-right">
@@ -66,11 +83,21 @@
                     <div class="card-block">
                         <div class="row align-items-center">
                             <div class="col-8">
-                                <h4 class="mb-0">{{ __('35,500')}}</h4>
+                                <h4 class="mb-0">
+                                @php
+                                $total = 0;
+                                // $attribute_price = 0;
+                               $orders =  App\Models\Orders::where('status','Successful')->get();
+                                foreach ($orders as $key => $order) {
+                                $total += $order->price * $order->qty;
+                                 }
+                                 @endphp
+                                 {{$total}}
+                                </h4>
                                 <p class="mb-0">{{ __('Sales')}}</p>
                             </div>
                             <div class="col-4 text-right">
-                                <i class="ik f-30">৳</i>
+                                <i class="ik f-30">₦</i>
                             </div>
                         </div>
                         <div id="Widget-line-chart4" class="chart-line chart-shadow" ></div>
@@ -79,7 +106,7 @@
             </div>
             <!-- page statustic chart end -->
             <!-- sale 2 card start -->
-            <div class="col-md-6 col-xl-4">
+            {{-- <div class="col-md-6 col-xl-4">
                 <div class="card sale-card">
                     <div class="card-header">
                         <h3>{{ __('Realtime Profit')}}</h3>
@@ -88,8 +115,8 @@
                         <div id="realtime-profit"></div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-6 col-xl-4">
+            </div> --}}
+            {{-- <div class="col-md-6 col-xl-4">
                 <div class="card sale-card">
                     <div class="card-header">
                         <h3>{{ __('Sales Difference')}}</h3>
@@ -98,8 +125,8 @@
                         <div id="sale-diff" class="chart-shadow"></div>
                     </div>
                 </div>
-            </div>
-            <div class="col-md-12 col-xl-4">
+            </div> --}}
+            {{-- <div class="col-md-12 col-xl-4">
                 <div class="card card-green text-white">
                     <div class="card-block pb-0">
                         <div class="row mb-50">
@@ -121,7 +148,7 @@
                         <div id="sec-ecommerce-chart-bar" ></div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- sale 2 card end -->
 
             <!-- product and new customar start -->
@@ -138,38 +165,22 @@
                         </div>
                     </div>
                     <div class="card-block">
-                        <div class="align-middle mb-25">
-                            <img src="../img/users/1.jpg" alt="user image" class="rounded-circle img-40 align-top mr-15">
+                        @php
+                        $customers =  App\Models\User::whereHas("roles", function($q){ $q->where("name", "User"); })->get();
+                     @endphp
+                     @foreach ($customers as $user)
+                            <div class="align-middle mb-25">
+                            <img src="{{asset('img/big/img1.jpg')}}" alt="user image" class="rounded-circle img-40 align-top mr-15">
                             <div class="d-inline-block">
-                                <a href="#!"><h6>{{ __('Alex Thompson')}}</h6></a>
+                                <a href="#!"><h6>{{$user->name}}</h6></a>
                                 <p class="text-muted mb-0">{{ __('Cheers!')}}</p>
                                 <span class="status active"></span>
                             </div>
                         </div>
-                        <div class="align-middle mb-25">
-                            <img src="../img/users/2.jpg" alt="user image" class="rounded-circle img-40 align-top mr-15">
-                            <div class="d-inline-block">
-                                <a href="#!"><h6>{{ __('John Doue')}}</h6></a>
-                                <p class="text-muted mb-0">{{ __('stay hungry stay foolish!')}}</p>
-                                <span class="status active"></span>
-                            </div>
-                        </div>
-                        <div class="align-middle mb-25">
-                            <img src="../img/users/3.jpg" alt="user image" class="rounded-circle img-40 align-top mr-15">
-                            <div class="d-inline-block">
-                                <a href="#!"><h6>{{ __('Alex Thompson')}}</h6></a>
-                                <p class="text-muted mb-0">{{ __('Cheers!')}}</p>
-                                <span class="status deactive text-mute"><i class="far fa-clock mr-10"></i>{{ __('30 min ago')}}</span>
-                            </div>
-                        </div>
-                        <div class="align-middle mb-25">
-                            <img src="../img/users/4.jpg" alt="user image" class="rounded-circle img-40 align-top mr-15">
-                            <div class="d-inline-block">
-                                <a href="#!"><h6>{{ __('John Doue')}}</h6></a>
-                                <p class="text-muted mb-0">{{ __('Cheers!')}}</p>
-                                <span class="status deactive text-mute"><i class="far fa-clock mr-10"></i>{{ __('10 min ago')}}</span>
-                            </div>
-                        </div>
+                     @endforeach
+                     
+                      
+                       
                     </div>
                 </div>
             </div>
@@ -198,54 +209,24 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>{{ __('HeadPhone')}}</td>
-                                        <td><img src="../img/widget/p1.jpg" alt="" class="img-fluid img-20"></td>
+                                   
+                                    @php
+                                    $products = App\Models\Product::all();
+                                    // dd($orders);
+                                    @endphp
+                                    @foreach ($products as $product)
+                                        <tr>
+                                        <td>{{ $product->name}}</td>
+                                        <td><img src="{{asset('assets/images/products')}}/{{$product->image}}" alt="" class="img-fluid img-20"></td>
                                         <td>
                                             <div class="p-status bg-green"></div>
                                         </td>
-                                        <td>{{ __('$10')}}</td>
-                                        <td>
-                                            <a href="#!"><i class="ik ik-edit f-16 mr-15 text-green"></i></a>
-                                            <a href="#!"><i class="ik ik-trash-2 f-16 text-red"></i></a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{ __('Iphone 6')}}</td>
-                                        <td><img src="../img/widget/p2.jpg" alt="" class="img-fluid img-20"></td>
-                                        <td>
-                                            <div class="p-status bg-green"></div>
-                                        </td>
-                                        <td>{{ __('$2')}}0</td>
+                                        <td>₦{{$product->price}}</td>
                                         <td><a href="#!"><i class="ik ik-edit f-16 mr-15 text-green"></i></a><a href="#!"><i class="ik ik-trash-2 f-16 text-red"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{ __('Jacket')}}</td>
-                                        <td><img src="../img/widget/p3.jpg" alt="" class="img-fluid img-20"></td>
-                                        <td>
-                                            <div class="p-status bg-green"></div>
-                                        </td>
-                                        <td>{{ __('$35')}}</td>
-                                        <td><a href="#!"><i class="ik ik-edit f-16 mr-15 text-green"></i></a><a href="#!"><i class="ik ik-trash-2 f-16 text-red"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{ __('Sofa')}}</td>
-                                        <td><img src="../img/widget/p4.jpg" alt="" class="img-fluid img-20"></td>
-                                        <td>
-                                            <div class="p-status bg-green"></div>
-                                        </td>
-                                        <td>{{ __('$85')}}</td>
-                                        <td><a href="#!"><i class="ik ik-edit f-16 mr-15 text-green"></i></a><a href="#!"><i class="ik ik-trash-2 f-16 text-red"></i></a></td>
-                                    </tr>
-                                    <tr>
-                                        <td>{{ __('Iphone 6')}}</td>
-                                        <td><img src="../img/widget/p2.jpg" alt="" class="img-fluid img-20"></td>
-                                        <td>
-                                            <div class="p-status bg-green"></div>
-                                        </td>
-                                        <td>{{ __('$20')}}</td>
-                                        <td><a href="#!"><i class="ik ik-edit f-16 mr-15 text-green"></i></a><a href="#!"><i class="ik ik-trash-2 f-16 text-red"></i></a></td>
-                                    </tr>
+                                    </tr> 
+                                    @endforeach
+                                   
+                                  
                                 </tbody>
                             </table>
                         </div>
@@ -255,7 +236,7 @@
             </div>
             <!-- product and new customar end -->
             <!-- Application Sales start -->
-            <div class="col-md-12">
+            {{-- <div class="col-md-12">
                 <div class="card table-card">
                     <div class="card-header">
                         <h3>{{ __('Application Sales')}}</h3>
@@ -346,7 +327,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             <!-- Application Sales end -->
     	</div>
     </div>

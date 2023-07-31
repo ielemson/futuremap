@@ -28,6 +28,7 @@ class CartController extends Controller
                 'price' => $product->price,
                 'weight'=>0,
                 'options' => [
+                    'slug' => $product->slug,
                     'image' => $product->image,
                     'file' => $product->file,
                    
@@ -78,11 +79,19 @@ class CartController extends Controller
                  $totalCost += $cost->subtotal;
             }
        }
+
+       $total = 0;
+       // $attribute_price = 0;
+       foreach (Cart::content() as $key => $product) {
+           $total += $product->price * $product->qty;
+           $total += $product->options->attribute_price;
+       }
         return response()->json([
             'carts' => $carts,
             'cart_qty' => $cart_qty,
             'sub_total' => $sub_total,
             'cart_total' => round($totalCost),
+            'total'  => $total
         ], 200);
     }
 

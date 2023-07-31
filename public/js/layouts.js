@@ -10,7 +10,7 @@
       });
     });
     $(document).ready(function() {
-        var listDelete = $('.list-delete');
+        var listDelete = $('.list-sdelete');
         
              listDelete.on('click', function() {
              var dataId = $(this).attr("data-id");

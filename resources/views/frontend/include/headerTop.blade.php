@@ -33,17 +33,17 @@
                     </div>
                     <ul class="social-list">
                         <li>
-                            <a href="https://www.facebook.com/" target="_blank">
+                            <a href="https://web.facebook.com/profile.php?id=100089164734616" target="_blank">
                                 <i class="ri-facebook-fill"></i>
                             </a>
                         </li>
-                        <li>
+                        {{-- <li>
                             <a href="https://twitter.com/" target="_blank">
                                 <i class="ri-twitter-fill"></i>
                             </a>
-                        </li>
+                        </li> --}}
                         <li>
-                            <a href="https://www.pinterest.com/" target="_blank">
+                            <a href="https://www.instagram.com/fmapmedia/" target="_blank">
                                 <i class="ri-instagram-line"></i>
                             </a>
                         </li>

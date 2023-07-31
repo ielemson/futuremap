@@ -37,7 +37,7 @@
                         <form action="{{route('news.store')}}" method="POST" enctype="multipart/form-data" role="form">
                             @csrf
             
-                            <div class="col-md-6">
+                            <div class="col-md-12">
                                 <div class="box box-primary">
                                     <div class="box-body">
                                         <div class="form-group">
@@ -46,7 +46,7 @@
                                         </div>
                                         <div class="form-group">
                                             <label>News Details</label>
-                                            <textarea class="textarea html-editor" name="details" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                            <textarea class="textarea html-editor form-control" name="details" placeholder="Place some text here" style=""></textarea>
                                         </div>
                                     </div>
                                 </div>

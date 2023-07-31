@@ -26,264 +26,43 @@
 	    		</div>
 	    		<div class="col-sm-8 col-md-11 col-lg-11 bg-white">
 			        <div class="customer-area">
-			        	{{-- <div class="row">
-			        		<div class="col-sm-3">
-	                            <div class="form-group">
-	                                <select class="form-control select2" name="warehouse">
-	                                	<option selected="selected" value="">Select Warehouse</option>
-	                                	<option value="1">Warehouse 1</option>
-	                                	<option value="2">Warehouse 2</option>
-	                                </select>
-	                            </div>
-			        		</div>
-			        		<div class="col-sm-9">
-		                        <div class="form-group">
-					        		<input type="text" name="product" class="form-control" placeholder="Search products">
-					        	</div>
-			        		</div>
-			        		
-			        	</div> --}}
+						@if (Session::has('purchase') == 1)
+						<div class="alert text-large bg-success alert-success text-white" role="alert">
+							You have successfully purchased a magzine, please click on the download buttnon to access your file.
+						  </div>
+						@endif
 			        	
 			        	<div class="row pos-products layout-wrap" id="layout-wrap">
+							
+							@php
+							$orders = App\Models\Orders::where('user_id',Auth::user()->id)->get();
+							// dd($orders);
+						    @endphp
+			        	@if (count($orders) > 0)
+						@foreach ($orders as $order)
+						<div class="col-xl-3 col-lg-4 col-12 col-sm-6 mb-2 list-item list-item-grid">
+							<div class="card mb-1 pos-product-card">
+								<div class="d-flex card-img">
+									<img src="{{asset('assets/images/products')}}/{{$order->product->image}}" alt="Donec sit amet est at sem iaculis aliquam." class="list-thumbnail responsive border-0">
 
-			        		<!-- include product preview page -->
-			        		<div class="col-xl-3 col-lg-4 col-12 col-sm-6 mb-2 list-item list-item-grid">
-			        			<div class="card mb-1 pos-product-card">
-			        				<div class="d-flex card-img">
-			        					<img src="/img/products/headphone.webp" alt="Donec sit amet est at sem iaculis aliquam." class="list-thumbnail responsive border-0">
+									<span class="badge badge-pill badge-success position-absolute badge-top-left">₦{{$order->price}}</span>
 
-			        					<span class="badge badge-pill badge-success position-absolute badge-top-left">$800</span>
+								</div>
+								<p class="p-2">
 
-			        				</div>
-			        				<p class="p-2">
+									<b>{{$order->product->name}} </b><br>
+									<a href="{{asset('assets/magazine/uploads')}}/{{$order->product->file}}" class="text-medium btn btn-success btn-block">Download</a><br>
+								</p>
 
-			        					<b>HeadPhone </b><br>
-			        					<span class="text-small text-muted">HP1234</span><br>
-			        				</p>
-
-			        			</div>
-			        		</div>
-			        		<div class="col-xl-3 col-lg-4 col-12 col-sm-6 mb-2 list-item list-item-grid">
-			        			<div class="card mb-1 pos-product-card">
-			        				<div class="d-flex card-img">
-			        					<img src="/img/products/ipone-6.jpg" alt="Donec sit amet est at sem iaculis aliquam." class="list-thumbnail responsive border-0">
-
-			        					<span class="badge badge-pill badge-success position-absolute badge-top-left">$5000</span>
-
-			        				</div>
-			        				<p class="p-2">
-
-			        					<b>Iphone 6 </b><br>
-			        					<span class="text-small text-muted">IP1234</span><br>
-			        				</p>
-
-			        			</div>
-			        		</div>
-			        		<div class="col-xl-3 col-lg-4 col-12 col-sm-6 mb-2 list-item list-item-grid">
-			        			<div class="card mb-1 pos-product-card">
-			        				<div class="d-flex card-img">
-			        					<img src="/img/products/bag.webp" alt="Donec sit amet est at sem iaculis aliquam." class="list-thumbnail responsive border-0">
-
-			        					<span class="badge badge-pill badge-success position-absolute badge-top-left">$500</span>
-
-			        				</div>
-			        				<p class="p-2">
-
-			        					<b>Leather Bag </b><br>
-			        					<span class="text-small text-muted">LB1234</span><br>
-			        				</p>
-
-			        			</div>
-			        		</div>
-			        		<div class="col-xl-3 col-lg-4 col-12 col-sm-6 mb-2 list-item list-item-grid">
-			        			<div class="card mb-1 pos-product-card">
-			        				<div class="d-flex card-img">
-			        					<img src="/img/products/camera.webp" alt="Donec sit amet est at sem iaculis aliquam." class="list-thumbnail responsive border-0">
-
-			        					<span class="badge badge-pill badge-success position-absolute badge-top-left">$100</span>
-
-			        				</div>
-			        				<p class="p-2">
-
-			        					<b>Camera </b><br>
-			        					<span class="text-small text-muted">CM1234</span><br>
-			        				</p>
-
-			        			</div>
-			        		</div>
-			        		<div class="col-xl-3 col-lg-4 col-12 col-sm-6 mb-2 list-item list-item-grid">
-			        			<div class="card mb-1 pos-product-card">
-			        				<div class="d-flex card-img">
-			        					<img src="/img/products/joystick.webp" alt="Donec sit amet est at sem iaculis aliquam." class="list-thumbnail responsive border-0">
-
-			        					<span class="badge badge-pill badge-success position-absolute badge-top-left">$5000</span>
-
-			        				</div>
-			        				<p class="p-2">
-
-			        					<b>Joystick </b><br>
-			        					<span class="text-small text-muted">JS1234</span><br>
-			        				</p>
-
-			        			</div>
-			        		</div>
-			        		<div class="col-xl-3 col-lg-4 col-12 col-sm-6 mb-2 list-item list-item-grid">
-			        			<div class="card mb-1 pos-product-card">
-			        				<div class="d-flex card-img">
-			        					<img src="/img/products/jacket.webp" alt="Donec sit amet est at sem iaculis aliquam." class="list-thumbnail responsive border-0">
-
-			        					<span class="badge badge-pill badge-success position-absolute badge-top-left">$500</span>
-
-			        				</div>
-			        				<p class="p-2">
-
-			        					<b>Jacket </b><br>
-			        					<span class="text-small text-muted">JK1234</span><br>
-			        				</p>
-
-			        			</div>
-			        		</div>
-			        		<div class="col-xl-3 col-lg-4 col-12 col-sm-6 mb-2 list-item list-item-grid">
-			        			<div class="card mb-1 pos-product-card">
-			        				<div class="d-flex card-img">
-			        					<img src="/img/products/watch.webp" alt="Donec sit amet est at sem iaculis aliquam." class="list-thumbnail responsive border-0">
-
-			        					<span class="badge badge-pill badge-success position-absolute badge-top-left">$10000</span>
-
-			        				</div>
-			        				<p class="p-2">
-
-			        					<b>Smart Watch </b><br>
-			        					<span class="text-small text-muted">SW1234</span><br>
-			        				</p>
-
-			        			</div>
-			        		</div>
-			        		<div class="col-xl-3 col-lg-4 col-12 col-sm-6 mb-2 list-item list-item-grid">
-			        			<div class="card mb-1 pos-product-card">
-			        				<div class="d-flex card-img">
-			        					<img src="/img/products/tshirt.jpg" alt="Donec sit amet est at sem iaculis aliquam." class="list-thumbnail responsive border-0">
-
-			        					<span class="badge badge-pill badge-success position-absolute badge-top-left">$5500</span>
-
-			        				</div>
-			        				<p class="p-2">
-
-			        					<b>T-shirt </b><br>
-			        					<span class="text-small text-muted">TS1234</span><br>
-			        				</p>
-
-			        			</div>
-			        		</div>
-
+							</div>
+						</div>
+						@endforeach
+						@endif
 			        	</div>
 			        	
 			        </div>
 	    		</div>
-	    		{{-- <div class="col-sm-5 bg-white h-100vh">
-	    			<div class="product-selection-area">
-	    				<div class="d-flex justify-content-between mb-3">
-		    				<h6> <i class="ik ik-shopping-cart"></i> <b> Current Cart</b></h6>
-		    				<span class="text-danger"> Clear All</span>
-	    				</div>
-	    				<div class="product-cart mb-3">
-	    					<div class="cart-item d-flex mb-2">
-	    						<div class="width-50 d-flex">
-	    							<img src="/img/products/headphone.webp" alt="" class="img-fluid img-50">
-	    							<div class="pl-3">
-	    								<b class="d-block">HeadPhone </b>
-	    								<span>$800.00</span>
-	    							</div>
-	    						</div>
-	    						<div class="width-30 d-flex justify-content-center align-items-center">
-	    							<i class="ik ik-minus-circle text-danger font-20"></i>
-	    							<input type="text" class="cart-item-qty text-center" name="" value="4">
-	    							<i class="ik ik-plus-circle text-success font-20"></i>
-	    						</div>
-	    						<div class="width-20 d-flex justify-content-end align-items-center">
-	    							<b>$3200</b>
-	    						</div>
-	    					</div>
-	    					<div class="cart-item d-flex mb-2">
-	    						<div class="width-50 d-flex">
-	    							<img src="/img/products/joystick.webp" alt="" class="img-fluid img-50">
-	    							<div class="pl-3">
-	    								<b class="d-block">Joystick </b>
-	    								<span>$5000.00</span>
-	    							</div>
-	    						</div>
-	    						<div class="width-30 d-flex justify-content-center align-items-center">
-	    							<i class="ik ik-x-circle text-danger font-20"></i>
-	    							<input type="text" class="cart-item-qty text-center" name="" value="1">
-	    							<i class="ik ik-plus-circle text-success font-20"></i>
-	    						</div>
-	    						<div class="width-20 d-flex justify-content-end align-items-center">
-	    							<b>$5000</b>
-	    						</div>
-	    					</div>
-	    					<div class="cart-item d-flex mb-2">
-	    						<div class="width-50 d-flex">
-	    							<img src="/img/products/watch.webp" alt="" class="img-fluid img-50">
-	    							<div class="pl-3">
-	    								<b class="d-block">Smart Watch </b>
-	    								<span>$10000.00</span>
-	    							</div>
-	    						</div>
-	    						<div class="width-30 d-flex justify-content-center align-items-center">
-	    							<i class="ik ik-x-circle text-danger font-20"></i>
-	    							<input type="text" class="cart-item-qty text-center" name="" value="1">
-	    							<i class="ik ik-plus-circle text-success font-20"></i>
-	    						</div>
-	    						<div class="width-20 d-flex justify-content-end align-items-center">
-	    							<b>$10000</b>
-	    						</div>
-	    					</div>
-	    				</div>
-	    				<div class="box-shadow p-3">
-	    					<div class="d-flex justify-content-between">
-	    						<span>Subtotal</span>
-	    						<strong>$18200</strong>
-	    					</div>
-	    					<div class="d-flex justify-content-between">
-	    						<span>Discount</span>
-	    						<strong class="text-danger">-$500</strong>
-	    					</div>
-	    					<div class="d-flex justify-content-between">
-	    						<span>Sales Tax</span>
-	    						<strong>$2730</strong>
-	    					</div>
-	    					<hr>
-	    					<div class="d-flex justify-content-between">
-	    						<b>Total</b>
-	    						<b class="font-20">$20430</b>
-	    					</div>
-	    				</div>
-	    				<div class="box-shadow p-3 mb-3">
-		                    <label class="d-block">Customer Information</label>
-	    					<div class="d-flex">
-	    						<div class="width-50 pr-3">
-	    							<div class="form-group">
-			                            <input type="text" name="name" class="form-control" placeholder="Enter Customer Name" value="Christopher Alex">
-			                        </div>
-			                        <div class="form-group">
-			                            <input type="text" name="phone" class="form-control" placeholder="Enter Phone" value="219-122-1234">
-			                        </div>
-	    							
-	    						</div>
-	    						<div class="width-50">
-	    							<div class="form-group">
-			                            <textarea type="text" name="name" class="form-control h-82px" placeholder="Enter Address" value="Christopher Alex"></textarea>
-			                        </div>
-	    							
-	    						</div>
-	    					</div>
-	    				</div>
-    					<div class="box-shadow p-3">
-                        	<button class="btn btn-danger btn-checkout btn-pos-checkout " data-toggle="modal" data-target="#InvoiceModal">PLACE ORDER</button>
-                    	</div>
-	    			</div>
-	    			
-	    		</div> --}}
+	    		
 	    	</div>
     	</div>
     </div>

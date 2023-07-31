@@ -82,7 +82,29 @@
                           
                         </li>
                        
-                     
+                      @auth
+                      <li class="nav-item">
+                        <a href="#" class="nav-link dropdown-toggle">
+                        Account
+                        </a>
+                        <ul class="dropdown-menu">
+                         
+                            <li class="nav-item">
+                                <a href="{{url('/dashboard')}}" class="nav-link">
+                                   Dashboard
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a href="{{url('logout')}}" class="nav-link ">
+                                   Logout
+                                </a>
+                            </li>
+                           
+                        </ul>
+                    </li>
+                      @endauth 
+                        
+
                     </ul>
                     
                 </div>

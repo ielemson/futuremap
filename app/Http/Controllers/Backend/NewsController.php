@@ -21,7 +21,14 @@ class NewsController extends Controller
     public function index()
     {
         $news = News::all();
-        // dd($news);
+
+        // $shareComponent = \Share::page(
+        //     'https://fmapmedia.com/',
+        //     'Click here to share',
+        // )
+        // ->facebook()
+        // ->twitter()
+        // ->instagram();
         return view('news.index',compact('news'));
     }
 

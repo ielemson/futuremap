@@ -2,18 +2,18 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <title>@yield('title', '') | Future Map</title>
+    <title>@yield('title', '') :: Future Map</title>
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta property="og:image" content="radmin.test/assets/images/news/{{$socialimage ?? ''}}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
 
     <link rel="stylesheet" href="{{ asset('assets/css/plugins.css') }}">
-
     <link rel="stylesheet" href="{{ asset('assets/css/iconplugins.css') }}">
-
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
-
     <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
 
     <link rel="stylesheet" href="{{ asset('assets/css/theme-dark.css') }}">
@@ -27,8 +27,6 @@
         integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
-       
-
 </head>
 
 <body>
@@ -56,15 +54,12 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+    {{-- <script src="https://checkout.flutterwave.com/v3.js"></script> --}}
     <script>
     
-     $.ajaxSetup({
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-                }
-            });
+     $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}});
 // Mini Cart Fetch 
-function miniCart(){
+    function miniCart(){
         $.ajax({
             type: 'GET',
             dataType: 'json',

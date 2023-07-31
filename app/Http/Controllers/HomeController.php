@@ -10,6 +10,11 @@ use App\Models\Service;
 use App\Models\User;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\View\View;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Session;
 
 class HomeController extends Controller
 {
@@ -97,6 +102,77 @@ class HomeController extends Controller
         // dd($news);
         return view('frontend.pages.news',compact('services','news','categories'));
     }
+
+    public function StoreUser(Request $request){
+
+        // $validator = Validator::make($request->all(), ['name' => 'required', 'email' => 'required|unique:users','password'=>'required']);
+        
+        if(User::where('email',$request->email)->exists()){
+
+            return response(['status'=>'error','msg'=>'User already exist']);
+        }
+
+        if($request->password != $request->cpassword){
+
+            return response(['status'=>'error','msg'=>'Password mis-match']);
+        }
+
+        
+        // if ($validator->fails()){
+        //     return response()->json([
+        //             "status" => false,
+        //             'errors'=>$validator->errors()->toArray()
+        //         ]);
+        // }
+
+        
+        $user =  User::create([
+            'name' => $request->name,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+        ]);
+
+        $user->assignRole('User');
+        // return $user;
+        Auth::login($user);
+  
+        // return response()->json([
+        //     "status" => true, 
+        //     "redirect" => url("dashboard")
+        // ]);
+
+        return response(['status'=>'success','msg'=>'Account Registered']);
+    }
+
+    public function LoginUser(Request $request){
+        // return $request->all();
+        $validator = Validator::make($request->all(), [
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
+
+
+        if ($validator->fails()){
+            return response()->json([
+                    "status" => false,
+                    "errors" => $validator->errors()
+                ]);
+        } else {
+            if (Auth::attempt($request->only("email", "password"))) {
+                return response()->json([
+                    "status" => true, 
+                    "msg" => "Login successful"
+                ]);
+            } 
+            else {
+                return response()->json([
+                    "status" => false,
+                    "msg" => "Invalid credentials"
+                ]);
+            }
+        }
+    }
+
     public function clearCache(): View
     {
         Artisan::call('cache:clear');

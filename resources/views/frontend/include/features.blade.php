@@ -3,7 +3,7 @@
         <div class="section-title mb-45">
             <h2>
               
-                The Future Map Media Concepts Limited
+                The FutureMap Media Concepts Limited
             </h2>
             <p>
                 The significance prospect of the establishment of The Futuremap Media Concepts Limited lies in its multifaceted approach to harnessing talents, utilizing media platforms, and leveraging information technology for marketing and commerce. Here are the key elements of its value points:
