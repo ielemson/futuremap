@@ -16,10 +16,10 @@
         <div class="row pt-45">
             <div class="col-lg-12">
                 <div class="single-content">
-                    <h3>1. The Future Map International Conference</h3>
+                    <h3>1. The FutureMap International Conference</h3>
                     <p>
                         We have breathtakingly,
-                        worked with <b>The Rejuvenator Initiatives International</b> in launching <b>The Future Map
+                        worked with <b>The Rejuvenator Initiatives International</b> in launching <b>The FutureMap
                             International</b> Conference, an orientation and mentoring programme for secondary school
                         graduates, secondary school students, undergraduates in the high institution, job seekers,
                         unemployed graduates and lots more.
@@ -73,7 +73,7 @@
                     
                 </div>
                 <div class="single-content">
-                    <h3>4. Future Map Magazine</h3>
+                    <h3>4. FutureMap Magazine</h3>
                     <p>
                         This is a youth led, creatively innovative,
                         full colored, optimized magazine. Through this product, we are providing

@@ -43,8 +43,8 @@ class FlutterwaveController extends Controller
             ],
 
             "customizations" => [
-                "title" => 'Future Map Magazine',
-                "description" => "Future map magazine online store",
+                "title" => 'FutureMap Magazine',
+                "description" => "FutureMap magazine online store",
                 "logo" => "https://fmapmedia.com/assets/images/favicon.png"
             ]
         ];

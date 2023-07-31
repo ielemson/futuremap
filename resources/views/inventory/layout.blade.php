@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}" >
 <head>
-	<title>@yield('title','') | Future Map Media</title>
+	<title>@yield('title','') | FutureMap Media</title>
 	<!-- initiate head with meta tags, css and script -->
 	@include('include.head')
 

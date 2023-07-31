@@ -1,7 +1,7 @@
 @extends('layouts.front')
 @section('content')
-@section('title', 'Future Map Magazine')
-@include('frontend.include.innerBanner', ['banner_title' => 'Future Map Magazine'])
+@section('title', 'FutureMap Magazine')
+@include('frontend.include.innerBanner', ['banner_title' => 'FutureMap Magazine'])
 
 
 @if (count($magazines) > 0)

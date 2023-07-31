@@ -14,11 +14,11 @@
                 <div class="footer-widget">
                     <div class="footer-logo">
                         <a href="{{url('/')}}">
-                            <img src="{{asset('assets/images/logos/logo.png')}}" alt="future map logo" width="100">
+                            <img src="{{asset('assets/images/logos/logo.png')}}" alt="FutureMap logo" width="100">
                         </a>
                     </div>
                     <p>
-                        The Future Map Media Concepts Limited is a world-class media organization based in Nigeria. It was registered in October 2021 by Corporate Affairs Commission, Nigeria.
+                        The FutureMap Media Concepts Limited is a world-class media organization based in Nigeria. It was registered in October 2021 by Corporate Affairs Commission, Nigeria.
                     </p>
                     <ul class="social-link">
                         <li class="social-title">Follow Us:</li>
@@ -138,7 +138,7 @@
                         <script>
                         document.write(new Date().getFullYear())
                     </script> All Rights Reserved
-                    <a href="#">Future Map</a>
+                    <a href="#">FutureMap</a>
                 </p>
             </div>
         </div>
