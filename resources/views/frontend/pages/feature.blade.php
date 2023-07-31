@@ -2,14 +2,14 @@
 
 
 @section('content')
-@section('title', 'Our Top Management Team')  
-@include('frontend.include.innerBanner',['banner_title'=>'Our Top Management Team'])
+@section('title', $feature->title)  
+@include('frontend.include.innerBanner',['banner_title'=>$feature->title])
 
 <div class="blog-details-area pt-100 pb-70">
     <div class="container">
         <div class="row">
-            <div class="col-lg-12">
-                <div class="blog-details-content pr-20">
+            <div class="col-lg-8 mx-auto">
+                <div class="blog-details-content pr-20 mx-auto">
                     <ul class="tag-list">
                         
                         <li>
