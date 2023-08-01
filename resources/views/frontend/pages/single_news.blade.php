@@ -58,7 +58,7 @@
                                     <ul class="social-icon">
                                         <li class="title">Share :</li>
                                         <li>
-                                            <a href="https://www.facebook.com/sharer/sharer.php?u=http://radmin.net/show/news/{{$single_news->slug}}" target="_blank">
+                                            <a href="https://www.facebook.com/sharer/sharer.php?u=http://fmapmedia.com/show/news/{{$single_news->slug}}" target="_blank">
                                                 <i class="ri-facebook-fill"></i>
                                             </a>
                                         </li>

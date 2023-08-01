@@ -147,7 +147,7 @@
                                                     class="ik ik-edit-2"></i></a>
                                             <a href="#" class="list-delete" data-id="{{ $newslist->id }}"><i
                                                     class="ik ik-trash-2"></i></a>
-                                            <a href="https://www.facebook.com/sharer/sharer.php?u=http://radmin.net/show/news/{{$newslist->slug}}" target="_blank"><i class="ik ik-facebook"></i></a>
+                                            <a href="https://www.facebook.com/sharer/sharer.php?u=http://fmapmedia.com/show/news/{{$newslist->slug}}" target="_blank"><i class="ik ik-facebook"></i></a>
                                             <a href="#"><i class="ik ik-twitter"></i></a>
                                             {{-- {!! Share::page(url('/post/'. $newlist->slug))->facebook()->twitter()->whatsapp() !!} --}}
                                         </div>
