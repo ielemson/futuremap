@@ -15,7 +15,8 @@
                     <i class="ri-map-pin-fill"></i>
                     <h3>Our location
                     </h3>
-                    <p>60 Lome Crescent, Wuse Zone 7, FCT Abuja</p>
+                    <p>Suite B11(4) Real tower center
+                      No 26 A E  Ekukinam Street, Utako Abuja</p>
                     {{-- <p>San Francisco,230909, Canada</p> --}}
                 </div>
             </div>

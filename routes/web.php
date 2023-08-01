@@ -46,8 +46,8 @@ Route::get('/magazines', [HomeController::class,'magazines'])->name('magazine.li
 Route::get('/news', [HomeController::class,'news'])->name('front.news.list');
 Route::get('/show/news/{id}', [HomeController::class,'single_news'])->name('front.single.news');
 Route::get('/news/category/{slug}', [HomeController::class,'newsCategory'])->name('front.news.category');
-Route::post('/user/pay/register', [HomeController::class,'StoreUser']);
-Route::post('/user/pay/login', [HomeController::class,'LoginUser']);
+Route::post('/user/pay/register', [HomeController::class,'StoreUser'])->name('user.cart.register');
+Route::post('user/pay/login', [HomeController::class,'LoginUser'])->name('user.cart.login');
 Route::get('/user/order/cancel', function () { return view('frontend.pages.cancelpayment'); });
 // Cart routes
 // Add to cart Product route

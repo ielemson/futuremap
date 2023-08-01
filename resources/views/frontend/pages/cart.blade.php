@@ -97,15 +97,16 @@
                         </form>
                     @else
                         <div class="row mx-auto">
-                            <button class="default-btn col-md-4 loginModal">
+                            <button class="default-btn col-md-4 loginModal" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 Login
                             </button>
                             &nbsp;
-                            <button class="default-btn two  col-md-4 registerModal">
+                            <button class="default-btn two  col-md-4" data-bs-toggle="modal" data-bs-target="#registerModal">
                                 Register
                             </button>
 
                         </div>
+                        
                     @endauth
 
                 </div>
@@ -113,8 +114,112 @@
         </div>
     </div>
 </section>
+{{-- Login Modal Starts ::::::::::::::::::::::::-> --}}
+{{-- <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#ModalForm">
+    Launch Modal Form
+  </button> --}}
+<!-- Button trigger modal -->
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="col-lg-12">
+            <div class="user-all-form">
+                <div class="contact-form">
+                    <h3 class="user-title">
+                        Sign in</h3>
+                  
+                        <form action="{{ route('user.cart.login') }}" method="POST"  id="LoginForm">
+                         @csrf
+                        <div class="row">
+                            <div class="col-lg-12 ">
+                                <div class="form-group">
+                                    <input type="email" name="email" id="email" class="form-control" required data-error="Email Address*" placeholder="Email Address*" required>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <input class="form-control" type="password" name="password" placeholder="Password*" required>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-6 col-md-6">
+                                <button type="submit" class="default-btn">
+                                    Login Now
+                                </button>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
+                                <a href="#"  class="default-btn">
+                                    Forgot Password
+                                </a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{{-- Login Modal Ends ::::::::::::::::::::::::-> --}}
 
 
+{{-- Registration Modal Starts::::::::::::::::::::::::-> --}}
+<div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+        <div class="col-lg-12">
+            <div class="user-all-form">
+                <div class="contact-form">
+                    <h3 class="user-title">
+                        Sign up</h3>
+                  
+                        <form action="{{ route('user.cart.register') }}" method="POST"  id="RegisterForm">
+                         @csrf
+                        <div class="row">
+                            <div class="col-lg-12 ">
+                                <div class="form-group">
+                                    <input type="text" name="name" id="name" class="form-control" required placeholder="Full Name*" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 ">
+                                <div class="form-group">
+                                    <input type="email" name="email" id="email" class="form-control" required data-error="Email Address*" placeholder="Email Address*" required>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 ">
+                                <div class="form-group">
+                                    <input type="text" name="phone" id="phone" class="form-control" required data-error="Phone Number*" placeholder="Phone Number*" required>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <input class="form-control" type="password" name="password" placeholder="Password*" required>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="form-group">
+                                    <input class="form-control" type="password" name="cpassword" placeholder="Confirm Password*" required>
+                                </div>
+                            </div>
+                            
+                            <div class="col-lg-12 col-md-12">
+                                <button type="submit" class="default-btn">
+                                    Register
+                                </button>
+                            </div>
+                           
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+  </div>
+{{-- Registration Modal Ends::::::::::::::::::::::::-> --}}
 @push('extra-scripts')
     <script>
         const Toast = Swal.mixin({
@@ -276,176 +381,108 @@
         }
         //End product qty Decrement from my cart
 
-        $(document).ready(function() {
+        $("#LoginForm").submit(function(e){
+         e.preventDefault();
 
-            $(".loginModal").on("click", function() {
-                $.confirm({
-                    title: 'Login',
-                    content: '' +
-                        '<form action="" class="formName">' +
-                        '<div class="form-group">' +
-                        '<label>Login to complete your transaction</label>' +
-                        '<input type="email" placeholder="Email" class="email form-control mb-2" required />' +
-                        '<input type="password" placeholder="Password" class="password form-control" required />' +
-                        '</div>' +
-                        '</form>',
-                    buttons: {
-                        formSubmit: {
-                            text: 'Login',
-                            btnClass: 'btn-blue',
-                            action: function() {
-                                var email = this.$content.find('.email').val();
-                                var password = this.$content.find('.password').val();
-                                var url = "user/pay/login"
-                                if (!email || !password) {
-                                    $.alert('provide a valid entry');
-                                    return false;
-                                }
+        var all = $(this).serialize();
 
-                                // const Toast = Swal.mixin({
-                                //     toast: true,
-                                //     position: 'top-end',
-                                //     showConfirmButton: false,
-                                //     timer: 3000
-                                // })
-                                $.ajax({
-                                    type: 'POST',
-                                    url: url,
-                                    data: {
-                                        password: password,
-                                        email: email,
-                                    },
-                                    success: function(data) {
-                                        // console.log(data)
-                                        if (data.status == true) {
-                                            Toast.fire({
-                                                icon: 'success',
-                                                title: data.msg,
-                                            })
+        $.ajax({
+            url:  $(this).attr('action'),
+            type: "POST",
+            data: all,
+            beforeSend:function(){
+                // $(document).find('span.error-text').text('');
+            },
+            //validate form with ajax. This will be communicating 
+            success: function(data){
+               
+                if (data.status==0) {
+                    $.each(data.error, function(prefix, val){
+                        // $('span.'+prefix+'_error').text(val[0]);
+                        Toast.fire({
+                        icon: 'error',
+                        title: val[0],
+                             })
+                    });
+                }
 
-                                            setInterval(() => {
-                                                location.reload()
-                                            }, 2000);
-                                        }
+                if(data == 1){
+                    Toast.fire({
+                        icon: 'success',
+                        title: 'login successful',
+                        })
+                        
+                        setTimeout(() => {
+                            location.reload()  
+                        }, 2000);
+                   
+                }else if(data == 2){
+                    Toast.fire({
+                        icon: 'error',
+                        title: 'invalid login details',
+                        })
+                }
+                
 
-                                        if (data.status == false) {
-                                            Toast.fire({
-                                                icon: 'error',
-                                                title: data.msg,
-                                            })
-                                        }
-
-
-
-                                    },
-                                    error: function(data) {
-                                        console.log(error)
-                                    }
-                                });
-                            }
-                        },
-                        cancel: function() {
-                            //close
-                        },
-                    },
-                    onContentReady: function() {
-
-                    }
-                });
-            });
-
-
-            /** REGISTER MODAL ------------------------>
-             *  This is the registration modal for the checkout page
-             *  **/
-
-            $(".registerModal").on("click", function() {
-                $.confirm({
-                    title: 'Register',
-                    content: '' +
-                        '<form action="" class="formName">' +
-                        '<div class="form-group">' +
-                        '<label>Register a new account</label>' +
-                        '<input type="text" placeholder="Full Name" class="name form-control mb-2" required />' +
-                        '<input type="email" placeholder="Email" class="email form-control mb-2" required />' +
-                        '<input type="password" placeholder="Password" class="password form-control mb-2" required />' +
-                        '<input type="password" placeholder="Confirm Password" class="cpassword form-control" required />' +
-                        '</div>' +
-                        '</form>',
-                    buttons: {
-                        formSubmit: {
-                            text: 'Register',
-                            btnClass: 'btn-blue',
-                            action: function() {
-                                var name = this.$content.find('.name').val();
-                                var email = this.$content.find('.email').val();
-                                var password = this.$content.find('.password').val();
-                                var cpassword = this.$content.find('.cpassword').val();
-                                var url = "user/pay/register"
-                                if (!name || !email || !password || !cpassword) {
-                                    $.alert('provide a valid entry');
-                                    return false;
-                                }
-
-                                $.ajax({
-                                    type: 'POST',
-                                    url: url,
-                                    data: {
-                                        name: name,
-                                        password: password,
-                                        email: email,
-                                        cpassword: cpassword
-                                    },
-                                    success: function(data) {
-                                        console.log(data)
-                                        if (data.status == "success") {
-                                            Toast.fire({
-                                                icon: 'success',
-                                                title: data.msg,
-                                            })
-
-                                            setInterval(() => {
-                                                location.reload()
-                                            }, 2000);
-                                        }
-
-                                        if (data.status == "error") {
-                                            Toast.fire({
-                                                icon: 'error',
-                                                title: data.msg,
-                                            })
-                                        }
-
-                                    },
-
-                                    // error: function(response) {
-                                    //     // console.log(response.responseJSON.errors)
-                                    //     $.each(response.errors, function(key, value) {
-                                    //         Toast.fire({
-                                    //         icon: 'error',
-                                    //         title: value,
-                                    //     })
-
-                                    //     });
-                                    //                                         }
-
-                                });
-                            }
-                        },
-                        cancel: function() {
-                            //close
-                        },
-                    },
-                    onContentReady: function() {
-
-                    }
-                });
-            });
+            }
+            })
 
         });
+
+
+        // Rgister user
+
+        $("#RegisterForm").submit(function(e){
+         e.preventDefault();
+
+        var all = $(this).serialize();
+
+        $.ajax({
+            url:  $(this).attr('action'),
+            type: "POST",
+            data: all,
+            beforeSend:function(){
+                // $(document).find('span.error-text').text('');
+            },
+            //validate form with ajax. This will be communicating 
+            success: function(data){ 
+
+                if (data.status == "success") {
+                    Toast.fire({
+                        icon: 'success',
+                        title: data.msg,
+                    })
+
+                    setInterval(() => {
+                        location.reload()
+                    }, 2000);
+                }
+
+                if (data.status == "error") {
+                    Toast.fire({
+                        icon: 'error',
+                        title: data.msg,
+                    })
+                }
+                // if (data.status==0) {
+                //     console.log(data)
+                //     $.each(data.error, function(val){
+                //         Toast.fire({
+                //         icon: 'error',
+                //         title: val,
+                //     })
+                //     });
+                // }
+            }
+            })
+
+        });
+
     </script>
-    <script src="https://js.paystack.co/v1/inline.js"></script>
     <script src="https://js.paystack.co/v2/inline.js"></script>
+
+
+
 
     <script>
         const paymentForm = document.getElementById('paymentForm');
@@ -501,4 +538,6 @@
         }
     </script>
 @endpush
+
+
 @endsection

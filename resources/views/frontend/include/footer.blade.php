@@ -104,7 +104,10 @@
                             <i class="ri-map-pin-2-fill"></i>
                             <div class="content">
                                 <h4>Location:</h4>
-                                <span>60 Lome Crescent, Wuse Zone 7, FCT Abuja</span>
+                                <span>
+                                    Suite B11(4) Real tower center
+                                    No 26 A E  Ekukinam Street, Utako Abuja
+                                </span>
                             </div>
                         </li>
                         <li>

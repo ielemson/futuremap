@@ -105,7 +105,7 @@ class HomeController extends Controller
 
     public function StoreUser(Request $request){
 
-        // $validator = Validator::make($request->all(), ['name' => 'required', 'email' => 'required|unique:users','password'=>'required']);
+        $validator = Validator::make($request->all(), ['name' => 'required', 'email' => 'required|unique:users','password'=>'required']);
         
         if(User::where('email',$request->email)->exists()){
 
@@ -129,6 +129,7 @@ class HomeController extends Controller
         $user =  User::create([
             'name' => $request->name,
             'email' => $request->email,
+            'phone' => $request->phone,
             'password' => Hash::make($request->password),
         ]);
 
@@ -145,31 +146,57 @@ class HomeController extends Controller
     }
 
     public function LoginUser(Request $request){
-        // return $request->all();
+        // // return $request->all();
+        // $validator = Validator::make($request->all(), [
+        //     'email' => 'required|email',
+        //     'password' => 'required'
+        // ]);
+
+
+        // if ($validator->fails()){
+        //     return response()->json([
+        //             "status" => false,
+        //             "errors" => $validator->errors()
+        //         ]);
+        // } else {
+        //     if (Auth::attempt($request->only("email", "password"))) {
+        //         return response()->json([
+        //             "status" => true, 
+        //             "msg" => "Login successful"
+        //         ]);
+        //     } 
+        //     else {
+        //         return response()->json([
+        //             "status" => false,
+        //             "msg" => "Invalid credentials"
+        //         ]);
+        //     }
+        // }
+
         $validator = Validator::make($request->all(), [
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
-
-
-        if ($validator->fails()){
-            return response()->json([
-                    "status" => false,
-                    "errors" => $validator->errors()
-                ]);
-        } else {
-            if (Auth::attempt($request->only("email", "password"))) {
-                return response()->json([
-                    "status" => true, 
-                    "msg" => "Login successful"
-                ]);
-            } 
-            else {
-                return response()->json([
-                    "status" => false,
-                    "msg" => "Invalid credentials"
-                ]);
+            'email' =>    'required',
+            'password' => 'required',
+          ]);
+          
+    
+           if($validator->fails()){
+              return response()->json([
+                 'status'=>0, 
+                 'error'=>$validator->errors()->toArray()
+              ]);
             }
+
+            $user_cred = $request->only('email', 'password');
+        if (Auth::attempt($user_cred)) {
+
+             //if user is logged in and the role is user
+            // if(Auth()->user()->role=='User'){  
+               return response()->json([ [1] ]);
+            // }  
+
+        }else{
+             //if user isn't logged in
+                return response()->json([ [2] ]);
         }
     }
 
