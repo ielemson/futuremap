@@ -7,9 +7,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta property="og:image" content="radmin.test/assets/images/news/{{$socialimage ?? ''}}">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
+    <meta property="og:title" content="{{$news_title ? ''}}" />
+<meta property="og:description" content="FutureMap News Media" />
+{{-- <meta property="og:image" content="https://ahrefs.com/blog/wp-content/uploads/2019/12/fb-how-to-become-an-seo-expert.png" /> --}}
+    <meta property="og:image" content="https://fmapmedia.com/assets/images/news/{{$socialimage ?? ''}}">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
 
     <link rel="stylesheet" href="{{ asset('assets/css/plugins.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/iconplugins.css') }}">
