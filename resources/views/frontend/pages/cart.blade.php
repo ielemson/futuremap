@@ -134,7 +134,7 @@
                         <form action="{{ route('user.cart.login') }}" method="POST"  id="LoginForm">
                          @csrf
                         <div class="row">
-                            <div class="col-lg-12 ">
+                            <div class="col-lg-12">
                                 <div class="form-group">
                                     <input type="email" name="email" id="email" class="form-control" required data-error="Email Address*" placeholder="Email Address*" required>
                                 </div>
@@ -145,12 +145,12 @@
                                 </div>
                             </div>
                             
-                            <div class="col-lg-6 col-md-6">
+                            <div class="col-lg-6 col-md-6 col-sm-12">
                                 <button type="submit" class="default-btn">
                                     Login Now
                                 </button>
                             </div>
-                            <div class="col-lg-6 col-md-6">
+                            <div class="col-lg-6 col-md-6 col-sm-12">
                                 <a href="#"  class="default-btn">
                                     Forgot Password
                                 </a>
