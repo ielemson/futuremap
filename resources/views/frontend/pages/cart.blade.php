@@ -144,16 +144,19 @@
                                     <input class="form-control" type="password" name="password" placeholder="Password*" required>
                                 </div>
                             </div>
-                            
-                            <div class="col-6">
+                            <div class="col-lg-12 form-condition">
+                                <div class="agree-label">
+                                    <input type="checkbox" id="chb1">
+                                    <label for="chb1">
+                                        Remember Me
+                                        <a class="forget" href="#">Forgot Password?</a>
+                                    </label>
+                                </div>
+                            </div>
+                            <div class="col-lg-12 col-md-12">
                                 <button type="submit" class="default-btn">
                                     Login Now
                                 </button>
-                            </div>
-                            <div class="col-6">
-                                <a href="#"  class="default-btn two">
-                                    Forgot Password
-                                </a>
                             </div>
                         </div>
                     </form>
