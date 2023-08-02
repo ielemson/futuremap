@@ -105,7 +105,7 @@ class HomeController extends Controller
 
     public function StoreUser(Request $request){
 
-        $validator = Validator::make($request->all(), ['name' => 'required', 'email' => 'required|unique:users','password'=>'required']);
+        // $validator = Validator::make($request->all(), ['name' => 'required', 'email' => 'required|unique:users','password'=>'required']);
         
         if(User::where('email',$request->email)->exists()){
 
@@ -130,7 +130,8 @@ class HomeController extends Controller
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
-            'password' => Hash::make($request->password),
+            'password' => bcrypt($request->password),
+            // 'password' => Hash::make($request->password),
         ]);
 
         $user->assignRole('User');
