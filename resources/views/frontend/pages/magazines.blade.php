@@ -14,7 +14,7 @@
                         <h3>We found
                             <span>
                                 {{ count($magazines) }}
-                            </span>courses available for you
+                            </span>product(s) available for you
                         </h3>
                     </div>
                 </div>
