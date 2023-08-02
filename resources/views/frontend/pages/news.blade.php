@@ -61,14 +61,7 @@
             </div>
             <div class="col-lg-4">
                 <div class="side-bar-area pl-20">
-                    {{-- <div class="side-bar-widget">
-                        <form class="search-form">
-                            <input type="search" class="form-control" placeholder="Search...">
-                            <button type="submit">
-                                <i class="ri-search-line"></i>
-                            </button>
-                        </form>
-                    </div> --}}
+                   
                     @if (count($categories) > 0)
                        <div class="side-bar-widget">
                         <h3 class="title">Categories</h3>
@@ -105,30 +98,7 @@
                         </div>
                     </div> 
              
-                     {{-- <div class="side-bar-widget">
-                        <h3 class="title">Tags</h3>
-                        <ul class="side-bar-widget-tag">
-                            <li>
-                                <a href="tags.html" target="_blank">
-                                    Education</a>
-                            </li>
-                            <li>
-                                <a href="tags.html" target="_blank">Investment</a>
-                            </li>
-                            <li>
-                                <a href="tags.html" target="_blank">Lifestyle</a>
-                            </li>
-                            <li>
-                                <a href="tags.html" target="_blank">Business</a>
-                            </li>
-                            <li>
-                                <a href="tags.html" target="_blank">Mangement</a>
-                            </li>
-                            <li>
-                                <a href="tags.html" target="_blank">Human</a>
-                            </li>
-                        </ul>
-                    </div> --}}
+                   
                 </div>
             </div>
         </div>

@@ -50,7 +50,8 @@
                                     <a href="#">{{ $magazine->name }} <small
                                             style="font-size:1rem">&#8358;{{ $magazine->price }}</small></a>
                                 </h3>
-                                <p>{!! substr($magazine->desc, 0, 100) !!}</p>
+                                {{-- <p>{!! substr($magazine->desc, 0, 100) !!}</p> --}}
+                                <p>{!! Illuminate\Support\Str::limit($magazine->desc, 90) !!}</p>
                                 <ul class="event-list">
                                     <button class="btn-cart border-radius-5" onclick="addToCart({{ $magazine->id }})">
                                         <i class="fas fa-shopping-cart"></i>
