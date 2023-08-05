@@ -1,6 +1,9 @@
 @if (count($members) > 0)
 
-    <div class="instructors-area instructors-area-rs pt-100 pb-70 section-bg">
+    <div class="instructors-area instructors-area-rs pt-100 pb-70 section-bg" 
+    data-aos="fade-right"
+    data-aos-offset="300"
+    data-aos-easing="ease-in-sine">
         <div class="container">
             <div class="section-title mb-45">
                 <h2>Meet Our Top Management Team</h2>
@@ -18,7 +21,7 @@
                 <div class="instructors-card">
                     <a href="{{ route('company.profile', $member->id) }}">
                         <img src="{{ asset('assets/images/members') }}/{{ $member->image }}" alt="{{$member->name}}">
-                    </a>
+                    </a> 
                     <div class="content">
                         
                         <h3>

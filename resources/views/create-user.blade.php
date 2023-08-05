@@ -100,6 +100,26 @@
                                             </span>
                                         </div>
                                     </div>
+                                    <div class="form-group">
+                                        <label>{{ __('Sequence')}}</label>
+                                        <select name="order_num" id="" class="form-control select2">
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                            <option value="6">6</option>
+                                            <option value="7">7</option>
+                                            <option value="8">8</option>
+                                            <option value="9">9</option>
+                                            <option value="10">10</option>
+                                            <option value="11">11</option>
+                                            <option value="12">12</option>
+                                            <option value="13">13</option>
+                                            <option value="14">14</option>
+                                            <option value="15">15</option>
+                                        </select>
+                                    </div>
                                     
                                 
                                 </div>
@@ -118,13 +138,13 @@
                                     </div>
 
                                     <div class="form-group">
-                                        <label for="portfolio">{{ __('Portfolio')}}<span class="text-red">*</span></label>
-                                        <input id="portfolio" type="text" class="form-control" name="portfolio" placeholder="Retype password" required>
+                                        <label for="portfolio">{{ __('Portfolio')}}</label>
+                                        <input id="portfolio" type="text" class="form-control" name="portfolio" placeholder="Portfolio">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                     <div class="form-group">
-                                        <label for="details">{{ __('Details')}}<span class="text-red">*</span></label>
-                                        <textarea class="form-control html-editor" rows="10" name="details" required></textarea>
+                                        <label for="details">{{ __('Details')}}</label>
+                                        <textarea class="form-control html-editor" rows="10" name="details"></textarea>
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>

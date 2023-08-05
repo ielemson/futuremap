@@ -112,6 +112,7 @@ class UserController extends Controller
                 'email' => $request->email,
                 'portfolio' => $request->portfolio,
                 'details' => $request->details,
+                'order_num' => $request->order_num,
                 'image' => $imageName,
                 'password' => $request->password,
             ]);
@@ -120,7 +121,6 @@ class UserController extends Controller
             if ($user) {
                 // assign new role to the user
                 $user->syncRoles($request->role);
-
                 return redirect('users')->with('success', 'New user created!');
             }
 
@@ -172,7 +172,7 @@ class UserController extends Controller
             'name' => 'required | string ',
             'email' => 'required | email',
             'role' => 'required',
-            'portfolio' => 'required',
+            'portfolio' => 'nullable',
             'details' => 'nullable',
             // 'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
@@ -203,6 +203,7 @@ class UserController extends Controller
                         'email' => $request->email,
                         'portfolio' =>$request->portfolio,
                         'details' =>$request->details,
+                        'order_num' => $request->order_num,
                         'image' => $imageName,
                     ];
 
@@ -211,6 +212,7 @@ class UserController extends Controller
                             'name' => $request->name,
                             'email' => $request->email,
                             'portfolio' =>$request->portfolio,
+                            'order_num' => $request->order_num,
                             'details' =>$request->details,
                             
                         ];

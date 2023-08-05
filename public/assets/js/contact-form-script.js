@@ -27,22 +27,38 @@
 
         $.ajax({
             type: "POST",
-            url: "assets/php/form-process.php",
+            url: "contact/form",
             data: "name=" + name + "&email=" + email + "&msg_subject=" + msg_subject + "&phone_number=" + phone_number + "&message=" + message,
-            success : function(text){
-                if (text == "success"){
-                    formSuccess();
+            beforeSend: function() {
+                // setting a timeout
+                $('.sendMesg').html('Please wait..');
+                $('.sendMesg').attr('disabled');
+
+            },
+            success : function(data){
+                
+                $('.sendMesg').html('');
+                $('.sendMesg').html('Send Message');
+                $("#name").val("");
+                $("#email").val("");
+                $("#phone_number").val("");
+                $("#msg_subject").val("");
+                $("#message").val("");
+
+
+                if (data == 200){
+                    formSuccess(data);
                 } else {
                     formError();
-                    submitMSG(false,text);
+                    submitMSG(false,data.data);
                 }
             }
         });
     }
 
-    function formSuccess(){
+    function formSuccess(msg){
         $("#contactForm")[0].reset();
-        submitMSG(true, "Message Submitted!")
+        submitMSG(true, msg.data)
     }
 
     function formError(){
@@ -55,7 +71,7 @@
         if(valid){
             var msgClasses = "h4 tada animated text-success";
         } else {
-            var msgClasses = "h4 text-danger";
+            var msgClasses = "h4 text-success";
         }
         $("#msgSubmit").removeClass().addClass(msgClasses).text(msg);
     }

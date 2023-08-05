@@ -24,7 +24,13 @@
                         </a>
 			        </div>
 	    		</div>
-	    		<div class="col-sm-8 col-md-11 col-lg-11 bg-white">
+				@php
+				$orders = App\Models\Orders::where('user_id',Auth::user()->id)->get();
+				// dd($orders);
+				@endphp
+				
+					<div class="col-sm-8 col-md-11 col-lg-11 bg-white">
+						@if (count($orders) > 0)
 			        <div class="customer-area">
 						@if (Session::has('purchase') == 1)
 						<div class="alert text-large bg-success alert-success text-white" role="alert">
@@ -33,11 +39,6 @@
 						@endif
 			        	
 			        	<div class="row pos-products layout-wrap" id="layout-wrap">
-							
-							@php
-							$orders = App\Models\Orders::where('user_id',Auth::user()->id)->get();
-							// dd($orders);
-						    @endphp
 			        	@if (count($orders) > 0)
 						@foreach ($orders as $order)
 						<div class="col-xl-3 col-lg-4 col-12 col-sm-6 mb-2 list-item list-item-grid">
@@ -61,7 +62,14 @@
 			        	</div>
 			        	
 			        </div>
+					@else
+				<div class="box-shadow p-3 mx-auto" style="margin-top:100px">
+					<a href="{{route('magazine.list')}}" class="btn btn-danger btn-checkout btn-pos-checkout ">YOU CURRENTLY DO NO HAVE ANY PRODUCT IN YOUR DASHBOARD. KINDLY PLACE ORDER</a>
+				</div>
+				@endif
 	    		</div>
+				
+	    		
 	    		
 	    	</div>
     	</div>

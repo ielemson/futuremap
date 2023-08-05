@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Mail\OrderConfirmed;
 use App\Models\Orders;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Session;
 
@@ -58,17 +60,16 @@ class PaystackController extends Controller
         // $order                            = Orders::create($order_data);
             ]);
         }
-//   if(!empty($order)){
+
             Session::put('order_id', $order->id);
             Session::forget('cart');
             Cart::destroy();
             Session::put('purchase',true);
-            // $purchase  = true;
-            $orders = Orders::where('user_id',$user->id)->get();
-            // return redirect()->route('dashboard');
-        // }
+            // $orders = Orders::where('user_id',$user->id)->get();
+            Mail::to($user->email)->send(new OrderConfirmed());
+           return response(['status'=>200,'msg'=>'Order Confirmed Successfully','url'=>'dashboard']);
+           
 
-        return response(['status'=>200,'msg'=>'Order Successfull','url'=>'dashboard']);
     }
 
     /**

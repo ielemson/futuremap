@@ -1,5 +1,8 @@
 <div class="testimonials-area ptb-100">
-    <div class="container">
+    <div class="container" 
+    data-aos="zoom-in"  
+    data-aos-offset="300"
+    data-aos-easing="ease-in-sine">
         <div class="section-title mb-45">
             <h2>
               

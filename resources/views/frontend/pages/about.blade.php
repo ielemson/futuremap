@@ -9,19 +9,15 @@
 <div class="enrolled-area-two pt-100 pb-70">
     <div class="container-fluid">
         <div class="row align-items-center">
-            <div class="col-lg-4">
+            <div class="col-lg-4" 
+          >
                 <div class="enrolled-img-three mb-30 pr-20">
                     <img src="assets/images/who-we-are.jpeg" alt="Who-we-are">
-                    {{-- <div class="enrolled-img-content">
-                        <i class="flaticon-discount"></i>
-                        <div class="content">
-                            <h3>Get 40% off</h3>
-                            <p>Every course</p>
-                        </div>
-                    </div> --}}
+                   
                 </div>
             </div>
-            <div class="col-lg-8">
+            <div class="col-lg-8" 
+            >
                 <div class="enrolled-content mb-30">
                     <div class="section-title">
                         <span>WHO WE ARE</span>
@@ -43,9 +39,10 @@
 
 
 <div class="counter-area-three pb-70">
-    <div class="container-fluid">
+    <div class="container-fluid" 
+    >
         <div class="row">
-            <div class="col-lg-4 col-6">
+            <div class="col-lg-4 col-6" >
                 <div class="featured-item">
                     <i class="flaticon-effective"></i>
                     <h3>Our Motto</h3>
@@ -80,96 +77,7 @@
 </div>
 
 @include('frontend.include.team')
-{{-- <div class="testimonials-area section-bg pt-100 pb-100">
-    <div class="container">
-        <div class="section-title text-center">
-            <span>TESTIMONIAL</span>
-            <h2>What people say about us</h2>
-        </div>
-        <div class="testimonials-slider-two owl-carousel owl-theme">
-            <div class="testimonials-card-two">
-                <div class="rating">
-                    <i class="ri-star-fill"></i>
-                    <i class="ri-star-fill"></i>
-                    <i class="ri-star-fill"></i>
-                    <i class="ri-star-fill"></i>
-                    <i class="ri-star-fill"></i>
-                </div>
-                <p>“Morbi porttitor ligula id varius consectetur. Integer ipsum justo, congue sit amet massa vel,
-                    porttitor semper magna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur
-                    ridiculus.”</p>
-                <div class="content">
-                    <img src="assets/images/testimonials/testimonials-img1.jpg" alt="testimonials" />
-                    <h3>Nikolas brooten</h3>
-                    <span>Student</span>
-                </div>
-                <div class="quote">
-                    <i class="flaticon-quote"></i>
-                </div>
-            </div>
-            <div class="testimonials-card-two">
-                <div class="rating">
-                    <i class="ri-star-fill"></i>
-                    <i class="ri-star-fill"></i>
-                    <i class="ri-star-fill"></i>
-                    <i class="ri-star-fill"></i>
-                    <i class="ri-star-fill"></i>
-                </div>
-                <p>“Morbi porttitor ligula id varius consectetur. Integer ipsum justo, congue sit amet massa vel,
-                    porttitor semper magna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur
-                    ridiculus.”</p>
-                <div class="content">
-                    <img src="assets/images/testimonials/testimonials-img2.jpg" alt="testimonials" />
-                    <h3>Terry ambady</h3>
-                    <span>Content strategist</span>
-                </div>
-                <div class="quote">
-                    <i class="flaticon-quote"></i>
-                </div>
-            </div>
-            <div class="testimonials-card-two">
-                <div class="rating">
-                    <i class="ri-star-fill"></i>
-                    <i class="ri-star-fill"></i>
-                    <i class="ri-star-fill"></i>
-                    <i class="ri-star-fill"></i>
-                    <i class="ri-star-fill"></i>
-                </div>
-                <p>“Morbi porttitor ligula id varius consectetur. Integer ipsum justo, congue sit amet massa vel,
-                    porttitor semper magna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur
-                    ridiculus.”</p>
-                <div class="content">
-                    <img src="assets/images/testimonials/testimonials-img3.jpg" alt="testimonials" />
-                    <h3>Cory zamora</h3>
-                    <span>Photographer</span>
-                </div>
-                <div class="quote">
-                    <i class="flaticon-quote"></i>
-                </div>
-            </div>
-            <div class="testimonials-card-two">
-                <div class="rating">
-                    <i class="ri-star-fill"></i>
-                    <i class="ri-star-fill"></i>
-                    <i class="ri-star-fill"></i>
-                    <i class="ri-star-fill"></i>
-                    <i class="ri-star-fill"></i>
-                </div>
-                <p>“Morbi porttitor ligula id varius consectetur. Integer ipsum justo, congue sit amet massa vel,
-                    porttitor semper magna. Orci varius natoque penatibus et magnis dis parturient montes, nascetur
-                    ridiculus.”</p>
-                <div class="content">
-                    <img src="assets/images/testimonials/testimonials-img3.jpg" alt="testimonials" />
-                    <h3>Jonquil von</h3>
-                    <span>Photographer</span>
-                </div>
-                <div class="quote">
-                    <i class="flaticon-quote"></i>
-                </div>
-            </div>
-        </div>
-    </div>
-</div> --}}
+
 {{-- our core values --}}
 <div class="featured-area pt-100 pb-70">
     <div class="container-fluid">
@@ -185,7 +93,7 @@
         </div>
 
         <div class="row">
-            <div class="col-lg-4 col-6">
+            <div class="col-lg-4 col-6" >
                 <div class="featured-item">
                     <i class="flaticon-effective"></i>
                     <h3>Proficiency </h3>

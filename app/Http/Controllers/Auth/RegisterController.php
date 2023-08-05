@@ -3,12 +3,10 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-use App\Models\Service;
 use App\Models\User;
-use Spatie\Permission\Models\Role;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\RegistersUsers;
-// use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
@@ -64,21 +62,12 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-
-     public function showRegisterForm(){
-        $services = Service::all();
-        return view('auth.register',compact('services'));
-     }
     protected function create(array $data)
     {
-        $user =  User::create([
+        return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
-            'password' => bcrypt($data['password'])
-            //  Hash::make($data['password']),
+            'password' => Hash::make($data['password']),
         ]);
-
-        $user->assignRole('User');
-        return $user;
     }
 }

@@ -1,7 +1,10 @@
 <div class="pb-70 section-bg">
     <div class="container">
         <div class="row align-items-center">
-            <div class="col-lg-6">
+            <div class="col-lg-6" 
+            data-aos="fade-right"
+            data-aos-offset="300"
+            data-aos-easing="ease-in-sine">
                 <div class="enrolled-content">
                     <div class="section-title">
                         <h2>Our Partners</h2>
@@ -21,36 +24,12 @@
                             and providing satisfactory services and products to our clients.
                         </p>
                     </div>
-                    {{-- <div class="row">
-                        <div class="col-lg-6 col-6">
-                            <ul class="enrolled-list">
-                                <li>
-                                    <i class="flaticon-check"></i>
-                                    Full lifetime access
-                                </li>
-                                <li>
-                                    <i class="flaticon-check"></i>
-                                    Certificate of completion
-                                </li>
-                            </ul>
-                        </div>
-                        <div class="col-lg-6 col-6">
-                            <ul class="enrolled-list">
-                                <li>
-                                    <i class="flaticon-check"></i>
-                                    20+ downloadable resources
-                                </li>
-                                <li>
-                                    <i class="flaticon-check"></i>
-                                    Free trial 7 days
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <a href="courses.html" class="default-btn">Enrolled today</a> --}}
                 </div>
             </div>
-            <div class="col-lg-6">
+            <div class="col-lg-6" 
+            data-aos="fade-left"
+            data-aos-offset="300"
+            data-aos-easing="ease-in-sine">
                 <div class="enrolled-img" data-speed="0.05" data-revert="true">
                     <img src="assets/images/partner.jpeg" alt="partner" />
                     <div class="bg-shape">

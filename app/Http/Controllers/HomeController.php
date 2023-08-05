@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\ContactMessage;
 use App\Models\Features;
 use App\Models\News;
 use App\Models\NewsCategory;
@@ -12,7 +13,7 @@ use Illuminate\Support\Facades\Artisan;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
 
@@ -28,7 +29,7 @@ class HomeController extends Controller
 
     public function aboutUs(){
         $services = Service::all();
-        $members =  User::whereHas("roles", function($q){ $q->where("name", "member_role"); })->get();
+        $members =  User::whereHas("roles", function($q){ $q->where("name", "member_role"); })->orderBy('order_num', 'ASC')->get();
         return view('frontend.pages.about',compact('services','members'));
     }
 
@@ -39,7 +40,7 @@ class HomeController extends Controller
 
     public function companyTeam(){
         $services = Service::all();
-       $members =  User::whereHas("roles", function($q){ $q->where("name", "member_role"); })->get();
+       $members =  User::whereHas("roles", function($q){ $q->where("name", "member_role"); })->orderBy('order_num', 'ASC')->get();
         return view('frontend.pages.team',compact('members','services'));
     }
 
@@ -117,21 +118,11 @@ class HomeController extends Controller
             return response(['status'=>'error','msg'=>'Password mis-match']);
         }
 
-        
-        // if ($validator->fails()){
-        //     return response()->json([
-        //             "status" => false,
-        //             'errors'=>$validator->errors()->toArray()
-        //         ]);
-        // }
-
-        
         $user =  User::create([
             'name' => $request->name,
             'email' => $request->email,
             'phone' => $request->phone,
-            'password' => bcrypt($request->password),
-            // 'password' => Hash::make($request->password),
+            'password' => $request->password,
         ]);
 
         $user->assignRole('User');
@@ -199,6 +190,32 @@ class HomeController extends Controller
              //if user isn't logged in
                 return response()->json([ [2] ]);
         }
+    }
+
+
+    public function CotactForm(Request $request){
+
+        $details = [
+            'name' => $request->name,
+            'email' => $request->email,
+            'msg_subject' => $request->msg_subject,
+            'phone_number' => $request->phone_number,
+            'message_body' => $request->message
+        ];
+        $userEmail = $request->email;
+        Mail::to($userEmail)->send(new ContactMessage($details));
+ 
+        if (Mail::failures()) {
+            //  return response()->Fail('Sorry! Please try again latter');
+            return response()->json(['status'=>400,'data'=>'Message was not sent, please check your network and try again']);
+        }else{
+            //  return response()->success('Great! Successfully send in your mail');
+            return response()->json(['status'=>200,'data'=>'Great! we have received your message.']);
+           }
+      
+
+
+        // return response()->json(['data'=>$request->all()]);
     }
 
     public function clearCache(): View

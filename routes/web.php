@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Auth\CustomAuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
@@ -48,7 +49,9 @@ Route::get('/show/news/{id}', [HomeController::class,'single_news'])->name('fron
 Route::get('/news/category/{slug}', [HomeController::class,'newsCategory'])->name('front.news.category');
 Route::post('/user/pay/register', [HomeController::class,'StoreUser'])->name('user.cart.register');
 Route::post('user/pay/login', [HomeController::class,'LoginUser'])->name('user.cart.login');
+Route::post('contact/form', [HomeController::class,'CotactForm'])->name('contact.form');
 Route::get('/user/order/cancel', function () { return view('frontend.pages.cancelpayment'); });
+// Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name('login.custom');
 // Cart routes
 // Add to cart Product route
 Route::post('/cart/store/{id}', [CartController::class,'addToCart'])->name('productaddToCart');
@@ -73,9 +76,10 @@ Route::post('login', [LoginController::class,'login']);
 Route::get('register', [RegisterController::class,'showRegisterForm'])->name('register');
 Route::post('register', [RegisterController::class,'register']);
 
-Route::get('password/forget',  function () { 
-	return view('pages.forgot-password'); 
-})->name('password.forget');
+// Route::get('password/forget',  function () { 
+// 	return view('pages.forgot-password'); 
+// })->name('password.forget');
+Route::get('password/forget', [ForgotPasswordController::class,'forgetEmailForm'])->name('password.forget');
 Route::post('password/email', [ForgotPasswordController::class,'sendResetLinkEmail'])->name('password.email');
 Route::get('password/reset/{token}', [ResetPasswordController::class,'showResetForm'])->name('password.reset');
 Route::post('password/reset', [ResetPasswordController::class,'reset'])->name('password.update');
