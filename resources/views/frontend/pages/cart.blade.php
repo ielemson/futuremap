@@ -149,7 +149,7 @@
                                     <input type="checkbox" id="chb1">
                                     <label for="chb1">
                                         Remember Me
-                                        <a class="forget" href="#">Forgot Password?</a>
+                                        <a class="forget" href="{{route('password.forget')}}">Forgot Password?</a>
                                     </label>
                                 </div>
                             </div>
