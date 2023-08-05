@@ -202,8 +202,8 @@ class HomeController extends Controller
             'phone_number' => $request->phone_number,
             'message_body' => $request->message
         ];
-        $userEmail = $request->email;
-        Mail::to($userEmail)->send(new ContactMessage($details));
+        // $userEmail = $request->email;
+        Mail::to("info@fmapmedia.com")->send(new ContactMessage($details));
  
         if (Mail::failures()) {
             //  return response()->Fail('Sorry! Please try again latter');
@@ -213,8 +213,6 @@ class HomeController extends Controller
             return response()->json(['status'=>200,'data'=>'Great! we have received your message.']);
            }
       
-
-
         // return response()->json(['data'=>$request->all()]);
     }
 
