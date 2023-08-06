@@ -83,7 +83,8 @@ class HomeController extends Controller
         $services = Service::all();
         $news = News::where('status',1)->paginate(10);
         $categories = NewsCategory::where('status',1)->get();
-        return view('frontend.pages.news',compact('services','news','categories'));
+        $topnewslist = News::latest()->whereHas('category')->where('status',1)->take(15)->get();
+        return view('frontend.pages.news',compact('services','news','categories','topnewslist'));
     }
 
     public function single_news($slug){

@@ -80,7 +80,7 @@
                         <h3 class="title">Popular post</h3>
                         <div class="widget-popular-post">
                             
-                            @foreach ($news as $popular)
+                            @foreach ($topnewslist as $popular)
                             <article class="item">
                                 <a href="{{route('front.single.news',$popular->slug)}}" class="thumb">
                                     <span class="full-image cover bg3" role="img" style="background-image:url('{{asset('assets/images/news')}}/{{$popular->image}}') "></span>
