@@ -10,7 +10,7 @@
 <div class="contact-info-area pt-100 pb-70">
     <div class="container">
         <div class="row justify-content-center">
-            <div class="col-lg-4  col-12 col-sm-8">
+            <div class="col-lg-4  col-12 col-sm-12">
                 <div class="contact-info-card">
                     <i class="ri-map-pin-fill"></i>
                     <h3>Our location
@@ -20,7 +20,7 @@
                     {{-- <p>San Francisco,230909, Canada</p> --}}
                 </div>
             </div>
-            <div class="col-lg-4 col-6">
+            <div class="col-lg-4 col-sm-12">
                 <div class="contact-info-card">
                     <i class="ri-mail-fill"></i>
                     <h3>Email us</h3>
@@ -36,7 +36,7 @@
                     </p>
                 </div>
             </div>
-            <div class="col-lg-4 col-6">
+            <div class="col-lg-4 col-sm-12">
                 <div class="contact-info-card">
                     <i class="ri-phone-fill"></i>
                     <h3note>Phone</h3note>
@@ -91,6 +91,8 @@ data-aos-easing="ease-in-sine">
                             <div class="help-block with-errors"></div>
                         </div>
                     </div>
+                   
+
                     <div class="col-lg-12">
                         <div class="form-group">
                             <textarea name="message" class="form-control" id="message" cols="30" rows="7" required data-error="Write your message" placeholder="Your Message"></textarea>
@@ -108,6 +110,20 @@ data-aos-easing="ease-in-sine">
                             </label>
                         </div>
                     </div> --}}
+
+                    <div class="form-group col-lg-6">
+                        <div class="captcha">
+                            <span>{!! captcha_img() !!}</span>
+                            <button type="button" class="btn btn-danger" class="reload" id="reload">
+                                &#x21bb;
+                            </button>
+                        </div>
+                    </div>
+                    <div class="form-group mb-4">
+                        <input id="captcha" type="text" class="form-control" placeholder="Enter Captcha" required data-error="Captcha cannot be empty" name="captcha" required>
+                        <div class="help-block with-errors"></div>
+                    </div>
+
                     <div class="col-lg-12 col-md-12">
                         <button type="submit" class="default-btn sendMesg">
                             Send Message
@@ -131,4 +147,17 @@ data-aos-easing="ease-in-sine">
         </div>
     </div>
 </div>
+@push('extra-scripts')
+<script type="text/javascript">
+    $('#reload').click(function () {
+        $.ajax({
+            type: 'GET',
+            url: 'reload-captcha',
+            success: function (data) {
+                $(".captcha span").html(data.captcha);
+            }
+        });
+    });
+</script>
+@endpush
 @endsection

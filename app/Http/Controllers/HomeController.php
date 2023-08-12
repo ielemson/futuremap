@@ -21,10 +21,11 @@ class HomeController extends Controller
 {
     public function index(): View
     {
-        $members =  User::whereHas("roles", function($q){ $q->where("name", "member_role"); })->get();
+        // $members =  User::whereHas("roles", function($q){ $q->where("name", "member_role"); })->get();
+        $news = News::where('status',1)->orderBy('id', 'DESC')->paginate(6);
         $services = Service::all();
         $features = Features::all();
-        return view('frontend.home', compact('members','services','features'));
+        return view('frontend.home', compact('news','services','features'));
     }
 
     public function aboutUs(){
@@ -81,9 +82,9 @@ class HomeController extends Controller
 
     public function news(){
         $services = Service::all();
-        $news = News::where('status',1)->paginate(10);
+        $news = News::where('status',1)->orderBy('id', 'DESC')->paginate(10);
         $categories = NewsCategory::where('status',1)->get();
-        $topnewslist = News::latest()->whereHas('category')->where('status',1)->take(15)->get();
+        $topnewslist = News::latest()->whereHas('category')->where('status',1)->orderBy('id', 'DESC')->paginate(10);
         return view('frontend.pages.news',compact('services','news','categories','topnewslist'));
     }
 
@@ -196,6 +197,34 @@ class HomeController extends Controller
 
     public function CotactForm(Request $request){
 
+
+        // $validator =  $request->validate([
+        //     'name' => 'required',
+        //     'email' => 'required|email',
+        //     'msg_subject' => 'required',
+        //     'phone_number' => 'required',
+        //     'message_body' => 'required',
+        //     'captcha' => 'required|captcha'
+        // ]);
+
+    	$validator = Validator::make($request->all(), [
+         'name' => 'required',
+            'email' => 'required|email',
+            'msg_subject' => 'required',
+            'phone_number' => 'required',
+            'message' => 'required',
+            'captcha' => 'required|captcha'
+
+        ],[
+            'captcha.required' =>'Invalid captcha'
+        ]);
+
+        if ($validator->fails()) {
+
+            return response()->json(['error'=>$validator->errors()->all()]);
+
+        }
+
         $details = [
             'name' => $request->name,
             'email' => $request->email,
@@ -203,18 +232,24 @@ class HomeController extends Controller
             'phone_number' => $request->phone_number,
             'message_body' => $request->message
         ];
+        return response()->json(['status'=>200,'msg'=>'Great! we have received your message.']);
         // $userEmail = $request->email;
-        Mail::to("info@fmapmedia.com")->send(new ContactMessage($details));
+        // Mail::to("info@fmapmedia.com")->send(new ContactMessage($details));
  
-        if (Mail::failures()) {
-            //  return response()->Fail('Sorry! Please try again latter');
-            return response()->json(['status'=>400,'data'=>'Message was not sent, please check your network and try again']);
-        }else{
-            //  return response()->success('Great! Successfully send in your mail');
-            return response()->json(['status'=>200,'data'=>'Great! we have received your message.']);
-           }
+        // if (Mail::failures()) {
+        //     //  return response()->Fail('Sorry! Please try again latter');
+        //     return response()->json(['status'=>400,'data'=>'Message was not sent, please check your network and try again']);
+        // }else{
+        //     //  return response()->success('Great! Successfully send in your mail');
+        //     return response()->json(['status'=>200,'data'=>'Great! we have received your message.']);
+        //    }
       
         // return response()->json(['data'=>$request->all()]);
+    }
+
+    public function reloadCaptcha()
+    {
+        return response()->json(['captcha'=> captcha_img()]);
     }
 
     public function clearCache(): View

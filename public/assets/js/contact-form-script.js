@@ -22,13 +22,20 @@
         var email = $("#email").val();
         var msg_subject = $("#msg_subject").val();
         var phone_number = $("#phone_number").val();
+        var captcha = $("#captcha").val();
         var message = $("#message").val();
 
+        const Toast = Swal.mixin({
+            toast: true,
+            position: 'top-end',
+            showConfirmButton: false,
+            timer: 3000
+        })
 
         $.ajax({
             type: "POST",
             url: "contact/form",
-            data: "name=" + name + "&email=" + email + "&msg_subject=" + msg_subject + "&phone_number=" + phone_number + "&message=" + message,
+            data: "name=" + name + "&email=" + email + "&msg_subject=" + msg_subject + "&phone_number=" + phone_number + "&message=" + message + "&captcha=" + captcha,
             beforeSend: function() {
                 // setting a timeout
                 $('.sendMesg').html('Please wait..');
@@ -36,30 +43,64 @@
 
             },
             success : function(data){
-                
-                $('.sendMesg').html('');
-                $('.sendMesg').html('Send Message');
-                $("#name").val("");
-                $("#email").val("");
-                $("#phone_number").val("");
-                $("#msg_subject").val("");
-                $("#message").val("");
+                // $('#reload').trigger('click');
+              console.log(data)
+                if($.isEmptyObject(data.errors)){
 
+                // $('.sendMesg').html('');
+                // $('.sendMesg').html('Send Message');
+                // $("#name").val("");
+                // $("#captcha").val("");
+                // $("#email").val("");
+                // $("#phone_number").val("");
+                // $("#msg_subject").val("");
+                // $("#message").val("");
 
-                if (data == 200){
-                    formSuccess(data);
+                if (data.status == 200){
+                    // formSuccess(data);
+                    Toast.fire({
+                        icon: 'success',
+                        title: data.msg,
+                             })
+                             setTimeout(() => {
+                                location.href="/contact-us"
+                            }, 2000);
+                   
                 } else {
-                    formError();
-                    submitMSG(false,data.data);
+                    // formError();
+                    // submitMSG(false,data.data);
+                    Toast.fire({
+                        icon: 'error',
+                        title: 'Error, please try again',
+                             })
                 }
+
+                }else{
+
+                    $.each(data.errors, function(key, value){
+                        Toast.fire({
+                            icon: 'error',
+                            title: value,
+                                 })
+                    });
+
+                }
+
+              
             }
         });
     }
 
-    function formSuccess(msg){
-        $("#contactForm")[0].reset();
-        submitMSG(true, msg.data)
-    }
+    // function formSuccess(msg){
+    //     $("#contactForm")[0].reset();
+
+    //     submitMSG(true, msg.data)
+
+    //     setTimeout(() => {
+    //         location.reload()
+    //     }, 1500);
+
+    // }
 
     function formError(){
         $("#contactForm").removeClass().addClass('shake animated').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd oanimationend animationend', function(){

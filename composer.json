@@ -24,6 +24,7 @@
         "laravel/tinker": "^2.0",
         "laravel/ui": "^3.0",
         "laravelcollective/html": "^6.1",
+        "mews/captcha": "^3.3",
         "mews/purifier": "^3.2",
         "spatie/laravel-permission": "^3.11",
         "yajra/laravel-datatables-oracle": "~9.0"

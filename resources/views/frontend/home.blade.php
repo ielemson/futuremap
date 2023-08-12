@@ -13,6 +13,7 @@
 @if (count($features)>0)
 @include('frontend.include.features')
 @endif
-
 @include('frontend.include.adevert')
+@include('frontend.include.partialBlog')
+
 @endsection

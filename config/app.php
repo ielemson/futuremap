@@ -177,6 +177,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         KingFlamez\Rave\RaveServiceProvider::class,
         Jorenvh\Share\Providers\ShareServiceProvider::class,
+        Mews\Captcha\CaptchaServiceProvider::class,
 
     ],
 
@@ -232,6 +233,7 @@ return [
         'DataTables' => Yajra\DataTables\Facades\DataTables::class,
         'Rave' => KingFlamez\Rave\Facades\Rave::class,
         'Share' => Jorenvh\Share\ShareFacade::class,
+        'Captcha' => Mews\Captcha\Facades\Captcha::class,
 
     ],
 

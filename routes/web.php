@@ -50,9 +50,12 @@ Route::get('/news/category/{slug}', [HomeController::class,'newsCategory'])->nam
 Route::post('/user/pay/register', [HomeController::class,'StoreUser'])->name('user.cart.register');
 Route::post('user/pay/login', [HomeController::class,'LoginUser'])->name('user.cart.login');
 Route::post('contact/form', [HomeController::class,'CotactForm'])->name('contact.form');
+Route::get('/reload-captcha', [HomeController::class, 'reloadCaptcha']);
 Route::get('/user/order/cancel', function () { return view('frontend.pages.cancelpayment'); });
+
 // Route::post('custom-login', [CustomAuthController::class, 'customLogin'])->name('login.custom');
 // Cart routes
+
 // Add to cart Product route
 Route::post('/cart/store/{id}', [CartController::class,'addToCart'])->name('productaddToCart');
 Route::get('/my-cart/list',[CartController::class,'showmyCartList'])->name('showmyCartList');
