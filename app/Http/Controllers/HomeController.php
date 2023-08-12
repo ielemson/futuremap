@@ -102,7 +102,7 @@ class HomeController extends Controller
         $getNewsCategory = NewsCategory::where('slug',$slug)->first();
         $topnewslist = News::latest()->whereHas('category')->where('status',1)->orderBy('id', 'DESC')->paginate(10);
         // dd($getNewsCategory);
-        $news = News::where('category_id',$getNewsCategory->id)->paginate(5);
+        $news = News::where('category_id',$getNewsCategory->id)->where('status',1)->orderBy('id', 'DESC')->paginate(10);
         // dd($news);
         return view('frontend.pages.news',compact('services','news','categories','topnewslist'));
     }
