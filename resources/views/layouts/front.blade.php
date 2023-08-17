@@ -31,6 +31,8 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
         <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
         @stack('extra-css')
 </head>
 

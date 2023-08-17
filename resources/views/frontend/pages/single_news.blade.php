@@ -29,7 +29,7 @@
                         </li>
                         <li>
                             <i class="ri-price-tag-3-fill"></i>
-                            <a href="tags.html">{{$single_news->category->name}}</a>
+                            <a href="#">{{$single_news->category->name}}</a>
                         </li>
                     </ul>
                     <h2>{{$single_news->title}}</h2>
@@ -63,13 +63,23 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="https://twitter.com/" target="_blank">
+                                            <a 
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            href="https://twitter.com/intent/tweet?text={{$single_news->slug}}"
+                                            data-size="large"
+                                            data-text="{{$single_news->slug}}"
+                                            data-url="{{route("front.single.news",$single_news->slug)}}"
+                                            data-hashtags=""
+                                            data-via="{{url('/')}}"
+                                            data-related="{{$single_news->category->name}}"
+                                            >
                                                 <i class="ri-twitter-fill"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="https://www.pinterest.com/" target="_blank">
-                                                <i class="ri-instagram-line"></i>
+                                            <a href="https://api.whatsapp.com/send?text={{$single_news->slug}}" target="_blank">
+                                                <i class="ri-whatsapp-fill"></i>
                                             </a>
                                         </li>
                                     </ul>

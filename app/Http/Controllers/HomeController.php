@@ -16,9 +16,12 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Session;
+use CyrildeWit\EloquentViewable\InteractsWithViews;
+use CyrildeWit\EloquentViewable\Contracts\Viewable;
 
-class HomeController extends Controller
+class HomeController extends Controller 
 {
+    // use InteractsWithViews;
     public function index(): View
     {
         // $members =  User::whereHas("roles", function($q){ $q->where("name", "member_role"); })->get();
