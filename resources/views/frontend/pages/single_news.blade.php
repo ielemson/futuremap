@@ -66,7 +66,7 @@
                                             <a 
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            href="https://twitter.com/intent/tweet?text={{$single_news->slug}}"
+                                            href="https://twitter.com/intent/tweet?text={{route("front.single.news",$single_news->slug)}}"
                                             data-size="large"
                                             data-text="{{$single_news->slug}}"
                                             data-url="{{route("front.single.news",$single_news->slug)}}"
@@ -78,7 +78,7 @@
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="https://api.whatsapp.com/send?text={{$single_news->slug}}" target="_blank">
+                                            <a href="https://api.whatsapp.com/send?text={{route("front.single.news",$single_news->slug)}}" target="_blank">
                                                 <i class="ri-whatsapp-fill"></i>
                                             </a>
                                         </li>
