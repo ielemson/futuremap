@@ -33,7 +33,7 @@
                         </li>
                     </ul>
                     <h2>{{$single_news->title}}</h2>
-                    <p>{!!$single_news->details!!}</p>
+                    <p style="text-align: justify !mportant">{!!$single_news->details!!}</p>
                     <div class="article-share">
                         <div class="row align-items-center">
                             <div class="col-lg-6 col-md-6">
