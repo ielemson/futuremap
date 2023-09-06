@@ -18,9 +18,21 @@ class NewsController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        $news = News::all();
+        // $news = News::all();
+        // $news = News::orderBy('id', 'DESC')->get();
+
+        $news = News::where([
+            ['title', '!=', Null],
+            [function ($query) use ($request) {
+                if (($s = $request->s)) {
+                    $query->orWhere('title', 'LIKE', '%' . $s . '%')
+                        ->orderBy('id', 'DESC')->get();
+                }
+            }]
+        ])->paginate(16);
+
 
         // $shareComponent = \Share::page(
         //     'https://fmapmedia.com/',

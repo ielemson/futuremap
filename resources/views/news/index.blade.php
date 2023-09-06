@@ -51,7 +51,7 @@
                             </a>
                         </span>
                         <div class="d-block d-md-inline-block">
-                            <div class="btn-group float-md-left mr-1 mb-1">
+                            {{-- <div class="btn-group float-md-left mr-1 mb-1">
                                 <button class="btn btn-outline-dark btn-xs dropdown-toggle" type="button"
                                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ __('
                                     Order By') }}
@@ -61,15 +61,15 @@
                                     <a class="dropdown-item" href="#">{{ __('Action') }}</a>
                                     <a class="dropdown-item" href="#">{{ __('Another action') }}</a>
                                 </div>
-                            </div>
+                            </div> --}}
                             <div class="search-sm d-inline-block float-md-left mr-1 mb-1 align-top">
-                                <form action="">
-                                    <input type="text" class="form-control" placeholder="Search.." required>
+                                <form action="{{ route('news.list') }}" method="GET">
+                                    <input type="text" class="form-control" name="s" placeholder="Search.." required>
                                     <button type="submit" class="btn btn-icon"><i class="ik ik-search"></i></button>
-                                    <button type="button" id="adv_wrap_toggler"
+                                    {{-- <button type="button" id="adv_wrap_toggler"
                                         class="adv-btn ik ik-chevron-down dropdown-toggle" data-toggle="dropdown"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button>
-                                    <div class="adv-search-wrap dropdown-menu dropdown-menu-right"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button> --}}
+                                    {{-- <div class="adv-search-wrap dropdown-menu dropdown-menu-right"
                                         aria-labelledby="adv_wrap_toggler">
                                         <div class="form-group">
                                             <input type="text" class="form-control" placeholder="Full Name">
@@ -78,11 +78,11 @@
                                             <input type="email" class="form-control" placeholder="Email">
                                         </div>
                                         <button class="btn btn-theme">{{ __('Search') }}</button>
-                                    </div>
+                                    </div> --}}
                                 </form>
                             </div>
                         </div>
-                        <div class="float-md-right">
+                        {{-- <div class="float-md-right">
                             <span class="text-muted text-small mr-2">{{ __('Displaying 1-10 of 210 items') }} </span>
                             <button class="btn btn-outline-dark btn-xs dropdown-toggle" type="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -96,7 +96,7 @@
                                 <a class="dropdown-item" href="#">50</a>
                                 <a class="dropdown-item" href="#">100</a>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class="separator mb-20"></div>
@@ -114,7 +114,7 @@
                                             class="list-thumbnail responsive border-0">
                                         {{-- <span class="badge badge-pill badge-primary position-absolute badge-top-left">{{ __('New')}}</span> --}}
                                         <span
-                                            class="badge badge-pill badge-secondary position-absolute badge-top-left-2">{{ $newslist->category->name }}</span>
+                                            class="badge badge-pill badge-primary position-absolute badge-top-left-2">{{ $newslist->category->name }}</span>
                                     </a>
                                     <div class="d-flex flex-grow-1 min-width-zero card-content">
                                         <div
@@ -122,10 +122,10 @@
                                             <a class="list-item-heading mb-1 truncate w-40 w-xs-100 newsViewTab"
                                                 data-id="{{ $newslist->id }}" href="#editLayoutItem" data-toggle="modal"
                                                 data-target="#editLayoutItem">
-                                                {!! substr($newslist->details, 0, 100) !!}
+                                                <b>{{ $newslist->title }}</b>
                                             </a>
                                             <p class="mb-1 text-muted text-small category w-15 w-xs-100">
-                                                {{ $newslist->title }}</p>
+                                                 {!! substr($newslist->details, 0, 100) !!}</p>
                                             <p class="mb-1 text-muted text-small date w-15 w-xs-100">
                                                 {{ \Carbon\Carbon::parse($newslist->created_at)->diffForHumans() }}</p>
                                             <div class="w-15 w-xs-100">
@@ -163,7 +163,7 @@
                             </div>
                         @endforeach
                     @endif
-
+                    {{ $news->links() }}
                 </div>
 
             </div>
