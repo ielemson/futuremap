@@ -27,11 +27,10 @@ class NewsController extends Controller
             ['title', '!=', Null],
             [function ($query) use ($request) {
                 if (($s = $request->s)) {
-                    $query->orWhere('title', 'LIKE', '%' . $s . '%')
-                        ->orderBy('id', 'DESC')->get();
+                    $query->orWhere('title', 'LIKE', '%' . $s . '%');
                 }
             }]
-        ])->paginate(16);
+        ])->orderBy('id', 'DESC')->paginate(16);
 
 
         // $shareComponent = \Share::page(
