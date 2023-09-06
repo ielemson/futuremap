@@ -27,7 +27,8 @@ class NewsController extends Controller
             ['title', '!=', Null],
             [function ($query) use ($request) {
                 if (($s = $request->s)) {
-                    $query->orWhere('title', 'LIKE', '%' . $s . '%');
+                    $query->orWhere('title', 'LIKE', '%' . $s . '%')
+                        ->orderBy('id', 'DESC')->get();
                 }
             }]
         ])->orderBy('id', 'DESC')->paginate(16);
