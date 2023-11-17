@@ -259,7 +259,7 @@
             dataType: 'json',
             success: function (data) {
            if (data.status == 200) {
-                 console.log(data)
+                //  console.log(data)
                 location.reload()
            }else{
             alert('Error Occured')

@@ -66,6 +66,7 @@ class ProductController extends Controller
                 'desc' => $request->description,
                 'status' => $request->status,
                 'file' => $fileName,
+                'competiton_status' => $request->competiton_status,
                  'slug'=> Str::slug($request->input('name'))
             ]);
 
@@ -139,6 +140,7 @@ class ProductController extends Controller
                 $product->price = $request->price;
                 $product->desc = $request->description;
                 $product->status = $request->status;
+                $product->competiton_status = $request->competiton_status;
                 $product->image = $imageName;
                 $product->save();
                
@@ -150,6 +152,7 @@ class ProductController extends Controller
             $product->price = $request->price;
             $product->desc = $request->description;
             $product->status = $request->status;
+            $product->competiton_status = $request->competiton_status;
             $product->save();
             
         

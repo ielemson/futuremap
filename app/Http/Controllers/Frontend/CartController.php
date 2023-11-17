@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
+use App\Models\Competition;
 use App\Models\NewsCategory;
 use App\Models\Product;
 use App\Models\Service;
@@ -29,6 +30,7 @@ class CartController extends Controller
                 'weight'=>0,
                 'options' => [
                     'slug' => $product->slug,
+                    'competiton_status' => $product->competiton_status,
                     'image' => $product->image,
                     'file' => $product->file,
                    
@@ -135,6 +137,30 @@ class CartController extends Controller
         //     ]);
         // }
         return response()->json(['error' => 'Product Qty Decremented'],200);
+    }
+
+    public function AddCompetition(Request $request){
+
+        $checkComp = Competition::where('email',$request->email)->count();
+        if ($checkComp > 0) {
+
+            return response()->json(['status' =>false, 'msg'=> 'You have been previously captured.'],200);
+        }
+
+    //    return response()->json(['data'=>$request->all()]);
+            $Newcompetition = Competition::create([
+                'name' => $request->name,
+                'email' => $request->email,
+                'productid' => $request->prodId,
+                'compinfo' => $request->aboutComp,
+                'location' => $request->location,
+            ]);
+        
+            if ($Newcompetition) {
+            return response()->json(['status'=>true,'msg'=>'Thank you for participating']);
+            }
+        
+        
     }
 
     }

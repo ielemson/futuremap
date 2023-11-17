@@ -22,7 +22,7 @@ class Orders extends Model
     // $order_data['txnid']              = $data['data']['tx_ref'];
     // $order_data['order_status'] 
 
-    protected $fillable = ['payment_ref','qty','product_id','price','transaction_id','cart','status','txnid','payment_status','user_id','payment_method','payment_type','app_fee','charged_amount','flw_ref','processor_response','charge_id'];
+    protected $fillable = ['payment_ref','qty','product_id','price','transaction_id','cart','status','txnid','payment_status','user_id','payment_method','payment_type','app_fee','charged_amount','flw_ref','processor_response','charge_id','competiton_status','location','info'];
 
     public function user()
     {

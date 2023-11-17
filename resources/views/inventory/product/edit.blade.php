@@ -86,6 +86,13 @@
                                           </select>
                                     </div>
                                     <div class="form-group">
+                                        <label>Competition Status<span class="text-red">*</span></label>
+                                        <select class="form-control" name="competiton_status" required>
+                                            <option value="1" {{$product->competiton_status == "1" ? 'selected':''}}>Yes</option>
+                                            <option value="0" {{$product->competiton_status == "0" ? 'selected':''}}>No</option>
+                                          </select>
+                                    </div>
+                                    <div class="form-group">
                                         <button type="submit" class="btn  btn-primary">Update Product</button>
                                     </div>
                                 </div>

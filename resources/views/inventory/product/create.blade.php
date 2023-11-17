@@ -89,6 +89,12 @@
                                             <option value="unpublish">unpublish</option>
                                           </select>
                                     </div>
+                                        <label>Competetion Status<span class="text-red">*</span></label>
+                                        <select class="form-control" name="competiton_status" required>
+                                            <option value="1">Yes</option>
+                                            <option value="0">No</option>
+                                          </select>
+                                    </div>
                                     <div class="form-group">
                                         <button type="submit" class="btn  btn-primary">Save Product</button>
                                     </div>

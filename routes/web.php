@@ -60,6 +60,7 @@ Route::get('/user/order/cancel', function () { return view('frontend.pages.cance
 Route::post('/cart/store/{id}', [CartController::class,'addToCart'])->name('productaddToCart');
 Route::get('/my-cart/list',[CartController::class,'showmyCartList'])->name('showmyCartList');
 Route::get('/carts', [CartController::class,'showToCart'])->name('cart.list');
+Route::post('/product/competition', [CartController::class,'AddCompetition']);
 // mini cart product data get route
 Route::get('/product/cart', [CartController::class,'getMiniCart'])->name('getMiniCartProduct');
 // remove item from mini cart route

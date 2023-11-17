@@ -92,11 +92,12 @@
 
                             <div class="form-submit">
                                 <button type="submit" class="default-btn col-12 mx-auto" onclick="payWithPaystack()">
-                                    Proceed to make payment </button>
+                                    Place Order </button>
                             </div>
                         </form>
                     @else
                         <div class="row mx-auto">
+                            <h6>Login or Register to place order</h6>
                             <button class="default-btn col-md-4 loginModal" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                 Login
                             </button>
@@ -295,13 +296,13 @@
                     // })
                     if ($.isEmptyObject(data.error)) {
                         Toast.fire({
-                            type: 'success',
+                            // type: 'success',
                             icon: 'success',
                             title: data.success
                         })
                     } else {
                         Toast.fire({
-                            type: 'error',
+                            // type: 'error',
                             icon: 'error',
                             title: data.error
                         })
@@ -331,13 +332,13 @@
                     // })
                     if ($.isEmptyObject(data.error)) {
                         Toast.fire({
-                            type: 'success',
+                            // type: 'success',
                             icon: 'success',
                             title: data.success
                         })
                     } else {
                         Toast.fire({
-                            type: 'error',
+                            // type: 'error',
                             icon: 'error',
                             title: data.error
                         })
@@ -367,13 +368,13 @@
                     // })
                     if ($.isEmptyObject(data.error)) {
                         Toast.fire({
-                            type: 'success',
+                            // type: 'success',
                             icon: 'success',
                             title: data.success
                         })
                     } else {
                         Toast.fire({
-                            type: 'error',
+                            // type: 'error',
                             icon: 'error',
                             title: data.error
                         })
