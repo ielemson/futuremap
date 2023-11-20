@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Competition extends Model
 {
     use HasFactory;
-    protected $fillable = ['productid','name','email','compinfo','location'];
+    protected $fillable = ['productid','name','email','compinfo','location','checkout_complete'];
 }
