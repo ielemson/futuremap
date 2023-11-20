@@ -66,8 +66,8 @@ class PaystackController extends Controller
             Session::forget('cart');
             Cart::destroy();
             Session::put('purchase',true);
-            
-            if (Competition::where('email',$user->email)) {
+
+            if (Competition::where('email',$user->email)->exists()) {
                 $competitor = Competition::where('email',$user->email)->first();
                 $competitor->checkout_complete = 1;
                 $competitor->save();

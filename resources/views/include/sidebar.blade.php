@@ -93,7 +93,7 @@
 
 
                 <div
-                class="nav-item {{ $segment1 == 'competition' || $segment1 == 'roles' || $segment1 == 'permission' || $segment1 == 'user' ? 'active open' : '' }} has-sub">
+                class="nav-item {{ $segment1 == 'competition'  || $segment1 == 'user' ? 'active open' : '' }} has-sub">
                 <a href="#"><i class="ik ik-users"></i><span>{{ __('Competition') }}</span></a>
                 <div class="submenu-content">
                     <!-- only those have manage_user permission will get access -->
@@ -101,7 +101,7 @@
                     class="menu-item {{ $segment1 == 'news' && $segment2 == 'create' ? 'active' : '' }}">{{ __('Competition List') }}</a>
                     
                </div>
-        </div>
+            </div>
 
 
         {{-- COMPETITION ROUTES END HERE :::::::::::::::::::::::::::::::::::: --}}
