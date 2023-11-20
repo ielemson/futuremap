@@ -6,6 +6,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\Backend\CompetitionController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
@@ -132,6 +133,13 @@ Route::get('/rave/callback', [FlutterwaveController::class, 'callback'])->name('
 		Route::get('news/delete/{id}', [NewsController::class,'deleteNews']);
 		// Route::get('/categories', function () { return view('inventory.category.index'); }); 
 	});
+
+
+	// Only those with this privilegde can manage the competition table
+	Route::group(['middleware' => 'can:manage_competition'], function(){
+		Route::get('competition/list', [CompetitionController::class,'index'])->name('competiiton.list');
+	});
+
 
 
 	//only those have manage_user permission will get access

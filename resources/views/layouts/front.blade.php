@@ -78,7 +78,7 @@
             dataType: 'json',
             url: '/product/cart',
             success: function(data){
-            //    console.log(data)
+             
                 $('.cartCount').html("₦"+ new Intl.NumberFormat().format(data.cart_total));
             }
         })

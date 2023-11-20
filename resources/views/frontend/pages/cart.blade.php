@@ -79,11 +79,11 @@
                         <form id="paymentForm">
                             <div class="form-group">
                                 {{-- <label for="email">Email Address</label> --}}
-                                <input type="hidden" id="email" required value="{{ Auth::user()->email }}" />
+                                <input type="hidden" id="payer_email" value="{{ Auth::user()->email }}" />
                             </div>
                             <div class="form-group">
                                 {{-- <label for="amount">Amount</label> --}}
-                                <input type="hidden" id="amount" required value="{{ $total }}" />
+                                <input type="hidden" id="amount" value="{{ $total }}" />
                             </div>
                             <div class="form-group">
                                 {{-- <label for="first-name">First Name</label> --}}
@@ -498,9 +498,9 @@
 
             const paystack = new PaystackPop();
             paystack.newTransaction({
-                key: 'pk_live_e1a9e2d2c647dc6ee867e1f2be54444f3c1011c8', // Replace with your public key
-                // key: 'pk_test_e1c6d4f4a524851abebc3f2bfdb3003d15fb051e', // Replace with your public key
-                email: document.getElementById("email").value,
+                // key: 'pk_live_e1a9e2d2c647dc6ee867e1f2be54444f3c1011c8', // Replace with your public key
+                key: 'pk_test_e1c6d4f4a524851abebc3f2bfdb3003d15fb051e', // Replace with your public key
+                email: document.getElementById("payer_email").value,
                 amount: document.getElementById("amount").value * 100,
 
 

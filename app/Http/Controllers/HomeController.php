@@ -79,7 +79,7 @@ class HomeController extends Controller
     
     public function magazines(){
         $services = Service::all();
-        $magazines = Product::where('status','publish')->paginate(10);
+        $magazines = Product::where('status','publish')->orderBy('id','DESC')->paginate(10);
         return view('frontend.pages.magazines',compact('services','magazines'));
     }
 

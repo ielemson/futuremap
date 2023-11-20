@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Frontend;
 
 use App\Http\Controllers\Controller;
 use App\Mail\OrderConfirmed;
+use App\Models\Competition;
 use App\Models\Orders;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Http\Request;
@@ -65,7 +66,13 @@ class PaystackController extends Controller
             Session::forget('cart');
             Cart::destroy();
             Session::put('purchase',true);
-            // $orders = Orders::where('user_id',$user->id)->get();
+            
+            if (Competition::where('email',$user->email)) {
+                $competitor = Competition::where('email',$user->email)->first();
+                $competitor->checkout_complete = 1;
+                $competitor->save();
+            }
+        
             Mail::to($user->email)->send(new OrderConfirmed());
            return response(['status'=>200,'msg'=>'Order Confirmed Successfully','url'=>'dashboard']);
            

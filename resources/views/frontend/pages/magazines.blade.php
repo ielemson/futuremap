@@ -23,13 +23,25 @@
 <p>Your cart <i class="ri-shopping-cart-fill"></i> <sup>0</sup></p>
 
 </div> --}}
-                        <div class="product-title">
-                            <a href="{{ route('cart.list') }}">
+                        {{-- <div class="product-title">
+                            <a href="{{ route('cart.list') }}" class="counter-card box-shadow">
                                 <h3>Go to cart
                                     <span class="fas fa-shopping-cart"></span> <b class="cartCount">0</b>
                                 </h3>
                             </a>
-                        </div>
+                        </div> --}}
+
+                      
+                            <div class="counter-card box-shadow">
+                               
+                               <a href="{{ route('cart.list') }}">
+                                <i class="fa fa-shopping-cart"></i>
+                                <h3>
+                                  <b class="cartCount">0</b></h3>
+                                <h4>Click here to checkout</h4>
+                               </a>
+                            </div>
+                        
                     </div>
                 </div>
             </div>
@@ -144,6 +156,7 @@
             // COMPETITION MODAL
             $(".competitionEntry").on("click", function() {
                 var prodId = $(this).attr("data-id");
+                var url = "{{ route('cart.list') }}";
                 // COMPETETION STARTS HERE
                 $.confirm({
                     title: '<b>Our Magazine Competition<b/>',
@@ -196,17 +209,17 @@
 
                                         if (data.status == true) {
                                             Toast.fire({
-                                            // type: 'success',
                                             icon: 'success',
                                             title: data.msg
                                         })
                                     }
 
                                     
-
+                                    addToCart(prodId)
                                     setTimeout(() => {
-                                        addToCart(prodId)
-                                    }, 2000);
+                                    window.location.href = url
+                                    // alert('yes')
+                                     }, 3000);
                                     }
 
                                   
