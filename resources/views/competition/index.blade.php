@@ -71,7 +71,7 @@
                                     <td>{{ __($competitor->email)}}</td>
                                     <td>{{ __($competitor->location)}}</td>
                                     <td>{{ __($competitor->compinfo)}}</td>
-                                    @if ($competitor->checkout_complete === 1)
+                                    @if ($competitor->checkout_complete == 1)
                                     <td class="badge badge-primary mb-1 mt-1">{{ __('Checkout Complete')}}</td>
                                     @else
                                     <td class="badge badge-danger mb-1 mt-1">{{ __('Incomplete Checkout')}}</td>
