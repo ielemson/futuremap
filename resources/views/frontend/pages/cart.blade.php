@@ -498,8 +498,7 @@
 
             const paystack = new PaystackPop();
             paystack.newTransaction({
-                // key: 'pk_live_e1a9e2d2c647dc6ee867e1f2be54444f3c1011c8', // Replace with your public key
-                key: 'pk_test_e1c6d4f4a524851abebc3f2bfdb3003d15fb051e', // Replace with your public key
+                key: 'pk_live_e1a9e2d2c647dc6ee867e1f2be54444f3c1011c8', // Replace with your public keyS
                 email: document.getElementById("payer_email").value,
                 amount: document.getElementById("amount").value * 100,
 
