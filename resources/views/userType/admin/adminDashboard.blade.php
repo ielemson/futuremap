@@ -105,89 +105,13 @@
                 </div>
             </div>
             <!-- page statustic chart end -->
-            <!-- sale 2 card start -->
-            {{-- <div class="col-md-6 col-xl-4">
-                <div class="card sale-card">
-                    <div class="card-header">
-                        <h3>{{ __('Realtime Profit')}}</h3>
-                    </div>
-                    <div class="card-block text-center">
-                        <div id="realtime-profit"></div>
-                    </div>
-                </div>
-            </div> --}}
-            {{-- <div class="col-md-6 col-xl-4">
-                <div class="card sale-card">
-                    <div class="card-header">
-                        <h3>{{ __('Sales Difference')}}</h3>
-                    </div>
-                    <div class="card-block text-center">
-                        <div id="sale-diff" class="chart-shadow"></div>
-                    </div>
-                </div>
-            </div> --}}
-            {{-- <div class="col-md-12 col-xl-4">
-                <div class="card card-green text-white">
-                    <div class="card-block pb-0">
-                        <div class="row mb-50">
-                            <div class="col">
-                                <h6 class="mb-5">{{ __('Sales In July')}}</h6>
-                                <h5 class="mb-0  fw-700">{{ __('$2665.00')}}</h5>
-                            </div>
-                            <div class="col-auto text-center">
-                                <p class="mb-5">{{ __('Direct Sale')}}</p>
-                                <h6 class="mb-0">{{ __('$1768')}}</h6>
-                            </div>
-
-                            <div class="col-auto text-center">
-                                <p class="mb-5">{{ __('Referal')}}</p>
-                                <h6 class="mb-0">{{ __('$897')}}</h6>
-                            </div>
-                        </div>
-                        <div id="sec-ecommerce-chart-line" class="chart-shadow"></div>
-                        <div id="sec-ecommerce-chart-bar" ></div>
-                    </div>
-                </div>
-            </div> --}}
-            <!-- sale 2 card end -->
-
+    
             <!-- product and new customar start -->
-            <div class="col-xl-4 col-md-6">
-                <div class="card new-cust-card">
-                    <div class="card-header">
-                        <h3>{{ __('New Customers')}}</h3>
-                        <div class="card-header-right">
-                            <ul class="list-unstyled card-option">
-                                <li><i class="ik ik-chevron-left action-toggle"></i></li>
-                                <li><i class="ik ik-minus minimize-card"></i></li>
-                                <li><i class="ik ik-x close-card"></i></li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="card-block">
-                        @php
-                        $customers =  App\Models\User::whereHas("roles", function($q){ $q->where("name", "User"); })->get();
-                     @endphp
-                     @foreach ($customers as $user)
-                            <div class="align-middle mb-25">
-                            <img src="{{asset('img/big/img1.jpg')}}" alt="user image" class="rounded-circle img-40 align-top mr-15">
-                            <div class="d-inline-block">
-                                <a href="#!"><h6>{{$user->name}}</h6></a>
-                                <p class="text-muted mb-0">{{ __('Cheers!')}}</p>
-                                <span class="status active"></span>
-                            </div>
-                        </div>
-                     @endforeach
-                     
-                      
-                       
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-8 col-md-6">
+
+            <div class="col-xl-12 col-md-6">
                 <div class="card table-card">
                     <div class="card-header">
-                        <h3>{{ __('New Products')}}</h3>
+                        <h3>{{ __('All Products')}}</h3>
                         <div class="card-header-right">
                             <ul class="list-unstyled card-option">
                                 <li><i class="ik ik-chevron-left action-toggle"></i></li>
@@ -234,12 +158,64 @@
                     </div>
                 </div>
             </div>
-            <!-- product and new customar end -->
-            <!-- Application Sales start -->
-            {{-- <div class="col-md-12">
+
+
+            <div class="col-xl-12 col-md-6">
                 <div class="card table-card">
                     <div class="card-header">
-                        <h3>{{ __('Application Sales')}}</h3>
+                        <h3>{{ __('Registered Customers')}}</h3>
+                        <div class="card-header-right">
+                            <ul class="list-unstyled card-option">
+                                <li><i class="ik ik-chevron-left action-toggle"></i></li>
+                                <li><i class="ik ik-minus minimize-card"></i></li>
+                                <li><i class="ik ik-x close-card"></i></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="card-block">
+                        <div class="table-responsive">
+                            <table class="table table-hover mb-0">
+                                <thead>
+                                    <tr>
+                                        <th>{{ __('Full Name')}}</th>
+                                        <th>{{ __('Email')}}</th>
+                                        <th>{{ __('Date Registered')}}</th>
+                                        <th>{{ __('Action')}}</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @php
+                                $customers =  App\Models\User::whereHas("roles", function($q){ $q->where("name", "User"); })->get();
+                                @endphp
+                                 @foreach ($customers as $user)
+                                      
+                                    <tr>
+                                        <td>{{$user->name}}</td>
+                                        <td>{{$user->email}}</td>
+                                        <td>{{$user->created_at}}</td>
+                                        <td>
+                                            <button class="btn btn-danger">Delete</button>
+                                            <button class="btn btn-info">Edit</button>
+                                            <button class="btn btn-default">View</button>
+                                        </td>
+                                    </tr>
+                                 @endforeach
+                                  
+                                </tbody>
+                            </table>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+           
+            
+            <!-- product and new customar end -->
+            <!-- Application Sales start -->
+            <div class="col-md-12">
+                <div class="card table-card">
+                    <div class="card-header">
+                        <h3>{{ __('Product Sales')}}</h3>
                         <div class="card-header-right">
                             <ul class="list-unstyled card-option">
                                 <li><i class="ik ik-chevron-left action-toggle"></i></li>
@@ -255,68 +231,31 @@
                                     <tr>
                                         <th>{{ __('Application')}}</th>
                                         <th>{{ __('Sales')}}</th>
-                                        <th>{{ __('Change')}}</th>
-                                        <th>{{ __('Avg Price')}}</th>
+                                        <th>{{ __('QTY')}}</th>
+                                        {{-- <th>{{ __('Change')}}</th> --}}
                                         <th>{{ __('Total')}}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
+
+                                    @php
+                                    $total = 0;
+                                   $orders =  App\Models\Orders::where('status','Successful')->get();
+                                   @endphp
+                                    @foreach ($orders as $orders)
                                     <tr>
                                         <td>
                                             <div class="d-inline-block align-middle">
-                                                <h6>{{ __('Able Pro')}}</h6>
-                                                <p class="text-muted mb-0">{{ __('Powerful Admin Theme')}}</p>
+                                                <h6>{{$orders->product->name}}</h6>
                                             </div>
                                         </td>
-                                        <td>{{ __('16,300')}}</td>
-                                        <td>
-                                            <div id="app-sale1"></div>
-                                        </td>
-                                        <td>$53</td>
-                                        <td class="text-blue">{{ __('$15,652')}}</td>
+                                        <td>&#8358; {{$orders->price}}</td>
+                                        
+                                        <td>{{$order->qty}}</td>
+                                        <td class="text-blue">&#8358; {{$order->qty * $order->price}}</td>
                                     </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="d-inline-block align-middle">
-                                                <h6>{{ __('Photoshop')}}</h6>
-                                                <p class="text-muted mb-0">{{ __('Design Software')}}</p>
-                                            </div>
-                                        </td>
-                                        <td>{{ __('26,421')}}</td>
-                                        <td>
-                                            <div id="app-sale2"></div>
-                                        </td>
-                                        <td>{{ __('$35')}}</td>
-                                        <td class="text-blue">{{ __('$18,785')}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="d-inline-block align-middle">
-                                                <h6>{{ __('Guruable')}}</h6>
-                                                <p class="text-muted mb-0">{{ __('Best Admin Template')}}</p>
-                                            </div>
-                                        </td>
-                                        <td>{{ __('8,265')}}</td>
-                                        <td>
-                                            <div id="app-sale3"></div>
-                                        </td>
-                                        <td>{{ __('$98')}}</td>
-                                        <td class="text-blue">{{ __('$9,652')}}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <div class="d-inline-block align-middle">
-                                                <h6>{{ __('Flatable')}}</h6>
-                                                <p class="text-muted mb-0">{{ __('Admin App')}}</p>
-                                            </div>
-                                        </td>
-                                        <td>{{ __('10,652')}}</td>
-                                        <td>
-                                            <div id="app-sale4"></div>
-                                        </td>
-                                        <td>{{ __('$20')}}</td>
-                                        <td class="text-blue">{{ __('$7,856')}}</td>
-                                    </tr>
+                                    @endforeach
+                                   
                                 </tbody>
                             </table>
                         </div>
@@ -327,7 +266,7 @@
                         </div>
                     </div>
                 </div>
-            </div> --}}
+            </div>
             <!-- Application Sales end -->
     	</div>
     </div>

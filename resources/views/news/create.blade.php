@@ -40,10 +40,24 @@
                             <div class="col-md-12">
                                 <div class="box box-primary">
                                     <div class="box-body">
-                                        <div class="form-group">
-                                            <label for="newstitle">Title</label>
-                                            <input type="text" name="title" class="form-control" id="newstitle">
+                                     <div class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="newstitle">Title</label>
+                                                <input type="text" name="title" class="form-control" id="newstitle">
+                                            </div>
                                         </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label>Categories</label>
+                                                <select name="category_id" class="form-control select2" style="width: 100%;">
+                                                    @foreach($categories as $category)
+                                                        <option value="{{ $category->id }}">{{ $category->name }}</option>
+                                                    @endforeach
+                                                </select>
+                                            </div>
+                                        </div>
+                                     </div>
                                         <div class="form-group">
                                             <label>News Details</label>
                                             <textarea class="textarea html-editor form-control" name="details" placeholder="News content" style=""></textarea>
@@ -55,14 +69,7 @@
                             <div class="col-md-6">
                                 <div class="box box-primary">
                                     <div class="box-body">
-                                        <div class="form-group">
-                                            <label>Categories</label>
-                                            <select name="category_id" class="form-control select2" style="width: 100%;">
-                                                @foreach($categories as $category)
-                                                    <option value="{{ $category->id }}">{{ $category->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
+                                        
                                         <div class="form-group">
                                             <label for="newsimage">Featured Image</label>
                                             <input type="file" name="image" id="newsimage">

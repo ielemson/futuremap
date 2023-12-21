@@ -121,7 +121,7 @@
         </div>
         {{-- CUSTOM SIDEBAR  :::::::::::::::::::::::::::::: ENDS --}}
         @hasrole('Super Admin')
-            <div class="nav-lavel">{{ __('Documentation') }} </div>
+            {{-- <div class="nav-lavel">{{ __('Documentation') }} </div>
             <div class="nav-item {{ $segment1 == 'rest-api' ? 'active' : '' }}">
                 <a href="{{ url('rest-api') }}"><i class="ik ik-cloud"></i><span>{{ __('REST API') }}</span> </a>
             </div>
@@ -133,10 +133,10 @@
                 <a href="{{ url('table-datatable-edit') }}"><i
                         class="ik ik-layout"></i><span>{{ __('Editable Datatable') }}</span> </a>
 
-            </div>
+            </div> --}}
             <!-- end inventory pages -->
 
-            <div class="nav-lavel">{{ __('Themekit Pages') }} </div>
+            {{-- <div class="nav-lavel">{{ __('Themekit Pages') }} </div>
             <div
                 class="nav-item {{ $segment1 == 'form-components' || $segment1 == 'form-advance' || $segment1 == 'form-addon' ? 'active open' : '' }} has-sub">
                 <a href="#"><i class="ik ik-edit"></i><span>{{ __('Forms') }}</span></a>
@@ -208,10 +208,9 @@
                     <a href="{{ url('rating') }}"
                         class="menu-item {{ $segment1 == 'rating' ? 'active' : '' }}">{{ __('Rating') }}</a>
                 </div>
-            </div>
+            </div> --}}
 
-
-            <div
+            {{-- <div
                 class="nav-item {{ $segment1 == 'charts-chartist' || $segment1 == 'charts-flot' || $segment1 == 'charts-knob' || $segment1 == 'charts-amcharts' ? 'active open' : '' }} has-sub">
                 <a href="#"><i class="ik ik-pie-chart"></i><span>{{ __('Charts') }}</span> </a>
                 <div class="submenu-content">
@@ -286,7 +285,7 @@
             <div class="nav-item">
                 <a href="javascript:void(0)" class="disabled"><i
                         class="ik ik-slash"></i><span>{{ __('Disabled Menu') }}</span></a>
-            </div>
+            </div> --}}
         @endhasrole
     </div>
 </div>

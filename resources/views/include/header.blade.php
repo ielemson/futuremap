@@ -18,8 +18,11 @@
                     <a  href="{{url('clear-cache')}}">
                     <i class="ik ik-battery-charging"></i> 
                 </a>
-                </button> &nbsp;&nbsp;
+                </button>
+                 &nbsp;&nbsp;
                 <button type="button" id="navbar-fullscreen" class="nav-link"><i class="ik ik-maximize"></i></button>
+                &nbsp;&nbsp;
+                <a href="{{url('/')}}" target="_blank" class="nav-link"><i class="fa fa-home"></i></a>
             </div>
             <div class="top-menu d-flex align-items-center">
                 <div class="dropdown">
