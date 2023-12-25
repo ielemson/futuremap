@@ -239,6 +239,12 @@ class UserController extends Controller
         }
     }
 
+    function profile_update(Request $request){
+         // update user info
+
+         dd($request->all());
+        
+    }
     /**
      * Delete User
      *

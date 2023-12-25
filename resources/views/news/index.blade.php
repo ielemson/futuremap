@@ -2,7 +2,6 @@
 @section('title', 'Layouts')
 @section('content')
 
-
     <div class="container-fluid">
         <div class="page-header">
             <div class="row align-items-end">
@@ -22,9 +21,9 @@
                                 <a href="{{ route('dashboard') }}"><i class="ik ik-home"></i></a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="#">{{ __('Ui Elements') }}</a>
+                                <a href="#">{{ __('News') }}</a>
                             </li>
-                            <li class="breadcrumb-item active" aria-current="page">{{ __('Layouts') }}</li>
+                            <li class="breadcrumb-item active" aria-current="page">{{ __('List') }}</li>
                         </ol>
                     </nav>
                 </div>
@@ -105,10 +104,10 @@
 
                     @if (count($news) > 0)
                         @foreach ($news as $newslist)
-                            <div class="col-12 list-item">
+                            <div class="col-xl-4 col-lg-4 col-12 col-sm-6 mb-4 list-item list-item-grid">
                                 <div class="card d-flex flex-row mb-3">
                                     <a class="d-flex card-img newsViewTab" data-id="{{ $newslist->id }}"
-                                        href="#editLayoutItem" data-toggle="modal" data-target="#editLayoutItem">
+                                        href="#!">
                                         <img src="{{ asset('assets/images/news') }}/{{ $newslist->image }}"
                                             alt="Donec sit amet est at sem iaculis aliquam."
                                             class="list-thumbnail responsive border-0">
@@ -140,14 +139,14 @@
                                             </div>
                                         </div>
                                         <div class="list-actions">
-                                            <a href="#editLayoutItem" data-toggle="modal"
-                                                data-target="#editLayoutItem"><i class="ik ik-eye newsViewTab"
+                                            <a href="#!"><i class="ik ik-eye newsViewTab"
                                                     data-id="{{ $newslist->id }}"></i></a>
                                             <a href="{{ route('news.edit', $newslist->id) }}"><i
                                                     class="ik ik-edit-2"></i></a>
                                             <a href="#" class="list-delete" data-id="{{ $newslist->id }}"><i
                                                     class="ik ik-trash-2"></i></a>
                                             <a href="https://www.facebook.com/sharer/sharer.php?u=http://fmapmedia.com/show/news/{{$newslist->slug}}" target="_blank"><i class="ik ik-facebook"></i></a>
+                                            {{-- <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="" data-layout="" data-action="" data-size="" data-share="true"></div> --}}
                                             <a href="#"><i class="ik ik-twitter"></i></a>
                                             {{-- {!! Share::page(url('/post/'. $newlist->slug))->facebook()->twitter()->whatsapp() !!} --}}
                                         </div>
@@ -169,8 +168,6 @@
             </div>
         </div>
     </div>
-
-
 
     <div class="modal fade edit-layout-modal" id="editLayoutItem" tabindex="-1" role="dialog"
         aria-labelledby="editLayoutItemLabel" aria-hidden="true">
@@ -206,11 +203,10 @@
     </div>
 
     <!-- push external js -->
-    @push('script')
+    @push('scripts')
         <script src="{{ asset('plugins/sweetalert/dist/sweetalert.min.js') }}"></script>
         <script src="{{ asset('plugins/summernote/dist/summernote-bs4.min.js') }}"></script>
         <script src="{{ asset('js/layouts.js') }}"></script>
-
         <script>
             $(document).ready(function() {
                 $(".newsViewTab").on("click", function() {
@@ -239,6 +235,7 @@
                     });
                 });
                 $(".list-delete").on("click", function() {
+                    console.log('clicked')
                     var dataId = $(this).attr("data-id");
                     $.confirm({
                         title: 'Confirm!',

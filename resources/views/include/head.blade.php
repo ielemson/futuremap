@@ -25,5 +25,5 @@
 <!-- Stack array for including inline css or head elements -->
 @stack('head')
 
-<link rel="stylesheet" href="{{ asset('css/style.css') }}">
+{{-- <link rel="stylesheet" href="{{ asset('css/style.css') }}"> --}}
 

@@ -1,4 +1,4 @@
-<aside class="right-sidebar">
+{{-- <aside class="right-sidebar">
     <div class="sidebar-chat" data-plugin="chat-sidebar">
         <div class="sidebar-chat-info">
             <h6>{{ __('Chat List')}}</h6>
@@ -132,4 +132,4 @@
             </div>
         </form>
     </div>
-</div>
+</div> --}}

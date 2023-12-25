@@ -234,6 +234,7 @@
                                         <th>{{ __('QTY')}}</th>
                                         {{-- <th>{{ __('Change')}}</th> --}}
                                         <th>{{ __('Total')}}</th>
+                                        <th>{{ __('Transaction Date')}}</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -253,6 +254,7 @@
                                         
                                         <td>{{$order->qty}}</td>
                                         <td class="text-blue">&#8358; {{$order->qty * $order->price}}</td>
+                                        <td class="text-red">{{$order->created_at->format('D M Y')}}</td>
                                     </tr>
                                     @endforeach
                                    

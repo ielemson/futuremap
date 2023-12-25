@@ -2,18 +2,23 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <title>@yield('title', '') :: FutureMap</title>
+    <title>FutureMap Media :: @yield('title', '')</title>
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @if (!@empty($news_slug))
+    <meta property="og:url" content="{{route('front.single.news',$news_slug)}}" />
+    <meta property="og:title" content="{{$meta_title ?? ''}}" />
     <meta property="og:title" content="{{$news_title ?? ''}}" />
-<meta property="og:description" content="FutureMap News Media" />
-{{-- <meta property="og:image" content="https://ahrefs.com/blog/wp-content/uploads/2019/12/fb-how-to-become-an-seo-expert.png" /> --}}
+    <meta property="og:description" content="{{$meta_description ?? ''}}"/>
     <meta property="og:image" content="https://fmapmedia.com/assets/images/news/{{$socialimage ?? ''}}">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-
+    @else
+    <meta property="og:url" content="{{url('/')}}" />
+    @endif 
+    <meta property="og:type" content="website" />
     <link rel="stylesheet" href="{{ asset('assets/css/plugins.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/iconplugins.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
@@ -33,8 +38,12 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
         <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <div id="fb-root"></div>
+        <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v18.0&appId=425246619802571" nonce="Re2MbvMQ"></script>
+
 
         @stack('extra-css')
+        
 </head>
 
 <body>

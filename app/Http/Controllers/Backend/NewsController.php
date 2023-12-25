@@ -98,24 +98,31 @@ class NewsController extends Controller
      */
     public function store(Request $request)
     {
+        // dd($request->all());
         $request->validate([
             'title'         => 'required|unique:news|max:255',
             'details'       => 'required',
             'category_id'   => 'required',
-            'image'         => 'required|image|mimes:jpg,png,jpeg'
+            'status'        => 'required',
+            'type'           => 'required',
+            'published_at'   => 'required',
+            'meta_title'   => 'nullable',
+            'meta_description'   => 'nullable',
+            'meta_keywords'   => 'nullable',
+            'image'          => 'required|image|mimes:jpg,png,jpeg'
         ]);
 
-        if(isset($request->status)){
-            $status = true;
-        }else{
-            $status = false;
-        }
+        // if(isset($request->status)){
+        //     $status = true;
+        // }else{
+        //     $status = false;
+        // }
 
-        if(isset($request->featured)){
-            $featured = true;
-        }else{
-            $featured = false;
-        }
+        // if(isset($request->featured)){
+        //     $featured = true;
+        // }else{
+        //     $featured = false;
+        // }
 
         if ($request->hasFile('image')) {
             // $imageName = 'news-'.time().uniqid().'.'.$request->image->getClientOriginalExtension();
@@ -125,7 +132,7 @@ class NewsController extends Controller
                 mkdir($path, 0777, true);
     
             // $name = time() . '.' . $request->image->extension();
-            $imageName = 'news-'.time().uniqid().'.'.$request->image->extension();
+            $imageName = strtolower($request->type).'-'.time().uniqid().'.'.$request->image->extension();
             ResizeImage::make($request->file('image'))
                 ->resize(1120, 700)
                 ->save($path . $imageName);
@@ -137,8 +144,12 @@ class NewsController extends Controller
             'details'       => $request->details,
             'category_id'   => $request->category_id,
             'image'         => $imageName,
-            'status'        => $status,
-            'featured'      => $featured
+            'status'        => $request->status,
+            'type'          => $request->type,
+            'meta_keywords' => $request->meta_keywords,
+            'meta_description' => $request->meta_description,
+            'meta_title'      => $request->meta_title,
+            'published_at'      => $request->published_at
         ]);
 
         return redirect()->route('news.create')->with('success','News created successfully!');
@@ -171,27 +182,33 @@ class NewsController extends Controller
 
     public function updateNews(Request $request,$id){
       
-
+// dd($request->all());
         $request->validate([
-            'title'         => 'required',
+            'title'         => 'required|max:255',
             'details'       => 'required',
             'category_id'   => 'required',
-            'image'         => 'nullable|image|mimes:jpg,png,jpeg'
+            'status'        => 'required',
+            'type'           => 'required',
+            'published_at'   => 'required',
+            'meta_title'   => 'nullable',
+            'meta_description'   => 'nullable',
+            'meta_keywords'   => 'nullable',
+            'image'          => 'nullable|image|mimes:jpg,png,jpeg'
         ]);
 
         $news = News::where('id',$id)->first();
+        // dd($news);
+        // if(isset($request->status)){
+        //     $status = true;
+        // }else{
+        //     $status = false;
+        // }
 
-        if(isset($request->status)){
-            $status = true;
-        }else{
-            $status = false;
-        }
-
-        if(isset($request->featured)){
-            $featured = true;
-        }else{
-            $featured = false;
-        }
+        // if(isset($request->featured)){
+        //     $featured = true;
+        // }else{
+        //     $featured = false;
+        // }
 
         if ($request->hasFile('image')) {
             // $imageName = 'news-'.time().uniqid().'.'.$request->image->getClientOriginalExtension();
@@ -211,22 +228,29 @@ class NewsController extends Controller
                 $news->details =  $request->details;
                 $news->category_id = $request->category_id;
                 $news->image = $imageName;
-                $news->status = $status;
-                $news->featured = $featured;
+                $news->status = $request->status;
+                $news->type = $request->type;
+                $news->meta_keywords = $request->meta_keywords;
+                $news->meta_description = $request->meta_description;
+                $news->meta_title = $request->meta_title;
+                $news->published_at = $request->published_at;
                 $news->save();
         }
 
+                $news->title =  $request->title;
+                $news->slug =  Str::slug($request->title);
+                $news->details =  $request->details;
+                $news->category_id = $request->category_id;
+                // $news->image = $imageName;
+                $news->status = $request->status;
+                $news->type = $request->type;
+                $news->meta_keywords = $request->meta_keywords;
+                $news->meta_description = $request->meta_description;
+                $news->meta_title = $request->meta_title;
+                $news->published_at = $request->published_at;
+                $news->save();
+
         // $news = News::where('id',$id)->first();
-
-        $news->title =  $request->title;
-        $news->slug =  Str::slug($request->title);
-        $news->details =  $request->details;
-        $news->category_id = $request->category_id;
-        // $news->image = $imageName;
-        $news->status = $status;
-        $news->featured = $featured;
-        $news->save();
-
        
         return redirect()->route('news.list')->with('success','News updated successfully!');
 

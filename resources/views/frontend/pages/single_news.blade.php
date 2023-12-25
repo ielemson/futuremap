@@ -1,8 +1,7 @@
-@extends('layouts.front',['socialimage'=>$single_news->image,'news_title'=>$single_news->title])
-
+@extends('layouts.front',['socialimage'=>$single_news->image,'news_title'=>$single_news->title,'meta_description'=>$single_news->meta_description,'news_slug'=>$single_news->slug])
 
 @section('content')
-@section('title', 'Our News')
+@section('title', $single_news->title)
 @include('frontend.include.innerBanner', ['banner_title' => 'Our News'])
 
 
@@ -36,31 +35,24 @@
                     <p style="text-align: justify !mportant">{!!$single_news->details!!}</p>
                     <div class="article-share">
                         <div class="row align-items-center">
-                            <div class="col-lg-6 col-md-6">
-                                <div class="article-tag">
-                                    <ul>
-                                        <li class="title">
-                                            <i class="ri-price-tag-3-fill"></i>
-                                        </li>
-                                        @if (count($categories) > 0)
-                                        
-                                                 @foreach ($categories as $category)
-                                                     <li><a href="{{route('front.news.category',$category->slug)}}">{{$category->name}}</a></li>
-                                                 @endforeach      
-                                     @endif
-                                        
-                                      
-                                    </ul>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-6">
+                           
+                            
+                            <div class="col-lg-12 col-md-12">
                                 <div class="article-social-icon">
                                     <ul class="social-icon">
                                         <li class="title">Share :</li>
                                         <li>
-                                            <a href="https://www.facebook.com/sharer/sharer.php?u=http://fmapmedia.com/show/news/{{$single_news->slug}}" target="_blank">
+                                            {{-- <a href="https://www.facebook.com/sharer/sharer.php?u=http://fmapmedia.com/show/news/{{$single_news->slug}}" target="_blank">
                                                 <i class="ri-facebook-fill"></i>
-                                            </a>
+                                            </a> --}}
+                                    <div class="fb-like" 
+                                    data-href="{{route('front.single.news',$single_news->slug)}}" 
+                                    data-width=""
+                                    data-layout="standard" 
+                                    data-action="like" 
+                                    data-size="small"  
+                                    data-share="true">
+                                    </div>
                                         </li>
                                         <li>
                                             <a 

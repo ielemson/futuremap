@@ -34,66 +34,177 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-body">
-                        <form action="{{route('news.update',$news->id)}}" method="POST" enctype="multipart/form-data" role="form">
+                        <form action="{{route('news.update',$news->id)}}" method="POST" enctype="multipart/form-data" role="form" id="uploadForm">
                             @csrf
             
-                        <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-md-12" style="width: 100%">
                                 <div class="box box-primary">
                                     <div class="box-body">
-                                        <div class="form-group">
-                                            <label for="newstitle">Title</label>
-                                            <input type="text" name="title" class="form-control" id="newstitle" value="{{$news->title}}">
-                                        </div>
-                                        <div class="form-group">
-                                            <label>News Details</label>
-                                            <textarea class="textarea html-editor" name="details" placeholder="Place some text here" style="width: 100%; height: 200px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;">
-                                            {{$news->details}}
-                                            </textarea>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-            
-                            <div class="col-md-6">
-                                <div class="box box-primary">
-                                    <div class="box-body">
-                                        <div class="form-group">
-                                            <label>Categories</label>
-                                            <select name="category_id" class="form-control select2" style="width: 100%;">
-                                                @foreach($categories as $category)
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label for="newstitle">News Title</label><span
+                                                        class="text-danger">*</span>
+                                                    <input type="text" name="title" value="{{$news->title}}"
+                                                        class="form-control" id="newstitle" required>
+                                                        @error('title')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="form-group">
+                                                    <label>Categories</label><span class="text-danger">*</span>
+                                                    <select name="category_id" class="form-control select2" required>
+                                                        <option value="">Select New Category</option>
+                                                        @foreach($categories as $category)
                                                     <option value="{{ $category->id }}" {{$news->category_id == $category->id ? 'selected': ''}}>{{ $category->name }}</option>
-                                                @endforeach
-                                            </select>
+                                                    @endforeach
+                                                    </select>
+                                                    @error('category_id')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>News Content</label><span class="text-danger">*</span>
+                                                    <textarea class="textarea html-editor form-control" name="details" id="summernote" required>
+                                                        {{$news->details}}
+                                                    </textarea>
+                                                </div>
+                                                @error('details')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                            </div>
+
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="newstitle">Meta Title</label>
+                                                    <input type="text" name="meta_title" value="{{$news->meta_title}}"
+                                                        class="form-control" id="meta_title">
+                                                        @error('meta_title')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="newstitle">Meta Keywords</label>
+                                                    <input type="text" name="meta_keywords" value="{{$news->meta_keywords}}"
+                                                        class="form-control" id="meta_keywords">
+                                                        @error('meta_keywords')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="newstitle">Meta Description</label>
+                                                    <input type="text" name="meta_description"
+                                                        value="{{$news->meta_description}}" class="form-control"
+                                                        id="meta_decription">
+                                                        @error('meta_description')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+
+
+                                            <div class="col-4">
+                                                <div class="form-group">
+                                                    <label for="status">Status</label> <span class="text-danger">*</span>
+                                                    <select class="form-control" name="status" id="status"
+                                                        required="">
+                                                        <option value="" selected="selected">-- Select an option --
+                                                        </option>
+                                                        <option value="1" {{$news->status == 1 ? 'selected': ''}}>Published</option>
+                                                        <option value="0" {{$news->status == 0 ? 'selected': ''}}>Unpublished</option>
+                                                    </select>
+                                                    @error('status')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                                </div>
+                                            </div>
+                                            <div class=" col-4">
+                                                <div class="form-group">
+                                                    <label for="type">Type</label> <span class="text-danger">*</span>
+                                                    <select class="form-control" name="type" id="type"
+                                                        required="">
+                                                        <option value="" selected="selected">-- Select an option --
+                                                        </option>
+                                                        <option value="Article" {{$news->type == 'Article' ? 'selected': ''}}>Article</option>
+                                                        <option value="Feature" {{$news->type == 'Feature' ? 'selected': ''}}>Feature</option>
+                                                        <option value="News" {{$news->type == 'News' ? 'selected': ''}}>News</option>
+                                                    </select>
+                                                    @error('type')
+                                                    <span class="invalid-feedback" role="alert">
+                                                        <strong>{{ $message }}</strong>
+                                                    </span>
+                                                @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-4">
+                                                <div class="form-group">
+                                                    <label for="published_at">Published At</label> <span
+                                                        class="text-danger">*</span>
+                                                    <input class="form-control" type="datetime-local" name="published_at"
+                                                        id="published_at" value="{{$news->published_at}}" required="">
+                                                        @error('published_at')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
                                         </div>
-                                        <div class="form-group">
-                                            <label for="newsimage">Featured Image</label>
-                                            <input type="file" name="image" id="newsimage">
-                                            <p class="help-block">(Image must be in .png or .jpg format)</p>
-                                        </div>
-                                        <hr>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" name="status" {{$news->status == 1 ? 'checked': ''}}> Published
-                                            </label>
-                                        </div>
-                                        <div class="checkbox">
-                                            <label>
-                                                <input type="checkbox" name="featured" {{$news->featured == 1 ? 'checked': ''}}> Featured
-                                            </label>
-                                        </div>
-                                    </div>
-            
-                                    <div class="box-footer">
-                                        <button type="submit" class="btn btn-primary btn-flat">UPDATE NEWS</button>
+
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        
-                        <div class="col-md-4">
-                            <img src="{{asset('assets/images/news')}}/{{$news->image}}" alt="" style="width:50%" class="img-thumbnail">
-                        </div>
+                            <hr>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="box box-primary">
+                                        <div class="box-body">
+
+                                            <div class="form-group">
+                                                <label for="newsimage">Featured Image</label>
+                                                <input type="file" name="image" id="file">
+                                                <p class="help-block">(Image must be in .png or .jpg format)</p>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-4">
+                                    <img src="{{asset('assets/images/news')}}/{{$news->image}}" alt="" style="width:50%" class="img-thumbnail">
+                                </div>
+
+                                <div class="col-md-4">
+                                    <div class="box-footer">
+                                        <button type="submit" class="btn btn-primary btn-flat">Update</button>
+                                        <a href="/dashboard" type="submit" class="btn btn-warning btn-flat">Cancel</a>
+                                    </div>
+                                </div>
+                            </div>
 
                         </form>
                     </div>
@@ -101,4 +212,43 @@
             </div>
         </div>
     </div>
+
+    @push('scripts')
+    <script>
+        function filePreview(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    //$('#uploadForm + img').remove();
+                    //$('#uploadForm').after('<img src="'+e.target.result+'" width="450" height="300"/>');
+                    $('#uploadForm + embed').remove();
+                    $('#uploadForm').after('<embed src="' + e.target.result + '" width="250" height="250">');
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+
+        $("#file").change(function() {
+            filePreview(this);
+        });
+    </script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+    <script>
+        $('#summernote').summernote({
+            placeholder: 'Please ensure to paste from MS word, Notepad. Avoid pasting directly from other websites.',
+            tabsize: 2,
+            height: 300,
+            toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'underline', 'clear']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'video']],
+                ['view', ['fullscreen', 'codeview', 'help']]
+            ]
+        });
+    </script>
+@endpush
 @endsection
