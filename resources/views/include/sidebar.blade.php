@@ -77,9 +77,9 @@
                         <!-- only those have manage_user permission will get access -->
                         <a href="{{ route('news.create') }}"
                             class="menu-item {{ $segment1 == 'news' && $segment2 == 'create' ? 'active' : '' }}">{{ __('Create News') }}</a>
-                        <a href="{{ url('news/list') }}"
+                        <a href="{{ route('news.list') }}"
                             class="menu-item {{ $segment1 == 'news' && $segment2 == 'create' ? 'active' : '' }}">{{ __('News List') }}</a>
-                        <a href="{{ url('news/categories') }}"
+                        <a href="{{ route('news.category') }}"
                             class="menu-item {{ $segment1 == 'news' && $segment2 == 'create' ? 'active' : '' }}">{{ __('News Categories') }}</a>
 
 

@@ -125,16 +125,16 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//only those have manage news permission will get access
 	Route::group(['middleware' => 'can:manage_news'], function () {
-		Route::get('news/list', [NewsController::class, 'index'])->name('news.list');
-		Route::get('news/create', [NewsController::class, 'create'])->name('news.create');
-		Route::post('news/store', [NewsController::class, 'store'])->name('news.store');
-		Route::get('news/show/{id}', [NewsController::class, 'show'])->name('news.show');
-		Route::get('news/categories', [NewsController::class, 'category'])->name('news.category');
-		Route::post('news/category/store', [NewsController::class, 'storeCategory'])->name('news.category.store');
-		Route::post('news/category/update', [NewsController::class, 'updateCategory'])->name('news.category.update');
-		Route::get('news/update/{id}', [NewsController::class, 'editNews'])->name('news.edit');
-		Route::post('news/update/{id}', [NewsController::class, 'updateNews'])->name('news.update');
-		Route::get('news/delete/{id}', [NewsController::class, 'deleteNews']);
+		Route::get('admin/news/list', [NewsController::class, 'index'])->name('news.list');
+		Route::get('admin/news/create', [NewsController::class, 'create'])->name('news.create');
+		Route::post('admin/news/store', [NewsController::class, 'store'])->name('news.store');
+		Route::get('admin/news/show/{id}', [NewsController::class, 'show'])->name('news.show');
+		Route::get('admin/news/categories', [NewsController::class, 'category'])->name('news.category');
+		Route::post('admin/news/category/store', [NewsController::class, 'storeCategory'])->name('news.category.store');
+		Route::post('admin/news/category/update', [NewsController::class, 'updateCategory'])->name('news.category.update');
+		Route::get('admin/news/update/{id}', [NewsController::class, 'editNews'])->name('news.edit');
+		Route::post('admin/news/update/{id}', [NewsController::class, 'updateNews'])->name('news.update');
+		Route::get('admin/news/delete/{id}', [NewsController::class, 'deleteNews']);
 		// Route::get('/categories', function () { return view('inventory.category.index'); }); 
 	});
 
