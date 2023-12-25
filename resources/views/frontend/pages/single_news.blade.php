@@ -35,9 +35,24 @@
                     <p style="text-align: justify !mportant">{!!$single_news->details!!}</p>
                     <div class="article-share">
                         <div class="row align-items-center">
-                           
-                            
-                            <div class="col-lg-12 col-md-12">
+                            <div class="col-lg-6 col-md-6">
+                                <div class="article-tag">
+                                    <ul>
+                                        <li class="title">
+                                            <i class="ri-price-tag-3-fill"></i>
+                                        </li>
+                                        @if (count($categories) > 0)
+                                        
+                                                 @foreach ($categories as $category)
+                                                     <li><a href="{{route('front.news.category',$category->slug)}}">{{$category->name}}</a></li>
+                                                 @endforeach      
+                                     @endif
+                                        
+                                      
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-lg-6 col-md-6">
                                 <div class="article-social-icon">
                                     <ul class="social-icon">
                                         <li class="title">Share :</li>
@@ -45,14 +60,10 @@
                                             {{-- <a href="https://www.facebook.com/sharer/sharer.php?u=http://fmapmedia.com/show/news/{{$single_news->slug}}" target="_blank">
                                                 <i class="ri-facebook-fill"></i>
                                             </a> --}}
-                                    <div class="fb-like" 
-                                    data-href="{{route('front.single.news',$single_news->slug)}}" 
-                                    data-width=""
-                                    data-layout="standard" 
-                                    data-action="like" 
-                                    data-size="small"  
-                                    data-share="true">
-                                    </div>
+                                            <div class="fb-share-button btn btn-primary btn-sm" 
+                                            data-href="{{route('front.single.news',$single_news->slug)}}"
+                                            data-layout="button_count">
+                                            </div>
                                         </li>
                                         <li>
                                             <a 
