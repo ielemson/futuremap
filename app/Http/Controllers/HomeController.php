@@ -37,42 +37,70 @@ class HomeController extends Controller
     public function aboutUs(){
         $services = Service::all();
         $members =  User::whereHas("roles", function($q){ $q->where("name", "member_role"); })->orderBy('order_num', 'ASC')->get();
-        return view('frontend.pages.about',compact('services','members'));
+        $seo_title = "The Future Map Media, E-Commerce and Education Services, Media Solutions";
+        $seo_description = "E-Commerce and Education Services, Media Solutions,Online Learning Tools,Digital Marketing Solutions,Ad Campaign Management";
+        $seo_keywords = "Media Solutions, E-commerce Platforms, Educational Programs, Advertising Strategies, Digital Marketing Services, Multimedia Integration, Online Learning Resources, Retail Innovation, Targeted Ad Campaigns, Content Creation Services, E-learning Tools, Brand Promotion, Digital Advertising Solutions, Media Production, Online Retail Solutions, Educational Technology, Marketing Analytics, Cross-media Campaigns, Interactive Learning, Advertising Management";
+        
+        return view('frontend.pages.about',compact('services','members','seo_title','seo_description','seo_keywords'));
     }
 
     public function contactUs(){
         $services = Service::all();
-        return view('frontend.pages.contact',compact('services'));
+        $seo_title = "The Future Map Media, E-Commerce and Education Services, Media Solutions";
+        $seo_description = "E-Commerce and Education Services, Media Solutions,Online Learning Tools,Digital Marketing Solutions,Ad Campaign Management";
+        $seo_keywords = "Media Solutions, E-commerce Platforms, Educational Programs, Advertising Strategies, Digital Marketing Services, Multimedia Integration, Online Learning Resources, Retail Innovation, Targeted Ad Campaigns, Content Creation Services, E-learning Tools, Brand Promotion, Digital Advertising Solutions, Media Production, Online Retail Solutions, Educational Technology, Marketing Analytics, Cross-media Campaigns, Interactive Learning, Advertising Management";
+        
+        return view('frontend.pages.contact',compact('services','seo_title','seo_description','seo_keywords'));
     }
 
     public function companyTeam(){
         $services = Service::all();
        $members =  User::whereHas("roles", function($q){ $q->where("name", "member_role"); })->orderBy('order_num', 'ASC')->get();
-        return view('frontend.pages.team',compact('members','services'));
+       $seo_title = "The Future Map Media, E-Commerce and Education Services, Media Solutions";
+       $seo_description = "E-Commerce and Education Services, Media Solutions,Online Learning Tools,Digital Marketing Solutions,Ad Campaign Management";
+       $seo_keywords = "Media Solutions, E-commerce Platforms, Educational Programs, Advertising Strategies, Digital Marketing Services, Multimedia Integration, Online Learning Resources, Retail Innovation, Targeted Ad Campaigns, Content Creation Services, E-learning Tools, Brand Promotion, Digital Advertising Solutions, Media Production, Online Retail Solutions, Educational Technology, Marketing Analytics, Cross-media Campaigns, Interactive Learning, Advertising Management";
+        
+       return view('frontend.pages.team',compact('members','services','seo_title','seo_description','seo_keywords'));
     }
 
     public function companyProfile($id){
         $services = Service::all();
         $member = User::where('id',$id)->first();
-        return view('frontend.pages.member',compact('member','services'));
+        $seo_title = "The Future Map Media, E-Commerce and Education Services, Media Solutions";
+       $seo_description = "E-Commerce and Education Services, Media Solutions,Online Learning Tools,Digital Marketing Solutions,Ad Campaign Management";
+       $seo_keywords = "Media Solutions, E-commerce Platforms, Educational Programs, Advertising Strategies, Digital Marketing Services, Multimedia Integration, Online Learning Resources, Retail Innovation, Targeted Ad Campaigns, Content Creation Services, E-learning Tools, Brand Promotion, Digital Advertising Solutions, Media Production, Online Retail Solutions, Educational Technology, Marketing Analytics, Cross-media Campaigns, Interactive Learning, Advertising Management";
+        
+        return view('frontend.pages.member',compact('member','services','seo_title','seo_description','seo_keywords'));
     }
 
 
     public function companyService($id){
         $services = Service::all();
         $service = Service::where('id',$id)->first();
-        return view('frontend.pages.service',compact('services','service'));
+        $seo_title = "The Future Map Media, E-Commerce and Education Services, Media Solutions";
+       $seo_description = "E-Commerce and Education Services, Media Solutions,Online Learning Tools,Digital Marketing Solutions,Ad Campaign Management";
+       $seo_keywords = "Media Solutions, E-commerce Platforms, Educational Programs, Advertising Strategies, Digital Marketing Services, Multimedia Integration, Online Learning Resources, Retail Innovation, Targeted Ad Campaigns, Content Creation Services, E-learning Tools, Brand Promotion, Digital Advertising Solutions, Media Production, Online Retail Solutions, Educational Technology, Marketing Analytics, Cross-media Campaigns, Interactive Learning, Advertising Management";
+        
+        return view('frontend.pages.service',compact('services','service','seo_title','seo_description','seo_keywords'));
     }
 
     public function companyProjects(){
         $services = Service::all();
-        return view('frontend.pages.projects',compact('services'));
+        $seo_title = "The Future Map Media, E-Commerce and Education Services, Media Solutions";
+        $seo_description = "E-Commerce and Education Services, Media Solutions,Online Learning Tools,Digital Marketing Solutions,Ad Campaign Management";
+        $seo_keywords = "Media Solutions, E-commerce Platforms, Educational Programs, Advertising Strategies, Digital Marketing Services, Multimedia Integration, Online Learning Resources, Retail Innovation, Targeted Ad Campaigns, Content Creation Services, E-learning Tools, Brand Promotion, Digital Advertising Solutions, Media Production, Online Retail Solutions, Educational Technology, Marketing Analytics, Cross-media Campaigns, Interactive Learning, Advertising Management";
+         
+        return view('frontend.pages.projects',compact('services','seo_title','seo_description','seo_keywords'));
     }
 
     public function companyFeature($id){
         $services = Service::all();
         $feature = Features::where('id',$id)->first();
-        return view('frontend.pages.feature',compact('services','feature'));
+        $seo_title = "The Future Map Media, E-Commerce and Education Services, Media Solutions";
+        $seo_description = "E-Commerce and Education Services, Media Solutions,Online Learning Tools,Digital Marketing Solutions,Ad Campaign Management";
+        $seo_keywords = "Media Solutions, E-commerce Platforms, Educational Programs, Advertising Strategies, Digital Marketing Services, Multimedia Integration, Online Learning Resources, Retail Innovation, Targeted Ad Campaigns, Content Creation Services, E-learning Tools, Brand Promotion, Digital Advertising Solutions, Media Production, Online Retail Solutions, Educational Technology, Marketing Analytics, Cross-media Campaigns, Interactive Learning, Advertising Management";
+         
+        return view('frontend.pages.feature',compact('services','feature','seo_description','seo_keywords'));
     }
 
     public function comingSoon(){

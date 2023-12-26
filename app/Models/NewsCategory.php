@@ -9,7 +9,7 @@ class NewsCategory extends Model
 {
     use HasFactory;
     
-    protected $fillable = ['name', 'slug', 'image', 'status'];
+    protected $fillable = ['name', 'slug', 'status'];
 
     public function newslist()
     {

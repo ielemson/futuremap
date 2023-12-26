@@ -33,7 +33,6 @@ class NewsController extends Controller
             }]
         ])->orderBy('id', 'DESC')->paginate(16);
 
-
         // $shareComponent = \Share::page(
         //     'https://fmapmedia.com/',
         //     'Click here to share',
@@ -64,27 +63,17 @@ class NewsController extends Controller
     }
 
     public function storeCategory(Request $request){
-        // return $request;
-
+       
+        // dd($request->all());
         // $request->validate([
-        //     'name'   => 'required'
+        //     'name'         => 'required|unique:news_categories|max:255',
+        //     'status'       => 'required',
         // ]);
-
-        if(isset($request->status)){
-            $status = true;
-        }else{
-            $status = false;
-        }
-
-        // if ($request->hasFile('image')) {
-        //     $imageName = 'category-'.time().uniqid().'.'.$request->image->getClientOriginalExtension();
-        //     $request->image->move(public_path('images'), $imageName);
-        // }
 
         NewsCategory::create([
             'name'   => $request->cat_name,
             'slug'   => Str::slug($request->cat_name),
-            'status' => $status
+            'status' => $request->status
         ]);
 
         return redirect()->route('news.category')->with('success', 'News category created successfully');
@@ -276,16 +265,16 @@ class NewsController extends Controller
      */
     public function updateCategory(Request $request)
     {
-        if(isset($request->status)){
-            $status = true;
-        }else{
-            $status = false;
-        }
+        // if(isset($request->status)){
+        //     $status = true;
+        // }else{
+        //     $status = false;
+        // }
         
         $category = NewsCategory::where('id',$request->id)->first();
         // return $category;
         $category->name = $request->cat_name;
-        $category->status = $status;
+        $category->status = $request->status;
         if($category->save()){
             return response()->json(['status'=>200]);
         }
