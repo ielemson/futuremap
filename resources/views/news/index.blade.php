@@ -34,68 +34,34 @@
                 <div class="mb-2 clearfix">
                     <a class="btn pt-0 pl-0 d-md-none d-lg-none" data-toggle="collapse" href="#displayOptions"
                         role="button" aria-expanded="true" aria-controls="displayOptions">
-                        {{ __('Display Options') }}
-                        <i class="ik ik-chevron-down align-middle"></i>
+                        {{ __('Select product category') }}
+                        {{-- <i class="ik ik-chevron-down align-middle"></i> --}}
                     </a>
-                    <div class="collapse d-md-block display-options" id="displayOptions">
-                        <span class="mr-3 d-inline-block float-md-left dispaly-option-buttons">
-                            <a href="#" class="mr-1 view-list active">
-                                <i class="ik ik-menu view-icon"></i>
-                            </a>
-                            <a href="#" class="mr-1 view-thumb">
-                                <i class="ik ik-list view-icon"></i>
-                            </a>
-                            <a href="#" class="mr-1 view-grid">
-                                <i class="ik ik-grid view-icon"></i>
-                            </a>
-                        </span>
-                        <div class="d-block d-md-inline-block">
-                            {{-- <div class="btn-group float-md-left mr-1 mb-1">
-                                <button class="btn btn-outline-dark btn-xs dropdown-toggle" type="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">{{ __('
-                                    Order By') }}
-                                    <i class="ik ik-chevron-down mr-0 align-middle"></i>
-                                </button>
-                                <div class="dropdown-menu">
-                                    <a class="dropdown-item" href="#">{{ __('Action') }}</a>
-                                    <a class="dropdown-item" href="#">{{ __('Another action') }}</a>
+                    <div class="">
+
+                        <form action="{{route('news.list')}}" method="get">
+                            @csrf
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <select type="text" class="form-control" name="s"
+                            placeholder="Filter by category.." required>
+                            <option value="">Select news category</option>
+                            @foreach ($categories as $newsCat)
+                                <option value="{{ $newsCat->id }}">{{ $newsCat->name }}</option>
+                            @endforeach
+                        </select>
                                 </div>
-                            </div> --}}
-                            <div class="search-sm d-inline-block float-md-left mr-1 mb-1 align-top">
-                                <form action="{{ route('news.list') }}" method="GET">
-                                    <input type="text" class="form-control" name="s" placeholder="Search.." required>
-                                    <button type="submit" class="btn btn-icon"><i class="ik ik-search"></i></button>
-                                    {{-- <button type="button" id="adv_wrap_toggler"
-                                        class="adv-btn ik ik-chevron-down dropdown-toggle" data-toggle="dropdown"
-                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"></button> --}}
-                                    {{-- <div class="adv-search-wrap dropdown-menu dropdown-menu-right"
-                                        aria-labelledby="adv_wrap_toggler">
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" placeholder="Full Name">
-                                        </div>
-                                        <div class="form-group">
-                                            <input type="email" class="form-control" placeholder="Email">
-                                        </div>
-                                        <button class="btn btn-theme">{{ __('Search') }}</button>
-                                    </div> --}}
-                                </form>
+
+                                <div class="col-md-4">
+                                    <button class="btn btn-info btn-sm" type="submit">Filter</button>
+                                    <a href="{{route('news.list')}}" class="btn btn-primary btn-sm" >Clear Filter</a>
+                                </div>
+                              
                             </div>
-                        </div>
-                        {{-- <div class="float-md-right">
-                            <span class="text-muted text-small mr-2">{{ __('Displaying 1-10 of 210 items') }} </span>
-                            <button class="btn btn-outline-dark btn-xs dropdown-toggle" type="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                20
-                                <i class="ik ik-chevron-down mr-0 align-middle"></i>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#">10</a>
-                                <a class="dropdown-item" href="#">20</a>
-                                <a class="dropdown-item" href="#">30</a>
-                                <a class="dropdown-item" href="#">50</a>
-                                <a class="dropdown-item" href="#">100</a>
-                            </div>
-                        </div> --}}
+                        
+                        
+                        </form>
+
                     </div>
                 </div>
                 <div class="separator mb-20"></div>
@@ -106,11 +72,18 @@
                         @foreach ($news as $newslist)
                             <div class="col-xl-4 col-lg-4 col-12 col-sm-6 mb-4 list-item list-item-grid">
                                 <div class="card d-flex flex-row mb-3">
-                                    <a class="d-flex card-img newsViewTab" data-id="{{ $newslist->id }}"
-                                        href="#!">
+                                    <a class="d-flex card-img newsViewTab" data-id="{{ $newslist->id }}" href="#!">
                                         <img src="{{ asset('assets/images/news') }}/{{ $newslist->image }}"
                                             alt="Donec sit amet est at sem iaculis aliquam."
                                             class="list-thumbnail responsive border-0">
+                                        @if ($newslist->status == 10)
+                                            <span
+                                                class="badge badge-pill badge-success position-absolute badge-top-left">{{ __('Active') }}
+                                            </span>
+                                        @else
+                                            <span
+                                                class="badge badge-pill badge-warning position-absolute badge-top-left">{{ __('Unpublished') }}</span>
+                                        @endif
                                         {{-- <span class="badge badge-pill badge-primary position-absolute badge-top-left">{{ __('New')}}</span> --}}
                                         <span
                                             class="badge badge-pill badge-primary position-absolute badge-top-left-2">{{ $newslist->category->name }}</span>
@@ -124,17 +97,17 @@
                                                 <b>{{ $newslist->title }}</b>
                                             </a>
                                             <p class="mb-1 text-muted text-small category w-15 w-xs-100">
-                                                 {!! substr($newslist->details, 0, 100) !!}</p>
+                                                {!! substr($newslist->details, 0, 100) !!}</p>
                                             <p class="mb-1 text-muted text-small date w-15 w-xs-100">
-                                                {{ \Carbon\Carbon::parse($newslist->created_at)->diffForHumans() }}</p>
+                                                {{ \Carbon\Carbon::parse($newslist->created_at)->diffForHumans() }}
+                                            </p>
                                             <div class="w-15 w-xs-100">
-                                                @if ($newslist->status == 1)
-                                                    <span
-                                                        class="badge badge-pill badge-success">{{ __('Active') }}</span>
-                                                @else
-                                                    <span
-                                                        class="badge badge-pill badge-secondary">{{ __('On Hold') }}</span>
-                                                @endif
+                                                {{-- @if ($newslist->status == 1) --}}
+                                                <span class="badge badge-pill badge-success">{{ __('Active') }}
+                                                </span>
+                                                {{-- @else --}}
+                                                <span class="badge badge-pill badge-secondary">{{ __('On Hold') }}</span>
+                                                {{-- @endif --}}
 
                                             </div>
                                         </div>
@@ -145,7 +118,8 @@
                                                     class="ik ik-edit-2"></i></a>
                                             <a href="#" class="list-delete" data-id="{{ $newslist->id }}"><i
                                                     class="ik ik-trash-2"></i></a>
-                                            <a href="https://www.facebook.com/sharer/sharer.php?u=http://fmapmedia.com/show/news/{{$newslist->slug}}" target="_blank"><i class="ik ik-facebook"></i></a>
+                                            <a href="https://www.facebook.com/sharer/sharer.php?u=http://fmapmedia.com/show/news/{{ $newslist->slug }}"
+                                                target="_blank"><i class="ik ik-facebook"></i></a>
                                             {{-- <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="" data-layout="" data-action="" data-size="" data-share="true"></div> --}}
                                             <a href="#"><i class="ik ik-twitter"></i></a>
                                             {{-- {!! Share::page(url('/post/'. $newlist->slug))->facebook()->twitter()->whatsapp() !!} --}}
@@ -247,19 +221,19 @@
                                 text: 'Delete',
                                 btnClass: 'btn-red',
                                 action: function() {
-                                var type = "GET";
-                                var ajaxurl = '/news/delete/' + dataId;
-                                $.ajax({
-                                    type: type,
-                                    url: ajaxurl,
-                                    dataType: 'json',
-                                    success: function(data) {  
-                                        location.reload()
-                                    },
-                                    error: function(data) {
-                                        console.log(data);
-                                    }
-                                });
+                                    var type = "GET";
+                                    var ajaxurl = '/news/delete/' + dataId;
+                                    $.ajax({
+                                        type: type,
+                                        url: ajaxurl,
+                                        dataType: 'json',
+                                        success: function(data) {
+                                            location.reload()
+                                        },
+                                        error: function(data) {
+                                            console.log(data);
+                                        }
+                                    });
                                 }
                             },
                             close: function() {}
@@ -269,5 +243,6 @@
                 });
             });
         </script>
+        <script src="{{ asset('js/share.js') }}"></script>
     @endpush
 @endsection

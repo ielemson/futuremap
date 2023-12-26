@@ -178,6 +178,7 @@ return [
         KingFlamez\Rave\RaveServiceProvider::class,
         Jorenvh\Share\Providers\ShareServiceProvider::class,
         Mews\Captcha\CaptchaServiceProvider::class,
+        
 
     ],
 

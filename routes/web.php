@@ -125,7 +125,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 	//only those have manage news permission will get access
 	Route::group(['middleware' => 'can:manage_news'], function () {
-		Route::get('admin/news/list', [NewsController::class, 'index'])->name('news.list');
+		Route::get('admin/news/list/{query?}', [NewsController::class, 'index'])->name('news.list');
 		Route::get('admin/news/create', [NewsController::class, 'create'])->name('news.create');
 		Route::post('admin/news/store', [NewsController::class, 'store'])->name('news.store');
 		Route::get('admin/news/show/{id}', [NewsController::class, 'show'])->name('news.show');

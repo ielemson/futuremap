@@ -65,6 +65,7 @@
     <!-- initiate scripts-->
     {{-- @include('include.script') --}}
      <script src="{{ asset('dist/js/jquery-3.6.4.min.js') }}"></script>
+     {{-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script> --}}
     {{-- <script src="{{ asset('js/app.js') }}"></script> --}}
     <script src="{{ asset('all.js') }}"></script>
     <!-- Stack array for including inline js or scripts -->

@@ -22,12 +22,12 @@ class NewsController extends Controller
     {
         // $news = News::all();
         // $news = News::orderBy('id', 'DESC')->get();
-
+// dd($request->all())
         $news = News::where([
             ['title', '!=', Null],
             [function ($query) use ($request) {
                 if (($s = $request->s)) {
-                    $query->orWhere('title', 'LIKE', '%' . $s . '%')
+                    $query->where('category_id',$s)
                         ->orderBy('id', 'DESC')->get();
                 }
             }]
@@ -41,7 +41,19 @@ class NewsController extends Controller
         // ->facebook()
         // ->twitter()
         // ->instagram();
-        return view('news.index',compact('news'));
+        
+        $shareComponent = \Share::page(
+            'https://www.positronx.io/create-autocomplete-search-in-laravel-with-typeahead-js/',
+            'Your share text comes here',
+        )
+        ->facebook()
+        ->twitter()
+        ->linkedin()
+        ->telegram()
+        ->whatsapp()        
+        ->reddit();
+        $categories = NewsCategory::all();
+        return view('news.index',compact('news','shareComponent','categories'));
     }
 
     public function category()
