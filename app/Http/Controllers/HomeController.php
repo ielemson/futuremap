@@ -28,7 +28,10 @@ class HomeController extends Controller
         $news = News::where('status',1)->orderBy('id', 'DESC')->paginate(6);
         $services = Service::all();
         $features = Features::all();
-        return view('frontend.home', compact('news','services','features'));
+        $seo_title = "The Future Map Media, E-Commerce and Education Services, Media Solutions";
+        $seo_description = "E-Commerce and Education Services, Media Solutions,Online Learning Tools,Digital Marketing Solutions,Ad Campaign Management";
+        $seo_keywords = "Media Solutions, E-commerce Platforms, Educational Programs, Advertising Strategies, Digital Marketing Services, Multimedia Integration, Online Learning Resources, Retail Innovation, Targeted Ad Campaigns, Content Creation Services, E-learning Tools, Brand Promotion, Digital Advertising Solutions, Media Production, Online Retail Solutions, Educational Technology, Marketing Analytics, Cross-media Campaigns, Interactive Learning, Advertising Management";
+        return view('frontend.home', compact('news','services','features','seo_title','seo_description','seo_keywords'));
     }
 
     public function aboutUs(){

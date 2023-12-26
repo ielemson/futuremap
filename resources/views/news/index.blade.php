@@ -76,7 +76,7 @@
                                         <img src="{{ asset('assets/images/news') }}/{{ $newslist->image }}"
                                             alt="Donec sit amet est at sem iaculis aliquam."
                                             class="list-thumbnail responsive border-0">
-                                        @if ($newslist->status == 10)
+                                        @if ($newslist->status == 1)
                                             <span
                                                 class="badge badge-pill badge-success position-absolute badge-top-left">{{ __('Active') }}
                                             </span>
