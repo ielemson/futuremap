@@ -16,6 +16,7 @@ use App\Http\Controllers\FeaturesController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Backend\NewsController;
+use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\Frontend\FlutterwaveController;
@@ -141,6 +142,14 @@ Route::group(['middleware' => 'auth'], function () {
 	// Only those with this privilegde can manage the competition table
 	Route::group(['middleware' => 'can:manage_competition'], function () {
 		Route::get('competition/list', [CompetitionController::class, 'index'])->name('competiiton.list');
+	});
+
+	Route::group(['middleware' => 'can:manage_slider'], function () {
+		Route::get('slider/all', [SliderController::class, 'index'])->name('slider.list');
+		Route::get('slider/create', [SliderController::class, 'create'])->name('slider.create');
+		Route::post('slider/store', [SliderController::class, 'store'])->name('slider.store');
+		Route::get('slider/edit/{id}', [SliderController::class, 'edit'])->name('slider.edit');
+		Route::post('slider/update/{id}', [SliderController::class, 'update'])->name('slider.update');
 	});
 
 	//only those have manage_user permission will get access
