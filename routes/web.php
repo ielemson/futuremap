@@ -16,6 +16,7 @@ use App\Http\Controllers\FeaturesController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Backend\NewsController;
+use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServiceController;
@@ -151,6 +152,16 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::get('slider/edit/{id}', [SliderController::class, 'edit'])->name('slider.edit');
 		Route::post('slider/update/{id}', [SliderController::class, 'update'])->name('slider.update');
 	});
+
+	// Setting
+	Route::prefix('setting')->group(function () {
+		// Route::get('/file-manager/index', 			 [App\Http\Controllers\Admin\FileManagerController::class, 'index'])->name('filemanager.index');
+		// Route::get('/website-setting/edit', 		 [App\Http\Controllers\Admin\SettingController::class, 'edit'])->name('website-setting.edit');
+    	// Route::post('/website-setting/update/{id}',  [App\Http\Controllers\Admin\SettingController::class, 'update'])->name('website-setting.update');
+		Route::get('/website-setting/edit', [SettingController::class, 'edit'])->name('website-setting.edit');
+		Route::get('/website-setting/update/{id}', [SettingController::class, 'update'])->name('website-setting.update');
+	});
+
 
 	//only those have manage_user permission will get access
 	Route::group(['middleware' => 'can:manage_user'], function () {

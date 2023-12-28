@@ -29,7 +29,7 @@ class HomeController extends Controller
         $news = News::where('status',1)->orderBy('id', 'DESC')->paginate(6);
         $services = Service::all();
         $features = Features::all();
-        $sliders = Slider::where('status',1)->get();
+        $sliders = Slider::where('status',1)->orderBy('id','ASC')->get();
         // dd($sliders);
         $seo_title = "The Future Map Media, E-Commerce and Education Services, Media Solutions";
         $seo_description = "E-Commerce and Education Services, Media Solutions,Online Learning Tools,Digital Marketing Solutions,Ad Campaign Management";

@@ -18,7 +18,8 @@ class SliderController extends Controller
      */
     public function index()
     {
-        $sliders = Slider::all();
+        // $sliders = Slider::all();
+        $sliders = Slider::orderBy('id','ASC')->get();
         return view('slider.index',compact('sliders'));
     }
 

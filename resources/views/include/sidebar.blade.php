@@ -69,6 +69,22 @@
 
                         </div>
                     </div>
+
+                    {{-- Setting Menu Starts --}}
+                    <div class="nav-lavel">{{ __('Setting') }} </div>
+                    <div class="nav-item {{ $segment1 == 'setting' ? 'active open' : '' }} has-sub">
+                        <a href="#"><i class="ik ik-file-text"></i><span>{{ __('Edit SEtting') }}</span></a>
+                        <div class="submenu-content">
+                            <!-- only those have manage_user permission will get access -->
+                            <a href="{{ route('website-setting.edit') }}"
+                                class="menu-item {{ $segment1 == 'slider' && $segment2 == 'create' ? 'active' : '' }}">{{ __('Create Slider') }}</a>
+                            <a href="{{ route('slider.list') }}"
+                                class="menu-item {{ $segment1 == 'slider' && $segment2 == 'create' ? 'active' : '' }}">{{ __('Slider List') }}</a>
+
+
+                        </div>
+                    </div>
+                    {{-- Setting Menu Ends --}}
                 @endhasrole
                 {{-- CUSTOM SIDEBAR  :::::::::::::::::::::::::::::: STARTS --}}
                 <div
