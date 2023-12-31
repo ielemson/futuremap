@@ -1,11 +1,11 @@
+@php
+    $setting = \App\Models\Setting::find(1);
+@endphp
 @extends('layouts.front')
-
 
 @section('content')
 @section('title', 'Contact Us')  
 @include('frontend.include.innerBanner',['banner_title'=>'Contact Us'])
-
-
 
 <div class="contact-info-area pt-100 pb-70">
     <div class="container">
@@ -15,9 +15,10 @@
                     <i class="ri-map-pin-fill"></i>
                     <h3>Our location
                     </h3>
-                    <p>Suite B11(4) Real tower center
-                      No 26 A E  Ekukinam Street, Utako Abuja</p>
-                    {{-- <p>San Francisco,230909, Canada</p> --}}
+                    <p>
+                    {{$setting->address}}
+                    </p>
+                    
                 </div>
             </div>
             <div class="col-lg-4 col-sm-12">
@@ -25,15 +26,15 @@
                     <i class="ri-mail-fill"></i>
                     <h3>Email us</h3>
                     <p>
-                        <a href="mailto:fmap-abuja@fmapmedia.com">
-                            <span class="__cf_email__">fmap-abuja@fmapmedia.com</span>
+                        <a href="#">
+                            <span class="__cf_email__">{{$setting->email}}</span>
                         </a>
                     </p>
-                    <p>
+                    {{-- <p>
                         <a href="mailto:info@fmapmedia.com">
                             <span class="__cf_email__">info@fmapmedia.com</span>
                         </a>
-                    </p>
+                    </p> --}}
                 </div>
             </div>
             <div class="col-lg-4 col-sm-12">
@@ -41,11 +42,11 @@
                     <i class="ri-phone-fill"></i>
                     <h3note>Phone</h3note>
                     <p>
-                        <a href="tel:+2347062990717">07062990717</a>
+                        <a href="#">{!!$setting->phone!!}</a>
                     </p>
-                    <p>
+                    {{-- <p>
                         <a href="tel:+08035082149">08035082149</a>
-                    </p>
+                    </p> --}}
                 </div>
             </div>
         </div>
@@ -136,7 +137,6 @@ data-aos-easing="ease-in-sine">
         </div>
     </div>
 </div>
-
 
 <div class="contact-map-area pb-100">
     <div class="container">

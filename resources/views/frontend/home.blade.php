@@ -2,7 +2,7 @@
 
 @section('content')
 
-@section('title', $seo_title ?? '')
+@section('title', 'The Future Map Media')
 
 @include('frontend.include.slider')
 

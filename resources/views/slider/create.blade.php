@@ -93,7 +93,7 @@
     </div>
     
     <!-- push external js -->
-    @push('script')
+    @push('scripts')
         <script src="{{ asset('js/form-components.js') }}"></script>
     @endpush
 @endsection

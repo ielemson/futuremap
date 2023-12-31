@@ -1,6 +1,8 @@
 @extends('layouts.front')
 
-
+@php
+    $setting = \App\Models\Setting::find(1);
+@endphp
 @section('content')
 @section('title', 'About Us')
 @include('frontend.include.innerBanner', ['banner_title' => 'About Us'])
@@ -46,7 +48,7 @@
                 <div class="featured-item">
                     <i class="flaticon-effective"></i>
                     <h3>Our Motto</h3>
-                    <p>Building human capitals, creating market-fields.</p>
+                    <p>{{$setting->motto}}</p>
                 </div>
             </div>
             <div class="col-lg-4 col-6">
@@ -54,10 +56,8 @@
                     <i class="flaticon-effective"></i>
                     <h3>Our Mission</h3>
                     <p>
-                        We are passionate in building human capital, wealth
-                        creation and creating an excellent leadership pathway
-                        through robust engagement with people, and engaging with
-                        strategic partners.</p>
+                    {{$setting->mission}}
+                    </p>
                 </div>
             </div>
             <div class="col-lg-4 col-6">
@@ -65,10 +65,8 @@
                     <i class="flaticon-effective"></i>
                     <h3>Our Vision</h3>
                     <p>
-                        To be a leading global player in transformational
-                        leadership, education and wealth creation, serving local
-                        and global clientele with excellent track records that
-                        exceed expectations.</p>
+                        {{$setting->vision}}
+                    </p>
                 </div>
             </div>
            

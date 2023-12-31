@@ -1,14 +1,17 @@
+@php
+    $setting = \App\Models\Setting::find(1);
+@endphp
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <title>FutureMap Media :: @yield('title', '')</title>
+    <title>{{$setting->website_title}} | @yield('title', '')</title>
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="{{$seo_description  ?? ''}}">
-    <meta name="keywords" content="{{$seo_keywords ?? ''}}">
+    <meta name="description" content="{{$setting->meta_description}}">
+    <meta name="keywords" content="{{$setting->meta_title}}">
     <link rel="canonical" href="{{url('/')}}">
     @if (!@empty($news_slug))
     <meta property="og:url" content="{{route('front.single.news',$news_slug)}}" />

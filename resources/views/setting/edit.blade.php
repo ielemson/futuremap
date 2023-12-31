@@ -38,7 +38,7 @@
                     </div>
                     <div class="card-body">
                         <form method="post" action="{{ route('website-setting.update', 1) }}"
-                            enctype="multipart/form-data">
+                            enctype="multipart/form-data" id="uploadForm">
                             @csrf()
 
 
@@ -88,10 +88,58 @@
                                                 <div class="form-group">
                                                     <label for="website_title"
                                                         class="required">{{ __('Website default title') }}:</label>
-                                                    <input type="text" name="website_title" id="website_title"
+                                                    <input type="text" name="website_title" id=""
                                                         class="form-control @error('website_title') form-control-error @enderror"
                                                         required="required" value="{{ $setting->website_title }}">
 
+                                                    @error('website_title')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="website_title"
+                                                        class="required">{{ __('Website brief description') }}:</label>
+                                                    <textarea type="text" name="website_description" id=""
+                                                        class="form-control @error('website_description') form-control-error @enderror"
+                                                        required="required">
+                                                        {{ $setting->website_description }}
+                                                    </textarea>
+                                                    @error('website_title')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="website_title"
+                                                        class="required">{{ __('Website Motto') }}:</label>
+                                                    <textarea type="text" name="motto" id=""
+                                                        class="form-control @error('motto') form-control-error @enderror"
+                                                        required="required">
+                                                        {{$setting->motto}}
+                                                    </textarea>
+                                                    @error('website_title')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="website_title"
+                                                        class="required">{{ __('Website Vision') }}:</label>
+                                                    <textarea type="text" name="vision" id="vision"
+                                                        class="form-control @error('vision') form-control-error @enderror"
+                                                        required="required">
+                                                        {{ $setting->vision }}
+                                                    </textarea>
+                                                    @error('website_title')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="website_title"
+                                                        class="required">{{ __('Website Mission') }}:</label>
+                                                    <textarea type="text" name="mission" id="mission"
+                                                        class="form-control @error('mission') form-control-error @enderror"
+                                                        required="required">
+                                                        {{ $setting->mission }}
+                                                    </textarea>
                                                     @error('website_title')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
@@ -100,44 +148,56 @@
                                                 <div class="row">
 
                                                     <div class="col-md-4">
-                                                        <div class="card">
-                                                            <div class="card-body text-center">
-                                                                <div class="form-group">
-                                                                    {{-- <label for="website_title"
-                                                                        class="required">{{ __('Logo') }}:</label> --}}
-                                                                    <div class="">
-                                                                        @if (!empty($setting->website_logo_dark))
-                                                                            <img src="{{ $setting->website_logo_dark }}"
-                                                                                alt="..."
-                                                                                id="website_logo_dark_output"
-                                                                                class="img-thumbnail rounded mb-3"
-                                                                                onerror="this.src='{{ asset('assets/admin/img/logo-def.png') }}';">
-                                                                        @else
-                                                                            <img src="" alt="..."
-                                                                                id="website_logo_dark_output"
-                                                                                class="img-thumbnail rounded mb-3"
-                                                                                onerror="this.src='{{ asset('assets/admin/img/logo-def.png') }}';">
-                                                                        @endif
+                                                        <div class="form-group">
+                                                            <label for="website_title"
+                                                                class="required">{{ __('Logo') }}:</label>
+                                                            <div class="">
+                                                                {{-- @if (!empty($setting->website_logo))
+                                                                    <img src="{{ $setting->website_logo }}"
+                                                                        alt="..."
+                                                                        id="website_logo_output"
+                                                                        class="img-thumbnail rounded mb-3"
+                                                                        onerror="this.src='{{ asset('assets/admin/img/logo-def.png') }}';">
+                                                                @else
+                                                                    <img src="" alt="..."
+                                                                        id="website_logo_output"
+                                                                        class="img-thumbnail rounded mb-3"
+                                                                        onerror="this.src='{{ asset('assets/admin/img/logo-def.png') }}';">
+                                                                @endif --}}
 
-                                                                        <input type="text" hidden
-                                                                            id="website_logo_dark" class="form-control"
-                                                                            name="website_logo_dark">
-                                                                        <div class="" style="width: 100%;">
-                                                                            <button class="btn btn-secondary"
-                                                                                type="button"
-                                                                                id="website_logo_dark_button_image">
-                                                                                <i data-feather="image"
-                                                                                    class="feather-icon"></i>
-                                                                                Change Logo Image
-                                                                            </button>
-                                                                        </div>
-                                                                    </div>
-                                                                </div>
+                                                                <input type="file"
+                                                                    id="website_logo" class="form-control"
+                                                                    name="website_logo" >
+                                                                {{-- <div class="" style="width: 100%;">
+                                                                    <button class="btn btn-secondary"
+                                                                        type="button"
+                                                                        id="website_logo_button_image">
+                                                                        <i data-feather="image"
+                                                                            class="feather-icon"></i>
+                                                                        Change Logo Image
+                                                                    </button>
+                                                                </div> --}}
                                                             </div>
                                                         </div>
                                                     </div>
 
-                                                   
+                                                    <div class="col-md-4">
+                                                        <div class="form-group">
+                                                            <label for="website_title" class="required">{{__('Favicon')}}:</label>
+            
+                                                            <div class="">
+{{--                                                         
+                                                                @if(!empty($setting->website_favicon))
+                                                                    <img src="{{ $setting->website_favicon }}" alt="..." id="website_favicon_output" class="img-thumbnail rounded mb-3"  onerror="this.src='{{ asset('assets/admin/img/favicon-def.png') }}';">
+                                                                @else
+                                                                    <img src="" alt="..." id="website_favicon_output" class="img-thumbnail rounded mb-3" onerror="this.src='{{ asset('assets/admin/img/favicon-def.png') }}';">
+                                                                @endif
+             --}}
+                                                                <input type="file"  id="website_favicon" class="form-control" name="website_favicon">
+                                                               
+                                                            </div>
+                                                        </div>
+                                                    </div>
 
                                                 </div> <!-- row-end -->
 
@@ -318,13 +378,22 @@
                                     <!-- Social Media Setting -->
 
                                 </div><!-- /Tab Content -->
-
-                            </section> <!-- /section -->
-                            <div class="col-md-4">
-                                <div class="create-btn pull-left">
-                                    <button type="submit" class="btn btn-primary">{{ __('Update') }}</button>
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="col-md-12 col-g-12">
+                                            <div class="create-btn pull-left">
+                                            <button type="submit" class="btn btn-primary btn-lg btn-block">
+                                                <b>
+                                                    {{ __('Update Setting') }}
+                                                </b>
+                                            </button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
+                            </section>
+                             <!-- /section -->
+                            
                         </form>
                     </div>
                 </div>
@@ -332,9 +401,26 @@
         </div>
 
     </div>
-
-    <!-- push external js -->
-    {{-- @push('script')
-<script src="{{ asset('js/form-components.js') }}"></script>
-@endpush --}}
 @endsection
+
+@push('scripts')
+<script>
+    function filePreview(input) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+            reader.onload = function(e) {
+                //$('#uploadForm + img').remove();
+                //$('#uploadForm').after('<img src="'+e.target.result+'" width="450" height="300"/>');
+                $('#uploadForm + embed').remove();
+                $('#uploadForm').after('<embed src="' + e.target.result + '" width="250" height="250">');
+            };
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+
+    $("#website_logo").change(function() {
+        filePreview(this);
+    });
+</script>
+
+@endpush

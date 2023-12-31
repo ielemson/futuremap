@@ -11,7 +11,7 @@ class Setting extends Model
 
     protected $fillable = [
         'website_title',
-        'website_logo_dark',
+        'website_logo',
         'website_logo_light',
         'website_logo_small',
         'website_favicon',
@@ -27,5 +27,9 @@ class Setting extends Model
         'linkedin',
         'instagram',
         'github',
+        'website_description',
+        'vision',
+        'mission',
+        'motto'
     ];
 }

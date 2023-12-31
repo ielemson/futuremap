@@ -1481,7 +1481,7 @@ a:hover, a:focus, a:active { outline: 0; text-decoration: none; color: #212121; 
 .note-toolbar{display: block !important;}
 select.form-control { -webkit-appearance: none; -moz-appearance: none; appearance: none; padding-right: 20px; background-image: url("../img/down-arrow.svg"); background-position: center right 15px; background-repeat: no-repeat; -webkit-background-size: 10px; background-size: 10px; height: 35px !important; }
 
-textarea.form-control { padding: 10px 15px; border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; }
+textarea.form-control {  border-radius: 4px; -webkit-border-radius: 4px; -moz-border-radius: 4px; }
 
 .custom-radio .custom-control-label { line-height: 24px; }
 

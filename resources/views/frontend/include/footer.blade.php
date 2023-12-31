@@ -22,20 +22,20 @@
                     <ul class="social-link">
                         <li class="social-title">Follow Us:</li>
                         <li>
-                            <a href="https://web.facebook.com/profile.php?id=100089164734616" target="_blank">
+                            <a href="{{$setting->facebook}}" target="_blank">
                                 <i class="ri-facebook-fill"></i>
                             </a>
                         </li>
                         <li>
-                            <a href="https://www.instagram.com/fmapmedia/" target="_blank">
+                            <a href="{{$setting->instagram}}" target="_blank">
                                 <i class="ri-instagram-fill"></i>
                             </a>
                         </li>
-                        {{-- <li>
-                            <a href="https://www.pinterest.com/" target="_blank">
-                                <i class="ri-instagram-line"></i>
+                        <li>
+                            <a href="{{$setting->twitter}}" target="_blank">
+                                <i class="ri-twitter-line"></i>
                             </a>
-                        </li> --}}
+                        </li>
                     </ul>
                 </div>
             </div>
@@ -104,8 +104,7 @@
                             <div class="content">
                                 <h4>Location:</h4>
                                 <span>
-                                    Suite B11(4) Real tower center
-                                    No 26 A E  Ekukinam Street, Utako Abuja
+                                   {!!$setting->address!!}
                                 </span>
                             </div>
                         </li>
@@ -114,16 +113,16 @@
                             <div class="content">
                                 <h4>Email:</h4>
                                 <span><a
-                                        href="mailto:fmap-abuja@fmapmedia.com"><span
+                                        href="#"><span
                                             class="__cf_email__"
-                                           >fmap-abuja@fmapmedia.com</span></a></span>
+                                           >{!!$setting->email!!}</span></a></span>
                             </div>
                         </li>
                         <li>
                             <i class="ri-phone-fill"></i>
                             <div class="content">
                                 <h4>Phone:</h4>
-                                <span><a href="tel:07062990717">08035082149,07062990717
+                                <span><a href="#">{!!$setting->phone!!}
                                 </a></span>
                             </div>
                         </li>

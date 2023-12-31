@@ -159,7 +159,7 @@ Route::group(['middleware' => 'auth'], function () {
 		// Route::get('/website-setting/edit', 		 [App\Http\Controllers\Admin\SettingController::class, 'edit'])->name('website-setting.edit');
     	// Route::post('/website-setting/update/{id}',  [App\Http\Controllers\Admin\SettingController::class, 'update'])->name('website-setting.update');
 		Route::get('/website-setting/edit', [SettingController::class, 'edit'])->name('website-setting.edit');
-		Route::get('/website-setting/update/{id}', [SettingController::class, 'update'])->name('website-setting.update');
+		Route::post('/website-setting/update/{id}', [SettingController::class, 'update'])->name('website-setting.update');
 	});
 
 
