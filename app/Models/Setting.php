@@ -30,6 +30,8 @@ class Setting extends Model
         'website_description',
         'vision',
         'mission',
-        'motto'
+        'motto',
+        'about',
+        'about_title'
     ];
 }

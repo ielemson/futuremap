@@ -6,12 +6,12 @@
                     <ul>
                         <li>
                             <i class="ri-phone-fill"></i>
-                            <a href="tel:+23408035082149">+(234)8035082149</a>
+                            <a href="#">{!!$setting->phone!!}</a>
                         </li>
                         <li>
                             <i class="ri-mail-fill"></i>
-                            <a href="mailto:info@fmapmedia.com">
-                                <span class="__cf_email__">info@fmapmedia.com</span>
+                            <a href="#">
+                                <span class="__cf_email__">{{$setting->email}}</span>
                             </a>
                         </li>
                     </ul>
@@ -33,17 +33,17 @@
                     </div>
                     <ul class="social-list">
                         <li>
-                            <a href="https://web.facebook.com/profile.php?id=100089164734616" target="_blank">
+                            <a href="{{$setting->facebook}}" target="_blank">
                                 <i class="ri-facebook-fill"></i>
                             </a>
                         </li>
-                        {{-- <li>
-                            <a href="https://twitter.com/" target="_blank">
+                        <li>
+                            <a href="{{$setting->twitter}}" target="_blank">
                                 <i class="ri-twitter-fill"></i>
                             </a>
-                        </li> --}}
+                        </li>
                         <li>
-                            <a href="https://www.instagram.com/fmapmedia/" target="_blank">
+                            <a href="{{$setting->instagram}}" target="_blank">
                                 <i class="ri-instagram-line"></i>
                             </a>
                         </li>

@@ -144,7 +144,31 @@
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
                                                 </div>
-
+                                                <hr class="mt-5">
+                                                <div class="form-group">
+                                                    <label for="about_title"
+                                                        class="required">{{ __('Website About Title') }}:</label>
+                                                    <input type="text" name="about_title" id="about_title"
+                                                        class="form-control @error('about_title') form-control-error @enderror"
+                                                        required="required" value="{{$setting->about_title}}">
+                                                       
+                                                    @error('about_title')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="website_title"
+                                                        class="required">{{ __('Website About') }}:</label>
+                                                    <textarea type="text" name="about" id="about"
+                                                        class="form-control @error('about') form-control-error @enderror"
+                                                        required="required">
+                                                        {{ $setting->about }}
+                                                    </textarea>
+                                                    @error('about')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+                                                <hr class="mb-5">
                                                 <div class="row">
 
                                                     <div class="col-md-4">
