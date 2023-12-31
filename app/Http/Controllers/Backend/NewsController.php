@@ -31,7 +31,7 @@ class NewsController extends Controller
                         ->orderBy('id', 'DESC')->get();
                 }
             }]
-        ])->orderBy('id', 'DESC')->paginate(16);
+        ])->orderBy('id', 'DESC')->paginate(18);
 
         // $shareComponent = \Share::page(
         //     'https://fmapmedia.com/',
@@ -41,18 +41,18 @@ class NewsController extends Controller
         // ->twitter()
         // ->instagram();
         
-        $shareComponent = \Share::page(
+        $shareButtons = \Share::page(
             'https://www.positronx.io/create-autocomplete-search-in-laravel-with-typeahead-js/',
             'Your share text comes here',
         )
         ->facebook()
         ->twitter()
-        ->linkedin()
-        ->telegram()
-        ->whatsapp()        
-        ->reddit();
+        // ->linkedin()
+        // ->telegram()
+        ->whatsapp();       
+        // ->reddit();
         $categories = NewsCategory::all();
-        return view('news.index',compact('news','shareComponent','categories'));
+        return view('news.index',compact('news','shareButtons','categories'));
     }
 
     public function category()

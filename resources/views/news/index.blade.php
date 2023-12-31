@@ -26,6 +26,7 @@
                             <li class="breadcrumb-item active" aria-current="page">{{ __('List') }}</li>
                         </ol>
                     </nav>
+                    {{-- {!! $shareButtons !!} --}}
                 </div>
             </div>
         </div>
@@ -118,11 +119,12 @@
                                                     class="ik ik-edit-2"></i></a>
                                             <a href="#" class="list-delete" data-id="{{ $newslist->id }}"><i
                                                     class="ik ik-trash-2"></i></a>
-                                            <a href="https://www.facebook.com/sharer/sharer.php?u=http://fmapmedia.com/show/news/{{ $newslist->slug }}"
+                                            <a href="https://www.facebook.com/sharer/sharer.php?u={{config('app.url')}}/news/{{ $newslist->slug }}"
                                                 target="_blank"><i class="ik ik-facebook"></i></a>
                                             {{-- <div class="fb-like" data-href="https://developers.facebook.com/docs/plugins/" data-width="" data-layout="" data-action="" data-size="" data-share="true"></div> --}}
-                                            <a href="#"><i class="ik ik-twitter"></i></a>
-                                            {{-- {!! Share::page(url('/post/'. $newlist->slug))->facebook()->twitter()->whatsapp() !!} --}}
+                                            <a href="https://twitter.com/intent/tweet?text=Default+share+text&url={{config('app.url')}}/news/{{ $newslist->slug }}"><i class="ik ik-twitter"></i></a>
+                                            {{-- {!! Share::page(url('/news/'. $newslist->slug))->facebook()->twitter()->whatsapp() !!} --}}
+                                            {{-- {!! Share::page($newslist->slug, $newslist->title)->facebook()->twitter()->whatsapp() !!} --}}
                                         </div>
                                         <div class="custom-control custom-checkbox pl-1 align-self-center">
                                             <label class="custom-control custom-checkbox mb-0">
