@@ -32,6 +32,7 @@ class Setting extends Model
         'mission',
         'motto',
         'about',
-        'about_title'
+        'about_title',
+        'pr_package'
     ];
 }

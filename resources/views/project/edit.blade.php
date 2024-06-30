@@ -1,5 +1,5 @@
 @extends('layouts.main') 
-@section('title', 'Add Service')
+@section('title', 'Edit Project')
 @section('content')
     <!-- push external head elements to head -->
     @push('head')
@@ -14,8 +14,8 @@
                     <div class="page-header-title">
                         <i class="ik ik-user-plus bg-blue"></i>
                         <div class="d-inline">
-                            <h5>{{ __('Add Service ')}}</h5>
-                            <span>{{ __('Create new service')}}</span>
+                            <h5>{{ __('Add Project ')}}</h5>
+                            <span>{{ __('Create new Project')}}</span>
                         </div>
                     </div>
                 </div>
@@ -27,7 +27,7 @@
                                 <a href="{{url('dashboard')}}"><i class="ik ik-home"></i></a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="#">{{ __('Add Service')}}</a>
+                                <a href="#">{{ __('Add Project')}}</a>
                             </li>
                         </ol>
                     </nav>
@@ -41,17 +41,17 @@
             <div class="col-md-12">
                 <div class="card ">
                     <div class="card-header">
-                        <h3>{{ __('Create Service')}}</h3>
+                        <h3>{{ __('Create Project')}}</h3>
                     </div>
                     <div class="card-body">
-                        <form class="forms-sample" method="POST" action="{{ route('create-service') }}" enctype="multipart/form-data">
+                        <form action="{{route('project.update',$project->id)}}" method="POST" enctype="multipart/form-data" role="form" id="">
                         @csrf
                             <div class="row">
                                 <div class="col-sm-4">
 
                                     <div class="form-group">
                                         <label for="header">{{ __('Header')}}<span class="text-red">*</span></label>
-                                        <input id="header" type="text" class="form-control @error('header') is-invalid @enderror" name="header" value="" placeholder="Enter service" required>
+                                        <input id="header" type="text" value="{{$project->header}}" class="form-control @error('header') is-invalid @enderror" name="header" value="" placeholder="Enter Project" required>
                                         <div class="help-block with-errors"></div>
 
                                         @error('header')
@@ -61,42 +61,39 @@
                                         @enderror
                                     </div>
                                 </div>
-                                <div class="col-sm-4">
-
-                                    <div class="form-group">
-                                        <label for="header">{{ __('Status')}}<span class="text-red">*</span></label>
-                                        <select name="status" class="form-control" required>
-                                            <option value="">Select Status</option>
-                                            <option value="1">Publish</option>
-                                            <option value="2">Unpublish</option>
-                                        </select>
-                                        <div class="help-block with-errors"></div>
-                                        @error('status')
-                                            <span class="invalid-feedback" role="alert">
-                                                <strong>{{ $message }}</strong>
-                                            </span>
-                                        @enderror
-                                    </div>
+                              <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="header">{{ __('Status')}}<span class="text-red">*</span></label>
+                                    <select name="status" class="form-control" required>
+                                        <option value="">Select Status</option>
+                                        <option value="1" {{$project->status == 1 ? 'selected': '' }}>Publish</option>
+                                        <option value="0" {{$project->status == 0 ? 'selected': '' }}>Unpublish</option>
+                                    </select>
+                                    <div class="help-block with-errors"></div>
+                                    @error('status')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
                                 </div>
-
+                              </div>
                                 <div class="col-md-4">
                                     <div class="form-group">
-                                        <label>{{ __('Image')}}</label>
-                                        {{-- <input type="file" name="image" class="file-upload-default" required> --}}
-                                        <div class="form-group">
+                                        <label>{{ __('image')}}</label>
+                                       
+                                        <div class="form-group col-xs-12">
                                             <input type="file" class="form-control" name="image">
-                                            {{-- <span class="input-group-append">
-                                            <button class="file-upload-browse btn btn-primary" type="button">{{ __('Upload')}}</button>
-                                            </span> --}}
+                                            
                                         </div>
                                     </div>
                                 </div>
                                 
                                 <div class="col-sm-12 col-lg-12 col-md-12">
-
                                     <div class="form-group">
                                         <label for="name">{{ __('Content')}}<span class="text-red">*</span></label>
-                                        <textarea id="summernote" type="text" class="form-control html-editor @error('content') is-invalid @enderror" name="content"  placeholder="Enter service content" required></textarea>
+                                        <textarea  type="text" class="form-control html-editor @error('content') is-invalid @enderror" name="content"  placeholder="Enter project content" required id="summernote">
+                                        {{$project->content}}
+                                        </textarea>
                                         <div class="help-block with-errors"></div>
 
                                         @error('content')
@@ -107,10 +104,12 @@
                                     </div>
                                 </div>
                            
-                                
-                                <div class="col-md-12">
+                                <div class="col-md-6">
+                                    <img src="{{asset('assets/images/projects')}}/{{$project->image}}" alt="" style="width: 50%">
+                                </div>
+                                <div class="col-md-12 mt-5">
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary">{{ __('Submit')}}</button>
+                                        <button type="submit" class="btn btn-primary">{{ __('Update')}}</button>
                                     </div>
                                 </div>
                             </div>
@@ -121,8 +120,6 @@
             </div>
         </div>
     </div>
-    <!-- push external js -->
-   
     
 @endsection
 

@@ -493,7 +493,7 @@
         paymentForm.addEventListener("submit", payWithPaystack, false);
 
 
-        function payWithPaystack(e) {
+        function payWithPaystack(e) {a
             e.preventDefault();
 
             const paystack = new PaystackPop();

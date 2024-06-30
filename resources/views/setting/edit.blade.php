@@ -1,7 +1,6 @@
 @extends('layouts.main')
 @section('title', 'Form Components')
 @section('content')
-
     <div class="container-fluid">
         <div class="page-header">
             <div class="row align-items-end">
@@ -37,8 +36,8 @@
                         <h3>{{ __('Create Slider') }}</h3>
                     </div>
                     <div class="card-body">
-                        <form method="post" action="{{ route('website-setting.update', 1) }}"
-                            enctype="multipart/form-data" id="uploadForm">
+                        <form method="post" action="{{ route('website-setting.update', 1) }}" enctype="multipart/form-data"
+                            id="uploadForm">
                             @csrf()
 
 
@@ -54,11 +53,7 @@
                                         <a class="nav-link" id="seo-tab" data-toggle="tab" href="#seo" role="tab"
                                             aria-controls="seo" aria-selected="false">SEO Setting</a>
                                     </li>
-                                    {{-- <li class="nav-item">
-                                        <a class="nav-link" id="currency-tab" data-toggle="tab" href="#currency"
-                                            role="tab" aria-controls="currency" aria-selected="false">Currency
-                                            Setting</a>
-                                    </li> --}}
+ 
                                     <li class="nav-item">
                                         <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact"
                                             role="tab" aria-controls="contact" aria-selected="false">Contact Setting</a>
@@ -100,10 +95,9 @@
                                                     <label for="website_title"
                                                         class="required">{{ __('Website brief description') }}:</label>
                                                     <textarea type="text" name="website_description" id=""
-                                                        class="form-control @error('website_description') form-control-error @enderror"
-                                                        required="required">
-                                                        {{ $setting->website_description }}
-                                                    </textarea>
+                                                        class="form-control summernote @error('website_description') form-control-error @enderror" required="required">
+{{ $setting->website_description }}
+</textarea>
                                                     @error('website_title')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
@@ -111,11 +105,10 @@
                                                 <div class="form-group">
                                                     <label for="website_title"
                                                         class="required">{{ __('Website Motto') }}:</label>
-                                                    <textarea type="text" name="motto" id=""
-                                                        class="form-control @error('motto') form-control-error @enderror"
+                                                    <textarea type="text" name="motto" id="" class="form-control @error('motto') form-control-error @enderror"
                                                         required="required">
-                                                        {{$setting->motto}}
-                                                    </textarea>
+{{ $setting->motto }}
+</textarea>
                                                     @error('website_title')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
@@ -124,10 +117,9 @@
                                                     <label for="website_title"
                                                         class="required">{{ __('Website Vision') }}:</label>
                                                     <textarea type="text" name="vision" id="vision"
-                                                        class="form-control @error('vision') form-control-error @enderror"
-                                                        required="required">
-                                                        {{ $setting->vision }}
-                                                    </textarea>
+                                                        class="form-control summernote @error('vision') form-control-error @enderror" required="required">
+{{ $setting->vision }}
+</textarea>
                                                     @error('website_title')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
@@ -136,9 +128,8 @@
                                                     <label for="website_title"
                                                         class="required">{{ __('Website Mission') }}:</label>
                                                     <textarea type="text" name="mission" id="mission"
-                                                        class="form-control @error('mission') form-control-error @enderror"
-                                                        required="required">
-                                                        {{ $setting->mission }}
+                                                        class="form-control summernote @error('mission') form-control-error @enderror" required="required">
+                                                    {{ $setting->mission }}
                                                     </textarea>
                                                     @error('website_title')
                                                         <span class="text-danger">{{ $message }}</span>
@@ -150,8 +141,8 @@
                                                         class="required">{{ __('Website About Title') }}:</label>
                                                     <input type="text" name="about_title" id="about_title"
                                                         class="form-control @error('about_title') form-control-error @enderror"
-                                                        required="required" value="{{$setting->about_title}}">
-                                                       
+                                                        required="required" value="{{ $setting->about_title }}">
+
                                                     @error('about_title')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
@@ -160,65 +151,50 @@
                                                     <label for="website_title"
                                                         class="required">{{ __('Website About') }}:</label>
                                                     <textarea type="text" name="about" id="about"
-                                                        class="form-control @error('about') form-control-error @enderror"
-                                                        required="required">
-                                                        {{ $setting->about }}
+                                                        class="form-control summernote @error('about') form-control-error @enderror" required="required">
+                                                    {{ $setting->about }}
                                                     </textarea>
                                                     @error('about')
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
                                                 </div>
+                                                <hr class="mt-5">
+                                                <div class="form-group">
+                                                    <label for="pr_package"
+                                                        class="required">{{ __('PR Package') }}:</label>
+                                                    <textarea name="pr_package" id="pr_package"
+                                                        class="form-control summernote @error('pr_package') form-control-error @enderror"
+                                                        required="required">
+                                                        {{ $setting->pr_package }}
+                                                     </textarea>
+
+                                                    @error('about_title')
+                                                        <span class="text-danger">{{ $message }}</span>
+                                                    @enderror
+                                                </div>
+
                                                 <hr class="mb-5">
                                                 <div class="row">
-
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <label for="website_title"
+                                                            <label for="website_logo"
                                                                 class="required">{{ __('Logo') }}:</label>
                                                             <div class="">
-                                                                {{-- @if (!empty($setting->website_logo))
-                                                                    <img src="{{ $setting->website_logo }}"
-                                                                        alt="..."
-                                                                        id="website_logo_output"
-                                                                        class="img-thumbnail rounded mb-3"
-                                                                        onerror="this.src='{{ asset('assets/admin/img/logo-def.png') }}';">
-                                                                @else
-                                                                    <img src="" alt="..."
-                                                                        id="website_logo_output"
-                                                                        class="img-thumbnail rounded mb-3"
-                                                                        onerror="this.src='{{ asset('assets/admin/img/logo-def.png') }}';">
-                                                                @endif --}}
-
-                                                                <input type="file"
-                                                                    id="website_logo" class="form-control"
-                                                                    name="website_logo" >
-                                                                {{-- <div class="" style="width: 100%;">
-                                                                    <button class="btn btn-secondary"
-                                                                        type="button"
-                                                                        id="website_logo_button_image">
-                                                                        <i data-feather="image"
-                                                                            class="feather-icon"></i>
-                                                                        Change Logo Image
-                                                                    </button>
-                                                                </div> --}}
+                                                                <input type="file" id="website_logo"
+                                                                    class="form-control" name="website_logo">
                                                             </div>
                                                         </div>
                                                     </div>
 
                                                     <div class="col-md-4">
                                                         <div class="form-group">
-                                                            <label for="website_title" class="required">{{__('Favicon')}}:</label>
-            
+                                                            <label for="website_title"
+                                                                class="required">{{ __('Favicon') }}:</label>
+
                                                             <div class="">
-{{--                                                         
-                                                                @if(!empty($setting->website_favicon))
-                                                                    <img src="{{ $setting->website_favicon }}" alt="..." id="website_favicon_output" class="img-thumbnail rounded mb-3"  onerror="this.src='{{ asset('assets/admin/img/favicon-def.png') }}';">
-                                                                @else
-                                                                    <img src="" alt="..." id="website_favicon_output" class="img-thumbnail rounded mb-3" onerror="this.src='{{ asset('assets/admin/img/favicon-def.png') }}';">
-                                                                @endif
-             --}}
-                                                                <input type="file"  id="website_favicon" class="form-control" name="website_favicon">
-                                                               
+                                                                <input type="file" id="website_favicon"
+                                                                    class="form-control" name="website_favicon">
+
                                                             </div>
                                                         </div>
                                                     </div>
@@ -253,8 +229,7 @@
                                                 </div>
 
                                                 <div class="form-group">
-                                                    <label
-                                                        for="meta_description">{{ __('Meta Description') }}:</label>
+                                                    <label for="meta_description">{{ __('Meta Description') }}:</label>
                                                     <textarea name="meta_description" id="meta_description"
                                                         class="form-control @error('meta_description') form-control-error @enderror">{{ $setting->meta_description }}</textarea>
 
@@ -278,7 +253,6 @@
                                         </div>
                                     </div>
                                     <!-- /SEO Setting -->
-
 
                                     <!-- Contact Setting -->
                                     <div class="tab-pane fade" id="contact" role="tabpanel"
@@ -383,19 +357,6 @@
                                                         <span class="text-danger">{{ $message }}</span>
                                                     @enderror
                                                 </div>
-{{-- 
-                                                <div class="form-group">
-                                                    <label for="github">{{ __('default.form.github') }}</label>
-                                                    <input type="text" name="github" id="github"
-                                                        class="form-control"
-                                                        @error('instagram') form-control-error @enderror"
-                                                        value="{{ $setting->github }}">
-
-                                                    @error('github')
-                                                        <span class="text-danger">{{ $message }}</span>
-                                                    @enderror
-                                                </div> --}}
-
                                             </div>
                                         </div>
                                     </div>
@@ -406,18 +367,18 @@
                                     <div class="card-body">
                                         <div class="col-md-12 col-g-12">
                                             <div class="create-btn pull-left">
-                                            <button type="submit" class="btn btn-primary btn-lg btn-block">
-                                                <b>
-                                                    {{ __('Update Setting') }}
-                                                </b>
-                                            </button>
+                                                <button type="submit" class="btn btn-primary btn-lg btn-block">
+                                                    <b>
+                                                        {{ __('Update Setting') }}
+                                                    </b>
+                                                </button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </section>
-                             <!-- /section -->
-                            
+                            <!-- /section -->
+
                         </form>
                     </div>
                 </div>
@@ -427,24 +388,44 @@
     </div>
 @endsection
 
-@push('scripts')
-<script>
-    function filePreview(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-            reader.onload = function(e) {
-                //$('#uploadForm + img').remove();
-                //$('#uploadForm').after('<img src="'+e.target.result+'" width="450" height="300"/>');
-                $('#uploadForm + embed').remove();
-                $('#uploadForm').after('<embed src="' + e.target.result + '" width="250" height="250">');
-            };
-            reader.readAsDataURL(input.files[0]);
+@push('script')
+    <script>
+        function filePreview(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    //$('#uploadForm + img').remove();
+                    //$('#uploadForm').after('<img src="'+e.target.result+'" width="450" height="300"/>');
+                    $('#uploadForm + embed').remove();
+                    $('#uploadForm').after('<embed src="' + e.target.result + '" width="250" height="250">');
+                };
+                reader.readAsDataURL(input.files[0]);
+            }
         }
-    }
 
-    $("#website_logo").change(function() {
-        filePreview(this);
+        $("#website_logo").change(function() {
+            filePreview(this);
+        });
+    </script>
+
+
+<link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+<script>
+    $('.summernote').summernote({
+        placeholder: 'Please ensure to paste from MS word, Notepad. Avoid pasting directly from other websites.',
+        tabsize: 2,
+        toolbar: [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['table', ['table']],
+            ['insert', ['link', 'picture', 'video']],
+            ['view', ['fullscreen', 'codeview', 'help']]
+        ]
     });
 </script>
-
 @endpush
+
+

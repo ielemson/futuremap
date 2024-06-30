@@ -1,5 +1,5 @@
 @extends('layouts.main') 
-@section('title', 'Our Services')
+@section('title', 'Our Projects')
 @section('content')
     <!-- push external head elements to head -->
   
@@ -12,8 +12,8 @@
                     <div class="page-header-title">
                         <i class="ik ik-user-plus bg-blue"></i>
                         <div class="d-inline">
-                            <h5>{{ __(' Service List ')}}</h5>
-                            <span>{{ __('Our Services')}}</span>
+                            <h5>{{ __(' Project List ')}}</h5>
+                            <span>{{ __('Our Projects')}}</span>
                         </div>
                     </div>
                 </div>
@@ -25,7 +25,7 @@
                                 <a href="{{url('dashboard')}}"><i class="ik ik-home"></i></a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="#">{{ __('Add Service')}}</a>
+                                <a href="#">{{ __('Add Project')}}</a>
                             </li>
                         </ol>
                     </nav>
@@ -41,15 +41,19 @@
         <div class="row">
             <div class="col-md-12">
                
-                <h5 class="mb-4">{{ __('Service Card')}}</h5>
+                <h5 class="mb-4">{{ __('Project Card')}}</h5>
                 <div class="row">
-                   @if (count($services) > 0)
-                       @foreach ($services as $service)
+                   @if (count($projects) > 0)
+                       @foreach ($projects as $project)
                        <div class="col-xs-6 col-lg-3 col-12">
                         <div class="card">
                             <div class="position-relative">
-                                <img class="card-img-top" src="{{asset('assets/images/services')}}/{{$service->image}}" alt="Card image cap">
-                                @if ($service->status == 1)
+                                @if ($project->image != null)
+                                
+                                <img class="card-img-top" src="{{asset('assets/images/projects')}}/{{$project->image}}" alt="Project Image">
+                                    
+                                @endif
+                                @if ($project->status == 1)
                                 <span
                                     class="badge badge-pill badge-success position-absolute badge-top-left">{{ __('Active') }}
                                 </span>
@@ -59,13 +63,13 @@
                             @endif
                             </div>
                             <div class="card-body">
-                                <p class="list-item-heading mb-4">{{$service->header}}</p>
+                                <p class="list-item-heading mb-4">{{$project->header}}</p>
                                 <footer>
-                                    <p class="text-muted text-small mb-0 font-weight-light">{{ \Carbon\Carbon::parse($service->created_at)->diffForHumans() }}</p>
-                                    <a href="{{ route('service.edit', $service->id) }}">
+                                    <p class="text-muted text-small mb-0 font-weight-light">{{ \Carbon\Carbon::parse($project->created_at)->diffForHumans() }}</p>
+                                    <a href="{{ route('project.edit', $project->id) }}">
                                         <i
                                         class="ik ik-edit-2 fa-2x text-info"></i></a>
-                                <a href="#" class="list-delete text-danger fa-2x" data-id="{{ $service->id }}"><i class="ik ik-trash-2"></i></a>
+                                <a href="#" class="list-delete text-danger fa-2x" data-id="{{ $project->id }}"><i class="ik ik-trash-2"></i></a>
                                 </footer>
                             </div>
                         </div>

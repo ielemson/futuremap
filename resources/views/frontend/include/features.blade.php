@@ -1,11 +1,10 @@
 <div class="testimonials-area ptb-100">
     <div class="container" 
     data-aos="zoom-in"  
-    data-aos-offset="300"
+    data-aos-offset="200"
     data-aos-easing="ease-in-sine">
         <div class="section-title mb-45">
-            <h2>
-              
+            <h2>   
                 The FutureMap Media Concepts Limited
             </h2>
             <p>
@@ -37,7 +36,6 @@
             
         </div>
         <div class="section-title mb-45">
-        
             <p>
                 Overall, The Futuremap Media Concepts Limited's value point lies in its holistic approach to talent development, media exposure, and leveraging technology for marketing and commerce. By combining these elements, the company aims to empower individuals, promote creativity, and drive business growth in the ever-evolving media landscape
             </p>

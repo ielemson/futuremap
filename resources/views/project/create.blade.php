@@ -1,5 +1,5 @@
 @extends('layouts.main') 
-@section('title', 'Add Service')
+@section('title', 'Add Project')
 @section('content')
     <!-- push external head elements to head -->
     @push('head')
@@ -14,8 +14,8 @@
                     <div class="page-header-title">
                         <i class="ik ik-user-plus bg-blue"></i>
                         <div class="d-inline">
-                            <h5>{{ __('Add Service ')}}</h5>
-                            <span>{{ __('Create new service')}}</span>
+                            <h5>{{ __('Add Project ')}}</h5>
+                            <span>{{ __('Create new project')}}</span>
                         </div>
                     </div>
                 </div>
@@ -27,7 +27,7 @@
                                 <a href="{{url('dashboard')}}"><i class="ik ik-home"></i></a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="#">{{ __('Add Service')}}</a>
+                                <a href="#">{{ __('Add Project')}}</a>
                             </li>
                         </ol>
                     </nav>
@@ -41,10 +41,10 @@
             <div class="col-md-12">
                 <div class="card ">
                     <div class="card-header">
-                        <h3>{{ __('Create Service')}}</h3>
+                        <h3>{{ __('Create Project')}}</h3>
                     </div>
                     <div class="card-body">
-                        <form class="forms-sample" method="POST" action="{{ route('create-service') }}" enctype="multipart/form-data">
+                        <form class="forms-sample" method="POST" action="{{ route('project.store') }}" enctype="multipart/form-data">
                         @csrf
                             <div class="row">
                                 <div class="col-sm-4">

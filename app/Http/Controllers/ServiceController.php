@@ -13,7 +13,8 @@ class ServiceController extends Controller
      */
     public function index()
     {
-        //
+        $services = Service::all();
+        return view('services.list',compact('services'));
     }
 
     /**
@@ -42,6 +43,7 @@ class ServiceController extends Controller
             $service = Service::create([
                 'header' => $request->header,
                 'content' => $request->content,
+                'status' => $request->status,
                 'image' => $imageName,
                ]);
 
@@ -79,7 +81,8 @@ class ServiceController extends Controller
      */
     public function edit($id)
     {
-        //
+    $service = Service::where('id',$id)->first();
+    return view('services.edit',compact('service'));
     }
 
     /**
@@ -91,7 +94,41 @@ class ServiceController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $service = Service::where('id',$id)->first();
+
+        try {
+            if ($request->has('image')) {
+           
+            $imageName = time().'.'.$request->image->extension();  
+     
+            $request->image->move(public_path('assets/images/services'), $imageName);
+
+            $service->header = $request->header;
+            $service->content = $request->content;
+            $service->status = $request->status;
+            $service->image = $imageName;
+            $service->save();
+
+            }
+            
+            $service->header = $request->header;
+            $service->content = $request->content;
+            $service->status = $request->status;
+            // $service->image = $imageName;
+            $service->save();
+            
+            if ($service) {
+                // assign new role to the user
+                // $user->syncRoles($request->role);
+                return redirect('service/list')->with('success', 'Service updated!');
+            }
+
+            return redirect('service/list')->with('error', 'Failed to update service! Try again.');
+        } catch (\Exception $e) {
+            $bug = $e->getMessage();
+
+            return redirect()->back()->with('error', $bug);
+        }
     }
 
     /**

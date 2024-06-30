@@ -27,7 +27,7 @@ class HomeController extends Controller
     {
         // $members =  User::whereHas("roles", function($q){ $q->where("name", "member_role"); })->get();
         $news = News::where('status',1)->orderBy('id', 'DESC')->paginate(6);
-        $services = Service::all();
+        $services = Service::where('status',1)->get();
         $features = Features::all();
         $sliders = Slider::where('status',1)->orderBy('id','ASC')->get();
         // dd($sliders);
@@ -38,7 +38,7 @@ class HomeController extends Controller
     }
 
     public function aboutUs(){
-        $services = Service::all();
+        $services = Service::where('status',1)->get();
         $members =  User::whereHas("roles", function($q){ $q->where("name", "member_role"); })->orderBy('order_num', 'ASC')->get();
         $seo_title = "The Future Map Media, E-Commerce and Education Services, Media Solutions";
         $seo_description = "E-Commerce and Education Services, Media Solutions,Online Learning Tools,Digital Marketing Solutions,Ad Campaign Management";
@@ -48,7 +48,7 @@ class HomeController extends Controller
     }
 
     public function contactUs(){
-        $services = Service::all();
+        $services = Service::where('status',1)->get();
         $seo_title = "The Future Map Media, E-Commerce and Education Services, Media Solutions";
         $seo_description = "E-Commerce and Education Services, Media Solutions,Online Learning Tools,Digital Marketing Solutions,Ad Campaign Management";
         $seo_keywords = "Media Solutions, E-commerce Platforms, Educational Programs, Advertising Strategies, Digital Marketing Services, Multimedia Integration, Online Learning Resources, Retail Innovation, Targeted Ad Campaigns, Content Creation Services, E-learning Tools, Brand Promotion, Digital Advertising Solutions, Media Production, Online Retail Solutions, Educational Technology, Marketing Analytics, Cross-media Campaigns, Interactive Learning, Advertising Management";
@@ -57,7 +57,7 @@ class HomeController extends Controller
     }
 
     public function companyTeam(){
-        $services = Service::all();
+        $services = Service::where('status',1)->get();
        $members =  User::whereHas("roles", function($q){ $q->where("name", "member_role"); })->orderBy('order_num', 'ASC')->get();
        $seo_title = "The Future Map Media, E-Commerce and Education Services, Media Solutions";
        $seo_description = "E-Commerce and Education Services, Media Solutions,Online Learning Tools,Digital Marketing Solutions,Ad Campaign Management";
@@ -67,7 +67,7 @@ class HomeController extends Controller
     }
 
     public function companyProfile($id){
-        $services = Service::all();
+        $services = Service::where('status',1)->get();
         $member = User::where('id',$id)->first();
         $seo_title = "The Future Map Media, E-Commerce and Education Services, Media Solutions";
        $seo_description = "E-Commerce and Education Services, Media Solutions,Online Learning Tools,Digital Marketing Solutions,Ad Campaign Management";
@@ -78,7 +78,7 @@ class HomeController extends Controller
 
 
     public function companyService($id){
-        $services = Service::all();
+        $services = Service::where('status',1)->get();
         $service = Service::where('id',$id)->first();
         $seo_title = "The Future Map Media, E-Commerce and Education Services, Media Solutions";
        $seo_description = "E-Commerce and Education Services, Media Solutions,Online Learning Tools,Digital Marketing Solutions,Ad Campaign Management";
@@ -88,7 +88,7 @@ class HomeController extends Controller
     }
 
     public function companyProjects(){
-        $services = Service::all();
+        $services = Service::where('status',1)->get();
         $seo_title = "The Future Map Media, E-Commerce and Education Services, Media Solutions";
         $seo_description = "E-Commerce and Education Services, Media Solutions,Online Learning Tools,Digital Marketing Solutions,Ad Campaign Management";
         $seo_keywords = "Media Solutions, E-commerce Platforms, Educational Programs, Advertising Strategies, Digital Marketing Services, Multimedia Integration, Online Learning Resources, Retail Innovation, Targeted Ad Campaigns, Content Creation Services, E-learning Tools, Brand Promotion, Digital Advertising Solutions, Media Production, Online Retail Solutions, Educational Technology, Marketing Analytics, Cross-media Campaigns, Interactive Learning, Advertising Management";
@@ -97,7 +97,7 @@ class HomeController extends Controller
     }
 
     public function companyFeature($id){
-        $services = Service::all();
+        $services = Service::where('status',1)->get();
         $feature = Features::where('id',$id)->first();
         $seo_title = "The Future Map Media, E-Commerce and Education Services, Media Solutions";
         $seo_description = "E-Commerce and Education Services, Media Solutions,Online Learning Tools,Digital Marketing Solutions,Ad Campaign Management";
@@ -107,18 +107,18 @@ class HomeController extends Controller
     }
 
     public function comingSoon(){
-        $services = Service::all();
+        $services = Service::where('status',1)->get();
         return view('frontend.pages.coming_soon',compact('services'));
     }
     
     public function magazines(){
-        $services = Service::all();
+        $services = Service::where('status',1)->get();
         $magazines = Product::where('status','publish')->orderBy('id','DESC')->paginate(10);
         return view('frontend.pages.magazines',compact('services','magazines'));
     }
 
     public function news(){
-        $services = Service::all();
+        $services = Service::where('status',1)->get();
         $news = News::where('status',1)->orderBy('id', 'DESC')->paginate(10);
         $categories = NewsCategory::where('status',1)->get();
         $topnewslist = News::latest()->whereHas('category')->where('status',1)->orderBy('id', 'DESC')->paginate(10);
@@ -126,7 +126,7 @@ class HomeController extends Controller
     }
 
     public function single_news($slug){
-        $services = Service::all();
+        $services = Service::where('status',1)->get();
         $categories = NewsCategory::where('status',1)->get();
         $single_news = News::where('slug',$slug)->first();
         return view('frontend.pages.single_news',compact('single_news','services','categories'));
@@ -134,7 +134,7 @@ class HomeController extends Controller
 
     public function newsCategory($slug){
         // return $slug;
-        $services = Service::all();
+        $services = Service::where('status',1)->get();
         $categories = NewsCategory::where('status',1)->get();
         $getNewsCategory = NewsCategory::where('slug',$slug)->first();
         $topnewslist = News::latest()->whereHas('category')->where('status',1)->orderBy('id', 'DESC')->paginate(10);

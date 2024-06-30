@@ -149,26 +149,26 @@
                                 </div>
 
                                 {{-- <div class="col-md-4">
-                                    <div class="box box-primary">
-                                        <div class="box-body">
-                                            
-                                            <div class="form-group">
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" name="status" checked> Published
-                                                    </label>
-                                                </div>
-                                                <div class="checkbox">
-                                                    <label>
-                                                        <input type="checkbox" name="featured"> Featured
-                                                    </label>
-                                                </div>
-                                            </div>
-                            
-                                           
-                                        </div>
-                                    </div>
-                                </div> --}}
+<div class="box box-primary">
+<div class="box-body">
+
+<div class="form-group">
+<div class="checkbox">
+<label>
+<input type="checkbox" name="status" checked> Published
+</label>
+</div>
+<div class="checkbox">
+<label>
+<input type="checkbox" name="featured"> Featured
+</label>
+</div>
+</div>
+
+
+</div>
+</div>
+</div> --}}
 
                                 <div class="col-md-4">
                                     <div class="box-footer">
@@ -184,7 +184,7 @@
         </div>
     </div>
 
-    @push('scripts')
+    @push('script')
         <script>
             function filePreview(input) {
                 if (input.files && input.files[0]) {

@@ -77,6 +77,7 @@ class SettingController extends Controller
                 ->save($path . $website_logo);
 
                 $setting->website_title =  $request->website_title;
+                $setting->pr_package =  $request->pr_package;
                 $setting->address =  $request->address;
                 $setting->phone =  $request->phone;
                 $setting->email =  $request->email;
@@ -111,6 +112,7 @@ class SettingController extends Controller
                 // ->resize(1120, 700)
                 ->save($path . $website_favicon);
                 $setting->website_title =  $request->website_title;
+                $setting->pr_package =  $request->pr_package;
                 $setting->address =  $request->address;
                 $setting->phone =  $request->phone;
                 $setting->email =  $request->email;
@@ -131,6 +133,7 @@ class SettingController extends Controller
                 $setting->save();
         }else{
             $setting->website_title =  $request->website_title;
+            $setting->pr_package =  $request->pr_package;
             $setting->address =  $request->address;
             $setting->phone =  $request->phone;
             $setting->email =  $request->email;

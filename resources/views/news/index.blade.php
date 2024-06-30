@@ -102,15 +102,7 @@
                                             <p class="mb-1 text-muted text-small date w-15 w-xs-100">
                                                 {{ \Carbon\Carbon::parse($newslist->created_at)->diffForHumans() }}
                                             </p>
-                                            <div class="w-15 w-xs-100">
-                                                {{-- @if ($newslist->status == 1) --}}
-                                                <span class="badge badge-pill badge-success">{{ __('Active') }}
-                                                </span>
-                                                {{-- @else --}}
-                                                <span class="badge badge-pill badge-secondary">{{ __('On Hold') }}</span>
-                                                {{-- @endif --}}
-
-                                            </div>
+                       
                                         </div>
                                         <div class="list-actions">
                                             <a href="#!"><i class="ik ik-eye newsViewTab"

@@ -16,6 +16,7 @@ use App\Http\Controllers\FeaturesController;
 use App\Http\Controllers\Frontend\CartController;
 use App\Http\Controllers\Frontend\CheckoutController;
 use App\Http\Controllers\Backend\NewsController;
+use App\Http\Controllers\Backend\ProjectController;
 use App\Http\Controllers\Backend\SettingController;
 use App\Http\Controllers\Backend\SliderController;
 use App\Http\Controllers\ProductController;
@@ -118,8 +119,17 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('account/update', [UserController::class, 'profile_update'])->name('account.update');
 	// Service Route
 	Route::get('/service/create', [ServiceController::class, 'create']);
-	Route::post('/service/create', [ServiceController::class, 'store'])->name('create-service');
+	Route::get('/service/list', [ServiceController::class, 'index'])->name('services.index');
+	Route::post('/service/store', [ServiceController::class, 'store'])->name('create-service');
+	Route::get('/service/edit/{id}', [ServiceController::class, 'edit'])->name('service.edit');
+	Route::post('/service/edit/{id}', [ServiceController::class, 'update'])->name('service.update');
 
+	// Proejct Route
+	Route::get('/project/create', [ProjectController::class, 'create']);
+	Route::get('/project/list', [ProjectController::class, 'index'])->name('project.index');
+	Route::post('/project/store', [ProjectController::class, 'store'])->name('project.store');
+	Route::get('/project/edit/{id}', [ProjectController::class, 'edit'])->name('project.edit');
+	Route::post('/project/edit/{id}', [ProjectController::class, 'update'])->name('project.update');
 	// Features Route
 	Route::get('/feature/create', [FeaturesController::class, 'create'])->name('create-feature');
 	Route::post('/feature/create', [FeaturesController::class, 'store'])->name('create-feature');
