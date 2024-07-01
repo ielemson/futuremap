@@ -116,6 +116,11 @@ class HomeController extends Controller
         $magazines = Product::where('status','publish')->orderBy('id','DESC')->paginate(10);
         return view('frontend.pages.magazines',compact('services','magazines'));
     }
+    public function magazine($slug){
+        $services = Service::where('status',1)->get();
+        $magazine = Product::where('slug',$slug)->first();
+        return view('frontend.pages.magazine',compact('services','magazine'));
+    }
 
     public function news(){
         $services = Service::where('status',1)->get();

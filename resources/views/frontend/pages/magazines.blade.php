@@ -19,18 +19,6 @@
                         </div>
                     </div>
                     <div class="col-lg-4 col-md-6">
-                        {{-- <div class="">
-<p>Your cart <i class="ri-shopping-cart-fill"></i> <sup>0</sup></p>
-
-</div> --}}
-                        {{-- <div class="product-title">
-                            <a href="{{ route('cart.list') }}" class="counter-card box-shadow">
-                                <h3>Go to cart
-                                    <span class="fas fa-shopping-cart"></span> <b class="cartCount">0</b>
-                                </h3>
-                            </a>
-                        </div> --}}
-
                       
                             <div class="counter-card box-shadow">
                                
@@ -40,8 +28,7 @@
                                   <b class="cartCount">0</b></h3>
                                 <h4>Click here to checkout</h4>
                                </a>
-                            </div>
-                        
+                            </div>           
                     </div>
                 </div>
             </div>
@@ -60,7 +47,7 @@
 
                                 <h3>
                                     <a href="#">{{ $magazine->name }} <small
-                                            style="font-size:1rem">&#8358;{{ $magazine->price }}</small></a>
+                                            style="font-size:1rem"> @money($magazine->price,'NGN')</small></a>
                                 </h3>
                                 {{-- <p>{!! substr($magazine->desc, 0, 100) !!}</p> --}}
                                 <p>{!! Illuminate\Support\Str::limit($magazine->desc, 90) !!}</p>
@@ -81,11 +68,15 @@
                                         </button>
                                     @endif
 
-                                    <button class="btn-cart border-radius-5 viewProduct"
+                                    <a href="{{ route("magazine.details",$magazine->slug) }}" class="btn-cart border-radius-5" >
+                                        <i class="fas fa-eye"></i>
+                                        View
+                                    </a>
+                                    {{-- <button class="btn-cart border-radius-5 viewProduct"
                                         data-details="{!! $magazine->desc !!}" data-name="{{ $magazine->name }}">
                                         <i class="fas fa-eye"></i>
                                         View
-                                    </button>
+                                    </button> --}}
                                 </ul>
                             </div>
                         </div>

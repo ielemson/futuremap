@@ -48,6 +48,7 @@ Route::get('/our-projects', [HomeController::class, 'companyProjects'])->name('c
 Route::get('/our-feature/{id}', [HomeController::class, 'companyFeature'])->name('company.feature');
 Route::get('/coming-soon', [HomeController::class, 'comingSoon'])->name('coming.soon');
 Route::get('/magazines', [HomeController::class, 'magazines'])->name('magazine.list');
+Route::get('/magazine/{slug}', [HomeController::class, 'magazine'])->name('magazine.details');
 Route::get('/news', [HomeController::class, 'news'])->name('front.news.list');
 Route::get('/news/{id}', [HomeController::class, 'single_news'])->name('front.single.news');
 Route::get('/news/category/{slug}', [HomeController::class, 'newsCategory'])->name('front.news.category');
