@@ -91,8 +91,9 @@
                             </div>
 
                             <div class="form-submit">
-                                <button type="submit" class="default-btn col-12 mx-auto" onclick="payWithPaystack()">
-                                    Place Order </button>
+                                <button type="submit" class="btn btn-success btn-md col-12 mx-auto" onclick="payWithPaystack()">
+                                Make Payment
+                                </button>
                             </div>
                         </form>
                     @else
@@ -137,12 +138,12 @@
                         <div class="row">
                             <div class="col-lg-12">
                                 <div class="form-group">
-                                    <input type="email" name="email" id="email" class="form-control" required data-error="Email Address*" placeholder="Email Address*" required>
+                                    <input type="email" name="email" id="login_email" class="form-control" required data-error="Email Address*" placeholder="Email Address*" required>
                                 </div>
                             </div>
                             <div class="col-12">
                                 <div class="form-group">
-                                    <input class="form-control" type="password" name="password" placeholder="Password*" required>
+                                    <input class="form-control" type="password" id="login_password" name="password" placeholder="Password*" required>
                                 </div>
                             </div>
                             <div class="col-lg-12 form-condition">
@@ -185,12 +186,12 @@
                         <div class="row">
                             <div class="col-lg-12 ">
                                 <div class="form-group">
-                                    <input type="text" name="name" id="name" class="form-control" required placeholder="Full Name*" required>
+                                    <input type="text" name="name" id="fullname" class="form-control" required placeholder="Full Name*" required>
                                 </div>
                             </div>
                             <div class="col-lg-12 ">
                                 <div class="form-group">
-                                    <input type="email" name="email" id="email" class="form-control" required data-error="Email Address*" placeholder="Email Address*" required>
+                                    <input type="email" name="email"  class="form-control" required data-error="Email Address*" placeholder="Email Address*" required>
                                 </div>
                             </div>
                             <div class="col-lg-12 ">
@@ -225,6 +226,7 @@
   </div>
 {{-- Registration Modal Ends::::::::::::::::::::::::-> --}}
 @push('extra-scripts')
+<script src="https://js.paystack.co/v2/inline.js"></script>
     <script>
         const Toast = Swal.mixin({
             toast: true,
@@ -383,56 +385,47 @@
                 }
             });
         }
-        //End product qty Decrement from my cart
+   
 
-        $("#LoginForm").submit(function(e){
-         e.preventDefault();
-
-        var all = $(this).serialize();
-
+        // ::::::::::::  LOGIN USER ACCOUNT HERE ::::::::::::::::::://
+        $('#LoginForm').on('submit', function(e) {
+        e.preventDefault();
+        
         $.ajax({
-            url:  $(this).attr('action'),
-            type: "POST",
-            data: all,
-            beforeSend:function(){
-                // $(document).find('span.error-text').text('');
+            url: "{{ route('user.cart.login') }}",
+            method: 'POST',
+            data: {
+                email: $('#login_email').val(),
+                password: $('#login_password').val(),
+                _token: '{{ csrf_token() }}'
             },
-            //validate form with ajax. This will be communicating 
-            success: function(data){
-               
-                if (data.status==0) {
-                    $.each(data.error, function(prefix, val){
-                        // $('span.'+prefix+'_error').text(val[0]);
-                        Toast.fire({
-                        icon: 'error',
-                        title: val[0],
-                             })
-                    });
-                }
-
-                if(data == 1){
+            success: function(response) {
+                if (response.status === 'success') {
                     Toast.fire({
                         icon: 'success',
-                        title: 'login successful',
+                        title: response.message
                         })
                         
                         setTimeout(() => {
                             location.reload()  
                         }, 2000);
-                   
-                }else if(data == 2){
+                } else {
                     Toast.fire({
                         icon: 'error',
-                        title: 'invalid login details',
-                        })
+                        title: response.message,
+                    })
                 }
-                
-
+            },
+            error: function(xhr) {
+                // alert(xhr.responseJSON.message);
+                Toast.fire({
+                        icon: 'error',
+                        title:xhr.responseJSON.message
+                    })
             }
-            })
-
         });
-
+    });
+        // ::::::::::::  LOGIN USER ACCOUNT HERE ::::::::::::::::::://
 
         // Rgister user
 
@@ -468,40 +461,28 @@
                         title: data.msg,
                     })
                 }
-                // if (data.status==0) {
-                //     console.log(data)
-                //     $.each(data.error, function(val){
-                //         Toast.fire({
-                //         icon: 'error',
-                //         title: val,
-                //     })
-                //     });
-                // }
+              
             }
             })
 
         });
 
     </script>
-    <script src="https://js.paystack.co/v2/inline.js"></script>
-
-
-
-
+ 
     <script>
         const paymentForm = document.getElementById('paymentForm');
         paymentForm.addEventListener("submit", payWithPaystack, false);
 
 
-        function payWithPaystack(e) {a
-            e.preventDefault();
+        function payWithPaystack(event) {
+            event.preventDefault();
 
             const paystack = new PaystackPop();
             paystack.newTransaction({
                 key: 'pk_live_e1a9e2d2c647dc6ee867e1f2be54444f3c1011c8', // Replace with your public keyS
+                // key: 'pk_test_e1c6d4f4a524851abebc3f2bfdb3003d15fb051e', // Replace with your public keyS
                 email: document.getElementById("payer_email").value,
                 amount: document.getElementById("amount").value * 100,
-
 
                 onSuccess: (transaction) => {
                     // Payment complete! Reference: transaction.reference 

@@ -49,7 +49,8 @@ class PaystackController extends Controller
           
 
         foreach ($cart as $key => $item) {
-           $order =  Orders::create([
+         
+             Orders::create([
             'product_id' => $item->id,
             'qty' => $item->qty,
             'price'=>$item->price,
@@ -58,11 +59,11 @@ class PaystackController extends Controller
             'payment_status'     => 'Paid',
             'payment_ref'              => $request->ref,
             'status'             => 'Successful',
-        // $order                            = Orders::create($order_data);
+        // $order                   = Orders::create($order_data)
             ]);
         }
 
-            Session::put('order_id', $order->id);
+            // Session::put('order_id', $order->id);
             Session::forget('cart');
             Cart::destroy();
             Session::put('purchase',true);
