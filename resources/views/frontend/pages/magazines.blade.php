@@ -54,29 +54,27 @@
                                 <ul class="event-list">
 
 
+                                   <div class="btn-group">
                                     @if ($magazine->competiton_status == 1)
-                                        <button class="btn-cart border-radius-5 competitionEntry"
-                                            data-id="{!! $magazine->id !!}" >
-                                            <i class="fas fa-shopping-cart"></i>
-                                            Add to cart
-                                        </button>
-                                    @else
-                                        <button class="btn-cart border-radius-5"
-                                            onclick="addToCart({{ $magazine->id }})">
-                                            <i class="fas fa-shopping-cart"></i>
-                                            Add to cart
-                                        </button>
-                                    @endif
-
-                                    <a href="{{ route("magazine.details",$magazine->slug) }}" class="btn-cart border-radius-5" >
-                                        <i class="fas fa-eye"></i>
-                                        View
-                                    </a>
-                                    {{-- <button class="btn-cart border-radius-5 viewProduct"
-                                        data-details="{!! $magazine->desc !!}" data-name="{{ $magazine->name }}">
-                                        <i class="fas fa-eye"></i>
-                                        View
-                                    </button> --}}
+                                    <button class="btn-success border-radius-5 competitionEntry"
+                                        data-id="{!! $magazine->id !!}" >
+                                        <i class="fas fa-shopping-cart"></i>
+                                        Add to cart
+                                    </button>
+                                @else
+                                    <button class="btn-success border-radius-5"
+                                        onclick="addToCart({{ $magazine->id }})">
+                                        <i class="fas fa-shopping-cart"></i>
+                                        Add to cart
+                                    </button>
+                                @endif
+                                    &nbsp;
+                                <a href="{{ route("magazine.details",$magazine->slug) }}" class="btn btn-primary border-radius-5" style="color:white">
+                                    <i class="fas fa-eye"></i>
+                                    View
+                                </a>
+                                   </div>
+                                   
                                 </ul>
                             </div>
                         </div>
@@ -85,15 +83,7 @@
 
                 <div class="col-lg-12 col-md-12 text-center">
                     <div class="pagination-area">
-                        {{-- <a href="blog.html" class="prev page-numbers">
-<i class="flaticon-left-arrow"></i>
-</a>
-<span class="page-numbers current" aria-current="page">1</span>
-<a href="blog.html" class="page-numbers">2</a>
-<a href="blog.html" class="page-numbers">3</a>
-<a href="blog.html" class="next page-numbers">
-<i class="flaticon-chevron"></i>
-</a> --}}
+
                         {{-- Pagination --}}
                         {!! $magazines->links() !!}
                         {{-- Pagination --}}
