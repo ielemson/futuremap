@@ -39,7 +39,7 @@
                                         
                                 </div>
                             </div>
-                            <p class="about">
+                            <p class="about" style="font-size: 1rem">
                                 {!! $magazine->desc!!}
                             </p>
                             
