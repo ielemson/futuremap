@@ -6,7 +6,6 @@
 
 @include('frontend.include.slider')
 
-
 {{-- Who we are --}}
 {{-- @include('frontend.include.whoweare') --}}
 {{-- Features --}}
@@ -15,5 +14,6 @@
 @endif
 @include('frontend.include.adevert')
 @include('frontend.include.partialBlog')
+@include("frontend.include.personality")
 
 @endsection

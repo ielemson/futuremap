@@ -1,15 +1,11 @@
 @extends('layouts.front')
 @section('content')
-@section('title', 'FutureMap Magazine')
+@section('title', $magazine->name)
 @include('frontend.include.innerBanner', ['banner_title' => 'FutureMap Magazine'])
 
-
 <div class="container mt-5 mb-5">
-
     <div class="row d-flex justify-content-center">
-        <div class="col-lg-4 col-md-4 float-right">
-                      
-                      
+        <div class="col-lg-4 col-md-4 float-right">        
     </div>
         <div class="col-md-10">
             <div class="card">
@@ -39,7 +35,7 @@
                                         
                                 </div>
                             </div>
-                            <p class="about" style="font-size: 1rem">
+                            <p class="about" style="font-size: 1rem" style="text-align: justify">
                                 {!! $magazine->desc!!}
                             </p>
                             
@@ -66,7 +62,6 @@
                 timer: 3000
             })
 
-        
             // COMPETITION MODAL
             $(".competitionEntry").on("click", function() {
                 var prodId = $(this).attr("data-id");
@@ -153,18 +148,12 @@
                             // if the user submits the form by pressing enter in the field.
                             e.preventDefault();
                             jc.$$formSubmit.trigger('click');
-
-
-
                             // reference the button and click it
                         });
-
 
                     }
                 });
                 // COMPETETION STARTS HERE 
-
-
             });
         });
     </script>

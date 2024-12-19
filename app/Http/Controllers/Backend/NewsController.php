@@ -126,13 +126,9 @@ class NewsController extends Controller
         // }
 
         if ($request->hasFile('image')) {
-            // $imageName = 'news-'.time().uniqid().'.'.$request->image->getClientOriginalExtension();
-            // $request->image->move(public_path('assets/images/news'), $imageName);
             $path = public_path('assets/images/news/');
             !is_dir($path) &&
                 mkdir($path, 0777, true);
-    
-            // $name = time() . '.' . $request->image->extension();
             $imageName = strtolower($request->type).'-'.time().uniqid().'.'.$request->image->extension();
             ResizeImage::make($request->file('image'))
                 ->resize(1120, 700)

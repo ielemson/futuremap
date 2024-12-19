@@ -23,7 +23,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\Frontend\FlutterwaveController;
 use App\Http\Controllers\Frontend\PaystackController;
-
+use App\Http\Controllers\Backend\PersonalityProfileController;
 // use Illuminate\Support\Facades\Auth;
 
 /*
@@ -84,7 +84,7 @@ Route::get('/checkout-page', [CheckoutController::class, 'checkoutPage'])->name(
 //   ]);
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('login', [LoginController::class, 'login']);
-Route::get('register', [RegisterController::class, 'showRegisterForm'])->name('register');
+// Route::get('register', [RegisterController::class, 'showRegisterForm'])->name('register');
 Route::post('register', [RegisterController::class, 'register']);
 
 // Route::get('password/forget',  function () { 
@@ -113,6 +113,8 @@ Route::group(['middleware' => 'auth'], function () {
 
 	// dashboard route  
 	Route::get('/dashboard', function () {return view('pages.dashboard');})->name('dashboard');
+	Route::get('/get-pdf/{id}', [UserController::class, 'get_pdf'])->name('get.pdf');
+	Route::get('/read-pdf/{id}', [UserController::class, 'read_pdf'])->name('read.pdf');
 	Route::get('/user/profile', function () {return view("userType.user.userprofile");})->name('dashboard.userprofile');
 
 	// Edit Profile
@@ -148,6 +150,15 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::post('admin/news/update/{id}', [NewsController::class, 'updateNews'])->name('news.update');
 		Route::get('admin/news/delete/{id}', [NewsController::class, 'deleteNews']);
 		// Route::get('/categories', function () { return view('inventory.category.index'); }); 
+
+		// Personality Update Routes 
+			// Route::get('profiles', [ProfileController]);
+		Route::get('personality', [PersonalityProfileController::class, 'index'])->name("personality.index");
+		Route::get('personality/create', [PersonalityProfileController::class, 'create'])->name("personality.create");
+		Route::post('personality/store', [PersonalityProfileController::class, 'store'])->name("personality.store");
+		Route::get('personality/edit/{id}', [PersonalityProfileController::class, 'edit'])->name("personality.edit");
+		Route::put('personality/update/{id}', [PersonalityProfileController::class, 'update'])->name("personality.update");
+		Route::delete('personality/destroy/{id}', [PersonalityProfileController::class, 'destroy'])->name("personality.destroy");
 	});
 
 	// Only those with this privilegde can manage the competition table

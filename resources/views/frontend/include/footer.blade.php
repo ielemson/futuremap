@@ -138,7 +138,8 @@
                     Copyright @
                         <script>
                         document.write(new Date().getFullYear())
-                    </script> All Rights Reserved
+                    </script> 
+                    All Rights Reserved
                     <a href="#">FutureMap</a>
                 </p>
             </div>

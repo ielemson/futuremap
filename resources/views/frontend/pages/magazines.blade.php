@@ -18,22 +18,21 @@
                             </h3>
                         </div>
                     </div>
-                    <div class="col-lg-4 col-md-6">
+                    {{-- former place for cart magazine --}}
+                    <div class="col-lg-12 col-md-12 mt-5">
                       
-                            <div class="counter-card box-shadow">
-                               
-                               <a href="{{ route('cart.list') }}">
-                                <i class="fa fa-shopping-cart"></i>
-                                <h3>
-                                  <b class="cartCount">0</b></h3>
-                                <h4>Click here to checkout</h4>
-                               </a>
-                            </div>           
-                    </div>
+                        <div class="counter-card box-shadow">
+                           <a href="{{ route('cart.list') }}">
+                            <i class="fa fa-shopping-cart"></i>
+                            <h3>
+                              <b class="cartCount">0</b></h3>
+                            <h4 class="info_check"></h4>
+                           </a>
+                        </div>           
+                </div>
                 </div>
             </div>
             <div class="row">
-
                 @foreach ($magazines as $magazine)
                     <div class="col-lg-6">
                         <div class="event-item box-shadow">
@@ -80,16 +79,17 @@
                         </div>
                     </div>
                 @endforeach
-
-                <div class="col-lg-12 col-md-12 text-center">
-                    <div class="pagination-area">
-
-                        {{-- Pagination --}}
-                        {!! $magazines->links() !!}
-                        {{-- Pagination --}}
-                    </div>
+            </div>
+            
+        <div class="row">
+            <div class="col-lg-12 col-md-12 text-center">
+                <div class="pagination-area">
+                    {{-- Pagination --}}
+                    {!! $magazines->links() !!}
+                    {{-- Pagination --}}
                 </div>
             </div>
+        </div>
         </div>
     </div>
 @else
@@ -234,6 +234,7 @@
 
             });
         });
+        
     </script>
 @endpush
 @endsection

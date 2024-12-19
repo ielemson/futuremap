@@ -56,13 +56,22 @@
                         </div>
                     </div>
                    
-                    {{-- Setting Menu Starts --}}
+                    {{-- Product Menu Starts --}}
                     <div class="nav-lavel">{{ __('Product') }} </div>
                     <div class="nav-item {{ ($segment1 == 'products') ? 'active open' : '' }} has-sub">
                         <a href="#"><i class="ik ik-headphones"></i><span>{{ __('Products')}}</span></a>
                         <div class="submenu-content">
                             <a href="{{url('products/create')}}" class="menu-item {{ ($segment1 == 'products' && $segment2 == 'create') ? 'active' : '' }}">{{ __('Add Product')}}</a>
                             <a href="{{url('products')}}" class="menu-item {{ ($segment1 == 'products' && $segment2 == '') ? 'active' : '' }}">{{ __('List Producs')}}</a>
+                        </div>
+                    </div>
+                    {{--  Personality Update  Menu Starts --}}
+                    <div class="nav-lavel">{{ __(' Personality Update') }} </div>
+                    <div class="nav-item {{ ($segment1 == 'personality') ? 'active open' : '' }} has-sub">
+                        <a href="#"><i class="ik ik-headphones"></i><span>{{ __(' Personality Update')}}</span></a>
+                        <div class="submenu-content">
+                            <a href="{{route('personality.create')}}" class="menu-item {{ ($segment1 == 'personality' && $segment2 == 'create') ? 'active' : '' }}">{{ __('Add Profile')}}</a>
+                            <a href="{{route('personality.index')}}" class="menu-item {{ ($segment1 == 'personality' && $segment2 == '') ? 'active' : '' }}">{{ __('List Profile')}}</a>
                         </div>
                     </div>
                       {{-- COMPETITION ROUTES STARTS HERE :::::::::::::::::::::::::::::::::::: --}}
@@ -80,7 +89,6 @@
             {{-- COMPETITION ROUTES END HERE :::::::::::::::::::::::::::::::::::: --}}
                 @endhasrole
                
-
                 {{-- News Route Starts Here::::::::::::::::::::::::::: --}}
                 <div class="nav-lavel">{{ __('News Post') }} </div>
                 <div

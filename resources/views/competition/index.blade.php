@@ -16,7 +16,7 @@
                         <i class="ik ik-inbox bg-blue"></i>
                         <div class="d-inline">
                             <h5>{{ __('Data Table')}}</h5>
-                            <span>{{ __('lorem ipsum dolor sit amet, consectetur adipisicing elit')}}</span>
+                            <span>{{ __('Competion list')}}</span>
                         </div>
                     </div>
                 </div>

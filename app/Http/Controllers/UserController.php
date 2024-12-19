@@ -3,12 +3,15 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\UserRequest;
+use App\Models\Orders;
+use App\Models\Product;
 use App\Models\User;
-use Auth;
 use DataTables;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Response;
 use Illuminate\View\View;
 use Illuminate\Support\Facades\Storage;
 use Spatie\Permission\Models\Role;
@@ -260,5 +263,32 @@ class UserController extends Controller
         }
 
         return redirect('users')->with('error', 'User not found');
+    }
+
+    public function get_pdf($id)
+    {
+       
+        $pdf = Product::where("id",$id)->first();
+
+    if (!$pdf) {
+        abort(404);
+    }
+
+    // Assume the files are stored in the 'public' directory under 'assets/pdfs'
+    $path = public_path('assets/magazine/uploads/' . $pdf->file);
+
+    if (!file_exists($path)) {
+        abort(404);
+    }
+
+    return response()->file($path, [
+        'Content-Type' => 'application/pdf',
+        'Content-Disposition' => 'inline; filename="'.$pdf->file.'"'
+    ]);
+    }
+
+    public function read_pdf($id){
+        $pdf = Product::where("id",$id)->first();
+        return view("userType.user.viewmagazine",compact("pdf"));
     }
 }

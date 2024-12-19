@@ -99,8 +99,13 @@
             dataType: 'json',
             url: '/product/cart',
             success: function(data){
-             
                 $('.cartCount').html("₦"+ new Intl.NumberFormat().format(data.cart_total));
+               
+                if (data.cart_total != 0) {
+                    $('.info_check').html("Click here to checkout"); 
+                }else{
+                    $('.info_check').html("Your cart is empty"); 
+                }
             }
         })
     }
@@ -134,6 +139,8 @@
                             type: 'success',
                             title: data.success,
                         })
+
+                        
                     } else {
                         Toast.fire({
                             type: 'error',

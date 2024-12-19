@@ -73,9 +73,7 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label>News Content</label><span class="text-danger">*</span>
-                                                    <textarea class="textarea html-editor form-control" name="details" id="summernote" required>
-                                                        {{$news->details}}
-                                                    </textarea>
+                                                    <textarea class="textarea html-editor form-control" name="details" id="summernote" required>{{$news->details}}</textarea>
                                                 </div>
                                                 @error('details')
                                                 <span class="invalid-feedback" role="alert">
@@ -188,8 +186,6 @@
                                                 <input type="file" name="image" id="file">
                                                 <p class="help-block">(Image must be in .png or .jpg format)</p>
                                             </div>
-
-
                                         </div>
                                     </div>
                                 </div>
@@ -213,7 +209,7 @@
         </div>
     </div>
 
-    @push('scripts')
+    @push('script')
     <script>
         function filePreview(input) {
             if (input.files && input.files[0]) {

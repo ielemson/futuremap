@@ -72,7 +72,7 @@
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="newstitle">Meta Title</label>
-                                                    <input type="text" name="meta_title" placeholder="Meta  title"
+                                                    <input type="text" name="meta_title" placeholder="Meta title"
                                                         class="form-control" id="meta_title">
                                                 </div>
                                             </div>
