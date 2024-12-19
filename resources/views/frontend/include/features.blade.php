@@ -14,7 +14,7 @@
         <div class="row">
 
            @foreach ($features as $feature)
-           <div class="col-lg-4 col-md-6">
+           <div class="col-lg-3 col-md-3">
             <div class="blog-card">
                 <a href="#">
                     <img src="{{asset('assets/images/features')}}/{{$feature->image}}" alt="{{$feature->title}}">

@@ -191,7 +191,7 @@
                                 </div>
 
                                 <div class="col-md-4">
-                                    <img src="{{asset('assets/images/news')}}/{{$news->image}}" alt="" style="width:50%" class="img-thumbnail">
+                                    <img src="{{asset('assets/images/features')}}/{{$news->image}}" alt="" style="width:50%" class="img-thumbnail">
                                 </div>
 
                                 <div class="col-md-4">

@@ -50,6 +50,8 @@ Route::get('/coming-soon', [HomeController::class, 'comingSoon'])->name('coming.
 Route::get('/magazines', [HomeController::class, 'magazines'])->name('magazine.list');
 Route::get('/magazine/{slug}', [HomeController::class, 'magazine'])->name('magazine.details');
 Route::get('/news', [HomeController::class, 'news'])->name('front.news.list');
+Route::get('/personality/all', [HomeController::class, 'personalities'])->name('front.personality.list');
+Route::get('/personality/{slug}', [HomeController::class, 'personality'])->name('front.personality.details');
 Route::get('/news/{id}', [HomeController::class, 'single_news'])->name('front.single.news');
 Route::get('/news/category/{slug}', [HomeController::class, 'newsCategory'])->name('front.news.category');
 Route::post('/user/pay/register', [HomeController::class, 'StoreUser'])->name('user.cart.register');
@@ -134,8 +136,11 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::post('/project/edit/{id}', [ProjectController::class, 'update'])->name('project.update');
 	// Features Route
 	Route::get('/feature/create', [FeaturesController::class, 'create'])->name('create-feature');
-	Route::post('/feature/create', [FeaturesController::class, 'store'])->name('create-feature');
+	Route::post('/feature/create', [FeaturesController::class, 'store'])->name('store-feature');
 	Route::get('/feature/list', [FeaturesController::class, 'index'])->name('features');
+	Route::get('/feature/edit/{id}', [FeaturesController::class, 'edit'])->name('features.edit');
+	Route::put('/feature/update/{id}', [FeaturesController::class, 'update'])->name('features.update');
+	Route::delete('/feature/destory/{id}', [FeaturesController::class, 'destroy'])->name('features.destroy');
 
 	//only those have manage news permission will get access
 	Route::group(['middleware' => 'can:manage_news'], function () {

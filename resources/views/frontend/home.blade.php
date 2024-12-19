@@ -14,6 +14,6 @@
 @endif
 @include('frontend.include.adevert')
 @include('frontend.include.partialBlog')
-@include("frontend.include.personality")
+@include("frontend.include.partialPersonality")
 
 @endsection

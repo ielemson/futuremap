@@ -37,8 +37,8 @@
             <!-- start message area-->
             @include('include.message')
             <!-- end message area-->
-            <div class="col-md-12">
-                <div class="card p-3">
+            <div class="row">
+                {{-- <div class="card p-3">
                     <div class="card-header"><h3>{{ __('Features')}}</h3></div>
                     <div class="card-body">
                         <table id="" class="table">
@@ -59,7 +59,26 @@
                             </tbody>
                         </table>
                     </div>
-                </div>
+                </div> --}}
+                @foreach ($features as $feature)
+                            <div class="col-md-4">
+                                <div class="card mb-3">
+                                    @if ($feature->image)
+                                        <img src="{{ asset('assets/images/features/' . $feature->image) }}" class="card-img-top" alt="{{ $feature->title }}">
+                                    @endif
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ $feature->title }}</h5>
+                                        <p class="card-text">{!! substr($feature->content , 0, 50) !!}</p>
+                                        <a href="{{ route('features.edit', $feature->id) }}" class="btn btn-warning">Edit</a>
+                                        <form action="{{ route('features.destroy', $feature->id) }}" method="POST" class="d-inline">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger">Delete</button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        @endforeach
             </div>
         </div>
     </div>

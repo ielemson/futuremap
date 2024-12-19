@@ -7,6 +7,7 @@ use App\Models\Features;
 use App\Models\News;
 use App\Models\NewsCategory;
 use App\Models\Product;
+use App\Models\Profile;
 use App\Models\Service;
 use App\Models\Slider;
 use App\Models\User;
@@ -27,6 +28,7 @@ class HomeController extends Controller
     {
         // $members =  User::whereHas("roles", function($q){ $q->where("name", "member_role"); })->get();
         $news = News::where('status',1)->orderBy('id', 'DESC')->paginate(6);
+        $personalities = Profile::where("status","Published")->paginate(6);
         $services = Service::where('status',1)->get();
         $features = Features::all();
         $sliders = Slider::where('status',1)->orderBy('id','ASC')->get();
@@ -34,7 +36,7 @@ class HomeController extends Controller
         $seo_title = "The Future Map Media, E-Commerce and Education Services, Media Solutions";
         $seo_description = "E-Commerce and Education Services, Media Solutions,Online Learning Tools,Digital Marketing Solutions,Ad Campaign Management";
         $seo_keywords = "Media Solutions, E-commerce Platforms, Educational Programs, Advertising Strategies, Digital Marketing Services, Multimedia Integration, Online Learning Resources, Retail Innovation, Targeted Ad Campaigns, Content Creation Services, E-learning Tools, Brand Promotion, Digital Advertising Solutions, Media Production, Online Retail Solutions, Educational Technology, Marketing Analytics, Cross-media Campaigns, Interactive Learning, Advertising Management";
-        return view('frontend.home', compact('news','services','features','seo_title','seo_description','seo_keywords','sliders'));
+        return view('frontend.home', compact('news','services','features','seo_title','seo_description','seo_keywords','sliders','personalities'));
     }
 
     public function aboutUs(){
@@ -128,6 +130,21 @@ class HomeController extends Controller
         $categories = NewsCategory::where('status',1)->get();
         $topnewslist = News::latest()->whereHas('category')->where('status',1)->orderBy('id', 'DESC')->paginate(10);
         return view('frontend.pages.news',compact('services','news','categories','topnewslist'));
+    }
+    public function personalities(){
+        $services = Service::where('status',1)->get();
+        $personalities = Profile::where('status',"Published")->orderBy('id', 'DESC')->paginate(10);
+        // dd($personalities);
+        $categories = NewsCategory::where('status',1)->get();
+        $topnewslist = News::latest()->whereHas('category')->where('status',1)->orderBy('id', 'DESC')->paginate(10);
+        return view('frontend.pages.personalites',compact('services','personalities','categories','topnewslist'));
+    }
+    public function personality($slug){
+        $services = Service::where('status',1)->get();
+        $personality = Profile::where('slug',$slug)->first();
+        $categories = NewsCategory::where('status',1)->get();
+        $topnewslist = News::latest()->whereHas('category')->where('status',1)->orderBy('id', 'DESC')->paginate(10);
+        return view('frontend.pages.personality',compact('services','personality','categories','topnewslist'));
     }
 
     public function single_news($slug){

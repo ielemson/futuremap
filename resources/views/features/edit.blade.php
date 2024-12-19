@@ -1,5 +1,5 @@
 @extends('layouts.main') 
-@section('title', 'Add User')
+@section('title', 'Edit Feature')
 @section('content')
     <!-- push external head elements to head -->
     @push('head')
@@ -14,8 +14,8 @@
                     <div class="page-header-title">
                         <i class="ik ik-user-plus bg-blue"></i>
                         <div class="d-inline">
-                            <h5>{{ __('Add User')}}</h5>
-                            <span>{{ __('Create new user, assign roles & permissions')}}</span>
+                            <h5>{{ __('Edit Feature')}}</h5>
+                            <span>{{ __('Edit feature')}}</span>
                         </div>
                     </div>
                 </div>
@@ -26,7 +26,7 @@
                                 <a href="{{url('dashboard')}}"><i class="ik ik-home"></i></a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="#">{{ __('Add User')}}</a>
+                                <a href="{{ route("features") }}">{{ __('Add Feature')}}</a>
                             </li>
                         </ol>
                     </nav>
@@ -40,17 +40,18 @@
             <div class="col-md-12">
                 <div class="card ">
                     <div class="card-header">
-                        <h3>{{ __('Add user')}}</h3>
+                        <h3>{{ __('Create Features')}}</h3>
                     </div>
                     <div class="card-body">
-                        <form class="forms-sample" method="POST" action="{{ route('create-feature') }}" enctype="multipart/form-data">
-                        @csrf
+                        <form action="{{ route('features.update', $feature  ->id) }}" method="POST" enctype="multipart/form-data">
+                            @csrf
+                            @method('PUT')
                             <div class="row">
                                 <div class="col-sm-6">
 
                                     <div class="form-group">
                                         <label for="name">{{ __('Title')}}<span class="text-red">*</span></label>
-                                        <input id="name" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="" placeholder="Enter user name" required>
+                                        <input id="name" type="text" class="form-control @error('title') is-invalid @enderror" name="title" value="{{ $feature->title }}" placeholder="Enter user name" required>
                                         <div class="help-block with-errors"></div>
 
                                         @error('title')
@@ -61,34 +62,38 @@
                                     </div>
                                
                                     
-                                    
+                                    </div>
    
-                                    <div class="form-group">
-                                        <label>{{ __('image')}}</label>
-                                        <input type="file" name="image" class="file-upload-default" required>
-                                        <div class="input-group col-xs-12">
-                                            <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
-                                            <span class="input-group-append">
-                                            <button class="file-upload-browse btn btn-primary" type="button">{{ __('Upload')}}</button>
-                                            </span>
+                                    <div class="col-md-6">
+                                        <div class="form-group">
+                                            <label>{{ __('image')}}</label>
+                                            <input type="file" name="image" class="file-upload-default">
+                                            <div class="input-group col-xs-12">
+                                                <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                                                <span class="input-group-append">
+                                                <button class="file-upload-browse btn btn-primary" type="button">{{ __('Upload')}}</button>
+                                                </span>
+                                            </div>
                                         </div>
                                     </div>
-                                    
-                                
-                                </div>
-                                <div class="col-md-6">
+                             
+                                <div class="col-md-12">
                                     <!-- Assign role & view role permisions -->
-                                
                                     <div class="form-group">
                                         <label for="details">{{ __('Content')}}<span class="text-red">*</span></label>
-                                        <textarea class="form-control html-editor" rows="10" name="content" required></textarea>
+                                        <textarea class="form-control html-editor" rows="10" name="content" id="summernote">{{ $feature->content }}</textarea>
                                         <div class="help-block with-errors"></div>
                                     </div>
+
+                                    <div class="col-md-4 mt-5 mb-5">
+                                        <img src="{{asset('assets/images/features')}}/{{$feature->image}}" alt="" style="width:50%" class="img-thumbnail">
+                                    </div>
+    
                                 </div>
                                 
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <button type="submit" class="btn btn-primary">{{ __('Submit')}}</button>
+                                        <button type="submit" class="btn btn-primary">{{ __('Update ')}}</button>
                                     </div>
                                 </div>
                             </div>
@@ -105,6 +110,25 @@
          <!--get role wise permissiom ajax script-->
         <script src="{{ asset('js/get-role.js') }}"></script>
         <script src="{{ asset('js/form-components.js') }}"></script>
+
+        <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.css" rel="stylesheet">
+        <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote-lite.min.js"></script>
+        <script>
+            $('#summernote').summernote({
+                placeholder: 'Please ensure to paste from MS word, Notepad. Avoid pasting directly from other websites.',
+                tabsize: 2,
+                height: 150,
+                toolbar: [
+                    ['style', ['style']],
+                    ['font', ['bold', 'underline', 'clear']],
+                    ['color', ['color']],
+                    ['para', ['ul', 'ol', 'paragraph']],
+                    ['table', ['table']],
+                    ['insert', ['link', 'picture', 'video']],
+                    ['view', ['fullscreen', 'codeview', 'help']]
+                ]
+            });
+        </script>
     @endpush
     
 @endsection

@@ -12,32 +12,7 @@
                     </div>
                 </div>
                 <div class="row">
-                    {{-- <div class="col-lg-4 col-md-6">
-                        <div class="blog-card">
-                            <a href="single-blog-1.html">
-                                <img src="assets/images/blog/blog-img4.jpg" alt="Blog">
-                            </a>
-                            <div class="content">
-                                <ul>
-                                    <li>
-                                        <i class="ri-calendar-todo-fill"></i>
-                                        Jan 12,2022
-                                    </li>
-                                    <li>
-                                        <i class="ri-price-tag-3-fill"></i>
-                                        <a href="tags.html">Education</a>
-                                    </li>
-                                </ul>
-                                <h3>
-                                    <a href="single-blog-1.html">All that is wrong with codding in the field of apprentices</a>
-                                </h3>
-                                <p>Lorem ipsum dolor sit amet, constetur adipiscing elit, sed do eiusmod tempor incididunt.</p>
-                                <a href="single-blog-1.html" class="read-btn">Read More</a>
-                            </div>
-                        </div>
-                    </div> --}}
-
-
+               
                     @foreach ($news as $latest)
                 <div class="col-lg-4 col-md-4">
                 <div class="blog-card">
@@ -73,4 +48,4 @@
                     
                 </div>
             </div>
-        </div>
+</div>
