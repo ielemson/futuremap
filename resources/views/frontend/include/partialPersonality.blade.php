@@ -1,3 +1,4 @@
+@if (count($personalities)>0)
 <div class="blog-area section-bg pt-100 pb-70">
     <div class="container">
         <div class="row align-items-center mb-45">
@@ -25,7 +26,6 @@
                         {{-- Jan 12,2022 --}}
                         {{ Carbon\Carbon::parse($personality->created_at)->isoFormat('MMM DD YY') }}
                         {{-- {{ Carbon\Carbon::parse($latest->created_at)->diffForHumans() }} --}}
-
                     </li>
                     <li>
                         <i class="ri-price-tag-3-fill"></i>
@@ -44,7 +44,9 @@
         </div>
     </div>
     @endforeach
-            
         </div>
     </div>
 </div>
+@else
+    
+@endif

@@ -65,6 +65,7 @@
                             <a href="{{url('products')}}" class="menu-item {{ ($segment1 == 'products' && $segment2 == '') ? 'active' : '' }}">{{ __('List Producs')}}</a>
                         </div>
                     </div>
+                   
                     {{--  Personality Update  Menu Starts --}}
                     <div class="nav-lavel">{{ __(' Personality Update') }} </div>
                     <div class="nav-item {{ ($segment1 == 'personality') ? 'active open' : '' }} has-sub">
@@ -106,6 +107,17 @@
                 </div>
 
                 {{-- News Route Ends Here::::::::::::::::::::::::::: --}}
+
+                {{-- EVENT MAGAZINE STARTS HERE :::::::::::::::::::::::::::--}}
+                <div class="nav-lavel">{{ __('Event Magazine') }} </div>
+                <div class="nav-item {{ ($segment1 == 'event') ? 'active open' : '' }} has-sub">
+                    <a href="#"><i class="ik ik-headphones"></i><span>{{ __('Event Magazine')}}</span></a>
+                    <div class="submenu-content">
+                        <a href="{{route("event.magazine.create")}}" class="menu-item {{ ($segment1 == 'event' && $segment2 == 'create') ? 'active' : '' }}">{{ __('Add Event')}}</a>
+                        <a href="{{route("event.magazine.index")}}" class="menu-item {{ ($segment1 == 'event' && $segment2 == '') ? 'active' : '' }}">{{ __('List Event')}}</a>
+                    </div>
+                </div>
+                {{-- EVENT MAGAZINE ENDS HERE --}}
 
                 {{-- Features --}}
                 <div

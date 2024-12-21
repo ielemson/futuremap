@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Mail\ContactMessage;
+use App\Models\Event;
 use App\Models\Features;
 use App\Models\News;
 use App\Models\NewsCategory;
@@ -29,6 +30,7 @@ class HomeController extends Controller
         // $members =  User::whereHas("roles", function($q){ $q->where("name", "member_role"); })->get();
         $news = News::where('status',1)->orderBy('id', 'DESC')->paginate(6);
         $personalities = Profile::where("status","Published")->paginate(6);
+        $events = Event::where("status","published")->get();
         $services = Service::where('status',1)->get();
         $features = Features::all();
         $sliders = Slider::where('status',1)->orderBy('id','ASC')->get();
@@ -36,7 +38,7 @@ class HomeController extends Controller
         $seo_title = "The Future Map Media, E-Commerce and Education Services, Media Solutions";
         $seo_description = "E-Commerce and Education Services, Media Solutions,Online Learning Tools,Digital Marketing Solutions,Ad Campaign Management";
         $seo_keywords = "Media Solutions, E-commerce Platforms, Educational Programs, Advertising Strategies, Digital Marketing Services, Multimedia Integration, Online Learning Resources, Retail Innovation, Targeted Ad Campaigns, Content Creation Services, E-learning Tools, Brand Promotion, Digital Advertising Solutions, Media Production, Online Retail Solutions, Educational Technology, Marketing Analytics, Cross-media Campaigns, Interactive Learning, Advertising Management";
-        return view('frontend.home', compact('news','services','features','seo_title','seo_description','seo_keywords','sliders','personalities'));
+        return view('frontend.home', compact('news','services','features','seo_title','seo_description','seo_keywords','sliders','personalities','events'));
     }
 
     public function aboutUs(){
@@ -106,6 +108,16 @@ class HomeController extends Controller
         $seo_keywords = "Media Solutions, E-commerce Platforms, Educational Programs, Advertising Strategies, Digital Marketing Services, Multimedia Integration, Online Learning Resources, Retail Innovation, Targeted Ad Campaigns, Content Creation Services, E-learning Tools, Brand Promotion, Digital Advertising Solutions, Media Production, Online Retail Solutions, Educational Technology, Marketing Analytics, Cross-media Campaigns, Interactive Learning, Advertising Management";
          
         return view('frontend.pages.feature',compact('services','feature','seo_description','seo_keywords'));
+    }
+    public function eventmagazine($slug){
+        $services = Service::where('status',1)->get();
+        $event = Event::where('slug',$slug)->first();
+        $events = Event::where("status","published")->paginate(10);
+        $seo_title = "The Future Map Media, E-Commerce and Education Services, Media Solutions";
+        $seo_description = "E-Commerce and Education Services, Media Solutions,Online Learning Tools,Digital Marketing Solutions,Ad Campaign Management";
+        $seo_keywords = "Media Solutions, E-commerce Platforms, Educational Programs, Advertising Strategies, Digital Marketing Services, Multimedia Integration, Online Learning Resources, Retail Innovation, Targeted Ad Campaigns, Content Creation Services, E-learning Tools, Brand Promotion, Digital Advertising Solutions, Media Production, Online Retail Solutions, Educational Technology, Marketing Analytics, Cross-media Campaigns, Interactive Learning, Advertising Management";
+         
+        return view('frontend.pages.eventmagazine',compact('services','seo_description','seo_keywords','events','event'));
     }
 
     public function comingSoon(){

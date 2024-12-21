@@ -131,7 +131,7 @@ class NewsController extends Controller
                 mkdir($path, 0777, true);
             $imageName = strtolower($request->type).'-'.time().uniqid().'.'.$request->image->extension();
             ResizeImage::make($request->file('image'))
-                ->resize(1120, 700)
+                ->resize(550, 350)
                 ->save($path . $imageName);
         }
 

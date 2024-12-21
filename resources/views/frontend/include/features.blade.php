@@ -25,8 +25,8 @@
                         <a href="{{route('company.feature',$feature->id)}}">{{$feature->title}}</a>
                     </h3>
                     <p>
-                        {!! substr($feature->content, 0,  150) !!}
-                        {{-- {!! Illuminate\Support\Str::limit($feature->content, 150) !!} --}}
+                        {{-- {!! substr($feature->content, 0,  100) !!} --}}
+                        {!! Illuminate\Support\Str::limit($feature->content, 100) !!}
                     </p>
                     <a href="{{route('company.feature',$feature->id)}}" class="read-btn">Read More</a>
                 </div>

@@ -7,6 +7,7 @@ use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
 use App\Http\Controllers\Backend\CompetitionController;
+use App\Http\Controllers\Backend\EventMagazineController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
@@ -24,6 +25,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\Frontend\FlutterwaveController;
 use App\Http\Controllers\Frontend\PaystackController;
 use App\Http\Controllers\Backend\PersonalityProfileController;
+
 // use Illuminate\Support\Facades\Auth;
 
 /*
@@ -49,9 +51,10 @@ Route::get('/our-feature/{id}', [HomeController::class, 'companyFeature'])->name
 Route::get('/coming-soon', [HomeController::class, 'comingSoon'])->name('coming.soon');
 Route::get('/magazines', [HomeController::class, 'magazines'])->name('magazine.list');
 Route::get('/magazine/{slug}', [HomeController::class, 'magazine'])->name('magazine.details');
+Route::get('/event/magazine/single/{slug}', [HomeController::class, 'eventmagazine'])->name('event.magazine.details');
 Route::get('/news', [HomeController::class, 'news'])->name('front.news.list');
 Route::get('/personality/all', [HomeController::class, 'personalities'])->name('front.personality.list');
-Route::get('/personality/{slug}', [HomeController::class, 'personality'])->name('front.personality.details');
+Route::get('/personality/profile/show/{slug}', [HomeController::class, 'personality'])->name('front.personality.details');
 Route::get('/news/{id}', [HomeController::class, 'single_news'])->name('front.single.news');
 Route::get('/news/category/{slug}', [HomeController::class, 'newsCategory'])->name('front.news.category');
 Route::post('/user/pay/register', [HomeController::class, 'StoreUser'])->name('user.cart.register');
@@ -158,12 +161,21 @@ Route::group(['middleware' => 'auth'], function () {
 
 		// Personality Update Routes 
 			// Route::get('profiles', [ProfileController]);
-		Route::get('personality', [PersonalityProfileController::class, 'index'])->name("personality.index");
+		Route::get('personality/view', [PersonalityProfileController::class, 'index'])->name("personality.index");
 		Route::get('personality/create', [PersonalityProfileController::class, 'create'])->name("personality.create");
 		Route::post('personality/store', [PersonalityProfileController::class, 'store'])->name("personality.store");
 		Route::get('personality/edit/{id}', [PersonalityProfileController::class, 'edit'])->name("personality.edit");
 		Route::put('personality/update/{id}', [PersonalityProfileController::class, 'update'])->name("personality.update");
 		Route::delete('personality/destroy/{id}', [PersonalityProfileController::class, 'destroy'])->name("personality.destroy");
+
+			// Event Magazine Route Starts Here ::::::::::::::
+		Route::get('event/magazine/view', [EventMagazineController::class, 'index'])->name("event.magazine.index");
+		Route::get('event/magazine/create', [EventMagazineController::class, 'create'])->name("event.magazine.create");
+		Route::post('event/magazine/store', [EventMagazineController::class, 'store'])->name("event.magazine.store");
+		Route::get('event/magazine/edit/{id}', [EventMagazineController::class, 'edit'])->name("event.magazine.edit");
+		Route::put('event/magazine/update/{id}', [EventMagazineController::class, 'update'])->name("event.magazine.update");
+		Route::delete('event/magazine/destroy/{id}', [EventMagazineController::class, 'destroy'])->name("event.magazine.destroy");
+
 	});
 
 	// Only those with this privilegde can manage the competition table

@@ -9,7 +9,6 @@
             data-aos="fade-right"
             data-aos-offset="100"
             data-aos-easing="ease-in-sine">
-            
                 <div class="enrolled-img-three pt-70" data-speed="0.05" data-revert="true">
                     <img src="{{asset('assets/images/advert.jpeg')}}" alt="advert" />
                    

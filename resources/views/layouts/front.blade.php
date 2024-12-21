@@ -13,12 +13,15 @@
     <meta name="description" content="{{$setting->meta_description}}">
     <meta name="keywords" content="{{$setting->meta_title}}">
     <link rel="canonical" href="{{url('/')}}">
-    @if (!@empty($news_slug))
-    <meta property="og:url" content="{{route('front.single.news',$news_slug)}}" />
-    <meta property="og:title" content="{{$meta_title ?? ''}}" />
-    <meta property="og:title" content="{{$news_title ?? ''}}" />
+    @if (!@empty($event_slug))
+    <meta property="og:url" content="{{route("event.magazine.details",$event_slug)}}" />
     <meta property="og:description" content="{{$meta_description ?? ''}}"/>
+    <!-- Content when $items is not empty -->
     <meta property="og:image" content="https://fmapmedia.com/assets/images/news/{{$socialimage ?? ''}}">
+    <!-- Content when $items is not empty -->
+    <meta property="og:title" content="{{$event_title ?? ''}}" />
+    <meta property="og:image" content="https://fmapmedia.com/assets/images/banners/{{$eventimage ?? ''}}">
+  
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     @else
@@ -43,7 +46,9 @@
         {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css"> --}}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
         <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+        <link rel="stylesheet" href="{{ asset("assets/lightbox/css/lightbox.min.css") }}" />
         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <script async src="{{ asset("assets/lightbox/js/lightbox.min.js") }}" charset="utf-8"></script>
         <div id="fb-root"></div>
         <script>(function(d, s, id) {
         var js, fjs = d.getElementsByTagName(s)[0];
@@ -53,7 +58,6 @@
         fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
         </script>
-
         @stack('extra-css')
         
 </head>
@@ -86,11 +90,13 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
     {{-- <script src="https://checkout.flutterwave.com/v3.js"></script> --}}
     <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
+    <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js'></script>
+                            
     <script>
       AOS.init();
     </script>
     <script>
-    
      $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}});
 // Mini Cart Fetch 
     function miniCart(){

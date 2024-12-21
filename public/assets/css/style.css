@@ -4645,12 +4645,12 @@ img {
     position: relative;
     background-color: var(--whiteColor);
 }
-.event-popular-post .item .thumb .full-image.bg1 {
+/* .event-popular-post .item .thumb .full-image.bg1 {
     background-image: url(../images/events/event-img2.jpg);
 }
 .event-popular-post .item .thumb .full-image.bg2 {
     background-image: url(../images/events/event-img3.jpg);
-}
+} */
 .event-popular-post .item .info {
     overflow: hidden;
     padding: 4px 0;
