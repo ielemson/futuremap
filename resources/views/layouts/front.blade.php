@@ -45,7 +45,7 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
         {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css"> --}}
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
-        <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+        {{-- <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" /> --}}
         <link rel="stylesheet" href="{{ asset("assets/lightbox/css/lightbox.min.css") }}" />
         <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
         <script async src="{{ asset("assets/lightbox/js/lightbox.min.js") }}" charset="utf-8"></script>
@@ -89,7 +89,7 @@
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
     {{-- <script src="https://checkout.flutterwave.com/v3.js"></script> --}}
-    <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+    {{-- <script src="https://unpkg.com/aos@next/dist/aos.js"></script> --}}
     <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
     <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js'></script>
                             

@@ -101,29 +101,17 @@ class NewsController extends Controller
     {
         // dd($request->all());
         $request->validate([
-            'title'         => 'required|unique:news|max:255',
+            'title'         => 'required|unique:news',
             'details'       => 'required',
             'category_id'   => 'required',
             'status'        => 'required',
             'type'           => 'required',
             'published_at'   => 'required',
-            'meta_title'   => 'nullable',
+            'meta_title'     => 'nullable',
             'meta_description'   => 'nullable',
             'meta_keywords'   => 'nullable',
-            'image'          => 'required|image|mimes:jpg,png,jpeg'
+            'image'          => 'required|image|mimes:jpeg,png,jpg,gif,webp|max:2048',
         ]);
-
-        // if(isset($request->status)){
-        //     $status = true;
-        // }else{
-        //     $status = false;
-        // }
-
-        // if(isset($request->featured)){
-        //     $featured = true;
-        // }else{
-        //     $featured = false;
-        // }
 
         if ($request->hasFile('image')) {
             $path = public_path('assets/images/news/');
@@ -187,10 +175,10 @@ class NewsController extends Controller
             'status'        => 'required',
             'type'           => 'required',
             'published_at'   => 'required',
-            'meta_title'   => 'nullable',
+            'meta_title'     => 'nullable',
             'meta_description'   => 'nullable',
             'meta_keywords'   => 'nullable',
-            'image'          => 'nullable|image|mimes:jpg,png,jpeg'
+            'image'          => 'nullable|image|mimes:jpg,png,jpeg,webp'
         ]);
 
         $news = News::where('id',$id)->first();
