@@ -4,7 +4,7 @@
     <div class="container">
         <div class="section-title text-center mb-45">
             <span>EVENTS</span>
-            <h2>Upcoming events schedule</h2>
+            <h2> Events & Happening</h2>
         </div>
         <div class="event-slider owl-carousel owl-theme">
            

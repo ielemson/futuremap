@@ -70,58 +70,7 @@
                                                 @enderror
                                                 </div>
                                             </div>
-                                            <div class="col-md-12">
-                                                <div class="form-group">
-                                                    <label>News Content</label><span class="text-danger">*</span>
-                                                    <textarea class="textarea html-editor form-control" name="details" id="summernote" required>{{$news->details}}</textarea>
-                                                </div>
-                                                @error('details')
-                                                <span class="invalid-feedback" role="alert">
-                                                    <strong>{{ $message }}</strong>
-                                                </span>
-                                            @enderror
-                                            </div>
-
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label for="newstitle">Meta Title</label>
-                                                    <input type="text" name="meta_title" value="{{$news->meta_title}}"
-                                                        class="form-control" id="meta_title">
-                                                        @error('meta_title')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label for="newstitle">Meta Keywords</label>
-                                                    <input type="text" name="meta_keywords" value="{{$news->meta_keywords}}"
-                                                        class="form-control" id="meta_keywords">
-                                                        @error('meta_keywords')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-                                            </div>
-                                            <div class="col-md-4">
-                                                <div class="form-group">
-                                                    <label for="newstitle">Meta Description</label>
-                                                    <input type="text" name="meta_description"
-                                                        value="{{$news->meta_description}}" class="form-control"
-                                                        id="meta_decription">
-                                                        @error('meta_description')
-                                                        <span class="invalid-feedback" role="alert">
-                                                            <strong>{{ $message }}</strong>
-                                                        </span>
-                                                    @enderror
-                                                </div>
-                                            </div>
-
-
+                                            
                                             <div class="col-4">
                                                 <div class="form-group">
                                                     <label for="status">Status</label> <span class="text-danger">*</span>
@@ -170,6 +119,56 @@
                                                     @enderror
                                                 </div>
                                             </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="newstitle">Meta Title</label>
+                                                    <input type="text" name="meta_title" value="{{$news->meta_title}}"
+                                                        class="form-control" id="meta_title">
+                                                        @error('meta_title')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="newstitle">Meta Keywords</label>
+                                                    <input type="text" name="meta_keywords" value="{{$news->meta_keywords}}"
+                                                        class="form-control" id="meta_keywords">
+                                                        @error('meta_keywords')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <div class="form-group">
+                                                    <label for="newstitle">Meta Description</label>
+                                                    <input type="text" name="meta_description"
+                                                        value="{{$news->meta_description}}" class="form-control"
+                                                        id="meta_decription">
+                                                        @error('meta_description')
+                                                        <span class="invalid-feedback" role="alert">
+                                                            <strong>{{ $message }}</strong>
+                                                        </span>
+                                                    @enderror
+                                                </div>
+                                            </div>
+                                            <div class="col-md-12">
+                                                <div class="form-group">
+                                                    <label>News Content</label><span class="text-danger">*</span>
+                                                    <textarea class="textarea html-editor form-control" name="details" id="summernote" required>{{$news->details}}</textarea>
+                                                </div>
+                                                @error('details')
+                                                <span class="invalid-feedback" role="alert">
+                                                    <strong>{{ $message }}</strong>
+                                                </span>
+                                            @enderror
+                                            </div>
+                                           
                                         </div>
 
                                     </div>

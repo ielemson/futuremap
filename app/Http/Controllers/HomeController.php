@@ -28,7 +28,7 @@ class HomeController extends Controller
     public function index(): View
     {
         // $members =  User::whereHas("roles", function($q){ $q->where("name", "member_role"); })->get();
-        $news = News::where('status',1)->orderBy('id', 'DESC')->paginate(6);
+        $news = News::where('status',1)->orderBy('id', 'DESC')->paginate(20);
         $personalities = Profile::where("status","Published")->paginate(6);
         $events = Event::where("status","published")->get();
         $services = Service::where('status',1)->get();
