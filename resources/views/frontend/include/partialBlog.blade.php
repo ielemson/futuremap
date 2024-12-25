@@ -5,10 +5,11 @@
                 <div class="section-title mt-rs-20">
                     {{-- <span>{{__('Ch')}}</span> --}}
                     <h2>{{ __('Latest News') }}</h2>
+                    <p>Stay informed with the latest news and updates on a variety of topics.</p>
                 </div>
             </div>
             <div class="col-lg-4 text-end">
-                <a href="{{ route('front.news.list') }}" class="default-btn border-radius-50">View all news</a>
+                <a href="{{ route('front.news.list') }}" class="default-btn">View all news</a>
             </div>
         </div>
 {{-- Container - SLider Goes Here --}}
@@ -25,7 +26,7 @@
                     <div class="content">
                         <a href="{{ route('front.single.news', $latest->slug) }}"
                             class="tag-btn">{{ $latest->category->name }}</a>
-                        <h3><a href="{{ route('front.single.news', $latest->slug) }}">T{{ $latest->title }}</a></h3>
+                        <h3><a href="{{ route('front.single.news', $latest->slug) }}">{{ $latest->title }}</a></h3>
                         <p>{!! Illuminate\Support\Str::limit($latest->details, 200) !!}</p>
                         <ul class="course-list">
                             <li><i class="ri-time-fill"></i>
@@ -79,7 +80,5 @@
     </div>
 
 
-</div>
-</div>
 </div>
 

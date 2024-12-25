@@ -29,6 +29,10 @@ class HomeController extends Controller
     {
         // $members =  User::whereHas("roles", function($q){ $q->where("name", "member_role"); })->get();
         $news = News::where('status',1)->orderBy('id', 'DESC')->paginate(20);
+        $scholarshipgrantsOpportunities = NewsCategory::where('slug','scholarshipgrants-opportunities')->first();
+        $scholarships = News::where('status',1)
+        ->where('category_id', $scholarshipgrantsOpportunities->id)
+        ->get();
         $personalities = Profile::where("status","Published")->paginate(6);
         $events = Event::where("status","published")->get();
         $services = Service::where('status',1)->get();
@@ -38,7 +42,7 @@ class HomeController extends Controller
         $seo_title = "The Future Map Media, E-Commerce and Education Services, Media Solutions";
         $seo_description = "E-Commerce and Education Services, Media Solutions,Online Learning Tools,Digital Marketing Solutions,Ad Campaign Management";
         $seo_keywords = "Media Solutions, E-commerce Platforms, Educational Programs, Advertising Strategies, Digital Marketing Services, Multimedia Integration, Online Learning Resources, Retail Innovation, Targeted Ad Campaigns, Content Creation Services, E-learning Tools, Brand Promotion, Digital Advertising Solutions, Media Production, Online Retail Solutions, Educational Technology, Marketing Analytics, Cross-media Campaigns, Interactive Learning, Advertising Management";
-        return view('frontend.home', compact('news','services','features','seo_title','seo_description','seo_keywords','sliders','personalities','events'));
+        return view('frontend.home', compact('news','services','features','seo_title','seo_description','seo_keywords','sliders','personalities','events','scholarships'));
     }
 
     public function aboutUs(){
@@ -143,6 +147,17 @@ class HomeController extends Controller
         $topnewslist = News::latest()->whereHas('category')->where('status',1)->orderBy('id', 'DESC')->paginate(10);
         return view('frontend.pages.news',compact('services','news','categories','topnewslist'));
     }
+    public function scholarship_grants_opportunities(){
+        $services = Service::where('status',1)->get();
+        $scholarshipgrantsOpportunities = NewsCategory::where('slug','scholarshipgrants-opportunities')->first();
+        $scholarships = News::where('status',1)
+        ->where('category_id', $scholarshipgrantsOpportunities->id)
+        ->paginate(10);
+        // $categories = NewsCategory::where('status',1)->get();
+        // $topnewslist = News::latest()->whereHas('category')->where('status',1)->orderBy('id', 'DESC')->paginate(10);
+        return view("frontend.pages.scholarshipOpportunities",compact('scholarships','services'));
+    }
+
     public function personalities(){
         $services = Service::where('status',1)->get();
         $personalities = Profile::where('status',"Published")->orderBy('id', 'DESC')->paginate(10);
@@ -163,7 +178,8 @@ class HomeController extends Controller
         $services = Service::where('status',1)->get();
         $categories = NewsCategory::where('status',1)->get();
         $single_news = News::where('slug',$slug)->first();
-        return view('frontend.pages.single_news',compact('single_news','services','categories'));
+        $news = News::where('status',1)->orderBy('id', 'DESC')->paginate(15);
+        return view('frontend.pages.single_news',compact('single_news','services','categories','news'));
     }
 
     public function newsCategory($slug){

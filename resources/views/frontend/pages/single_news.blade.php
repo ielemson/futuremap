@@ -2,8 +2,11 @@
 
 @section('content')
 @section('title', $single_news->title)
-@include('frontend.include.innerBanner', ['banner_title' => 'Our News'])
-
+@if ($single_news->category->name == "Scholarship/Grants opportunities")
+@include('frontend.include.innerBanner', ['banner_title' => 'Scholarship/Grants Opportunities']) 
+@else
+@include('frontend.include.innerBanner', ['banner_title' => 'Our News'])  
+@endif
 
 <div class="blog-details-area pt-100 pb-70">
     <div class="container">
@@ -90,56 +93,11 @@
                             </div>
                         </div>
                     </div>
-                    {{-- <div class="comments-form">
-                        <div class="contact-form">
-                            <h4>Leave A Reply</h4>
-                            <p>Your email address will not be published. Required fields are marked</p>
-                            <form id="contactForm">
-                                <div class="row">
-                                    <div class="col-lg-6 col-sm-6">
-                                        <div class="form-group">
-                                            <input type="text" name="name" id="name" class="form-control" required data-error="Please enter your name" placeholder="Your Name">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-6 col-sm-6">
-                                        <div class="form-group">
-                                            <input type="email" name="email" id="email" class="form-control" required data-error="Please enter your email" placeholder="Your Email">
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12 col-md-12">
-                                        <div class="form-group">
-                                            <textarea name="message" class="form-control" id="message" cols="30" rows="8" required data-error="Write your message" placeholder="Comment..."></textarea>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12 col-md-12">
-                                        <div class="agree-label">
-                                            <input type="checkbox" id="chb1">
-                                            <label for="chb1">
-                                                Save my info for the next comment
-                                            </label>
-                                        </div>
-                                    </div>
-                                    <div class="col-lg-12 col-md-12">
-                                        <button type="submit" class="default-btn">
-                                            Post A Comment
-                                        </button>
-                                    </div>
-                                </div>
-                            </form>
-                        </div>
-                    </div> --}}
+                  
                 </div>
             </div>
             <div class="col-lg-4">
                 <div class="side-bar-area">
-                    {{-- <div class="side-bar-widget">
-                        <form class="search-form">
-                            <input type="search" class="form-control" placeholder="Search...">
-                            <button type="submit">
-                                <i class="ri-search-line"></i>
-                            </button>
-                        </form>
-                    </div> --}}
                     @if (count($categories) > 0)
                     <div class="side-bar-widget">
                      <h3 class="title">Categories</h3>
@@ -155,10 +113,34 @@
                  @endif
                  
                 </div>
+                <div class="side-bar-widget">
+                    <h3 class="title">Popular News</h3>
+                    <div class="widget-popular-post">
+                @foreach ($news as $popular)
+                     <article class="item">
+                            <a href="{{ route('front.single.news', $popular->slug) }}" class="thumb">
+                                <span class="full-image cover bg2" role="img">
+                                    <img src="{{asset('assets/images/news')}}/{{$popular->image}}" style="width: 100%; height:25vh "/>
+                                </span>
+                            </a>
+                            <div class="info">
+                                <p>{{ Carbon\Carbon::parse($popular->created_at)->diffForHumans() }}</p>
+                                <h4 class="title-text">
+                                    <a href="{{ route('front.single.news', $popular->slug) }}">
+                                       {{ $popular->title}}
+                                    </a>
+                                </h4>
+                            </div>
+                        </article>
+                @endforeach
+                       
+                    </div>
+                </div>
+
             </div>
+            
         </div>
     </div>
 </div>
-
 
 @endsection

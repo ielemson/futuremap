@@ -271,13 +271,12 @@ class NewsController extends Controller
     
         $news = News::where('id',$id)->first();
         $newsImg = $news->image;
-        $image_path = public_path('assets/images/news/'.$newsImg);
+        $image_path = public_path('/assets/images/news/'.$newsImg);
         if(File::exists($image_path)) {
           File::delete($image_path);
         }
         if($news->delete()){
-            
-            return response()->json(['status'=>200]);
+        return response()->json(['status'=>200]);
         }
       
     }

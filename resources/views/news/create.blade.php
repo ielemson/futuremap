@@ -24,7 +24,7 @@
                             </li>
                         </ol>
                     </nav>
-                    
+
                 </div>
             </div>
             <div class="col-md-12 mt-5">
@@ -47,9 +47,11 @@
                                         <div class="row">
                                             <div class="col-md-6">
                                                 <div class="form-group">
-                                                    <label for="newstitle">News Title</label><span class="text-danger">*</span>
+                                                    <label for="newstitle">News Title</label><span
+                                                        class="text-danger">*</span>
                                                     <input type="text" name="title" placeholder="News title"
-                                                        class="form-control @error('title') is-invalid @enderror" id="newstitle" value="{{ old('title') }}" required>
+                                                        class="form-control @error('title') is-invalid @enderror"
+                                                        id="newstitle" value="{{ old('title') }}" required>
                                                     @error('title')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -57,14 +59,17 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="col-md-6">
                                                 <div class="form-group">
                                                     <label>Categories</label><span class="text-danger">*</span>
-                                                    <select name="category_id" class="form-control select2 @error('category_id') is-invalid @enderror" required>
+                                                    <select name="category_id"
+                                                        class="form-control select2 @error('category_id') is-invalid @enderror"
+                                                        required>
                                                         <option value="">Select New Category</option>
                                                         @foreach ($categories as $category)
-                                                            <option value="{{ $category->id }}" {{ old('category_id') == $category->id ? 'selected' : '' }}>
+                                                            <option value="{{ $category->id }}"
+                                                                {{ old('category_id') == $category->id ? 'selected' : '' }}>
                                                                 {{ $category->name }}
                                                             </option>
                                                         @endforeach
@@ -76,14 +81,17 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="col-4">
                                                 <div class="form-group">
                                                     <label for="status">Status</label> <span class="text-danger">*</span>
-                                                    <select class="form-control @error('status') is-invalid @enderror" name="status" id="status" required>
+                                                    <select class="form-control @error('status') is-invalid @enderror"
+                                                        name="status" id="status" required>
                                                         <option value="" selected>-- Select an option --</option>
-                                                        <option value="1" {{ old('status') == '1' ? 'selected' : '' }}>Published</option>
-                                                        <option value="0" {{ old('status') == '0' ? 'selected' : '' }}>Unpublished</option>
+                                                        <option value="1" {{ old('status') == '1' ? 'selected' : '' }}>
+                                                            Published</option>
+                                                        <option value="0" {{ old('status') == '0' ? 'selected' : '' }}>
+                                                            Unpublished</option>
                                                     </select>
                                                     @error('status')
                                                         <span class="invalid-feedback" role="alert">
@@ -92,15 +100,21 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="col-4">
                                                 <div class="form-group">
                                                     <label for="type">Type</label> <span class="text-danger">*</span>
-                                                    <select class="form-control @error('type') is-invalid @enderror" name="type" id="type" required>
+                                                    <select class="form-control @error('type') is-invalid @enderror"
+                                                        name="type" id="type" required>
                                                         <option value="" selected>-- Select an option --</option>
-                                                        <option value="Article" {{ old('type') == 'Article' ? 'selected' : '' }}>Article</option>
-                                                        <option value="Feature" {{ old('type') == 'Feature' ? 'selected' : '' }}>Feature</option>
-                                                        <option value="News" {{ old('type') == 'News' ? 'selected' : '' }}>News</option>
+                                                        <option value="Article"
+                                                            {{ old('type') == 'Article' ? 'selected' : '' }}>Article
+                                                        </option>
+                                                        <option value="Feature"
+                                                            {{ old('type') == 'Feature' ? 'selected' : '' }}>Feature
+                                                        </option>
+                                                        <option value="News"
+                                                            {{ old('type') == 'News' ? 'selected' : '' }}>News</option>
                                                     </select>
                                                     @error('type')
                                                         <span class="invalid-feedback" role="alert">
@@ -109,12 +123,14 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="col-4">
                                                 <div class="form-group">
-                                                    <label for="published_at">Published At</label> <span class="text-danger">*</span>
-                                                    <input class="form-control @error('published_at') is-invalid @enderror" type="datetime-local" name="published_at"
-                                                        id="published_at" value="{{ old('published_at') }}" required>
+                                                    <label for="published_at">Published At</label> <span
+                                                        class="text-danger">*</span>
+                                                    <input class="form-control @error('published_at') is-invalid @enderror"
+                                                        type="datetime-local" name="published_at" id="published_at"
+                                                        value="{{ old('published_at') }}" required>
                                                     @error('published_at')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -126,8 +142,8 @@
                                                 <div class="form-group">
                                                     <label for="meta_title">Meta Title</label>
                                                     <input type="text" name="meta_title" placeholder="Meta title"
-                                                        class="form-control @error('meta_title') is-invalid @enderror" id="meta_title"
-                                                        value="{{ old('meta_title') }}">
+                                                        class="form-control @error('meta_title') is-invalid @enderror"
+                                                        id="meta_title" value="{{ old('meta_title') }}">
                                                     @error('meta_title')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -135,13 +151,14 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="meta_keywords">Meta Keywords</label>
-                                                    <input type="text" name="meta_keywords" placeholder="Meta Keywords"
-                                                        class="form-control @error('meta_keywords') is-invalid @enderror" id="meta_keywords"
-                                                        value="{{ old('meta_keywords') }}">
+                                                    <input type="text" name="meta_keywords"
+                                                        placeholder="Meta Keywords"
+                                                        class="form-control @error('meta_keywords') is-invalid @enderror"
+                                                        id="meta_keywords" value="{{ old('meta_keywords') }}">
                                                     @error('meta_keywords')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -149,13 +166,14 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            
+
                                             <div class="col-md-4">
                                                 <div class="form-group">
                                                     <label for="meta_description">Meta Description</label>
-                                                    <input type="text" name="meta_description" placeholder="Meta Description"
-                                                        class="form-control @error('meta_description') is-invalid @enderror" id="meta_description"
-                                                        value="{{ old('meta_description') }}">
+                                                    <input type="text" name="meta_description"
+                                                        placeholder="Meta Description"
+                                                        class="form-control @error('meta_description') is-invalid @enderror"
+                                                        id="meta_description" value="{{ old('meta_description') }}">
                                                     @error('meta_description')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -166,7 +184,8 @@
                                             <div class="col-md-12">
                                                 <div class="form-group">
                                                     <label>News Content</label><span class="text-danger">*</span>
-                                                    <textarea class="textarea html-editor form-control @error('details') is-invalid @enderror" name="details" id="summernote" required>{{ old('details') }}</textarea>
+                                                    <textarea class="textarea html-editor form-control @error('details') is-invalid @enderror" name="details"
+                                                        id="summernote" required>{{ old('details') }}</textarea>
                                                     @error('details')
                                                         <span class="invalid-feedback" role="alert">
                                                             <strong>{{ $message }}</strong>
@@ -174,33 +193,32 @@
                                                     @enderror
                                                 </div>
                                             </div>
-                                            
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="row">
-                                <div class="col-md-8">
-                                    <div class="box box-primary">
-                                        <div class="box-body">
-
-                                            <div class="form-group">
-                                                <label for="newsimage">Featured Image</label>
-                                                <input type="file" name="image" id="file" required>
-                                                <p class="help-block">(Image must be in .png or .jpg format)</p>
-                                            </div>
-
 
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-md-4">
-                                    <div class="box-footer">
-                                        <button type="submit" class="btn btn-primary btn-flat">CREATE</button>
-                                        <a href="/dashboard" type="submit" class="btn btn-warning btn-flat">Cancel</a>
+
+                                <div class="row">
+                                    <div class="col-md-8">
+                                        <div class="box box-primary">
+                                            <div class="box-body">
+
+                                                <div class="form-group">
+                                                    <label for="newsimage">Featured Image</label>
+                                                    <input type="file" name="image" id="file" required>
+                                                    <p class="help-block">(Image must be in .png or .jpg format)</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4">
+                                        <div class="box-footer">
+                                            <button type="submit" class="btn btn-primary btn-flat">CREATE</button>
+                                            <a href="/dashboard" type="submit"
+                                                class="btn btn-warning btn-flat">Cancel</a>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
                         </form>
                     </div>
                 </div>

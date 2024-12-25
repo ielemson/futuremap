@@ -26,7 +26,7 @@
                                 <a href="{{url('dashboard')}}"><i class="ik ik-home"></i></a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="#">{{ __('Add Event Magazine')}}</a>
+                                <a href="{{ route("event.magazine.index") }}">{{ __('View Event Magazine')}}</a>
                             </li>
                         </ol>
                     </nav>
@@ -74,7 +74,52 @@
                                 </div></div>
                             </div>
                             
-                           
+                           <div class="row">
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="meta_title">Meta Title</label>
+                                    <input type="text" name="meta_title" placeholder="Meta title"
+                                        class="form-control @error('meta_title') is-invalid @enderror"
+                                        id="meta_title" value="{{ old('meta_title') }}">
+                                    @error('meta_title')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="meta_keywords">Meta Keywords</label>
+                                    <input type="text" name="meta_keywords"
+                                        placeholder="Meta Keywords"
+                                        class="form-control @error('meta_keywords') is-invalid @enderror"
+                                        id="meta_keywords" value="{{ old('meta_keywords') }}">
+                                    @error('meta_keywords')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+
+                            <div class="col-md-4">
+                                <div class="form-group">
+                                    <label for="meta_description">Meta Description</label>
+                                    <input type="text" name="meta_description"
+                                        placeholder="Meta Description"
+                                        class="form-control @error('meta_description') is-invalid @enderror"
+                                        id="meta_description" value="{{ old('meta_description') }}">
+                                    @error('meta_description')
+                                        <span class="invalid-feedback" role="alert">
+                                            <strong>{{ $message }}</strong>
+                                        </span>
+                                    @enderror
+                                </div>
+                            </div>
+                            
+                           </div>
                     
                             <div class="mb-3">
                                 <label for="content" class="form-label">Content</label>

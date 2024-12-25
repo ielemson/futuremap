@@ -16,5 +16,6 @@
 @include('frontend.include.partialBlog')
 @include("frontend.include.partialPersonality")
 @include("frontend.include.eventmagazines")
+@include("frontend.include.scholarship_Opportunites")
 
 @endsection

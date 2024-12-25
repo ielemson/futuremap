@@ -112,10 +112,6 @@
                 <div class="modal-body">
                     <form action="{{ route('news.category.store') }}" method="POST">
                         @csrf
-                        {{-- <div class="form-group">
-<label class="d-block">Category Image</label>
-<input type="file" name="category_image" class="form-control">
-</div> --}}
                         <div class="form-group">
                             <label class="d-block">Category Title</label>
                             @error('name')
@@ -143,8 +139,6 @@
                                 @enderror
                             </div>
                         </div>
-
-
                         <div class="form-group">
                             <button class="btn btn-primary" type="submit">Create Category</button>
                         </div>
@@ -173,14 +167,6 @@
                                 placeholder="Enter Category Title" required>
                             <input type="hidden" class="categoryId" name="id">
                         </div>
-
-                        {{-- <div class="form-group">
-<div class="checkbox">
-<label>
-<input type="checkbox" name="status" class="category_status"  id="check_status"> Active
-</label>
-</div>
-</div> --}}
                         <div class="form-group">
                             <div class="checkbox">
                                 <label>
@@ -203,7 +189,7 @@
         </div>
     </div>
 
-    @push('scripts')
+    @push('script')
         <script>
             $(document).ready(function() {
                 $(".catTray").on("click", function() {

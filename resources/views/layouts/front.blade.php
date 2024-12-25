@@ -5,29 +5,44 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <title>{{$setting->website_title}} | @yield('title', '')</title>
+    <title>{{ $setting->website_title }} | @yield('title', '')</title>
 
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="{{$setting->meta_description}}">
-    <meta name="keywords" content="{{$setting->meta_title}}">
-    <link rel="canonical" href="{{url('/')}}">
-    @if (!@empty($event_slug))
-    <meta property="og:url" content="{{route("event.magazine.details",$event_slug)}}" />
-    <meta property="og:description" content="{{$meta_description ?? ''}}"/>
-    <!-- Content when $items is not empty -->
-    <meta property="og:image" content="https://fmapmedia.com/assets/images/news/{{$socialimage ?? ''}}">
-    <!-- Content when $items is not empty -->
-    <meta property="og:title" content="{{$event_title ?? ''}}" />
-    <meta property="og:image" content="https://fmapmedia.com/assets/images/banners/{{$eventimage ?? ''}}">
-  
-    <meta property="og:image:width" content="1200">
-    <meta property="og:image:height" content="630">
-    @else
-    <meta property="og:url" content="{{url('/')}}" />
-    @endif 
-    <meta property="og:type" content="website" />
+    <meta name="description" content="{{ $setting->meta_description }}">
+    <meta name="keywords" content="{{ $setting->meta_title }}">
+    <link rel="canonical" href="{{ url('/') }}">
+    @if (!empty($news_title))
+        <!-- Meta Description -->
+        <meta name="description" content="{{ $meta_description }}">
+        <!-- Meta Tags -->
+        <meta property="og:title" content="{{ $news_title }}" />
+        <meta property="og:description" content="{{ $news_title }}" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="{{ route('event.magazine.details', $news_slug) }}" />
+        <meta property="og:image" content="https://fmapmedia.com/assets/images/news/{{ $socialimage }}" />
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:site_name" content="FutureMap News" />
+    @endif
+    {{-- @extends('layouts.front', ['eventimage' => $event->image_banner, 'event_title' => $event->title, 'meta_description' => $event->title, 'event_slug' => $event->slug]) --}}
+
+    @if (!empty($event_title))
+        <!-- Meta Description -->
+        <meta name="description" content="{{ $meta_description }}">
+        <!-- Meta Tags -->
+        <meta property="og:title" content="{{ $event_title }}" />
+        <meta property="og:description" content="{{ $event_title }}" />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="{{ route('event.magazine.details', $event_slug) }}" />
+        <meta property="og:image" content="https://fmapmedia.com/assets/images/banners/{{ $eventimage }}" />
+        <meta property="og:image:width" content="1200">
+        <meta property="og:image:height" content="630">
+        <meta property="og:locale" content="en_US" />
+        <meta property="og:site_name" content="FutureMap Event Magazine" />
+    @endif
     <link rel="stylesheet" href="{{ asset('assets/css/plugins.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/iconplugins.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
@@ -43,23 +58,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
         integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-        {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css"> --}}
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
-        {{-- <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" /> --}}
-        <link rel="stylesheet" href="{{ asset("assets/lightbox/css/lightbox.min.css") }}" />
-        <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-        <script async src="{{ asset("assets/lightbox/js/lightbox.min.js") }}" charset="utf-8"></script>
-        <div id="fb-root"></div>
-        <script>(function(d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s); js.id = id;
-        js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
-        fjs.parentNode.insertBefore(js, fjs);
+    {{-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css"> --}}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
+    {{-- <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" /> --}}
+    <link rel="stylesheet" href="{{ asset('assets/lightbox/css/lightbox.min.css') }}" />
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+    <script async src="{{ asset('assets/lightbox/js/lightbox.min.js') }}" charset="utf-8"></script>
+    <div id="fb-root"></div>
+    <script>
+        (function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s);
+            js.id = id;
+            js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+            fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));
-        </script>
-        @stack('extra-css')
-        
+    </script>
+    @stack('extra-css')
+
 </head>
 
 <body>
@@ -85,43 +102,50 @@
     <script src="{{ asset('assets/js/tweenMax.min.js') }}"></script>
     <script src="{{ asset('assets/js/custom.js') }}"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js" integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw==" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
+        integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
+        crossorigin="anonymous"></script>
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script> --}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.js"></script>
     {{-- <script src="https://checkout.flutterwave.com/v3.js"></script> --}}
     {{-- <script src="https://unpkg.com/aos@next/dist/aos.js"></script> --}}
     <script type='text/javascript' src='https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js'></script>
-    <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js'></script>
-                            
+    <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js'>
+    </script>
+
     <script>
-      AOS.init();
+        AOS.init();
     </script>
     <script>
-     $.ajaxSetup({headers: {'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')}});
-// Mini Cart Fetch 
-    function miniCart(){
-        $.ajax({
-            type: 'GET',
-            dataType: 'json',
-            url: '/product/cart',
-            success: function(data){
-                $('.cartCount').html("₦"+ new Intl.NumberFormat().format(data.cart_total));
-               
-                if (data.cart_total != 0) {
-                    $('.info_check').html("Click here to checkout"); 
-                }else{
-                    $('.info_check').html("Your cart is empty"); 
-                }
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
             }
-        })
-    }
-    miniCart();
+        });
+        // Mini Cart Fetch 
+        function miniCart() {
+            $.ajax({
+                type: 'GET',
+                dataType: 'json',
+                url: '/product/cart',
+                success: function(data) {
+                    $('.cartCount').html("₦" + new Intl.NumberFormat().format(data.cart_total));
+
+                    if (data.cart_total != 0) {
+                        $('.info_check').html("Click here to checkout");
+                    } else {
+                        $('.info_check').html("Your cart is empty");
+                    }
+                }
+            })
+        }
+        miniCart();
         // Mini Cart Fetch 
         // Add to Cart Product
         function addToCart(id) {
             var pid = id;
             var qty = 1
-           
+
             $.ajax({
                 type: 'POST',
                 dataType: 'json',
@@ -131,7 +155,7 @@
                 },
                 url: '/cart/store/' + id,
                 success: function(data) {
-                   
+
                     const Toast = Swal.mixin({
                         toast: true,
                         position: 'top-end',
@@ -139,14 +163,14 @@
                         showConfirmButton: false,
                         timer: 3000
                     })
-                     miniCart();
+                    miniCart();
                     if ($.isEmptyObject(data.error)) {
                         Toast.fire({
                             type: 'success',
                             title: data.success,
                         })
 
-                        
+
                     } else {
                         Toast.fire({
                             type: 'error',

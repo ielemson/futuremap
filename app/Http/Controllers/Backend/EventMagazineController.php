@@ -53,6 +53,9 @@ class EventMagazineController extends Controller
         Event::create([
             'title' => $request->title,
             'location' => $request->location,
+            'meta_title' => $request->meta_title,
+            'meta_keywords' => $request->meta_keywords,
+            'meta_description' => $request->meta_description,
             'status' => $request->status,
             'slug'=> Str::slug($request->title),
             'image_banner' => $imageBannerPath,
@@ -102,6 +105,9 @@ class EventMagazineController extends Controller
             $event->update([
                 'title' => $request->title,
                 'status' => $request->status,
+                'meta_title' => $request->meta_title,
+                'meta_keywords' => $request->meta_keywords,
+                'meta_description' => $request->meta_description,
                 'slug' => Str::slug($request->title),
                 'location' => $request->location,
                 'image_banner' => $imageBannerPath,
@@ -112,6 +118,9 @@ class EventMagazineController extends Controller
             $event->update([
                 'title' => $request->title,
                 'status' => $request->status,
+                'meta_title' => $request->meta_title,
+                'meta_keywords' => $request->meta_keywords,
+                'meta_description' => $request->meta_description,
                 'slug' => Str::slug($request->title),
                 'location' => $request->location,
                 'image_banner' => $imageBannerPath,

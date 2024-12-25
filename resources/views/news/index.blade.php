@@ -21,7 +21,7 @@
                                 <a href="{{ route('dashboard') }}"><i class="ik ik-home"></i></a>
                             </li>
                             <li class="breadcrumb-item">
-                                <a href="#">{{ __('News') }}</a>
+                                <a href="javascript:;">{{ __('News') }}</a>
                             </li>
                             <li class="breadcrumb-item active" aria-current="page">{{ __('List') }}</li>
                         </ol>
@@ -109,7 +109,7 @@
                                                     data-id="{{ $newslist->id }}"></i></a>
                                             <a href="{{ route('news.edit', $newslist->id) }}"><i
                                                     class="ik ik-edit-2"></i></a>
-                                            <a href="#" class="list-delete" data-id="{{ $newslist->id }}"><i
+                                            <a href="javascript:;" class="list-delete" data-id="{{ $newslist->id }}"><i
                                                     class="ik ik-trash-2"></i></a>
                                             <a href="https://www.facebook.com/sharer/sharer.php?u={{config('app.url')}}/news/{{ $newslist->slug }}"
                                                 target="_blank"><i class="ik ik-facebook"></i></a>
@@ -161,7 +161,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">{{ __('Close') }}</button>
-                    <a href="#" class="btn btn-primary">{{ __('Edit') }}</a>
+                    <a href="javascript:;" class="btn btn-primary">{{ __('Edit') }}</a>
                     <button type="button" class="btn btn-danger">{{ __('Delete') }}</button>
 
                     {{-- {!! $shareComponent !!} --}}
@@ -171,7 +171,7 @@
     </div>
 
     <!-- push external js -->
-    @push('scripts')
+    @push('script')
         <script src="{{ asset('plugins/sweetalert/dist/sweetalert.min.js') }}"></script>
         <script src="{{ asset('plugins/summernote/dist/summernote-bs4.min.js') }}"></script>
         <script src="{{ asset('js/layouts.js') }}"></script>
@@ -216,7 +216,7 @@
                                 btnClass: 'btn-red',
                                 action: function() {
                                     var type = "GET";
-                                    var ajaxurl = '/news/delete/' + dataId;
+                                    var ajaxurl = '/admin/news/delete/' + dataId;
                                     $.ajax({
                                         type: type,
                                         url: ajaxurl,

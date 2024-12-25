@@ -53,6 +53,7 @@ Route::get('/magazines', [HomeController::class, 'magazines'])->name('magazine.l
 Route::get('/magazine/{slug}', [HomeController::class, 'magazine'])->name('magazine.details');
 Route::get('/event/magazine/single/{slug}', [HomeController::class, 'eventmagazine'])->name('event.magazine.details');
 Route::get('/news', [HomeController::class, 'news'])->name('front.news.list');
+Route::get('/scholarships/grant-opportunities', [HomeController::class, 'scholarship_grants_opportunities'])->name('front.scholarship_grants_opportunities');
 Route::get('/personality/all', [HomeController::class, 'personalities'])->name('front.personality.list');
 Route::get('/personality/profile/show/{slug}', [HomeController::class, 'personality'])->name('front.personality.details');
 Route::get('/news/{id}', [HomeController::class, 'single_news'])->name('front.single.news');
