@@ -1,4 +1,4 @@
-@extends('layouts.front',['socialimage'=>$single_news->image,'news_title'=>$single_news->title,'meta_description'=>$single_news->meta_description,'news_slug'=>$single_news->slug])
+@extends('layouts.front',['socialimage'=>$single_news->image,'news_title'=>$single_news->title,'meta_description'=>$single_news->details,'news_slug'=>$single_news->slug])
 
 @section('content')
 @section('title', $single_news->title)

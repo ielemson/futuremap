@@ -18,7 +18,10 @@
         <meta name="description" content="{{ $meta_description }}">
         <!-- Meta Tags -->
         <meta property="og:title" content="{{ $news_title }}" />
-        <meta property="og:description" content="{{ $news_title }}" />
+        @php
+            $cleanContent = preg_replace('/style="[^"]*"/i', '', strip_tags($meta_description));
+        @endphp
+        <meta property="og:description" content="{!! Illuminate\Support\Str::limit($cleanContent, 200) !!}" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="{{ route('event.magazine.details', $news_slug) }}" />
         <meta property="og:image" content="https://fmapmedia.com/assets/images/news/{{ $socialimage }}" />
@@ -34,7 +37,10 @@
         <meta name="description" content="{{ $meta_description }}">
         <!-- Meta Tags -->
         <meta property="og:title" content="{{ $event_title }}" />
-        <meta property="og:description" content="{{ $event_title }}" />
+        @php
+        $cleanContent = preg_replace('/style="[^"]*"/i', '', strip_tags($meta_description));
+    @endphp
+        <meta property="og:description" content="{{ $cleanContent }}" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="{{ route('event.magazine.details', $event_slug) }}" />
         <meta property="og:image" content="https://fmapmedia.com/assets/images/banners/{{ $eventimage }}" />

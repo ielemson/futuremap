@@ -1,4 +1,4 @@
-@extends('layouts.front', ['eventimage' => $event->image_banner, 'event_title' => $event->title, 'meta_description' => $event->title, 'event_slug' => $event->slug])
+@extends('layouts.front', ['eventimage' => $event->image_banner, 'event_title' => $event->title, 'meta_description' => $event->content, 'event_slug' => $event->slug])
 
 @section('content')
 @section('title', $event->title)
