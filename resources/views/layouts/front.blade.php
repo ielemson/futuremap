@@ -5,54 +5,30 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 
 <head>
-    <title>{{ $setting->website_title }} | @yield('title', '')</title>
-
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="{{ $setting->meta_description }}">
-    <meta name="keywords" content="{{ $setting->meta_title }}">
-    <link rel="canonical" href="{{ url('/') }}">
-    @if (!empty($news_title))
-        <!-- Meta Description -->
-        <meta name="description" content="{{ $meta_description }}">
-        <!-- Meta Tags -->
-        <meta property="og:title" content="{{ $news_title }}" />
-        @php
-            $cleanContent = preg_replace('/style="[^"]*"/i', '', strip_tags($meta_description));
-        @endphp
-        <meta property="og:description" content="{!! Illuminate\Support\Str::limit($cleanContent, 200) !!}" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="{{ route('event.magazine.details', $news_slug) }}" />
-        <meta property="og:image" content="https://fmapmedia.com/assets/images/news/{{ $socialimage }}" />
-        <meta property="og:image:width" content="1200">
-        <meta property="og:image:height" content="630">
-        <meta property="og:locale" content="en_US" />
-        <meta property="og:site_name" content="FutureMap News" />
-    @endif
 
-    @if (!empty($event_title))
-        <!-- Meta Description -->
-        <meta name="description" content="{{ $meta_description }}">
-        <!-- Meta Tags -->
-        <meta property="og:title" content="{{ $event_title }}" />
-        @php
-        $cleanContent = preg_replace('/style="[^"]*"/i', '', strip_tags($meta_description));
-    @endphp
-        <meta property="og:description" content="{{ $cleanContent }}" />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="{{ route('event.magazine.details', $event_slug) }}" />
-        <meta property="og:image" content="https://fmapmedia.com/assets/images/banners/{{ $eventimage }}" />
-        <meta property="og:image:width" content="1200">
-        <meta property="og:image:height" content="630">
-        <meta property="og:locale" content="en_US" />
-        <meta property="og:site_name" content="FutureMap Event Magazine" />
-    @endif
+   @if (!empty($news_title))
+   <title>@yield('title', '') | {{ $setting->website_title }} </title>
+   <meta name="description"
+       content="{{ $news_title }}">
+   <link rel="canonical" href="{{ route('event.magazine.details', $news_slug) }}">
+   <meta property="og:url" content="{{ route('event.magazine.details', $news_slug) }}">
+   <meta property="og:title" content="{{  $news_title }}">
+   <meta property="og:description"
+       content="{{  $news_title }}">
+   <meta property="og:type" content="website">
+   <meta property="og:site_name" content="The Futuremap Media">
+   <meta property="og:image"
+       content="https://fmapmedia.com/assets/images/news/{{ $socialimage }}">
+   <meta name="bingbot" content="nocache">
+   @endif
+
     <link rel="stylesheet" href="{{ asset('assets/css/plugins.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/iconplugins.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
-
     <link rel="stylesheet" href="{{ asset('assets/css/theme-dark.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
@@ -67,7 +43,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
     {{-- <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" /> --}}
     <link rel="stylesheet" href="{{ asset('assets/lightbox/css/lightbox.min.css') }}" />
-    
+
     @stack('extra-css')
 
 </head>

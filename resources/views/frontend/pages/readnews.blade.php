@@ -1,11 +1,10 @@
 @extends('layouts.front', ['socialimage' => $news_details->image, 'news_title' => $news_details->title, 'meta_description' => $news_details->details, 'news_slug' => $news_details->slug])
+
 @section('content')
+
 @section('title', $news_details->title)
-@if ($news_details->category->name == 'Scholarship/Grants opportunities')
-    @include('frontend.include.innerBanner', ['banner_title' => 'Scholarship/Grants Opportunities'])
-@else
-    @include('frontend.include.innerBanner', ['banner_title_1' => $news_details->title,'banner_title_2'=>'News Details'])
-@endif
+@include('frontend.include.innerBanner', ['banner_title_1' => $news_details->title,'banner_title_2'=>'News Details'])
+
 <div class="blog-details-area pt-100 pb-70">
     <div class="container">
         <div class="row">
@@ -105,4 +104,5 @@
         </div>
     </div>
 </div>
+
 @endsection

@@ -4,8 +4,6 @@
 @section('title', $event->title)
 @include('frontend.include.innerBanner', ['banner_title' => $event->title])
 
-
-
 <!-- Event Details Area -->
 <div class="event-details-area pt-100 pb-70">
     <div class="container">

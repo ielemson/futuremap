@@ -11,7 +11,6 @@
             </div>
         </div>
     </div>
-
     <div class="desktop-nav nav-area">
         <div class="container-fluid">
             <nav class="navbar navbar-expand-md navbar-light ">
@@ -48,7 +47,6 @@
                             <ul class="dropdown-menu">
                                 @if (count($services) > 0)
                                 @foreach ($services as $service)
-                               
                                 <li class="nav-item">
                                     <a href="{{route('company.service',$service->id)}}" class="nav-link {{ (request()->is('our-service*')) ? 'active' : '' }}">
                                         {{$service->header}}
