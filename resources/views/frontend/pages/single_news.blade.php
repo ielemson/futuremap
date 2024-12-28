@@ -11,11 +11,7 @@
         <div class="row">
             <div class="col-lg-8">
                 <div class="blog-details-content pr-20">
-                    {{-- <div class="blog-preview-img-bg">
-<a href="{{route('front.single.news',$single_news->slug)}}">
-<img src="{{asset('assets/images/news')}}/{{$single_news->image}}" alt="{{$single_news->title}}">
-</a>
-</div> --}}
+           
                     <div class="blog-preview-img-bg">
                         <a href="" class="play-btn">
                             {{-- <i class="flaticon-play-button-arrowhead"></i> --}}
