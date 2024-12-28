@@ -18,42 +18,35 @@
         <meta name="description" content="{{ $meta_description }}">
         <!-- Meta Tags -->
         <meta property="og:title" content="{{ $news_title }}" />
-        @php
-            $cleanContent = preg_replace('/style="[^"]*"/i', '', strip_tags($meta_description));
-        @endphp
-        <meta property="og:description" content="{!! Illuminate\Support\Str::limit($cleanContent, 200) !!}" />
+        <meta property="og:description" content="{{ $news_title }}" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="{{ route('event.magazine.details', $news_slug) }}" />
         <meta property="og:image" content="https://fmapmedia.com/assets/images/news/{{ $socialimage }}" />
         <meta property="og:image:width" content="1200">
         <meta property="og:image:height" content="630">
         <meta property="og:locale" content="en_US" />
-        <meta property="og:site_name" content="FutureMap News" />
+        <meta property="og:site_name" content="The FutureMap Media" />
     @endif
-    {{-- @extends('layouts.front', ['eventimage' => $event->image_banner, 'event_title' => $event->title, 'meta_description' => $event->title, 'event_slug' => $event->slug]) --}}
-
+   
     @if (!empty($event_title))
         <!-- Meta Description -->
         <meta name="description" content="{{ $meta_description }}">
         <!-- Meta Tags -->
         <meta property="og:title" content="{{ $event_title }}" />
-        @php
-        $cleanContent = preg_replace('/style="[^"]*"/i', '', strip_tags($meta_description));
-    @endphp
-        <meta property="og:description" content="{{ $cleanContent }}" />
+       
+        <meta property="og:description" content="{{ $event_title }}" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="{{ route('event.magazine.details', $event_slug) }}" />
         <meta property="og:image" content="https://fmapmedia.com/assets/images/banners/{{ $eventimage }}" />
         <meta property="og:image:width" content="1200">
         <meta property="og:image:height" content="630">
         <meta property="og:locale" content="en_US" />
-        <meta property="og:site_name" content="FutureMap Event Magazine" />
+        <meta property="og:site_name" content="The FutureMap Media" />
     @endif
     <link rel="stylesheet" href="{{ asset('assets/css/plugins.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/iconplugins.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/responsive.css') }}">
-
     <link rel="stylesheet" href="{{ asset('assets/css/theme-dark.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
