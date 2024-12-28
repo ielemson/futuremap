@@ -1,7 +1,7 @@
 @extends('layouts.front')
 @section('content')
 @section('title', $magazine->name)
-@include('frontend.include.innerBanner', ['banner_title' => 'FutureMap Magazine'])
+@include('frontend.include.innerBanner', ['banner_title_1' => $magazine->name,"banner_title_2"=>"Our Magazine"])
 
 <div class="container mt-5 mb-5">
     <div class="row d-flex justify-content-center">

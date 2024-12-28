@@ -2,7 +2,7 @@
 
 @section('content')
 @section('title', $service->header)
-@include('frontend.include.innerBanner', ['banner_title' => $service->header])
+@include('frontend.include.innerBanner', ['banner_title_1' => $service->header,'banner_title_2'=>"Our Services"])
 
 <div class="blog-details-area pt-100 pb-70">
     <div class="container">

@@ -5,7 +5,7 @@
 @endphp
 @section('content')
 @section('title', 'About Us')
-@include('frontend.include.innerBanner', ['banner_title' => 'About Us'])
+@include('frontend.include.innerBanner', ['banner_title_1' => 'About Us',"banner_title_2"=>"About Us"])
 
 
 <div class="enrolled-area-two pt-100 pb-70">

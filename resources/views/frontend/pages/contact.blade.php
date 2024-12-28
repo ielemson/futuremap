@@ -5,7 +5,7 @@
 
 @section('content')
 @section('title', 'Contact Us')  
-@include('frontend.include.innerBanner',['banner_title'=>'Contact Us'])
+@include('frontend.include.innerBanner',['banner_title_1'=>'Contact Us','banner_title_2'=>"Contact Us"])
 
 <div class="contact-info-area pt-100 pb-70">
     <div class="container">

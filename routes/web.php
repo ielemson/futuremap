@@ -56,7 +56,7 @@ Route::get('/news', [HomeController::class, 'news'])->name('front.news.list');
 Route::get('/scholarships/grant-opportunities', [HomeController::class, 'scholarship_grants_opportunities'])->name('front.scholarship_grants_opportunities');
 Route::get('/personality/all', [HomeController::class, 'personalities'])->name('front.personality.list');
 Route::get('/personality/profile/show/{slug}', [HomeController::class, 'personality'])->name('front.personality.details');
-Route::get('/news/{id}', [HomeController::class, 'single_news'])->name('front.single.news');
+Route::get('/news/readnews/{slug}', [HomeController::class, 'single_news'])->name('front.single.news');
 Route::get('/news/category/{slug}', [HomeController::class, 'newsCategory'])->name('front.news.category');
 Route::post('/user/pay/register', [HomeController::class, 'StoreUser'])->name('user.cart.register');
 Route::post('user/pay/login', [HomeController::class, 'LoginUser'])->name('user.cart.login');

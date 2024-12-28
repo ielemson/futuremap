@@ -1,10 +1,10 @@
-@extends('layouts.front', ['socialimage' => $single_news->image, 'news_title' => $single_news->title, 'meta_description' => $single_news->details, 'news_slug' => $single_news->slug])
+@extends('layouts.front', ['socialimage' => $news_details->image, 'news_title' => $news_details->title, 'meta_description' => $news_details->details, 'news_slug' => $news_details->slug])
 @section('content')
-@section('title', $single_news->title)
-@if ($single_news->category->name == 'Scholarship/Grants opportunities')
+@section('title', $news_details->title)
+@if ($news_details->category->name == 'Scholarship/Grants opportunities')
     @include('frontend.include.innerBanner', ['banner_title' => 'Scholarship/Grants Opportunities'])
 @else
-    @include('frontend.include.innerBanner', ['banner_title' => 'Our News'])
+    @include('frontend.include.innerBanner', ['banner_title_1' => $news_details->title,'banner_title_2'=>'News Details'])
 @endif
 <div class="blog-details-area pt-100 pb-70">
     <div class="container">
@@ -15,22 +15,22 @@
                     <div class="blog-preview-img-bg">
                         <a href="" class="play-btn">
                             {{-- <i class="flaticon-play-button-arrowhead"></i> --}}
-                            <img src="{{ asset('assets/images/news') }}/{{ $single_news->image }}"
-                                alt="{{ $single_news->title }}" style="height:35vw; width:100%">
+                            <img src="{{ asset('assets/images/news') }}/{{ $news_details->image }}"
+                                alt="{{ $news_details->title }}" style="height:35vw; width:100%">
                         </a>
                     </div>
                     <ul class="tag-list">
                         <li>
                             <i class="ri-calendar-todo-fill"></i>
-                            {{ Carbon\Carbon::parse($single_news->created_at)->isoFormat('MMM DD YY') }}
+                            {{ Carbon\Carbon::parse($news_details->created_at)->isoFormat('MMM DD YY') }}
                         </li>
                         <li>
                             <i class="ri-price-tag-3-fill"></i>
-                            <a href="#">{{ $single_news->category->name }}</a>
+                            <a href="#">{{ $news_details->category->name }}</a>
                         </li>
                     </ul>
-                    <h2>{{ $single_news->title }}</h2>
-                    <p style="text-align: justify !mportant">{!! $single_news->details !!}</p>
+                    <h2>{{ $news_details->title }}</h2>
+                    <p style="text-align: justify !mportant">{!! $news_details->details !!}</p>
                     <div class="article-share">
                         <div class="row align-items-center">
                             <div class="col-lg-6 col-md-6">
@@ -55,22 +55,22 @@
                                         <li class="title">Share :</li>
                                         <li>      
                                             <div class="fb-share-button btn btn-primary btn-sm"
-                                                data-href="{{ route('front.single.news', $single_news->slug) }}"
+                                                data-href="{{ route('front.single.news', $news_details->slug) }}"
                                                 data-layout="button_count">
                                             </div>
                                         </li>
                                         <li>
                                             <a target="_blank" rel="noopener noreferrer"
-                                                href="https://twitter.com/intent/tweet?text={{ route('front.single.news', $single_news->slug) }}"
-                                                data-size="large" data-text="{{ $single_news->slug }}"
-                                                data-url="{{ route('front.single.news', $single_news->slug) }}"
+                                                href="https://twitter.com/intent/tweet?text={{ route('front.single.news', $news_details->slug) }}"
+                                                data-size="large" data-text="{{ $news_details->slug }}"
+                                                data-url="{{ route('front.single.news', $news_details->slug) }}"
                                                 data-hashtags="" data-via="{{ url('/') }}"
-                                                data-related="{{ $single_news->category->name }}">
+                                                data-related="{{ $news_details->category->name }}">
                                                 <i class="ri-twitter-fill"></i>
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="https://api.whatsapp.com/send?text={{ route('front.single.news', $single_news->slug) }}"
+                                            <a href="https://api.whatsapp.com/send?text={{ route('front.single.news', $news_details->slug) }}"
                                                 target="_blank">
                                                 <i class="ri-whatsapp-fill"></i>
                                             </a>

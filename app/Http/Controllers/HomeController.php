@@ -177,9 +177,9 @@ class HomeController extends Controller
     public function single_news($slug){
         $services = Service::where('status',1)->get();
         $categories = NewsCategory::where('status',1)->get();
-        $single_news = News::where('slug',$slug)->first();
+        $news_details = News::where('slug',$slug)->first();
         $news = News::where('status',1)->orderBy('id', 'DESC')->paginate(15);
-        return view('frontend.pages.single_news',compact('single_news','services','categories','news'));
+        return view('frontend.pages.readnews',compact('news_details','services','categories','news'));
     }
 
     public function newsCategory($slug){
