@@ -13,8 +13,8 @@
    <title>@yield('title', '') | {{ $setting->website_title }} </title>
    <meta name="description"
        content="{{ $news_title }}">
-   <link rel="canonical" href="{{ route('event.magazine.details', $news_slug) }}">
-   <meta property="og:url" content="{{ route('event.magazine.details', $news_slug) }}">
+   <link rel="canonical" href="{{ route("front.single.news", $news_slug) }}">
+   <meta property="og:url" content="{{ route('front.single.news', $news_slug) }}">
    <meta property="og:title" content="{{  $news_title }}">
    <meta property="og:description"
        content="{{  $news_title }}">
