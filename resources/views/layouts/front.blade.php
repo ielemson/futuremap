@@ -10,18 +10,22 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
    @if (!empty($news_title))
+   @php
+   $cleanContent = preg_replace('/style="[^"]*"/i', '', strip_tags($meta_description));
+    @endphp
    <title>@yield('title', '') | {{ $setting->website_title }} </title>
    <meta name="description"
        content="{{ $news_title }}">
    <link rel="canonical" href="{{ route("front.single.news", $news_slug) }}">
    <meta property="og:url" content="{{ route('front.single.news', $news_slug) }}">
    <meta property="og:title" content="{{  $news_title }}">
-   <meta property="og:description"
-       content="{{  $news_title }}">
+   <meta property="og:description" content="{!! Illuminate\Support\Str::limit($cleanContent, 200) !!}">
    <meta property="og:type" content="website">
    <meta property="og:site_name" content="The Futuremap Media">
-   <meta property="og:image"
-       content="https://fmapmedia.com/assets/images/news/{{ $socialimage }}">
+   <meta property="og:image:width" content="1200">
+   <meta property="og:image:height" content="630">
+   <meta property="og:image" content="https://fmapmedia.com/assets/images/news/{{ $socialimage }}">
+   <meta property="og:locale" content="en_US" />
    <meta name="bingbot" content="nocache">
    @endif
 
