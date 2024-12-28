@@ -53,11 +53,12 @@
                                 <div class="article-social-icon">
                                     <ul class="social-icon">
                                         <li class="title">Share :</li>
-                                        <li>      
-                                            <div class="fb-share-button btn btn-primary btn-sm"
-                                                data-href="{{ route('front.single.news', $news_details->slug) }}"
-                                                data-layout="button_count">
-                                            </div>
+                                       
+                                        <li>
+                                            <a target="_blank" rel="noopener noreferrer"
+                                                href="https://www.facebook.com/sharer/sharer.php?u={{ route('front.single.news', $news_details->slug) }}">
+                                                <i class="ri-facebook-fill"></i>
+                                            </a>
                                         </li>
                                         <li>
                                             <a target="_blank" rel="noopener noreferrer"
@@ -99,29 +100,7 @@
                         </div>
                     @endif
                 </div>
-                <div class="side-bar-widget">
-                    <h3 class="title">Popular News</h3>
-                    <div class="widget-popular-post">
-                        @foreach ($news as $popular)
-                            <article class="item">
-                                <a href="{{ route('front.single.news', $popular->slug) }}" class="thumb">
-                                    <span class="full-image cover bg2" role="img">
-                                        <img src="{{ asset('assets/images/news') }}/{{ $popular->image }}"
-                                            style="width: 100%; height:25vh " />
-                                    </span>
-                                </a>
-                                <div class="info">
-                                    <p>{{ Carbon\Carbon::parse($popular->created_at)->diffForHumans() }}</p>
-                                    <h4 class="title-text">
-                                        <a href="{{ route('front.single.news', $popular->slug) }}">
-                                            {{ $popular->title }}
-                                        </a>
-                                    </h4>
-                                </div>
-                            </article>
-                        @endforeach
-                    </div>
-                </div>
+               
             </div>
         </div>
     </div>

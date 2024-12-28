@@ -3,7 +3,7 @@
 
 @section('content')
 @section('title', 'Our News')
-@include('frontend.include.innerBanner', ['banner_title' => 'Our News'])
+@include('frontend.include.innerBanner', ['banner_title_1' => 'Read News','banner_title_2'=>"Our News"])
 
 
 @if (count($news) > 0)

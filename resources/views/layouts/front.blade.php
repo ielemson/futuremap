@@ -67,19 +67,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.4/jquery-confirm.min.css">
     {{-- <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" /> --}}
     <link rel="stylesheet" href="{{ asset('assets/lightbox/css/lightbox.min.css') }}" />
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    <script async src="{{ asset('assets/lightbox/js/lightbox.min.js') }}" charset="utf-8"></script>
-    <div id="fb-root"></div>
-    <script>
-        (function(d, s, id) {
-            var js, fjs = d.getElementsByTagName(s)[0];
-            if (d.getElementById(id)) return;
-            js = d.createElement(s);
-            js.id = id;
-            js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
-            fjs.parentNode.insertBefore(js, fjs);
-        }(document, 'script', 'facebook-jssdk'));
-    </script>
+    
     @stack('extra-css')
 
 </head>
@@ -106,7 +94,9 @@
     <script src="{{ asset('assets/js/appear.min.js') }}"></script>
     <script src="{{ asset('assets/js/tweenMax.min.js') }}"></script>
     <script src="{{ asset('assets/js/custom.js') }}"></script>
+    <script async src="{{ asset('assets/lightbox/js/lightbox.min.js') }}" charset="utf-8"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"
         integrity="sha512-VEd+nq25CkR676O+pLBnDW09R7VQX9Mdiij052gVCp5yVH3jGtH70Ho/UUv4mJDsEdTvqRCFZg0NKGiojGnUCw=="
         crossorigin="anonymous"></script>
