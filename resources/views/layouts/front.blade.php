@@ -29,6 +29,27 @@
    <meta name="bingbot" content="nocache">
    @endif
 
+
+   @if (!empty($event_title))
+   @php
+   $cleanContent = preg_replace('/style="[^"]*"/i', '', strip_tags($event_meta_description));
+    @endphp
+   <title>@yield('title', '') | {{ $setting->website_title }} </title>
+   <meta name="description"
+       content="{{ $event_title }}">
+   <link rel="canonical" href="{{ route("event.magazine.details", $event_slug) }}">
+   <meta property="og:url" content="{{ route('event.magazine.details', $event_slug) }}">
+   <meta property="og:title" content="{{  $event_title }}">
+   <meta property="og:description" content="{!! Illuminate\Support\Str::limit($cleanContent, 200) !!}">
+   <meta property="og:type" content="website">
+   <meta property="og:site_name" content="The Futuremap Media">
+   <meta property="og:image:width" content="1200">
+   <meta property="og:image:height" content="630">
+   <meta property="og:image" content="{{ asset('assets/images/gallery/' . $eventimage) }}">
+   <meta property="og:locale" content="en_US" />
+   <meta name="bingbot" content="nocache">
+   @endif
+
     <link rel="stylesheet" href="{{ asset('assets/css/plugins.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/iconplugins.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">

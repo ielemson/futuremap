@@ -5,26 +5,10 @@
             <h2>Events & Happenings</h2>
         </div>
         <div class="event-slider owl-carousel owl-theme owl-loaded owl-drag">
-
-
             <div class="owl-stage-outer owl-height" style="height: 582.458px;">
                 <div class="owl-stage"
                     style="transform: translate3d(-1466px, 0px, 0px); transition: 0.25s; width: 2567px;">
                     @foreach ($events as $event)
-                    {{-- <div class="event-item">
-                     <div class="event-img">
-                         <a href="javascript:;">
-                             <img src="{{ asset('assets/images/banners/' .$event->image_banner) }}" alt="Events" />
-                         </a>
-                     </div>
-                     <div class="event-content">
-                         <ul class="event-list">
-                             <li><i class="ri-calendar-todo-fill"></i></li>
-                             <li><i class="ri-map-pin-fill"></i></li>
-                         </ul>
-                         <h3><a href="{{ route("event.magazine.details",$event->slug) }}">{{ $event->title }}</p>
-                     </div>
-                 </div> --}}
                  <div class="owl-item cloned" style="width: 336.667px; margin-right: 30px;">
                     <div class="event-item">
                         <div class="event-img">

@@ -15,7 +15,6 @@
 @include('frontend.include.adevert')
 @include('frontend.include.partialBlog')
 @include("frontend.include.partialPersonality")
-{{-- @include("frontend.include.eventmagazines") --}}
-@include("frontend.include.scholarship_Opportunites")
-
+@include("frontend.include.eventmagazines")
+{{-- @include("frontend.include.scholarship_Opportunites") --}}
 @endsection

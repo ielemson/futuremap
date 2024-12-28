@@ -36,9 +36,9 @@
                         <div class="bottom-content">
                             <div class="rating2">
                                 <div class="btn-group" role="group" aria-label="Social media buttons">
-                                    <button type="button" class="btn btn-sm btn-default fb-share-button " data-href="{{route('front.single.news',$latest->slug)}}">
+                                    <a href="https://www.facebook.com/sharer/sharer.php?u={{ route('front.single.news', $latest->slug) }}" class="btn btn-sm btn-default fb-share-button">
                                       <i class="fab fa-facebook-f me-2 text-primary"></i> 
-                                    </button>
+                                    </a>
 
                                     <a 
                                     class="btn btn-sm btn-default"
