@@ -45,7 +45,7 @@
    <meta property="og:site_name" content="The Futuremap Media">
    <meta property="og:image:width" content="1200">
    <meta property="og:image:height" content="630">
-   <meta property="og:image" content="{{ asset('assets/images/gallery/' . $eventimage) }}">
+   <meta property="og:image" content="{{ asset('assets/images/banners/' . $eventimage) }}">
    <meta property="og:locale" content="en_US" />
    <meta name="bingbot" content="nocache">
    @endif
