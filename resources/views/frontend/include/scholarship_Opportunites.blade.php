@@ -21,15 +21,15 @@
                         @foreach ($scholarships as $scholarship)
                             <div class="owl-item cloned" style="width: 238.667px; margin-right: 30px;">
                                 <div class="courses-item">
-                                    <a href="{{ route('front.single.news', $scholarship->slug) }}">
+                                    <a href="{{ route('front.scholarship_grants_opportunity.show', $scholarship->slug) }}">
                                         <img src="{{ asset('assets/images/news') }}/{{ $scholarship->image }}"
                                             alt="{{ $scholarship->title }}" />
                                     </a>
                                     <div class="content">
-                                        <a href="{{ route('front.single.news', $scholarship->slug) }}"
+                                        <a href="{{ route('front.scholarship_grants_opportunity.show', $scholarship->slug) }}"
                                             class="tag-btn">{{ $scholarship->category->name }}</a>
                                         <h3><a
-                                                href="{{ route('front.single.news', $scholarship->slug) }}">{{ $scholarship->title }}</a>
+                                                href="{{ route('front.scholarship_grants_opportunity.show', $scholarship->slug) }}">{{ $scholarship->title }}</a>
                                         </h3>
                                         <p>{!! Illuminate\Support\Str::limit($scholarship->details, 200) !!}</p>
                                         <ul class="course-list">
@@ -43,14 +43,14 @@
                                                 <div class="btn-group" role="group" aria-label="Social media buttons">
                                                     <button type="button"
                                                         class="btn btn-sm btn-default fb-share-button "
-                                                        data-href="{{ route('front.single.news', $scholarship->slug) }}">
+                                                        data-href="{{ route('front.scholarship_grants_opportunity.show', $scholarship->slug) }}">
                                                         <i class="fab fa-facebook-f me-2 text-primary"></i>
                                                     </button>
 
                                                     <a class="btn btn-sm btn-default" rel="noopener noreferrer"
-                                                        href="https://twitter.com/intent/tweet?text={{ route('front.single.news', $scholarship->slug) }}"
+                                                        href="https://twitter.com/intent/tweet?text={{ route('front.scholarship_grants_opportunity.show', $scholarship->slug) }}"
                                                         data-size="large" data-text="{{ $scholarship->slug }}"
-                                                        data-url="{{ route('front.single.news', $scholarship->slug) }}"
+                                                        data-url="{{ route('front.scholarship_grants_opportunity.show', $scholarship->slug) }}"
                                                         data-hashtags="" data-via="{{ url('/') }}"
                                                         data-related="{{ $scholarship->category->name }}">
                                                         <i class="fab fa-twitter me-2 text-info"></i>
@@ -59,7 +59,7 @@
 
                                             </div>
                                             <div class="bottom-price">
-                                                <a href="{{ route('front.single.news', $scholarship->slug) }}"
+                                                <a href="{{ route('front.scholarship_grants_opportunity.show', $scholarship->slug) }}"
                                                     class="default-btn" style="pointer-events: all; cursor: pointer;">
                                                     Read More
                                                 </a>

@@ -28,13 +28,13 @@ class HomeController extends Controller
     public function index(): View
     {
         // $members =  User::whereHas("roles", function($q){ $q->where("name", "member_role"); })->get();
-        $news = News::where('status',1)->orderBy('id', 'DESC')->paginate(20);
+        $news = News::where('status',1)->orderBy('id', 'DESC')->paginate(25);
         $scholarshipgrantsOpportunities = NewsCategory::where('slug','scholarshipgrants-opportunities')->first();
         $scholarships = News::where('status',1)
         ->where('category_id', $scholarshipgrantsOpportunities->id)
         ->get();
         $personalities = Profile::where("status","Published")->paginate(6);
-        $events = Event::where("status","published")->get();
+        $events = Event::where("status","published")->orderBy('id', 'DESC')->paginate(6);
         $services = Service::where('status',1)->get();
         $features = Features::all();
         $sliders = Slider::where('status',1)->orderBy('id','ASC')->get();
@@ -86,8 +86,12 @@ class HomeController extends Controller
     public function companyFeature($id){
         $services = Service::where('status',1)->get();
         $feature = Features::where('id',$id)->first();
-       
         return view('frontend.pages.feature',compact('services','feature'));
+    }
+    public function eventmagazines(){
+        $services = Service::where('status',1)->get();
+        $events = Event::where("status","published")->latest('id')->paginate(10);
+        return view('frontend.pages.eventmagazines',compact('services','events'));
     }
     public function eventmagazine($slug){
         $services = Service::where('status',1)->get();
@@ -124,13 +128,21 @@ class HomeController extends Controller
         $services = Service::where('status',1)->get();
         $scholarshipgrantsOpportunities = NewsCategory::where('slug','scholarshipgrants-opportunities')->first();
         $scholarships = News::where('status',1)
-        ->where('category_id', $scholarshipgrantsOpportunities->id)
-        ->paginate(10);
+        ->where('category_id', $scholarshipgrantsOpportunities->id)->orderBy('id','DESC')->paginate(10);
         // $categories = NewsCategory::where('status',1)->get();
         // $topnewslist = News::latest()->whereHas('category')->where('status',1)->orderBy('id', 'DESC')->paginate(10);
         return view("frontend.pages.scholarshipOpportunities",compact('scholarships','services'));
     }
+    public function scholarship_grants_opportunities_show($slug){
+            $scholarship = News::where('slug',$slug)->first();
+            $services = Service::where('status',1)->get();
+            // Other Scholarships
+            $scholarshipgrantsOpportunities = NewsCategory::where('slug','scholarshipgrants-opportunities')->first();
+            $scholarships = News::where('status',1)
+            ->where('category_id', $scholarshipgrantsOpportunities->id)->orderBy('id','DESC')->paginate(6);
 
+            return view("frontend.pages.scholarshipOpportunity",compact('scholarship','services','scholarships'));
+        }
     public function personalities(){
         $services = Service::where('status',1)->get();
         $personalities = Profile::where('status',"Published")->orderBy('id', 'DESC')->paginate(10);
@@ -152,7 +164,8 @@ class HomeController extends Controller
         $categories = NewsCategory::where('status',1)->get();
         $news_details = News::where('slug',$slug)->first();
         $news = News::where('status',1)->orderBy('id', 'DESC')->paginate(15);
-        return view('frontend.pages.readnews',compact('news_details','services','categories','news'));
+        $topnewslist = News::where("status",1)->latest('id')->paginate(6);
+        return view('frontend.pages.readnews',compact('news_details','services','categories','news','topnewslist'));
     }
 
     public function newsCategory($slug){
@@ -167,6 +180,7 @@ class HomeController extends Controller
         return view('frontend.pages.news',compact('services','news','categories','topnewslist'));
     }
 
+   
     public function StoreUser(Request $request){
 
         // $validator = Validator::make($request->all(), ['name' => 'required', 'email' => 'required|unique:users','password'=>'required']);

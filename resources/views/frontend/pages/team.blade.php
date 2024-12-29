@@ -3,7 +3,7 @@
 
 @section('content')
 @section('title', 'Our Top Management Team')  
-@include('frontend.include.innerBanner',['banner_title'=>'Our Top Management Team'])
+@include('frontend.include.innerBanner',['banner_title_1'=>'Our Top Management Team','banner_title_2'=>"Our Team"])
 
 
 <div class="instructors-area instructors-area-rs pt-100 pb-70">

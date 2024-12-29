@@ -3,8 +3,7 @@
 
 @section('content')
 @section('title', 'Our News')
-@include('frontend.include.innerBanner', ['banner_title' => 'Our News'])
-
+@include('frontend.include.innerBanner', ['banner_title_1' => 'Scholarship / Grants','banner_title_2'=>"Scholarship Opportunities"])
 
 @if (count($scholarships) > 0)
 <div class="blog-widget-area pt-100 pb-70">
@@ -13,34 +12,34 @@
             <div class="col-lg-12">
               <div class="row">
             @if (count($scholarships)>0)
-            @foreach ($scholarships as $latest)
+            @foreach ($scholarships as $scholarship_grant)
                 <div class="col-lg-4 col-md-4">
                 <div class="blog-card">
-                    <a href="{{route('front.single.news',$latest->slug)}}">
-                        <img src="{{asset('assets/images/news')}}/{{$latest->image}}" alt="{{$latest->title}}">
+                    <a href="{{route('front.scholarship_grants_opportunity.show',$scholarship_grant->slug)}}">
+                        <img src="{{asset('assets/images/news')}}/{{$scholarship_grant->image}}" alt="{{$scholarship_grant->title}}">
                     </a>
                     <div class="content">
                         <ul>
                             <li>
                                 <i class="ri-calendar-todo-fill"></i>
                                 {{-- Jan 12,2022 --}}
-                                {{ Carbon\Carbon::parse($latest->created_at)->isoFormat('MMM DD YY') }}
-                                {{-- {{ Carbon\Carbon::parse($latest->created_at)->diffForHumans() }} --}}
+                                {{ Carbon\Carbon::parse($scholarship_grant->created_at)->isoFormat('MMM DD YY') }}
+                                {{-- {{ Carbon\Carbon::parse($scholarship_grant->created_at)->diffForHumans() }} --}}
 
                             </li>
                             <li>
                                 <i class="ri-price-tag-3-fill"></i>
-                                <a href="{{route('front.single.news',$latest->slug)}}">{{$latest->category->name}}</a>
+                                <a href="{{route('front.scholarship_grants_opportunity.show',$scholarship_grant->slug)}}">{{$scholarship_grant->category->name}}</a>
                             </li>
                         </ul>
                         <h3>
-                            <a href="{{route('front.single.news',$latest->slug)}}">
-                                {{$latest->title}}
+                            <a href="{{route("front.scholarship_grants_opportunity.show",$scholarship_grant->slug)}}">
+                                {{$scholarship_grant->title}}
                             </a>
                         </h3>
                         
-                        <p>{!! Illuminate\Support\Str::limit($latest->details, 150) !!}</p>
-                        <a href="{{route('front.single.news',$latest->slug)}}" class="read-btn">Read More</a>
+                        <p>{!! Illuminate\Support\Str::limit($scholarship_grant->details, 150) !!}</p>
+                        <a href="{{route('front.scholarship_grants_opportunity.show',$scholarship_grant->slug)}}" class="read-btn">Read More</a>
                     </div>
                 </div>
             </div>

@@ -98,6 +98,27 @@
                             </div>
                         </div>
                     @endif
+                    <div class="side-bar-widget">
+                        <h3 class="title">Popular post</h3>
+                        <div class="widget-popular-post">
+                            
+                            @foreach ($topnewslist as $popular)
+                            <article class="item">
+                                <a href="{{route('front.single.news',$popular->slug)}}" class="thumb">
+                                    <span class="full-image cover bg3" role="img" style="background-image:url('{{asset('assets/images/news')}}/{{$popular->image}}') "></span>
+                                </a>
+                                <div class="info">
+                                    <p>  {{ Carbon\Carbon::parse($popular->created_at)->isoFormat('MMM DD YY') }}</p>
+                                    <h4 class="title-text">
+                                        <a href="{{route('front.single.news',$popular->slug)}}">
+                                            {{$popular->title}}
+                                        </a>
+                                    </h4>
+                                </div>
+                            </article>
+                            @endforeach
+                        </div>
+                    </div> 
                 </div>
                
             </div>

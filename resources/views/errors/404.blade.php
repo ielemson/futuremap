@@ -3,12 +3,12 @@
 @endphp
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-{{-- News --}}
+
    @if (!empty($news_title))
    @php
    $cleanContent = preg_replace('/style="[^"]*"/i', '', strip_tags($meta_description));
@@ -29,7 +29,7 @@
    <meta name="bingbot" content="nocache">
    @endif
 
-{{-- Event --}}
+
    @if (!empty($event_title))
    @php
    $cleanContent = preg_replace('/style="[^"]*"/i', '', strip_tags($event_meta_description));
@@ -50,27 +50,6 @@
    <meta name="bingbot" content="nocache">
    @endif
 
-{{-- Scholarship --}}
-   @if (!empty($scholarship_title))
-   @php
-   $cleanContent = preg_replace('/style="[^"]*"/i', '', strip_tags($scholarship_description));
-    @endphp
-   <title>@yield('title', '') | {{ $setting->website_title }} </title>
-   <meta name="description"
-       content="{{ $scholarship_title }}">
-   <link rel="canonical" href="{{ route("front.scholarship_grants_opportunity.show", $scholarship_slug) }}">
-   <meta property="og:url" content="{{ route('front.scholarship_grants_opportunity.show', $scholarship_slug) }}">
-   <meta property="og:title" content="{{  $scholarship_title }}">
-   <meta property="og:description" content="{!! Illuminate\Support\Str::limit($cleanContent, 200) !!}">
-   <meta property="og:type" content="website">
-   <meta property="og:site_name" content="The Futuremap Media">
-   <meta property="og:image:width" content="1200">
-   <meta property="og:image:height" content="630">
-   <meta property="og:image" content="{{ asset('assets/images/news/' . $scholarshipimg) }}">
-   <meta property="og:locale" content="en_US" />
-   <meta name="bingbot" content="nocache">
-   @endif
-
     <link rel="stylesheet" href="{{ asset('assets/css/plugins.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/iconplugins.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
@@ -79,12 +58,6 @@
     <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="icon" type="image/png" href="{{ asset('assets/images/favicon.png') }}">
-    <link rel="icon" type="image/ico" href="{{ asset('assets/images/favicon.png') }}">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="{{ asset('assets/images/favicon.png') }}">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="{{ asset('assets/images/favicon.png') }}">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="{{ asset('assets/images/favicon.png') }}">
-    <link rel="apple-touch-icon-precomposed" href="{{ asset('assets/images/favicon.png') }}">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.min.css"
         integrity="sha512-q3eWabyZPc1XTCmF+8/LuE1ozpg5xxn7iO89yfSOd5/oKvyqLngoNGsx8jq92Y8eXJ/IRxQbEC+FGSYxtk2oiw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -102,12 +75,20 @@
 
 <body>
 
-    @include('frontend.include.headerTop')
-    @include('frontend.include.navbar')
-
-    @yield('content')
-
-    @include('frontend.include.footer')
+    <div class="error-area ptb-50">
+        <div class="d-table">
+            <div class="d-table-cell">
+                <div class="error-content">
+                    <h1>4 <span>0</span> 4</h1>
+                    <h3>Oops! Page Not Found</h3>
+                    <p>The page you are looking for might have been removed had its name changed or is temporarily unavailable.</p>
+                    <a href="{{ route("welcome") }}" class="default-btn">
+                        Return To Home Page
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <script src="{{ asset('assets/js/jquery.min.js') }}"></script>
     <script src="{{ asset('assets/js/bootstrap.bundle.min.js') }}"></script>
@@ -136,76 +117,7 @@
     <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha1/js/bootstrap.min.js'>
     </script>
 
-    <script>
-        AOS.init();
-    </script>
-    <script>
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        // Mini Cart Fetch 
-        function miniCart() {
-            $.ajax({
-                type: 'GET',
-                dataType: 'json',
-                url: '/product/cart',
-                success: function(data) {
-                    $('.cartCount').html("₦" + new Intl.NumberFormat().format(data.cart_total));
-
-                    if (data.cart_total != 0) {
-                        $('.info_check').html("Click here to checkout");
-                    } else {
-                        $('.info_check').html("Your cart is empty");
-                    }
-                }
-            })
-        }
-        miniCart();
-        // Mini Cart Fetch 
-        // Add to Cart Product
-        function addToCart(id) {
-            var pid = id;
-            var qty = 1
-
-            $.ajax({
-                type: 'POST',
-                dataType: 'json',
-                data: {
-                    qty: qty,
-                    id: id
-                },
-                url: '/cart/store/' + id,
-                success: function(data) {
-
-                    const Toast = Swal.mixin({
-                        toast: true,
-                        position: 'top-end',
-                        icon: 'success',
-                        showConfirmButton: false,
-                        timer: 3000
-                    })
-                    miniCart();
-                    if ($.isEmptyObject(data.error)) {
-                        Toast.fire({
-                            type: 'success',
-                            title: data.success,
-                        })
-
-
-                    } else {
-                        Toast.fire({
-                            type: 'error',
-                            title: data.error,
-                        })
-                    }
-                }
-            })
-        }
-        // End to Cart Product
-    </script>
-    @stack('extra-scripts')
+  
 </body>
 
 </html>

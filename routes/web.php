@@ -40,7 +40,7 @@ use App\Http\Controllers\Backend\PersonalityProfileController;
 */
 // FRONT PAGE CONTROLLERS PUBLCI ROUTE ::::::::::::::::::::::::::::::::
 // Route::get('/', function () { return view('front.home'); });
-Route::get('/', [HomeController::class, 'index']);
+Route::get('/', [HomeController::class, 'index'])->name('welcome');
 Route::get('/about-us', [HomeController::class, 'aboutUs'])->name('about.us');
 Route::get('/contact-us', [HomeController::class, 'contactUs'])->name('contact.us');
 Route::get('/team', [HomeController::class, 'companyTeam'])->name('company.profiles');
@@ -51,9 +51,11 @@ Route::get('/our-feature/{id}', [HomeController::class, 'companyFeature'])->name
 Route::get('/coming-soon', [HomeController::class, 'comingSoon'])->name('coming.soon');
 Route::get('/magazines', [HomeController::class, 'magazines'])->name('magazine.list');
 Route::get('/magazine/{slug}', [HomeController::class, 'magazine'])->name('magazine.details');
+Route::get('/events/magazine', [HomeController::class, 'eventmagazines'])->name('event.magazines');
 Route::get('/events/magazine/{slug}', [HomeController::class, 'eventmagazine'])->name('event.magazine.details');
 Route::get('/news', [HomeController::class, 'news'])->name('front.news.list');
 Route::get('/scholarships/grant-opportunities', [HomeController::class, 'scholarship_grants_opportunities'])->name('front.scholarship_grants_opportunities');
+Route::get('/scholarships/grant-opportunities/{slug}', [HomeController::class, 'scholarship_grants_opportunities_show'])->name('front.scholarship_grants_opportunity.show');
 Route::get('/personality/all', [HomeController::class, 'personalities'])->name('front.personality.list');
 Route::get('/personality/profile/show/{slug}', [HomeController::class, 'personality'])->name('front.personality.details');
 Route::get('/news/readnews/{slug}', [HomeController::class, 'single_news'])->name('front.single.news');
