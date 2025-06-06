@@ -86,7 +86,6 @@ class EventMagazineController extends Controller
         ]);
 
             $imageBannerPath = $event->image_banner;
-
         if ($request->hasFile('image_banner')) {
             $imageBannerPath = "image_banner".'-'.time().'.'.$request->image_banner->extension();  
             $request->image_banner->move(public_path('assets/images/banners'), $imageBannerPath);

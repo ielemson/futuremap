@@ -164,6 +164,8 @@
         }
         miniCart();
         // Mini Cart Fetch 
+
+
         // Add to Cart Product
         function addToCart(id) {
             var pid = id;
@@ -201,6 +203,23 @@
                         })
                     }
                 }
+            })
+        }
+        // End to Cart Product
+        // Add to Cart Product
+        function BuyItem(id) {
+            var pid = id;
+            var qty = 1
+
+            $.ajax({
+                type: 'POST',
+                dataType: 'json',
+                data: {
+                    qty: qty,
+                    id: id
+                },
+                url: '/cart/store/' + id,
+                success: function(data) {window.location.href = "{{url("/carts")}}"; }
             })
         }
         // End to Cart Product

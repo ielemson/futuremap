@@ -3,7 +3,7 @@
 
 @section('content')
 @section('title', 'Cart')
-@include('frontend.include.innerBanner', ['banner_title' => 'Cart'])
+@include('frontend.include.innerBanner', ["banner_title_1"=>"Checkout", "banner_title_2"=>"Checkout"])
 
 
 <section class="cart-wraps-area pt-100 pb-70">

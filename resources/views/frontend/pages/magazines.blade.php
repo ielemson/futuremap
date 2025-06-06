@@ -1,7 +1,10 @@
 @extends('layouts.front')
 @section('content')
 @section('title', 'FutureMap Magazine')
-@include('frontend.include.innerBanner', ['banner_title_1' => 'The FutureMap Magazine','banner_title_2'=>'Our Magazine'])
+@include('frontend.include.innerBanner', [
+    'banner_title_1' => 'The FutureMap Magazine',
+    'banner_title_2' => 'Our Magazine',
+])
 
 
 @if (count($magazines) > 0)
@@ -20,16 +23,16 @@
                     </div>
                     {{-- former place for cart magazine --}}
                     <div class="col-lg-12 col-md-12 mt-5">
-                      
                         <div class="counter-card box-shadow">
-                           <a href="{{ route('cart.list') }}">
-                            <i class="fa fa-shopping-cart"></i>
-                            <h3>
-                              <b class="cartCount">0</b></h3>
-                            <h4 class="info_check"></h4>
-                           </a>
-                        </div>           
-                </div>
+                            <a href="{{ route('cart.list') }}">
+                                <i class="fa fa-shopping-cart"></i>
+                                <h3>
+                                    <b class="cartCount">0</b>
+                                </h3>
+                                <h4 class="info_check"></h4>
+                            </a>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -45,51 +48,55 @@
                             <div class="event-content">
 
                                 <h3>
-                                    <a href="#">{{ $magazine->name }} <small
-                                            style="font-size:1rem"> @money($magazine->price,'NGN')</small></a>
+                                    <a href="#">{{ $magazine->name }}
+                                        <small style="font-size:1rem"> @money($magazine->price, 'NGN')</small></a>
                                 </h3>
                                 {{-- <p>{!! substr($magazine->desc, 0, 100) !!}</p> --}}
                                 <p>{!! Illuminate\Support\Str::limit($magazine->desc, 90) !!}</p>
                                 <ul class="event-list">
-
-
-                                   <div class="btn-group">
-                                    @if ($magazine->competiton_status == 1)
-                                    <button class="btn-success border-radius-5 competitionEntry"
-                                        data-id="{!! $magazine->id !!}" >
-                                        <i class="fas fa-shopping-cart"></i>
-                                        Add to cart
-                                    </button>
-                                @else
-                                    <button class="btn-success border-radius-5"
-                                        onclick="addToCart({{ $magazine->id }})">
-                                        <i class="fas fa-shopping-cart"></i>
-                                        Add to cart
-                                    </button>
-                                @endif
-                                    &nbsp;
-                                <a href="{{ route("magazine.details",$magazine->slug) }}" class="btn btn-primary border-radius-5" style="color:white">
-                                    <i class="fas fa-eye"></i>
-                                    View
-                                </a>
-                                   </div>
-                                   
+                                    <div class="btn-group">
+                                        @if ($magazine->competiton_status == 1)
+                                            <button class="btn-warning competitionEntry"  style="color:white"
+                                                data-id="{!! $magazine->id !!}">
+                                                {{-- <i class="fas fa-shopping-cart"></i> --}}
+                                                Add to cart
+                                            </button>
+                                        @else
+                                            <button class="btn-warning"  style="color:white"
+                                                onclick="addToCart({{ $magazine->id }})">
+                                                {{-- <i class="fas fa-shopping-cart"></i> --}}
+                                                Add to cart
+                                            </button>
+                                          
+                                        @endif
+                                           &nbsp;
+                                          <button type="button" class="btn btn-success" id="buyNowBtn"
+                                          onclick="BuyItem({{ $magazine->id }})"
+                                          >Buy Now</button>
+                                        &nbsp;
+                                        <a href="{{ route('magazine.details', $magazine->slug) }}"
+                                            class="btn btn-primary" style="color:white">
+                                            {{-- <i class="fas fa-eye"></i> --}}
+                                            View
+                                        </a>
+                                    </div>
                                 </ul>
+                           
                             </div>
                         </div>
                     </div>
                 @endforeach
             </div>
-            
-        <div class="row">
-            <div class="col-lg-12 col-md-12 text-center">
-                <div class="pagination-area">
-                    {{-- Pagination --}}
-                    {!! $magazines->links() !!}
-                    {{-- Pagination --}}
+
+            <div class="row">
+                <div class="col-lg-12 col-md-12 text-center">
+                    <div class="pagination-area">
+                        {{-- Pagination --}}
+                        {!! $magazines->links() !!}
+                        {{-- Pagination --}}
+                    </div>
                 </div>
             </div>
-        </div>
         </div>
     </div>
 @else
@@ -190,20 +197,20 @@
 
                                         if (data.status == true) {
                                             Toast.fire({
-                                            icon: 'success',
-                                            title: data.msg
-                                        })
+                                                icon: 'success',
+                                                title: data.msg
+                                            })
+                                        }
+
+
+                                        addToCart(prodId)
+                                        setTimeout(() => {
+                                            window.location.href = url
+                                            // alert('yes')
+                                        }, 3000);
                                     }
 
-                                    
-                                    addToCart(prodId)
-                                    setTimeout(() => {
-                                    window.location.href = url
-                                    // alert('yes')
-                                     }, 3000);
-                                    }
 
-                                  
                                 })
 
                             }
@@ -221,8 +228,6 @@
                             e.preventDefault();
                             jc.$$formSubmit.trigger('click');
 
-
-
                             // reference the button and click it
                         });
 
@@ -231,10 +236,10 @@
                 });
                 // COMPETETION STARTS HERE 
 
-
             });
         });
-        
+
+
     </script>
 @endpush
 @endsection
