@@ -3,7 +3,7 @@
 
 @section('content')
 @section('title', 'Reset your password')
-@include('frontend.include.innerBanner', ['banner_title' => 'Reset your password'])
+@include('frontend.include.innerBanner', ['banner_title_1' => 'Reset your password','banner_title_2'=>"Password Reset"])
 
 <div class="user-area pt-100 pb-70">
     <div class="container">

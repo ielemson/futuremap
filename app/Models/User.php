@@ -4,10 +4,10 @@ namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Hash;
 use Laravel\Passport\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
-
+use Illuminate\Support\Facades\Hash;
+use App\Models\WithdrawalRequest;
 class User extends Authenticatable
 {
     use HasApiTokens;
@@ -44,7 +44,6 @@ class User extends Authenticatable
         $this->attributes['password'] = Hash::make($value);
     }
 
-
     public function get_roles()
     {
         $roles = [];
@@ -54,4 +53,20 @@ class User extends Authenticatable
 
         return $roles;
     }
+
+    public function vendor()
+{
+    return $this->hasOne(Vendor::class);
+}
+
+public function wallet()
+{
+    return $this->hasOne(Wallet::class);
+}
+
+public function withdrawalRequests()
+{
+    return $this->hasMany(WithdrawalRequest::class);
+}
+
 }

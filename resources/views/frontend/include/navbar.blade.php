@@ -73,20 +73,21 @@
                           
                         </li>
 
-                        <li class="nav-item">
-                            <a href="{{route('contact.us')}}" class="nav-link {{ (request()->is('contact-us')) ? 'active' : '' }}">
-                                Contact Us
-                            </a>
-                          
-                        </li>
-                       
-                      @auth
+                         
                       <li class="nav-item">
                         <a href="#" class="nav-link dropdown-toggle">
                         Account
                         </a>
                         <ul class="dropdown-menu">
-                         
+                                    @guest
+                                    {{-- <a href="">Login</a> --}}
+                                     <li class="nav-item">
+                                <a href="{{ route('login') }}" class="nav-link">
+                                   Login
+                                </a>
+                            </li>
+                                    @endguest
+                         @auth
                             <li class="nav-item">
                                 <a href="{{url('/dashboard')}}" class="nav-link">
                                    Dashboard
@@ -97,10 +98,19 @@
                                    Logout
                                 </a>
                             </li>
-                           
+                           @endauth
                         </ul>
                     </li>
-                      @endauth 
+                      
+
+                        <li class="nav-item">
+                            <a href="{{route('contact.us')}}" class="nav-link {{ (request()->is('contact-us')) ? 'active' : '' }}">
+                                Contact Us
+                            </a>
+                          
+                        </li>
+                       
+                     
                     </ul>
                     
                 </div>

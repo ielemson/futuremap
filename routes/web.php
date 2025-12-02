@@ -25,6 +25,7 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\Frontend\FlutterwaveController;
 use App\Http\Controllers\Frontend\PaystackController;
 use App\Http\Controllers\Backend\PersonalityProfileController;
+use App\Http\Controllers\VendorController;
 
 // use Illuminate\Support\Facades\Auth;
 
@@ -64,6 +65,9 @@ Route::post('/user/pay/register', [HomeController::class, 'StoreUser'])->name('u
 Route::post('user/pay/login', [HomeController::class, 'LoginUser'])->name('user.cart.login');
 Route::post('contact/form', [HomeController::class, 'CotactForm'])->name('contact.form');
 Route::get('/reload-captcha', [HomeController::class, 'reloadCaptcha']);
+Route::post('/referral/set', [HomeController::class, 'setReferral'])->name('referral.set');
+// Route::post('/', [App\Http\Controllers\ReferralController::class, 'setReferral'])->name('referral.set');
+
 Route::get('/user/order/cancel', function () {
 	return view('frontend.pages.cancelpayment');
 });
@@ -95,6 +99,16 @@ Route::post('login', [LoginController::class, 'login']);
 // Route::get('register', [RegisterController::class, 'showRegisterForm'])->name('register');
 Route::post('register', [RegisterController::class, 'register']);
 
+// vendor routes starts here :::::::::::::::::::::::::::::::::::::
+Route::get('/vendor/register', [VendorController::class, 'showRegistrationForm'])->name('vendor.register');
+Route::post('/vendor/register', [VendorController::class, 'register'])->name('vendor.register.submit');
+// Route::get('/vendor/dashboard', function () {
+//     return view('vendor.dashboard');
+// })->middleware(['auth', 'vendor.verified'])->name('vendor.dashboard');
+
+
+
+// Route::get('/vendor/register', [VendorController::class, 'showRegistrationForm'])->name('vendor.register');
 // Route::get('password/forget',  function () { 
 // 	return view('pages.forgot-password'); 
 // })->name('password.forget');
@@ -104,7 +118,25 @@ Route::get('password/reset/{token}', [ResetPasswordController::class, 'showReset
 Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
 
 
+		Route::middleware(['auth'])->group(function () {
+    // Route::get('/vendor/dashboard', [VendorController::class, 'dashboard'])->name('vendor.dashboard');
+	  Route::get('/vendor/terms', [VendorController::class, 'showTerms'])->name('vendor.terms');
+    Route::post('/vendor/accept-terms', [VendorController::class, 'acceptTerms'])->name('vendor.accept.terms');
+	Route::get('/vendor/dashboard', [VendorController::class, 'index'])->name('vendor.dashboard');
+	Route::get('/vendor/product', [VendorController::class, 'product'])->name('vendor.product');
+	Route::get('/vendor/profile', [VendorController::class, 'vendorProfile'])->name('vendor.profile');
+			// Route::get('/vendor/profile', function () {return view("userType.vendor.vendor_profile");})->name('vendor.profile');
+    // other vendor routes
+});
+
+
 Route::group(['middleware' => 'auth'], function () {
+
+// vendor dashboard 
+	// Route::group(['middleware' => 'vendor.verified'], function () {
+		
+	// });
+	
 
 	// PaystackController paystack/store
 	Route::post('/paystack/store', [PaystackController::class, 'store']);;
@@ -126,7 +158,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::get('/user/profile', function () {return view("userType.user.userprofile");})->name('dashboard.userprofile');
 
 	// Edit Profile
-	Route::post('account/update', [UserController::class, 'profile_update'])->name('account.update');
+	Route::post('/account/update', [UserController::class, 'profile_update'])->name('account.update');
 	// Service Route
 	Route::get('/service/create', [ServiceController::class, 'create']);
 	Route::get('/service/list', [ServiceController::class, 'index'])->name('services.index');

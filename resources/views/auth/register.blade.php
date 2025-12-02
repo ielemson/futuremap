@@ -1,6 +1,5 @@
 @extends('layouts.front')
 
-
 @section('content')
 @section('title', 'Register Account')
 {{-- @include('frontend.include.innerBanner', ['banner_title' => 'Register Account']) --}}
@@ -88,6 +87,5 @@
         </div>
     </div>
 </div>
-
 
 @endsection

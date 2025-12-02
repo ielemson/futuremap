@@ -139,7 +139,7 @@
                             <div class="col-lg-8 col-md-7">
                                 <div class="card">
                                     <div class="card-body">
-                                        <form class="form-horizontal" action="{{route('account.update')}}">
+                                        {{-- <form class="form-horizontal" action="{{route('account.update')}}">
                                                 @csrf
                                                 <div class="form-group">
                                                     <label for="example-name">{{ __('Full Name')}}</label>
@@ -166,6 +166,35 @@
                                                 <div class="form-group">
                                                   
                                                 <button class="btn btn-success" type="submit">Update Profile</button>
+                                            </form> --}}
+
+                                             <form   method="POST" class="form-horizontal" action="{{route('account.update')}}">
+                                                @csrf
+                                                <div class="form-group">
+                                                    <label for="example-name">{{ __('Full Name')}}</label>
+                                                    <input type="text" class="form-control" name="name" id="example-name" value="{{Auth::user()->name}}" required>
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="example-email">{{ __('Email')}}</label>
+                                                    <input type="email"  class="form-control" name="email" value="{{Auth::user()->email}}" id="example-email">
+                                                </div>
+                                               {{-- @hasrole('Super Admin') --}}
+                                               <div class="form-group">
+                                                <label for="example-password">{{ __('Password')}}</label>
+                                                <input type="password"  class="form-control" name="password" id="example-password">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="example-password">{{ __('Confirm Password')}}</label>
+                                                <input type="password"  class="form-control" name="password_confirmation" id="example-password">
+                                            </div>
+                                               {{-- @endhasrole --}}
+                                                <div class="form-group">
+                                                    <label for="example-phone">{{ __('Phone No')}}</label>
+                                                    <input type="text" placeholder="Phone number" id="example-phone" name="phone" class="form-control" value="{{Auth::user()->phone}}">
+                                                </div>
+                                                <div class="form-group">
+                                                  
+                                                <button class="btn btn-success mt-4" type="submit">Update Profile</button>
                                             </form>
                                         </div>
                                 </div>

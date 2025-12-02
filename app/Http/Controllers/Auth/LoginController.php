@@ -43,7 +43,6 @@ class LoginController extends Controller
     }
 
     public function showLoginForm(){
-
         $services = Service::all();
         return view('auth.login',compact('services'));
     }
@@ -52,11 +51,8 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         $this->guard()->logout();
-
         $request->session()->invalidate();
-
         $request->session()->regenerateToken();
-
         if ($response = $this->loggedOut($request)) {
             return $response;
         }
@@ -64,7 +60,5 @@ class LoginController extends Controller
         return $request->wantsJson()
             ? new Response('', 204)
             : redirect('/login');
-
-    
     }
 }

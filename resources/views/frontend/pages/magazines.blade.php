@@ -55,21 +55,21 @@
                                 <p>{!! Illuminate\Support\Str::limit($magazine->desc, 90) !!}</p>
                                 <ul class="event-list">
                                     <div class="btn-group">
-                                        @if ($magazine->competiton_status == 1)
+                                        {{-- @if ($magazine->competiton_status == 1)
                                             <button class="btn-warning competitionEntry"  style="color:white"
                                                 data-id="{!! $magazine->id !!}">
-                                                {{-- <i class="fas fa-shopping-cart"></i> --}}
+                                                <i class="fas fa-shopping-cart"></i>
                                                 Add to cart
                                             </button>
                                         @else
                                             <button class="btn-warning"  style="color:white"
                                                 onclick="addToCart({{ $magazine->id }})">
-                                                {{-- <i class="fas fa-shopping-cart"></i> --}}
+                                                <i class="fas fa-shopping-cart"></i>
                                                 Add to cart
                                             </button>
                                           
                                         @endif
-                                           &nbsp;
+                                           &nbsp; --}}
                                           <button type="button" class="btn btn-success" id="buyNowBtn"
                                           onclick="BuyItem({{ $magazine->id }})"
                                           >Buy Now</button>
@@ -77,7 +77,7 @@
                                         <a href="{{ route('magazine.details', $magazine->slug) }}"
                                             class="btn btn-primary" style="color:white">
                                             {{-- <i class="fas fa-eye"></i> --}}
-                                            View
+                                            View Details
                                         </a>
                                     </div>
                                 </ul>

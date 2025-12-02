@@ -7,6 +7,7 @@ use App\Models\Competition;
 use App\Models\NewsCategory;
 use App\Models\Product;
 use App\Models\Service;
+use App\Models\Vendor;
 use Illuminate\Http\Request;
 use Gloudemans\Shoppingcart\Facades\Cart;
 use Illuminate\Support\Facades\Session;
@@ -60,11 +61,26 @@ class CartController extends Controller
         ], 200);
     }
 
-    public function showToCart(){
+    public function showToCart(Request $request){
+
+        
+         if ($request->has('vendor') && !session('ref_vendor_code')) {
+            $vendor = Vendor::where('referral_code', session('ref_vendor_code'))->where('status',1)->first();
+
+            if(count($vendor) > 0){
+                 session(['ref_vendor_code' => $request->query('vendor')]);
+            }
+        }elseif (session('ref_vendor_code')) {
+            // session(['ref_vendor_code' => $request->query('vendor')]);
+            $vendor = Vendor::where('referral_code', session('ref_vendor_code'))->where('status',1)->first();
+        }else{
+            $vendor = null;
+        }
+
         if (count(Cart::content()) > 0) {
             $services = Service::all();
             // dd(Cart::content());
-            return view('frontend.pages.cart',compact('services'));
+            return view('frontend.pages.cart',compact('services','vendor'));
         }
         return redirect()->back();
     }

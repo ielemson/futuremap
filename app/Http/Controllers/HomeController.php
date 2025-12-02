@@ -12,6 +12,7 @@ use App\Models\Profile;
 use App\Models\Service;
 use App\Models\Slider;
 use App\Models\User;
+use App\Models\Vendor;
 use Illuminate\Support\Facades\Artisan;
 use Illuminate\View\View;
 use Illuminate\Http\Request;
@@ -27,6 +28,7 @@ class HomeController extends Controller
     // use InteractsWithViews;
     public function index(): View
     {
+          Session::forget('ref_vendor_code');
         // $members =  User::whereHas("roles", function($q){ $q->where("name", "member_role"); })->get();
         $news = News::where('status',1)->orderBy('id', 'DESC')->paginate(25);
         $scholarshipgrantsOpportunities = NewsCategory::where('slug','scholarshipgrants-opportunities')->first();
@@ -69,7 +71,6 @@ class HomeController extends Controller
         return view('frontend.pages.member',compact('member','services'));
     }
 
-
     public function companyService($id){
         $services = Service::where('status',1)->get();
         $service = Service::where('id',$id)->first();
@@ -107,14 +108,54 @@ class HomeController extends Controller
     }
     
     public function magazines(){
+        Session::forget('ref_vendor_code');
         $services = Service::where('status',1)->get();
         $magazines = Product::where('status','publish')->orderBy('id','DESC')->paginate(10);
         return view('frontend.pages.magazines',compact('services','magazines'));
     }
-    public function magazine($slug){
+    public function magazine($slug, Request $request){
+
+        // return session('ref_vendor_code');
+
+         if ($request->has('vendor') && !session('ref_vendor_code')) {
+            session(['ref_vendor_code' => $request->query('vendor')]);
+            $vendor = Vendor::where('referral_code', session('ref_vendor_code'))->where('status',1)->first();
+        }elseif (session('ref_vendor_code')) {
+            // session(['ref_vendor_code' => $request->query('vendor')]);
+            $vendor = Vendor::where('referral_code', session('ref_vendor_code'))->where('status',1)->first();
+        }else{
+            $vendor = null;
+        }
+
         $services = Service::where('status',1)->get();
         $magazine = Product::where('slug',$slug)->first();
-        return view('frontend.pages.magazine',compact('services','magazine'));
+        $magazine = Product::where('slug', $slug)->firstOrFail();
+       
+        // Check if referral code exists
+        
+        return view('frontend.pages.magazine',compact('services','magazine','vendor'));
+    }
+
+     public function setReferral(Request $request)
+    {
+
+        $request->validate([
+        'ref_code' => 'required|string',
+         ]);
+
+    $vendor = Vendor::where('referral_code', $request->ref_code)
+                    ->where('status', 1) // optionally ensure the vendor is active
+                    ->first();
+
+    if (!$vendor) {
+        return back()->withErrors([
+            'ref_code' => 'referral code is invalid.',
+        ])->withInput();
+    }
+
+    session()->put('ref_vendor_code', $vendor->referral_code);
+    return redirect()->back()->with('success', 'Referral code applied successfully!');
+
     }
 
     public function news(){

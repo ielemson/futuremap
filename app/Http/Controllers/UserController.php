@@ -10,6 +10,7 @@ use DataTables;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Response;
 use Illuminate\View\View;
@@ -244,8 +245,28 @@ class UserController extends Controller
 
     function profile_update(Request $request){
          // update user info
+        //   $user = User::where("id",auth()->user())->first();
+        $user = User::find(auth()->user()->id);
 
-         dd($request->all());
+    $request->validate([
+        'name' => 'required|string|max:255',
+        'email'     => 'required|email|unique:users,email,' . $user->id,
+        'phone'     => 'nullable',
+        'password'  => 'nullable|string|min:6|confirmed',
+    ]);
+
+    $user->name = $request->name;
+    $user->email = $request->email;
+    $user->phone = $request->phone;
+
+    if ($request->filled('password')) {
+        // $user->password = bcrypt($request->password);
+         $user->password = $request->password;
+    }
+
+    $user->save();
+
+    return back()->with('success', 'Profile updated successfully!');
         
     }
     /**

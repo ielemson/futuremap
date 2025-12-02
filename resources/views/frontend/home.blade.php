@@ -17,8 +17,6 @@
 @include("frontend.include.partialPersonality")
 @include("frontend.include.eventmagazines")
 
-
-
 @include("frontend.include.scholarship_Opportunites")
 
 <div class="footer-contact-area ptb-50">

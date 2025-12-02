@@ -3,13 +3,28 @@
 
 @section('content')
 @section('title', 'Cart')
-@include('frontend.include.innerBanner', ["banner_title_1"=>"Checkout", "banner_title_2"=>"Checkout"])
+@include('frontend.include.innerBanner', ['banner_title_1' => 'Checkout', 'banner_title_2' => 'Checkout'])
 
 
 <section class="cart-wraps-area pt-100 pb-70">
     <div class="container">
         <div class="row">
             <div class="col-lg-8">
+
+                @if (session('ref_vendor_code') && isset($vendor))
+                    <div class="alert alert-info d-flex align-items-center gap-3">
+                        <div>
+                            <strong>{{ $vendor->user->name }}</strong><br>
+                            <small>{{ $vendor->user->email }}</small><br>
+                            <span class="badge bg-success">Referral Code: {{ session('ref_vendor_code') }}</span>
+                        </div>
+                    </div>
+                @elseif(session('ref_vendor_code'))
+                    <div class="alert alert-warning">
+                        Referral code <strong>{{ session('ref_vendor_code') }}</strong> is invalid or expired.
+                    </div>
+                @endif
+
                 <form>
                     <div class="cart-wraps">
                         <div class="cart-table table-responsive">
@@ -58,6 +73,45 @@
                             </span>
                         </li>
                     </ul>
+
+                    @if (!session('ref_vendor_code'))
+                        <div class="mb-4">
+                            <form action="{{ route('referral.set') }}" method="POST" class="d-flex">
+                                @csrf
+                                    {{-- <input type="text" name="ref_code" id="ref_code" placeholder="Enter referral code here" class="form-control @error('ref_code') is-invalid @enderror" value="{{ old('ref_code') }}" required>
+
+                                <button type="submit" class="btn btn-outline-primary">Apply</button>
+                                <br>
+                                    @error('ref_code')
+                                    <div class="invalid-feedback">
+                                    {{ $message }}
+                                    </div>
+                                    @enderror --}}
+
+                                    <div class="row">
+                                     <div class="col-md-9">
+                                       <input type="ref_code"
+                                            class="form-control me-2  @error('ref_code') is-invalid @enderror"
+                                            name="ref_code"  autocomplete="ref_code" placeholder="referral code" autofocus>
+                                        @error('ref_code')
+                                            <span class="invalid-feedback" role="alert">
+                                                <strong>{{ $message }}</strong>
+                                            </span>
+                                        @enderror
+                                    </div>
+
+                                    <div class="col-md-3">
+                                         <button type="submit" class="btn btn-outline-primary">Apply</button>
+                                    </div>
+                                   </div>
+                            </form>
+                        </div>
+                    @else
+                        <div class="alert alert-info">
+                            Referral code applied: <strong>{{ session('ref_vendor_code') }}</strong>
+                        </div>
+                    @endif
+
                     @auth
                         @php
                             $total = 0;
@@ -91,24 +145,27 @@
                             </div>
 
                             <div class="form-submit">
-                                <button type="submit" class="btn btn-success btn-md col-12 mx-auto" onclick="payWithPaystack()">
-                                Make Payment
+                                <button type="submit" class="btn btn-success btn-md col-12 mx-auto"
+                                    onclick="payWithPaystack()">
+                                    Make Payment
                                 </button>
                             </div>
                         </form>
                     @else
                         <div class="row mx-auto">
-                            <h6>Login or Register to place order</h6>
-                            <button class="default-btn col-md-4 loginModal" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                            <h6>Login or register to purchase</h6>
+                            <button class="default-btn col-md-4 loginModal" data-bs-toggle="modal"
+                                data-bs-target="#exampleModal">
                                 Login
                             </button>
                             &nbsp;
-                            <button class="default-btn two  col-md-4" data-bs-toggle="modal" data-bs-target="#registerModal">
+                            <button class="default-btn two  col-md-4" data-bs-toggle="modal"
+                                data-bs-target="#registerModal">
                                 Register
                             </button>
 
                         </div>
-                        
+
                     @endauth
 
                 </div>
@@ -122,111 +179,118 @@
   </button> --}}
 <!-- Button trigger modal -->
 
-  
-  <!-- Modal -->
-  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="col-lg-12">
-            <div class="user-all-form">
-                <div class="contact-form">
-                    <h3 class="user-title">
-                        Sign in</h3>
-                  
-                        <form action="{{ route('user.cart.login') }}" method="POST"  id="LoginForm">
-                         @csrf
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="form-group">
-                                    <input type="email" name="email" id="login_email" class="form-control" required data-error="Email Address*" placeholder="Email Address*" required>
+        <div class="modal-content">
+            <div class="col-lg-12">
+                <div class="user-all-form">
+                    <div class="contact-form">
+                        <h3 class="user-title">
+                            Sign in</h3>
+
+                        <form action="{{ route('user.cart.login') }}" method="POST" id="LoginForm">
+                            @csrf
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div class="form-group">
+                                        <input type="email" name="email" id="login_email" class="form-control"
+                                            required data-error="Email Address*" placeholder="Email Address*" required>
+                                    </div>
+                                </div>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <input class="form-control" type="password" id="login_password" name="password"
+                                            placeholder="Password*" required>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 form-condition">
+                                    <div class="agree-label">
+                                        <input type="checkbox" id="chb1">
+                                        <label for="chb1">
+                                            Remember Me
+                                            <a class="forget" href="{{ route('password.forget') }}">Forgot Password?</a>
+                                        </label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-12 col-md-12">
+                                    <button type="submit" class="default-btn">
+                                        Login Now
+                                    </button>
                                 </div>
                             </div>
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <input class="form-control" type="password" id="login_password" name="password" placeholder="Password*" required>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 form-condition">
-                                <div class="agree-label">
-                                    <input type="checkbox" id="chb1">
-                                    <label for="chb1">
-                                        Remember Me
-                                        <a class="forget" href="{{route('password.forget')}}">Forgot Password?</a>
-                                    </label>
-                                </div>
-                            </div>
-                            <div class="col-lg-12 col-md-12">
-                                <button type="submit" class="default-btn">
-                                    Login Now
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-      </div>
     </div>
-  </div>
+</div>
 {{-- Login Modal Ends ::::::::::::::::::::::::-> --}}
 
 
 {{-- Registration Modal Starts::::::::::::::::::::::::-> --}}
 <div class="modal fade" id="registerModal" tabindex="-1" aria-labelledby="registerModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content">
-        <div class="col-lg-12">
-            <div class="user-all-form">
-                <div class="contact-form">
-                    <h3 class="user-title">
-                        Sign up</h3>
-                  
-                        <form action="{{ route('user.cart.register') }}" method="POST"  id="RegisterForm">
-                         @csrf
-                        <div class="row">
-                            <div class="col-lg-12 ">
-                                <div class="form-group">
-                                    <input type="text" name="name" id="fullname" class="form-control" required placeholder="Full Name*" required>
+        <div class="modal-content">
+            <div class="col-lg-12">
+                <div class="user-all-form">
+                    <div class="contact-form">
+                        <h3 class="user-title">
+                            Sign up</h3>
+
+                        <form action="{{ route('user.cart.register') }}" method="POST" id="RegisterForm">
+                            @csrf
+                            <div class="row">
+                                <div class="col-lg-12 ">
+                                    <div class="form-group">
+                                        <input type="text" name="name" id="fullname" class="form-control"
+                                            required placeholder="Full Name*" required>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-12 ">
-                                <div class="form-group">
-                                    <input type="email" name="email"  class="form-control" required data-error="Email Address*" placeholder="Email Address*" required>
+                                <div class="col-lg-12 ">
+                                    <div class="form-group">
+                                        <input type="email" name="email" class="form-control" required
+                                            data-error="Email Address*" placeholder="Email Address*" required>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-lg-12 ">
-                                <div class="form-group">
-                                    <input type="text" name="phone" id="phone" class="form-control" required data-error="Phone Number*" placeholder="Phone Number*" required>
+                                <div class="col-lg-12 ">
+                                    <div class="form-group">
+                                        <input type="text" name="phone" id="phone" class="form-control"
+                                            required data-error="Phone Number*" placeholder="Phone Number*" required>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <input class="form-control" type="password" name="password" placeholder="Password*" required>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <input class="form-control" type="password" name="password"
+                                            placeholder="Password*" required>
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="form-group">
-                                    <input class="form-control" type="password" name="cpassword" placeholder="Confirm Password*" required>
+                                <div class="col-12">
+                                    <div class="form-group">
+                                        <input class="form-control" type="password" name="cpassword"
+                                            placeholder="Confirm Password*" required>
+                                    </div>
                                 </div>
+
+                                <div class="col-lg-12 col-md-12">
+                                    <button type="submit" class="default-btn">
+                                        Register
+                                    </button>
+                                </div>
+
                             </div>
-                            
-                            <div class="col-lg-12 col-md-12">
-                                <button type="submit" class="default-btn">
-                                    Register
-                                </button>
-                            </div>
-                           
-                        </div>
-                    </form>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>
-      </div>
     </div>
-  </div>
+</div>
 {{-- Registration Modal Ends::::::::::::::::::::::::-> --}}
 @push('extra-scripts')
-<script src="https://js.paystack.co/v2/inline.js"></script>
+    <script src="https://js.paystack.co/v2/inline.js"></script>
     <script>
         const Toast = Swal.mixin({
             toast: true,
@@ -385,90 +449,89 @@
                 }
             });
         }
-   
+
 
         // ::::::::::::  LOGIN USER ACCOUNT HERE ::::::::::::::::::://
         $('#LoginForm').on('submit', function(e) {
-        e.preventDefault();
-        
-        $.ajax({
-            url: "{{ route('user.cart.login') }}",
-            method: 'POST',
-            data: {
-                email: $('#login_email').val(),
-                password: $('#login_password').val(),
-                _token: '{{ csrf_token() }}'
-            },
-            success: function(response) {
-                if (response.status === 'success') {
-                    Toast.fire({
-                        icon: 'success',
-                        title: response.message
+            e.preventDefault();
+
+            $.ajax({
+                url: "{{ route('user.cart.login') }}",
+                method: 'POST',
+                data: {
+                    email: $('#login_email').val(),
+                    password: $('#login_password').val(),
+                    _token: '{{ csrf_token() }}'
+                },
+                success: function(response) {
+                    if (response.status === 'success') {
+                        Toast.fire({
+                            icon: 'success',
+                            title: response.message
                         })
-                        
+
                         setTimeout(() => {
-                            location.reload()  
+                            location.reload()
                         }, 2000);
-                } else {
+                    } else {
+                        Toast.fire({
+                            icon: 'error',
+                            title: response.message,
+                        })
+                    }
+                },
+                error: function(xhr) {
+                    // alert(xhr.responseJSON.message);
                     Toast.fire({
                         icon: 'error',
-                        title: response.message,
+                        title: xhr.responseJSON.message
                     })
                 }
-            },
-            error: function(xhr) {
-                // alert(xhr.responseJSON.message);
-                Toast.fire({
-                        icon: 'error',
-                        title:xhr.responseJSON.message
-                    })
-            }
+            });
         });
-    });
         // ::::::::::::  LOGIN USER ACCOUNT HERE ::::::::::::::::::://
 
         // Rgister user
 
-        $("#RegisterForm").submit(function(e){
-         e.preventDefault();
+        $("#RegisterForm").submit(function(e) {
+            e.preventDefault();
 
-        var all = $(this).serialize();
+            var all = $(this).serialize();
 
-        $.ajax({
-            url:  $(this).attr('action'),
-            type: "POST",
-            data: all,
-            beforeSend:function(){
-                // $(document).find('span.error-text').text('');
-            },
-            //validate form with ajax. This will be communicating 
-            success: function(data){ 
+            $.ajax({
+                url: $(this).attr('action'),
+                type: "POST",
+                data: all,
+                beforeSend: function() {
+                    // $(document).find('span.error-text').text('');
+                },
+                //validate form with ajax. This will be communicating 
+                success: function(data) {
 
-                if (data.status == "success") {
-                    Toast.fire({
-                        icon: 'success',
-                        title: data.msg,
-                    })
+                    if (data.status == "success") {
+                        Toast.fire({
+                            icon: 'success',
+                            title: data.msg,
+                        })
 
-                    setInterval(() => {
-                        location.reload()
-                    }, 2000);
+                        setInterval(() => {
+                            location.reload()
+                        }, 2000);
+                    }
+
+                    if (data.status == "error") {
+                        Toast.fire({
+                            icon: 'error',
+                            title: data.msg,
+                        })
+                    }
+
                 }
-
-                if (data.status == "error") {
-                    Toast.fire({
-                        icon: 'error',
-                        title: data.msg,
-                    })
-                }
-              
-            }
             })
 
         });
-
     </script>
- 
+
     <script>
         const paymentForm = document.getElementById('paymentForm');
         paymentForm.addEventListener("submit", payWithPaystack, false);
@@ -479,8 +542,8 @@
 
             const paystack = new PaystackPop();
             paystack.newTransaction({
-                key: 'pk_live_e1a9e2d2c647dc6ee867e1f2be54444f3c1011c8', // Replace with your public keyS
-                // key: 'pk_test_e1c6d4f4a524851abebc3f2bfdb3003d15fb051e', // Replace with your public keyS
+                // key: 'pk_live_e1a9e2d2c647dc6ee867e1f2be54444f3c1011c8', // Replace with your public keyS
+                key: 'pk_test_e1c6d4f4a524851abebc3f2bfdb3003d15fb051e', // Replace with your public keyS
                 email: document.getElementById("payer_email").value,
                 amount: document.getElementById("amount").value * 100,
 
@@ -494,7 +557,7 @@
                             ref: transaction.reference,
                         },
                         success: function(data) {
-                            
+
                             if (data.status == 200) {
                                 Toast.fire({
                                     icon: 'success',
@@ -503,7 +566,7 @@
                             }
 
                             setTimeout(() => {
-                            location.href=data.url
+                                location.href = data.url
                             }, 2000);
                         },
 
@@ -522,6 +585,5 @@
         }
     </script>
 @endpush
-
 
 @endsection
